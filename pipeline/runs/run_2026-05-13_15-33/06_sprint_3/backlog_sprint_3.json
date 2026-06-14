@@ -1,0 +1,125 @@
+{
+  "id_ejecucion": "run_2026-05-13_15-33",
+  "numero_sprint": 3,
+  "historias": [
+    {
+      "id": "HU-04",
+      "titulo": "Eliminación de cliente por administrador",
+      "descripcion": "Como administrador, quiero eliminar un cliente si no tiene reservas pendientes, para mantener la base de datos limpia.",
+      "criterios_aceptacion": [
+        "El administrador puede acceder a un listado de clientes desde el panel de administración.",
+        "El administrador puede eliminar un cliente solo si no tiene reservas pendientes.",
+        "Si el cliente tiene reservas pendientes, se muestra un mensaje indicando que no puede ser eliminado.",
+        "Tras la eliminación, el cliente desaparece del sistema."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-14",
+      "titulo": "Estados de reserva y transiciones",
+      "descripcion": "Como sistema, quiero gestionar los estados de reserva (PENDIENTE DE PAGO, PAGADO, EN USO, DEVUELTO) para controlar el ciclo de vida de cada reserva.",
+      "criterios_aceptacion": [
+        "Cada reserva tiene uno de los estados: PENDIENTE DE PAGO, PAGADO, EN USO o DEVUELTO.",
+        "Una reserva comienza en estado PENDIENTE DE PAGO.",
+        "El administrador puede cambiar el estado de una reserva desde el panel de reservas.",
+        "Las transiciones de estado se registran en el sistema."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-15",
+      "titulo": "Cancelación de reserva en estado PENDIENTE DE PAGO",
+      "descripcion": "Como cliente, quiero cancelar una reserva únicamente si está en estado PENDIENTE DE PAGO, para poder desistir antes de realizar el pago.",
+      "criterios_aceptacion": [
+        "El cliente puede cancelar una reserva solo si está en estado PENDIENTE DE PAGO.",
+        "Si la reserva está en otro estado, no aparece la opción de cancelación.",
+        "Al cancelar, la reserva se elimina del sistema.",
+        "Se muestra un mensaje de confirmación antes de cancelar."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-16",
+      "titulo": "Correo de recordatorio de pago pendiente",
+      "descripcion": "Como sistema, quiero enviar un correo de recordatorio al cliente si falta un día para el inicio de la reserva y sigue en estado PENDIENTE DE PAGO, para evitar que olvide completar el pago.",
+      "criterios_aceptacion": [
+        "El sistema identifica reservas en estado PENDIENTE DE PAGO con inicio en 24 horas.",
+        "Se envía un correo de recordatorio al cliente.",
+        "El correo incluye los datos de la reserva y un enlace para completar el pago.",
+        "El recordatorio se envía una sola vez por reserva."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-17",
+      "titulo": "Consulta de estado de reserva por código de seguimiento",
+      "descripcion": "Como cliente, quiero consultar el estado de mi reserva usando el código de seguimiento, para verificar el progreso sin necesidad de estar registrado.",
+      "criterios_aceptacion": [
+        "El cliente puede ingresar un código de seguimiento en un formulario de búsqueda.",
+        "El sistema muestra el estado actual de la reserva.",
+        "Se muestran los datos de la reserva (barco, fechas, importe).",
+        "La búsqueda es accesible sin autenticación."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-18",
+      "titulo": "Consulta de reservas del cliente autenticado",
+      "descripcion": "Como cliente registrado, quiero consultar el estado de todas mis reservas desde mi cuenta, para tener un historial de mis alquileres.",
+      "criterios_aceptacion": [
+        "El cliente autenticado puede acceder a un listado de sus reservas.",
+        "Se muestra el estado de cada reserva.",
+        "Se muestran los datos de cada reserva (barco, fechas, importe).",
+        "El cliente puede filtrar por estado de reserva."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-19",
+      "titulo": "Consulta de reservas por administrador",
+      "descripcion": "Como administrador, quiero consultar el estado de cualquier reserva en el sistema, para supervisar todas las transacciones.",
+      "criterios_aceptacion": [
+        "El administrador puede acceder a un listado de todas las reservas.",
+        "Se muestra el estado de cada reserva.",
+        "Se muestran los datos de cada reserva (cliente, barco, fechas, importe).",
+        "El administrador puede filtrar por estado, cliente o barco."
+      ],
+      "prioridad": "Media",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-20",
+      "titulo": "Panel de administración",
+      "descripcion": "Como administrador, quiero acceder a un panel de administración propio de la aplicación, para gestionar barcos, clientes y reservas.",
+      "criterios_aceptacion": [
+        "Existe un panel de administración accesible solo para administradores.",
+        "El panel proporciona acceso a la gestión de barcos.",
+        "El panel proporciona acceso a la gestión de clientes.",
+        "El panel proporciona acceso a la gestión de reservas.",
+        "El panel muestra estadísticas o resúmenes del sistema."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "L"
+    },
+    {
+      "id": "HU-21",
+      "titulo": "Gestión de barcos (alta, edición, baja)",
+      "descripcion": "Como administrador, quiero crear, editar y eliminar barcos en el sistema, para mantener el catálogo actualizado.",
+      "criterios_aceptacion": [
+        "El administrador puede crear un nuevo barco con todos sus campos (nombre, imagen, categoría, fabricante, puerto, capacidad, precio).",
+        "El administrador puede editar los datos de un barco existente.",
+        "El administrador puede eliminar un barco del catálogo.",
+        "Se valida que los datos del barco sean correctos antes de guardar.",
+        "Se muestra un mensaje de confirmación tras cada operación."
+      ],
+      "prioridad": "Media",
+      "estimacion": "M"
+    }
+  ]
+}

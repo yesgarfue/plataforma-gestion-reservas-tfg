@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirmación de Reserva - Hundidos{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 700px; margin: 40px auto;">
+    <div style="background-color: #ccffcc; border: 2px solid #00cc00; padding: 20px; border-radius: 4px; text-align: center; margin-bottom: 30px;">
+        <h2 style="color: #00cc00; margin: 0;">¡Reserva Confirmada!</h2>
+        <p style="margin: 10px 0 0 0;">Tu reserva ha sido creada exitosamente.</p>
+    </div>
+    
+    {% if reserva %}
+        <div style="background-color: #f9f9f9; padding: 20px; border-radius: 4px; margin-bottom: 30px;">
+            <h3>Detalles de tu Reserva</h3>
+            <p><strong>Código de Seguimiento:</strong> <span style="font-family: monospace; background-color: #e0e0e0; padding: 5px 10px; border-radius: 4px;">{{ reserva.codigo_seguimiento }}</span></p>
+            <p><strong>Nombre:</strong> {{ reserva.nombre_cliente }}</p>
+            <p><strong>Email:</strong> {{ reserva.email_contacto }}</p>
+            <p><strong>Teléfono:</strong> {{ reserva.telefono|default:"No especificado" }}</p>
+            <p><strong>Método de Pago:</strong> {{ reserva.get_metodo_pago_display }}</p>
+            <p><strong>Estado:</strong> {{ reserva.get_estado_display }}</p>
+            <p><strong>Importe Total:</strong> {{ reserva.importe_total }}€</p>
+            <p><strong>Fechas:</strong> {{ reserva.fecha_inicio|date:'d/m/Y' }} - {{ reserva.fecha_fin|date:'d/m/Y' }}</p>
+        </div>
+        
+        <div style="background-color: #fff3cd; border: 1px solid #ffc107; padding: 15px; border-radius: 4px; margin-bottom: 30px;">
+            <p><strong>Importante:</strong> Guarda tu código de seguimiento para poder consultar el estado de tu reserva en cualquier momento.</p>
+        </div>
+    {% endif %}
+    
+    <div style="display: flex; gap: 10px; justify-content: center;">
+        <a href="{% url 'tracking:search' %}" style="background-color: #003d82; color: white; padding: 12px 30px; border-radius: 4px; text-decoration: none; display: inline-block;">Seguimiento de Reserva</a>
+        <a href="{% url 'catalog:barco_list' %}" style="background-color: #999; color: white; padding: 12px 30px; border-radius: 4px; text-decoration: none; display: inline-block;">Volver al Catálogo</a>
+    </div>
+</div>
+{% endblock %}

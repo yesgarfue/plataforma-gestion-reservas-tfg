@@ -1,0 +1,235 @@
+# Intento fallido fase 02_planificacion
+# regeneración humana: 0
+# intento dentro de la regeneración: 1
+# error: Contenido insuficiente: PlanSprints: Historias del backlog sin asignar a ningún sprint: ['HU-09'].
+
+---- raw ----
+---- backlog ----
+{
+  "id_ejecucion": "run_2026-05-09_18-54",
+  "historias": [
+    {
+      "id": "HU-01",
+      "titulo": "Registro de cliente",
+      "descripcion": "Como visitante, quiero registrarme con correo electrónico y contraseña, para poder acceder a mi cuenta y consultar mis reservas.",
+      "criterios_aceptacion": [
+        "El formulario de registro acepta correo electrónico y contraseña.",
+        "Tras registrarse, el cliente queda autenticado en la sesión."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-02",
+      "titulo": "Inicio de sesión",
+      "descripcion": "Como cliente registrado, quiero iniciar sesión con correo y contraseña, para acceder a las funcionalidades reservadas a usuarios autenticados.",
+      "criterios_aceptacion": [
+        "El formulario de login acepta correo y contraseña.",
+        "Tras un login correcto, el cliente accede a su cuenta.",
+        "Tras un login incorrecto, se muestra un mensaje de error sin revelar qué campo es incorrecto."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "S"
+    },
+    {
+      "id": "HU-03",
+      "titulo": "Catálogo de barcos",
+      "descripcion": "Como cliente, quiero poder ver un catálogo de barcos organizado por categorías para poder seleccionar un barco para alquilar.",
+      "criterios_aceptacion": [
+        "El catálogo presenta los barcos organizados por categorías.",
+        "Cada barco en el catálogo presenta los campos: nombre, imagen, categoría, fabricante, puerto, capacidad y precio por día."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-04",
+      "titulo": "Filtro de búsqueda",
+      "descripcion": "Como cliente, quiero poder filtrar el catálogo de barcos mediante múltiples filtros para encontrar el barco que está buscando.",
+      "criterios_aceptacion": [
+        "El sistema permite la búsqueda por nombre o título del barco.",
+        "El sistema permite la búsqueda por puertos, fabricantes, precio, categoría, capacidad y rango de fechas simultáneamente y de forma independiente."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-05",
+      "titulo": "Ficha de barco",
+      "descripcion": "Como cliente, quiero poder ver la ficha de un barco para obtener más detalles sobre el mismo y poder añadirlo a mi cesta.",
+      "criterios_aceptacion": [
+        "El sistema presenta la ficha de un barco seleccionado, con los datos del barco y la imagen.",
+        "Desde la ficha de un barco, la opción de seleccionar una cantidad de unidades del barco y añadir a la cesta está disponible."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-06",
+      "titulo": "Cesta de reservas",
+      "descripcion": "Como cliente, quiero poder gestionar mi cesta de reservas, ver su contenido y realizar cambios.",
+      "criterios_aceptacion": [
+        "La cesta permite ver el contenido de los productos seleccionados.",
+        "La cesta permite modificar la cantidad de unidades de cada producto.",
+        "La cesta permite vaciar su contenido al entrar en modo administrador."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-07",
+      "titulo": "Reserva de barco",
+      "descripcion": "Como cliente, quiero poder realizar una reserva de barco siguiendo un flujo en tres pasos.",
+      "criterios_aceptacion": [
+        "El proceso de reserva puede iniciarse desde la cesta de reservas.",
+        "El proceso de reserva debe incluir pasos para elegir el barco, seleccionar la cantidad y confirmar la reserva."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-08",
+      "titulo": "Métodos de pago",
+      "descripcion": "Como cliente, quiero poder elegir entre dos métodos diferentes para realizar el pago de mi reserva.",
+      "criterios_aceptacion": [
+        "El sistema debe ofrecer dos métodos de pago: PayPal Sandbox y contra-reembolso.",
+        "La opción de pago contra-reembolso debe aplicar una tasa de combustible de 50 € por día, excepto para barcos de categoría 'velero'."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-09",
+      "titulo": "Confirmación de la reserva",
+      "descripcion": "Como cliente, quiero recibir una confirmación de la reserva en formato de correo electrónico para poder verificar el estado de mi reserva.",
+      "criterios_aceptacion": [
+        "Al finalizar la reserva, el cliente recibe un correo electrónico con el código de seguimiento del alquiler y los datos del barco reservado."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-10",
+      "titulo": "Gestión de reservas de administrador",
+      "descripcion": "Como administrador, quiero poder gestionar las reservas desde mi panel de control, cambiando su estado o cancelando las mismas.",
+      "criterios_aceptacion": [
+        "El sistema permite al administrador cambiar el estado de una reserva desde el panel de reservas.",
+        "El sistema permite al administrador cancelar una reserva si está en estado PENDIENTE DE PAGO."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-11",
+      "titulo": "Consulta de estado de la reserva",
+      "descripcion": "Como cliente registrado, quiero poder comprobar el estado de mis reservas a través de un código de seguimiento recibido por correo electrónico.",
+      "criterios_aceptacion": [
+        "El sistema permite a un cliente registrado comprobar el estado de su reserva usando el código de seguimiento recibido por email."
+      ],
+      "prioridad": "Media",
+      "estimacion": "S"
+    },
+    {
+      "id": "HU-12",
+      "titulo": "Gestión de barcos",
+      "descripcion": "Como administrador, quiero poder gestionar los barcos disponibles en la plataforma, añadiendo nuevos, editando existentes o eliminando los no deseados.",
+      "criterios_aceptacion": [
+        "El sistema permite al administrador alta, edición y baja de barcos."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-13",
+      "titulo": "Gestión de clientes",
+      "descripcion": "Como administrador, quiero poder gestionar los clientes de la plataforma, consultando sus datos o eliminándolos cuando ya no sean necesarios.",
+      "criterios_aceptacion": [
+        "El sistema permite al administrador consultar y eliminar los clientes de la plataforma."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    }
+  ]
+}
+
+---- plan_sprints ----
+{
+  "id_ejecucion": "run_2026-05-09_18-54",
+  "sprints": [
+    {
+      "numero": 1,
+      "objetivo": "Demostrar el catálogo navegable y el flujo de autenticación.",
+      "historias_ids": [
+        "HU-01",
+        "HU-02",
+        "HU-03"
+      ],
+      "entregable_verificable": "El cliente puede registrarse, iniciar sesión y navegar el catálogo de barcos por categoría."
+    },
+    {
+      "numero": 2,
+      "objetivo": "Cerrar el flujo de reserva y pago.",
+      "historias_ids": [
+        "HU-04",
+        "HU-05",
+        "HU-07",
+        "HU-08"
+      ],
+      "entregable_verificable": "El cliente puede reservar un barco y pagar por PayPal Sandbox o contra-reembolso, recibiendo correo con código de seguimiento."
+    },
+    {
+      "numero": 3,
+      "objetivo": "Completar gestión administrativa y seguimiento.",
+      "historias_ids": [
+        "HU-06",
+        "HU-10",
+        "HU-11",
+        "HU-12",
+        "HU-13"
+      ],
+      "entregable_verificable": "El administrador puede gestionar barcos, clientes y reservas; el cliente puede consultar el estado por código."
+    }
+  ]
+}
+
+---- riesgos ----
+{
+  "id_ejecucion": "run_2026-05-09_18-54",
+  "riesgos": [
+    {
+      "id": "R-01",
+      "descripcion": "PayPal Sandbox puede no estar disponible durante una demo o desarrollo, bloqueando la prueba del flujo de pago.",
+      "probabilidad": "media",
+      "impacto": "alto",
+      "mitigacion": "Implementar y dejar completamente funcional el flujo de contra-reembolso antes de abordar la integración con PayPal, para que la aplicación sea demoable aunque la pasarela falle."
+    },
+    {
+      "id": "R-02",
+      "descripcion": "La tasa de combustible tiene una excepción para barcos de categoría 'velero' (0 € en lugar de 50 €/día), es fácil de olvidar al implementar el cálculo del importe.",
+      "probabilidad": "alta",
+      "impacto": "medio",
+      "mitigacion": "Cubrir explícitamente el caso de 'velero' con un test unitario en el cálculo de la tasa antes de cerrar la historia del proceso de pago."
+    },
+    {
+      "id": "R-03",
+      "descripcion": "Django 3.2 tiene un soporte limitado, lo que puede requerir soluciones alternativas para ciertas funcionalidades de forma eficiente.",
+      "probabilidad": "media",
+      "impacto": "alto",
+      "mitigacion": "Complementar Django 3.2 con complementos y paquetes que mejoren la funcionalidad necesaria, y realizar pruebas exhaustivas para asegurar la estabilidad y rendimiento de la aplicación."
+    },
+    {
+      "id": "R-04",
+      "descripcion": "El catálogo de barcos puede no estar completo si el proceso de filtaje y búsqueda no se desarrolla de forma óptima.",
+      "probabilidad": "media",
+      "impacto": "medio",
+      "mitigacion": "Implementar un algoritmo de búsqueda más inteligente y realizar pruebas de carga para asegurar que todas las funcionalidades filtros funcionen correctamente bajo presión."
+    },
+    {
+      "id": "R-05",
+      "descripcion": "La implementación incorrecta de la gestion de reservas puede llevar a reservas no realizadas correctamente y problemas de seguimiento.",
+      "probabilidad": "alta",
+      "impacto": "alto",
+      "mitigacion": "Desarrollar una gestión de reservas robusta que incluya una verificación exhaustiva de la lógica de negocio y realizar pruebas unitarias de alta cobertura para asegurar la funcionalidad correcta."
+    }
+  ]
+}

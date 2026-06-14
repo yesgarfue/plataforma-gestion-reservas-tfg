@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}Gestión de Clientes - Hundidos{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Gestión de Clientes</h1>
+
+    {% if clientes %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Reservas</th>
+                        <th>Reservas Pendientes</th>
+                        <th>Fecha de Registro</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cliente in clientes %}
+                        <tr>
+                            <td>{{ cliente.email }}</td>
+                            <td>{{ cliente.first_name|default:"—" }}</td>
+                            <td>{{ cliente.last_name|default:"—" }}</td>
+                            <td>{{ cliente.reservas.count }}</td>
+                            <td>
+                                {% with pendientes=cliente.reservas.filter|dictsort:"estado"|length %}
+                                    {% if cliente.reservas.all|dictsort:"estado" %}
+                                        {% for reserva in cliente.reservas.all %}
+                                            {% if reserva.estado == 'PENDIENTE_DE_PAGO' %}
+                                                <span class="badge bg-warning">1</span>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% else %}
+                                        0
+                                    {% endif %}
+                                {% endwith %}
+                            </td>
+                            <td>{{ cliente.date_joined|date:"d/m/Y" }}</td>
+                            <td>
+                                <form method="post" action="{% url 'admin:client_delete' cliente.id %}" style="display: inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro? Esta acción es irreversible.')">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="alert alert-info">No hay clientes registrados.</div>
+    {% endif %}
+
+    <a href="{% url 'admin:dashboard' %}" class="btn btn-secondary mt-4">Volver al Panel</a>
+</div>
+{% endblock %}

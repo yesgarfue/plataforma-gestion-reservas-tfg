@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Gestión de Barcos - Hundidos{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 1000px; margin: 40px auto;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+        <h2 style="margin: 0;">Gestión de Barcos</h2>
+        <a href="{% url 'admin_panel:boat_create' %}" style="background-color: #003d82; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none;">+ Crear Barco</a>
+    </div>
+    
+    {% if barcos %}
+        <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="background-color: #003d82; color: white;">
+                    <th style="padding: 10px; text-align: left;">Nombre</th>
+                    <th style="padding: 10px; text-align: left;">Categoría</th>
+                    <th style="padding: 10px; text-align: left;">Puerto</th>
+                    <th style="padding: 10px; text-align: right;">Precio/día</th>
+                    <th style="padding: 10px; text-align: center;">Disponible</th>
+                    <th style="padding: 10px; text-align: center;">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for barco in barcos %}
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px;">{{ barco.nombre }}</td>
+                        <td style="padding: 10px;">{{ barco.categoria.nombre }}</td>
+                        <td style="padding: 10px;">{{ barco.puerto.nombre }}</td>
+                        <td style="padding: 10px; text-align: right;">{{ barco.precio_dia }}€</td>
+                        <td style="padding: 10px; text-align: center;">{% if barco.disponible %}<span style="color: green;">✓</span>{% else %}<span style="color: red;">✗</span>{% endif %}</td>
+                        <td style="padding: 10px; text-align: center;">
+                            <a href="{% url 'admin_panel:boat_edit' barco.id %}" style="color: #003d82; text-decoration: none; margin-right: 10px;">Editar</a>
+                            <form method="post" action="{% url 'admin_panel:boat_delete' barco.id %}" style="display: inline;" onsubmit="return confirm('¿Estás seguro?');">
+                                {% csrf_token %}
+                                <button type="submit" style="background: none; border: none; color: #cc0000; cursor: pointer; text-decoration: underline;">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No hay barcos registrados.</p>
+    {% endif %}
+</div>
+{% endblock %}

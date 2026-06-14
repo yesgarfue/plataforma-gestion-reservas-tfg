@@ -1,0 +1,353 @@
+{
+  "id_ejecucion": "run_2026-05-19_02-15",
+  "sprint": 2,
+  "backlog_items_pedidos": [
+    "HU-07",
+    "HU-08",
+    "HU-09",
+    "HU-10",
+    "HU-11",
+    "HU-12",
+    "HU-14"
+  ],
+  "archivos_entregados": [
+    ".gitignore",
+    "accounts/__init__.py",
+    "accounts/apps.py",
+    "accounts/forms.py",
+    "accounts/migrations/0001_initial.py",
+    "accounts/migrations/__init__.py",
+    "accounts/models.py",
+    "accounts/urls.py",
+    "accounts/views.py",
+    "admin_panel/__init__.py",
+    "admin_panel/apps.py",
+    "admin_panel/urls.py",
+    "cart/__init__.py",
+    "cart/apps.py",
+    "cart/services.py",
+    "cart/urls.py",
+    "cart/views.py",
+    "catalog/__init__.py",
+    "catalog/apps.py",
+    "catalog/migrations/0001_initial.py",
+    "catalog/migrations/__init__.py",
+    "catalog/models.py",
+    "catalog/urls.py",
+    "catalog/views.py",
+    "core/__init__.py",
+    "core/apps.py",
+    "core/management/__init__.py",
+    "core/management/commands/__init__.py",
+    "core/management/commands/seed_data.py",
+    "Dockerfile",
+    "hundidos/__init__.py",
+    "hundidos/asgi.py",
+    "hundidos/settings.py",
+    "hundidos/urls.py",
+    "hundidos/wsgi.py",
+    "manage.py",
+    "payments/__init__.py",
+    "payments/apps.py",
+    "payments/forms.py",
+    "payments/migrations/0001_initial.py",
+    "payments/migrations/__init__.py",
+    "payments/models.py",
+    "payments/services/__init__.py",
+    "payments/services/cash_on_delivery.py",
+    "payments/services/paypal.py",
+    "payments/urls.py",
+    "payments/views.py",
+    "README.md",
+    "requirements.txt",
+    "reservations/__init__.py",
+    "reservations/apps.py",
+    "reservations/forms.py",
+    "reservations/migrations/0001_initial.py",
+    "reservations/migrations/__init__.py",
+    "reservations/models.py",
+    "reservations/services/__init__.py",
+    "reservations/services/pricing.py",
+    "reservations/services/tracking.py",
+    "reservations/urls.py",
+    "reservations/views.py",
+    "static/.gitkeep",
+    "templates/.gitkeep",
+    "templates/accounts/login.html",
+    "templates/accounts/profile.html",
+    "templates/accounts/register.html",
+    "templates/base.html",
+    "templates/cart/view.html",
+    "templates/catalog/detail.html",
+    "templates/catalog/home.html",
+    "templates/catalog/list.html",
+    "templates/payments/cash_on_delivery.html",
+    "templates/payments/email_pago_confirmado.html",
+    "templates/reservations/confirmation.html",
+    "templates/reservations/email_confirmacion.html",
+    "templates/reservations/email_recordatorio.html",
+    "templates/reservations/my_reservations.html",
+    "templates/reservations/step1.html",
+    "templates/reservations/step2.html",
+    "templates/reservations/step3.html",
+    "templates/reservations/tracking.html",
+    "templates/reservations/tracking_detail.html"
+  ],
+  "cumplimiento": {
+    "HU-07": "ok",
+    "HU-08": "ok",
+    "HU-09": "ok",
+    "HU-10": "ok",
+    "HU-11": "ok",
+    "HU-12": "ok",
+    "HU-14": "ok"
+  },
+  "arranque": {
+    "ok": true,
+    "returncode": 0,
+    "stdout_resumen": "",
+    "stderr_resumen": "System check identified some issues:\n\nWARNINGS:\n?: (urls.W005) URL namespace 'admin' isn't unique. You may not be able to reverse all URLs in this namespace\n\nSystem check identified 1 issue (0 silenced).",
+    "timeout_s": 60,
+    "timeout": false
+  },
+  "rutas": [
+    {
+      "path": "/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:54201/",
+      "error": "",
+      "detalle": "http://127.0.0.1:54201/",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/barcos/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:54201/barcos/",
+      "error": "",
+      "detalle": "http://127.0.0.1:54201/barcos/",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/cesta/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:54201/cesta/",
+      "error": "",
+      "detalle": "http://127.0.0.1:54201/cesta/",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/accounts/registro/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:54201/accounts/registro/",
+      "error": "",
+      "detalle": "http://127.0.0.1:54201/accounts/registro/",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/accounts/login/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:54201/accounts/login/",
+      "error": "",
+      "detalle": "http://127.0.0.1:54201/accounts/login/",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/reserva/paso1/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:54201/reserva/paso1/",
+      "error": "",
+      "detalle": "http://127.0.0.1:54201/reserva/paso1/",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/reserva/paso2/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 302,
+      "final_url": "/reserva/paso1/",
+      "error": "",
+      "detalle": "/reserva/paso1/",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/reserva/paso3/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 302,
+      "final_url": "/reserva/paso1/",
+      "error": "",
+      "detalle": "/reserva/paso1/",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/admin/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 302,
+      "final_url": "/admin/login/?next=/admin/",
+      "error": "",
+      "detalle": "/admin/login/?next=/admin/",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/admin-panel/",
+      "ejecutado": true,
+      "ok": false,
+      "status_code": 404,
+      "final_url": "",
+      "error": "",
+      "detalle": "",
+      "motivo_no_ejecutado": ""
+    }
+  ],
+  "templates": [
+    {
+      "template": "accounts/login.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "accounts/profile.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "accounts/register.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "base.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "cart/view.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "catalog/detail.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "catalog/home.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "catalog/list.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "payments/cash_on_delivery.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "payments/email_pago_confirmado.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "reservations/confirmation.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "reservations/email_confirmacion.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "reservations/email_recordatorio.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "reservations/my_reservations.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "reservations/step1.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "reservations/step2.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "reservations/step3.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "reservations/tracking.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "reservations/tracking_detail.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    }
+  ],
+  "incidencias": [
+    "Ruta /admin-panel/ no responde correctamente: ."
+  ]
+}

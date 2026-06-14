@@ -1,0 +1,67 @@
+---
+run_id: run_2026-05-18_16-37
+fase: 02_planificacion
+agente: PM
+modelo: anthropic/claude-haiku-4-5
+timestamp: 2026-05-18T16:52:09+02:00
+hash_brief: e62bcd5b2a4f56841065a31fe202de9d8628e317db0846675e689257a2eeb394
+regeneraciones_previas: 0
+---
+
+# 02 — Plan de sprints
+
+**ID de ejecución**: `run_2026-05-18_16-37`
+
+Número de sprints: **3**
+
+## Sprint 1
+
+**Objetivo**: Establecer la base técnica y el catálogo navegable. Sprint 1 implementa autenticación, configuración regional, modelo de datos de barcos, catálogo con búsqueda y filtros, ficha de barco, y cesta. Estas historias forman el PMV demoable que permite a un cliente explorar y seleccionar barcos sin necesidad de completar una reserva.
+
+**Historias asignadas**
+
+- `HU-01`
+- `HU-02`
+- `HU-03`
+- `HU-04`
+- `HU-05`
+- `HU-06`
+- `HU-07`
+- `HU-08`
+- `HU-22`
+- `HU-23`
+- `HU-24`
+- `HU-25`
+
+**Entregable verificable**: **Funcionalidad operativa:** Registro e inicio de sesión de clientes, catálogo de barcos organizado por categorías con búsqueda por nombre y filtros combinables (puerto, fabricante, precio, categoría, capacidad, fechas), ficha de barco con selección de cantidad, cesta visible y modificable, datos precargados (5 barcos, 2 puertos, 2 fabricantes, 2 categorías incluyendo velero, 1 admin, 1 cliente), aplicación empaquetada en Docker con zona horaria Europe/Madrid y locale español. **Dependencias desbloqueadas:** Modelo de datos de barcos, clientes y cesta operativo; autenticación funcional; base de datos SQLite inicializada con seed data; infraestructura Docker lista para desarrollo y demostración. **Checks mínimos:** Ejecutar manage.py check sin errores; acceder a página principal sin autenticación; registrarse e iniciar sesión correctamente; buscar y filtrar barcos; acceder a ficha de barco; añadir barco a cesta; contenedor Docker arranca y la aplicación es accesible en localhost. **Riesgo principal:** Los filtros combinables pueden ser más complejos de lo esperado en la lógica de consultas; si la implementación es ineficiente, el catálogo puede ser lento con muchos barcos.
+
+## Sprint 2
+
+**Objetivo**: Implementar el flujo completo de reserva y pago. Sprint 2 añade el proceso de reserva en tres pasos sin registro previo, métodos de pago (PayPal Sandbox y contra-reembolso), cálculo de tasa de combustible, confirmación por correo con código de seguimiento, gestión de estados de reserva, y consulta de reservas por código. Estas historias cierran el ciclo de compra y permiten demostrar una transacción completa.
+
+**Historias asignadas**
+
+- `HU-09`
+- `HU-10`
+- `HU-11`
+- `HU-12`
+- `HU-13`
+- `HU-21`
+
+**Entregable verificable**: **Funcionalidad operativa:** Proceso de reserva en tres pasos sin obligación de registro previo; selección de método de pago (PayPal Sandbox y contra-reembolso); cálculo automático de tasa de combustible (50 € por día, 0 € para veleros); confirmación de reserva por correo con código de seguimiento único; gestión de estados de reserva (PENDIENTE DE PAGO, PAGADO, EN USO, DEVUELTO); consulta de reserva por código de seguimiento sin autenticación; opción de login durante el proceso de reserva con recuperación de cesta. **Dependencias desbloqueadas:** Modelo de reservas operativo; integración de correo funcional; pasarela PayPal Sandbox configurada; flujo de pago completo; código de seguimiento generado y validable. **Checks mínimos:** Completar una reserva sin estar registrado; recibir correo de confirmación con código de seguimiento; consultar estado de reserva por código; verificar cálculo correcto de tasa de combustible en reserva de barco normal y velero; cambiar de método de pago durante el proceso; iniciar sesión durante reserva y recuperar cesta. **Riesgo principal:** La integración con PayPal Sandbox puede fallar o no estar disponible durante desarrollo; el flujo de tres pasos sin registro previo tiene casos borde en validación de datos y recuperación de sesión.
+
+## Sprint 3
+
+**Objetivo**: Cerrar funcionalidades administrativas, seguimiento y pulido. Sprint 3 implementa gestión administrativa de barcos, clientes y reservas, cancelación de reservas, recordatorio de pago pendiente, consulta de reservas del cliente autenticado, y validaciones finales de seguridad. Estas historias completan el sistema y permiten que administradores gestionen el negocio operativamente.
+
+**Historias asignadas**
+
+- `HU-14`
+- `HU-15`
+- `HU-16`
+- `HU-17`
+- `HU-18`
+- `HU-19`
+- `HU-20`
+
+**Entregable verificable**: **Funcionalidad operativa:** Panel administrativo con gestión de barcos (alta, edición, baja); gestión de clientes (consulta, eliminación con restricción de reservas pendientes); gestión de reservas (consulta, cambio de estado con transiciones aplicables); cancelación de reservas en estado PENDIENTE DE PAGO; envío automático de recordatorio de pago 1 día antes del inicio; consulta de reservas del cliente autenticado; validaciones de seguridad (CSRF, contraseñas hasheadas, validación de formularios). **Dependencias desbloqueadas:** Sistema administrativo completo operativo; automatización de recordatorios de pago; restricciones de integridad de datos (no eliminar clientes con reservas pendientes) implementadas; seguridad de formularios y contraseñas garantizada. **Checks mínimos:** Acceder al panel administrativo como admin; crear, editar y eliminar un barco; consultar listado de clientes; intentar eliminar cliente con reservas pendientes (debe fallar); cambiar estado de una reserva; cancelar una reserva en PENDIENTE DE PAGO; verificar que recordatorio de pago se envía automáticamente; cliente autenticado ve sus reservas; CSRF activo en todos los formularios; manage.py check sin errores. **Riesgo principal:** La restricción de no eliminar clientes con reservas pendientes requiere validación cuidadosa; el envío automático de recordatorios depende de configuración de SMTP que puede no estar disponible en todos los entornos; cambios de estado de reserva pueden dejar inconsistencias si no se validan correctamente las transiciones.

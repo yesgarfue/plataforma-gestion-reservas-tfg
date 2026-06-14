@@ -1,0 +1,290 @@
+{
+  "id_ejecucion": "run_2026-05-14_16-05",
+  "sprint": 1,
+  "backlog_items_pedidos": [
+    "HU-01",
+    "HU-02",
+    "HU-03",
+    "HU-04",
+    "HU-05",
+    "HU-06"
+  ],
+  "archivos_entregados": [
+    "accounts/__init__.py",
+    "accounts/apps.py",
+    "accounts/forms.py",
+    "accounts/migrations/0001_initial.py",
+    "accounts/migrations/__init__.py",
+    "accounts/models.py",
+    "accounts/urls.py",
+    "accounts/views.py",
+    "admin_panel/__init__.py",
+    "admin_panel/apps.py",
+    "admin_panel/urls.py",
+    "catalog/__init__.py",
+    "catalog/apps.py",
+    "catalog/migrations/0001_initial.py",
+    "catalog/migrations/__init__.py",
+    "catalog/models.py",
+    "catalog/urls.py",
+    "catalog/views.py",
+    "core/__init__.py",
+    "core/apps.py",
+    "core/management/__init__.py",
+    "core/management/commands/__init__.py",
+    "core/management/commands/seed_data.py",
+    "hundidos/__init__.py",
+    "hundidos/asgi.py",
+    "hundidos/settings.py",
+    "hundidos/urls.py",
+    "hundidos/wsgi.py",
+    "manage.py",
+    "media/.gitkeep",
+    "reservations/__init__.py",
+    "reservations/apps.py",
+    "reservations/forms.py",
+    "reservations/migrations/0001_initial.py",
+    "reservations/migrations/__init__.py",
+    "reservations/models.py",
+    "reservations/urls.py",
+    "reservations/views.py",
+    "static/.gitkeep",
+    "templates/.gitkeep",
+    "templates/accounts/login.html",
+    "templates/accounts/profile.html",
+    "templates/accounts/register.html",
+    "templates/base.html",
+    "templates/catalog/detail.html",
+    "templates/catalog/home.html",
+    "templates/catalog/list.html",
+    "templates/catalog/search.html",
+    "templates/reservations/cart.html",
+    "templates/reservations/confirmation.html",
+    "templates/reservations/my_reservations.html",
+    "templates/reservations/step1.html",
+    "templates/reservations/step2.html",
+    "templates/reservations/step3.html",
+    "templates/reservations/track.html"
+  ],
+  "cumplimiento": {
+    "HU-01": "ok",
+    "HU-02": "ok",
+    "HU-03": "ok",
+    "HU-04": "ok",
+    "HU-05": "ok",
+    "HU-06": "ok"
+  },
+  "arranque": {
+    "ok": true,
+    "returncode": 0,
+    "stdout_resumen": "",
+    "stderr_resumen": "System check identified some issues:\n\nWARNINGS:\n?: (urls.W005) URL namespace 'admin' isn't unique. You may not be able to reverse all URLs in this namespace\n\nSystem check identified 1 issue (0 silenced).",
+    "timeout_s": 60,
+    "timeout": false
+  },
+  "rutas": [
+    {
+      "path": "/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:50734/",
+      "error": "",
+      "detalle": "http://127.0.0.1:50734/",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/barcos/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:50734/barcos/",
+      "error": "",
+      "detalle": "http://127.0.0.1:50734/barcos/",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/cesta/",
+      "ejecutado": true,
+      "ok": false,
+      "status_code": null,
+      "final_url": "",
+      "error": "TimeoutError: timed out",
+      "detalle": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/accounts/login/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:50734/accounts/login/",
+      "error": "",
+      "detalle": "http://127.0.0.1:50734/accounts/login/",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/reserva/paso1/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 302,
+      "final_url": "/cesta/",
+      "error": "",
+      "detalle": "/cesta/",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/reserva/paso2/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 302,
+      "final_url": "/reserva/paso1/",
+      "error": "",
+      "detalle": "/reserva/paso1/",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/reserva/paso3/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 302,
+      "final_url": "/reserva/paso1/",
+      "error": "",
+      "detalle": "/reserva/paso1/",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/admin/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 302,
+      "final_url": "/admin/login/?next=/admin/",
+      "error": "",
+      "detalle": "/admin/login/?next=/admin/",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/admin-panel/",
+      "ejecutado": true,
+      "ok": false,
+      "status_code": null,
+      "final_url": "",
+      "error": "TimeoutError: timed out",
+      "detalle": "",
+      "motivo_no_ejecutado": ""
+    }
+  ],
+  "templates": [
+    {
+      "template": "accounts/login.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "accounts/profile.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "accounts/register.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "base.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "catalog/detail.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "catalog/home.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "catalog/list.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "catalog/search.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "reservations/cart.html",
+      "ejecutado": true,
+      "ok": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\Yesi\\AppData\\Local\\Temp\\hundidos_review_u43nuf14\\codigo\\manage.py\", line 22, in <module>\n    main()\n  File \"C:\\Users\\Yesi\\AppData\\Local\\Temp\\hundidos_review_u43nuf14\\codigo\\manage.py\", line 18, in main\n    execute_from_command_line(sys.argv)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\__init__.py\", line 419, in execute_from_command_line\n    utility.execute()\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\__init__.py\", line 413, in execute\n    self.fetch_command(subcommand).run_from_argv(self.argv)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 354, in run_from_argv\n    self.execute(*args, **cmd_options)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 398, in execute\n    output = self.handle(*args, **options)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\commands\\shell.py\", line 87, in handle\n    exec(options['command'], globals())\n  File \"<string>\", line 2, in <module>\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\loader.py\", line 15, in get_template\n    return engine.get_template(template_name)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\backends\\django.py\", line 34, in get_template\n    return Template(self.engine.get_template(template_name), self)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\engine.py\", line 143, in get_template\n    template, origin = self.find_template(template_name)\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\engine.py\", line 125, in find_template\n    template = loader.get_template(name, skip=skip)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\loaders\\base.py\", line 29, in get_template\n    return Template(\n           ^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\base.py\", line 155, in __init__\n    self.nodelist = self.compile_nodelist()\n                    ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\base.py\", line 193, in compile_nodelist\n    return parser.parse()\n           ^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\base.py\", line 478, in parse\n    raise self.error(token, e)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\base.py\", line 476, in parse\n    compiled_result = compile_func(self, token)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\loader_tags.py\", line 278, in do_extends\n    nodelist = parser.parse()\n               ^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\base.py\", line 478, in parse\n    raise self.error(token, e)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\base.py\", line 476, in parse\n    compiled_result = compile_func(self, token)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\loader_\n...[salida truncada]...",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "reservations/confirmation.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "reservations/my_reservations.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "reservations/step1.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "reservations/step2.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "reservations/step3.html",
+      "ejecutado": true,
+      "ok": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\Yesi\\AppData\\Local\\Temp\\hundidos_review_u43nuf14\\codigo\\manage.py\", line 22, in <module>\n    main()\n  File \"C:\\Users\\Yesi\\AppData\\Local\\Temp\\hundidos_review_u43nuf14\\codigo\\manage.py\", line 18, in main\n    execute_from_command_line(sys.argv)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\__init__.py\", line 419, in execute_from_command_line\n    utility.execute()\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\__init__.py\", line 413, in execute\n    self.fetch_command(subcommand).run_from_argv(self.argv)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 354, in run_from_argv\n    self.execute(*args, **cmd_options)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 398, in execute\n    output = self.handle(*args, **options)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\commands\\shell.py\", line 87, in handle\n    exec(options['command'], globals())\n  File \"<string>\", line 2, in <module>\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\loader.py\", line 15, in get_template\n    return engine.get_template(template_name)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\backends\\django.py\", line 34, in get_template\n    return Template(self.engine.get_template(template_name), self)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\engine.py\", line 143, in get_template\n    template, origin = self.find_template(template_name)\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\engine.py\", line 125, in find_template\n    template = loader.get_template(name, skip=skip)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\loaders\\base.py\", line 29, in get_template\n    return Template(\n           ^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\base.py\", line 155, in __init__\n    self.nodelist = self.compile_nodelist()\n                    ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\base.py\", line 193, in compile_nodelist\n    return parser.parse()\n           ^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\base.py\", line 478, in parse\n    raise self.error(token, e)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\base.py\", line 476, in parse\n    compiled_result = compile_func(self, token)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\loader_tags.py\", line 278, in do_extends\n    nodelist = parser.parse()\n               ^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\base.py\", line 478, in parse\n    raise self.error(token, e)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\base.py\", line 476, in parse\n    compiled_result = compile_func(self, token)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\loader_\n...[salida truncada]...",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "reservations/track.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    }
+  ],
+  "incidencias": [
+    "Template reservations/cart.html no compila: Traceback (most recent call last):\n  File \"C:\\Users\\Yesi\\AppData\\Local\\Temp\\hundidos_review_u43nuf14\\codigo\\manage.py\", line 22, in <module>\n    main()\n  File \"C:\\Users\\Yesi\\AppData\\Local\\Temp\\hundidos_review_u43nuf14\\codigo\\manage.py\", line 18, in main\n    execute_from_command_line(sys.argv)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\__init__.py\", line 419, in execute_from_command_line\n    utility.execute()\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\__init__.py\", line 413, in execute\n    self.fetch_command(subcommand).run_from_argv(self.argv)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 354, in run_from_argv\n    self.execute(*args, **cmd_options)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 398, in execute\n    output = self.handle(*args, **options)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\commands\\shell.py\", line 87, in handle\n    exec(options['command'], globals())\n  File \"<string>\", line 2, in <module>\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\loader.py\", line 15, in get_template\n    return engine.get_template(template_name)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\backends\\django.py\", line 34, in get_template\n    return Template(self.engine.get_template(template_name), self)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\engine.py\", line 143, in get_template\n    template, origin = self.find_template(template_name)\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\engine.py\", line 125, in find_template\n    template = loader.get_template(name, skip=skip)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\loaders\\base.py\", line 29, in get_template\n    return Template(\n           ^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\base.py\", line 155, in __init__\n    self.nodelist = self.compile_nodelist()\n                    ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\base.py\", line 193, in compile_nodelist\n    return parser.parse()\n           ^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\base.py\", line 478, in parse\n    raise self.error(token, e)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\base.py\", line 476, in parse\n    compiled_result = compile_func(self, token)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\loader_tags.py\", line 278, in do_extends\n    nodelist = parser.parse()\n               ^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\base.py\", line 478, in parse\n    raise self.error(token, e)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\base.py\", line 476, in parse\n    compiled_result = compile_func(self, token)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\loader_\n...[salida truncada]....",
+    "Template reservations/step3.html no compila: Traceback (most recent call last):\n  File \"C:\\Users\\Yesi\\AppData\\Local\\Temp\\hundidos_review_u43nuf14\\codigo\\manage.py\", line 22, in <module>\n    main()\n  File \"C:\\Users\\Yesi\\AppData\\Local\\Temp\\hundidos_review_u43nuf14\\codigo\\manage.py\", line 18, in main\n    execute_from_command_line(sys.argv)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\__init__.py\", line 419, in execute_from_command_line\n    utility.execute()\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\__init__.py\", line 413, in execute\n    self.fetch_command(subcommand).run_from_argv(self.argv)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 354, in run_from_argv\n    self.execute(*args, **cmd_options)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 398, in execute\n    output = self.handle(*args, **options)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\commands\\shell.py\", line 87, in handle\n    exec(options['command'], globals())\n  File \"<string>\", line 2, in <module>\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\loader.py\", line 15, in get_template\n    return engine.get_template(template_name)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\backends\\django.py\", line 34, in get_template\n    return Template(self.engine.get_template(template_name), self)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\engine.py\", line 143, in get_template\n    template, origin = self.find_template(template_name)\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\engine.py\", line 125, in find_template\n    template = loader.get_template(name, skip=skip)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\loaders\\base.py\", line 29, in get_template\n    return Template(\n           ^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\base.py\", line 155, in __init__\n    self.nodelist = self.compile_nodelist()\n                    ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\base.py\", line 193, in compile_nodelist\n    return parser.parse()\n           ^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\base.py\", line 478, in parse\n    raise self.error(token, e)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\base.py\", line 476, in parse\n    compiled_result = compile_func(self, token)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\loader_tags.py\", line 278, in do_extends\n    nodelist = parser.parse()\n               ^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\base.py\", line 478, in parse\n    raise self.error(token, e)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\base.py\", line 476, in parse\n    compiled_result = compile_func(self, token)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\loader_\n...[salida truncada]....",
+    "Ruta /cesta/ no responde correctamente: TimeoutError: timed out.",
+    "Ruta /admin-panel/ no responde correctamente: TimeoutError: timed out."
+  ]
+}

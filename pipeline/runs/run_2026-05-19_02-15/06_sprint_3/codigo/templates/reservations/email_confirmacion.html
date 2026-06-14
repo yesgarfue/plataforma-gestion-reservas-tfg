@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Reserva - Hundidos</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background-color: #003d82; color: white; padding: 20px; text-align: center; border-radius: 5px 5px 0 0; }
+        .content { background-color: #f9f9f9; padding: 20px; border: 1px solid #ddd; }
+        .footer { background-color: #f0f0f0; padding: 10px; text-align: center; font-size: 12px; border-radius: 0 0 5px 5px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #003d82; color: white; }
+        .total { font-size: 18px; font-weight: bold; color: #003d82; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>¡Reserva Confirmada!</h1>
+        </div>
+        <div class="content">
+            <p>Hola,</p>
+            <p>Tu reserva ha sido confirmada correctamente. Aquí están los detalles:</p>
+
+            <h3>Código de Seguimiento</h3>
+            <p><strong>{{ reserva.codigo_seguimiento }}</strong></p>
+
+            <h3>Datos de la Reserva</h3>
+            <table>
+                <tr>
+                    <td><strong>Fechas:</strong></td>
+                    <td>{{ fecha_inicio|date:"d/m/Y" }} - {{ fecha_fin|date:"d/m/Y" }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Cliente:</strong></td>
+                    <td>{{ reserva.nombre_cliente }} {{ reserva.apellido_cliente }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Email:</strong></td>
+                    <td>{{ reserva.email_contacto }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Teléfono:</strong></td>
+                    <td>{{ reserva.telefono_cliente|default:"No especificado" }}</td>
+                </tr>
+            </table>
+
+            <h3>Barcos Alquilados</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Barco</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for linea in lineas %}
+                        <tr>
+                            <td>{{ linea.barco.nombre }}</td>
+                            <td>{{ linea.cantidad }}</td>
+                            <td>{{ linea.subtotal }}€</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <p class="total">Importe Total: {{ importe_total }}€</p>
+
+            <p>Puedes consultar el estado de tu reserva en cualquier momento usando tu código de seguimiento.</p>
+            <p>Gracias por confiar en Hundidos.</p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2026 Hundidos - Alquiler de Barcos. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</body>
+</html>

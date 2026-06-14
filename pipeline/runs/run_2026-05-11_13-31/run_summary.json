@@ -1,0 +1,29 @@
+{
+  "run_id": "run_2026-05-11_13-31",
+  "resultado_final": "completo",
+  "mensaje": "Run finalizado con resultado_final = completo",
+  "timestamp_cierre": "2026-05-11T14:27:58+02:00",
+  "fases": {
+    "01_requisitos": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "aceptado",
+      "duracion_s_ejec": 355.98499999998603,
+      "duracion_s_gate_humano": 2682.530999999959
+    },
+    "02_planificacion": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "aceptado",
+      "duracion_s_ejec": 50.18699999997625,
+      "duracion_s_gate_humano": 45.92200000002049
+    },
+    "03_arquitectura": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 1,
+      "gate_decision": "aceptado",
+      "duracion_s_ejec": 35.14100000000326,
+      "duracion_s_gate_humano": 214.70300000003772
+    }
+  }
+}

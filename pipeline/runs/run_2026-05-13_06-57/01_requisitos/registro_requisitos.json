@@ -1,0 +1,191 @@
+{
+  "id_ejecucion": "run_2026-05-13_06-57",
+  "requisitos_funcionales": [
+    {
+      "id": "RF-01",
+      "descripcion": "El cliente puede registrarse mediante correo electrónico y contraseña.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-02",
+      "descripcion": "El cliente puede iniciar sesión con correo y contraseña.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-03",
+      "descripcion": "El cliente puede cerrar sesión explícitamente.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-04",
+      "descripcion": "El registro de cliente es opcional: puede reservar sin registrarse.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-05",
+      "descripcion": "El inicio de sesión durante el proceso de reserva recupera la cesta del usuario y continúa con el proceso.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-06",
+      "descripcion": "El administrador puede eliminar un usuario cliente únicamente si ese usuario no tiene reservas pendientes.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-07",
+      "descripcion": "La página principal presenta el catálogo de barcos organizado por categorías.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-08",
+      "descripcion": "Se permite búsqueda en la página de inicio por nombre o título del barco.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-09",
+      "descripcion": "Los filtros combinables son puertos, fabricantes, precio, categoría, capacidad y rango de fechas.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-10",
+      "descripcion": "El filtro de puertos y fabricante se presentan como desplegables con valores válidos.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-11",
+      "descripcion": "Los barcos no disponibles en el rango seleccionado aparecen marcados con una etiqueta 'No disponible'.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-12",
+      "descripcion": "El cliente puede acceder a la ficha del barco desde el catálogo, incluyendo cantidad y selección para la cesta.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-13",
+      "descripcion": "La cesta siempre está visible e interactiva desde cualquier página de la aplicación.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-14",
+      "descripcion": "El usuario puede ampliar o reducir la cantidad de unidades de cada barco en el carrito de compras.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-15",
+      "descripcion": "La cesta del administrador se vacía automáticamente al entrar como admin y no permite añadir productos.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-16",
+      "descripcion": "Pasa el proceso de reserva en tres pasos, sin exigir registro previo.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-17",
+      "descripcion": "Se presentan dos métodos de pago: PayPal Sandbox y contra-reembolso.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-18",
+      "descripcion": "El cliente recibe un correo electrónico con los datos del barco reservado, el rango de fechas y la información total del alquiler.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-19",
+      "descripcion": "Se aplica una tasa de combustible de 50 € por día, excepto para los barcos en la categoría 'velero'.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-20",
+      "descripcion": "Las reservas tienen cuatro estados: PENDIENTE DE PAGO, PAGADO, EN USO, DEVUELTO.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-21",
+      "descripcion": "Se puede cancelar una reserva únicamente si está en estado PENDIENTE DE PAGO.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-22",
+      "descripcion": "Se envía un correo de recordatorio al cliente una día antes de la fecha de inicio de la reserva, siempre que la reserva esté en estado PENDIENTE DE PAGO.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-23",
+      "descripcion": "El administrador puede cambiar el estado de una reserva desde el panel propio.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-24",
+      "descripcion": "El cliente puede consultar el estado de su reserva usando el código de seguimiento recibido por correo electrónico.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-25",
+      "descripcion": "El usuario registrado puede consultar el estado de sus reservas desde su cuenta personal.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-26",
+      "descripcion": "El administrador puede consultar el estado de cualquier reserva en la aplicación.",
+      "prioridad": "Alta"
+    }
+  ],
+  "requisitos_no_funcionales": [
+    {
+      "id": "RNF-01",
+      "categoria": "Lenguaje y framework",
+      "condicion_metrica": "Se utiliza Python como lenguaje de programación.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-02",
+      "categoria": "Framework web",
+      "condicion_metrica": "Se utiliza Django 3.2 como framework web.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-03",
+      "categoria": "Base de datos",
+      "condicion_metrica": "El sistema utiliza SQLite como base de datos.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-04",
+      "categoria": "Pasarela de pago",
+      "condicion_metrica": "La aplicación utilizas PayPal Sandbox para el proceso de pago en desarrollo.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-05",
+      "categoria": "Empaquetado Docker",
+      "condicion_metrica": "La aplicación se debe empaquetar y ejecutar como contenedor Docker.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-06",
+      "categoria": "Zona horaria",
+      "condicion_metrica": "El sistema opera bajo una zona horaria de 'Europe/Madrid'.",
+      "prioridad": "Media"
+    },
+    {
+      "id": "RNF-07",
+      "categoria": "Locale y idioma",
+      "condicion_metrica": "La interfaz del usuario está íntegramente en español.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-08",
+      "categoria": "Seguridad mínima",
+      "condicion_metrica": "Las contraseñas están almacenadas de forma segura utilizando el mecanismo estándar de Django y se activa la protección CSRF.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-09",
+      "categoria": "Datos seed",
+      "condicion_metrica": "La aplicación debe arrancar con predefinidos 5 barcos, 2 puertos, 2 fabricantes, 2 categorías y 1 usuario administrador y cliente.",
+      "prioridad": "Alta"
+    }
+  ]
+}

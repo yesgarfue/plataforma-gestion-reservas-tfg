@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ titulo }} - Hundidos{% endblock %}
+
+{% block content %}
+<div style="max-width: 700px; margin: 40px auto;">
+    <h2>{{ titulo }}</h2>
+    
+    <form method="post" enctype="multipart/form-data" style="background-color: white; padding: 30px; border-radius: 8px;">
+        {% csrf_token %}
+        
+        <div style="margin-bottom: 15px;">
+            <label for="{{ form.nombre.id_for_label }}">{{ form.nombre.label }}</label>
+            {{ form.nombre }}
+            {% if form.nombre.errors %}
+                <div style="color: red; font-size: 12px;">
+                    {% for error in form.nombre.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+            <label for="{{ form.categoria.id_for_label }}">{{ form.categoria.label }}</label>
+            {{ form.categoria }}
+            {% if form.categoria.errors %}
+                <div style="color: red; font-size: 12px;">
+                    {% for error in form.categoria.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+            <label for="{{ form.puerto.id_for_label }}">{{ form.puerto.label }}</label>
+            {{ form.puerto }}
+            {% if form.puerto.errors %}
+                <div style="color: red; font-size: 12px;">
+                    {% for error in form.puerto.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+            <label for="{{ form.fabricante.id_for_label }}">{{ form.fabricante.label }}</label>
+            {{ form.fabricante }}
+            {% if form.fabricante.errors %}
+                <div style="color: red; font-size: 12px;">
+                    {% for error in form.fabricante.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+            <label for="{{ form.precio_dia.id_for_label }}">{{ form.precio_dia.label }}</label>
+            {{ form.precio_dia }}
+            {% if form.precio_dia.errors %}
+                <div style="color: red; font-size: 12px;">
+                    {% for error in form.precio_dia.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+            <label for="{{ form.capacidad.id_for_label }}">{{ form.capacidad.label }}</label>
+            {{ form.capacidad }}
+            {% if form.capacidad.errors %}
+                <div style="color: red; font-size: 12px;">
+                    {% for error in form.capacidad.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+            <label for="{{ form.cantidad_disponible.id_for_label }}">{{ form.cantidad_disponible.label }}</label>
+            {{ form.cantidad_disponible }}
+            {% if form.cantidad_disponible.errors %}
+                <div style="color: red; font-size: 12px;">
+                    {% for error in form.cantidad_disponible.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+            <label for="{{ form.imagen.id_for_label }}">{{ form.imagen.label }}</label>
+            {{ form.imagen }}
+            {% if form.imagen.errors %}
+                <div style="color: red; font-size: 12px;">
+                    {% for error in form.imagen.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+            <label for="{{ form.descripcion.id_for_label }}">{{ form.descripcion.label }}</label>
+            {{ form.descripcion }}
+            {% if form.descripcion.errors %}
+                <div style="color: red; font-size: 12px;">
+                    {% for error in form.descripcion.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+            <label style="display: flex; align-items: center;">
+                {{ form.disponible }}
+                <span style="margin-left: 10px;">{{ form.disponible.label }}</span>
+            </label>
+            {% if form.disponible.errors %}
+                <div style="color: red; font-size: 12px;">
+                    {% for error in form.disponible.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        
+        {% if form.non_field_errors %}
+            <div style="color: red; margin-bottom: 15px;">
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        <div style="display: flex; gap: 10px;">
+            <a href="{% url 'admin_panel:boats_list' %}" class="btn btn-secondary" style="flex: 1; text-align: center;">Cancelar</a>
+            <button type="submit" class="btn" style="flex: 1;">Guardar</button>
+        </div>
+    </form>
+</div>
+
+<style>
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    input[type="file"],
+    textarea,
+    select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    input[type="number"]:focus,
+    input[type="file"]:focus,
+    textarea:focus,
+    select:focus {
+        outline: none;
+        border-color: #003d82;
+        box-shadow: 0 0 5px rgba(0, 61, 130, 0.3);
+    }
+    input[type="checkbox"] {
+        margin-right: 10px;
+    }
+</style>
+{% endblock %}

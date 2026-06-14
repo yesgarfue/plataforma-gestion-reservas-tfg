@@ -1,0 +1,134 @@
+{
+  "id_ejecucion": "run_2026-05-13_06-57",
+  "numero_sprint": 1,
+  "historias": [
+    {
+      "id": "HU-01",
+      "titulo": "Registro de cliente",
+      "descripcion": "Como visitante, quiero registrarme con correo electrónico y contraseña, para poder acceder a mi cuenta y consultar mis reservas.",
+      "criterios_aceptacion": [
+        "El formulario de registro acepta correo electrónico y contraseña.",
+        "Tras registrarse, el cliente queda autenticado en la sesión.",
+        "Las contraseñas se almacenan de forma segura utilizando el mecanismo estándar de Django."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-02",
+      "titulo": "Inicio de sesión de cliente",
+      "descripcion": "Como cliente registrado, quiero iniciar sesión con correo y contraseña, para acceder a las funcionalidades reservadas a usuarios autenticados.",
+      "criterios_aceptacion": [
+        "El formulario de login acepta correo y contraseña.",
+        "Tras un login correcto, el cliente accede a su cuenta.",
+        "Tras un login incorrecto, se muestra un mensaje de error.",
+        "La protección CSRF está activada en el formulario."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "S"
+    },
+    {
+      "id": "HU-03",
+      "titulo": "Cierre de sesión",
+      "descripcion": "Como cliente autenticado, quiero cerrar sesión explícitamente, para terminar mi sesión de forma segura.",
+      "criterios_aceptacion": [
+        "El cliente puede hacer clic en un botón 'Cerrar sesión'.",
+        "Tras cerrar sesión, el cliente es redirigido a la página principal.",
+        "La sesión se elimina del servidor."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "S"
+    },
+    {
+      "id": "HU-05",
+      "titulo": "Catálogo de barcos por categorías",
+      "descripcion": "Como cliente, quiero ver el catálogo de barcos organizado por categorías en la página principal, para explorar las opciones disponibles.",
+      "criterios_aceptacion": [
+        "La página principal presenta los barcos agrupados por categoría.",
+        "Cada categoría es claramente identificable.",
+        "Se muestran al menos 5 barcos predefinidos en el catálogo."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-06",
+      "titulo": "Búsqueda de barcos por nombre",
+      "descripcion": "Como cliente, quiero buscar barcos por nombre o título en la página de inicio, para encontrar rápidamente el barco que me interesa.",
+      "criterios_aceptacion": [
+        "Existe un campo de búsqueda en la página principal.",
+        "La búsqueda filtra los barcos por nombre o título.",
+        "Los resultados se actualizan en tiempo real o tras enviar el formulario."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "S"
+    },
+    {
+      "id": "HU-07",
+      "titulo": "Filtros combinables de catálogo",
+      "descripcion": "Como cliente, quiero filtrar el catálogo por puertos, fabricantes, precio, categoría, capacidad y rango de fechas, para encontrar el barco que se ajuste a mis necesidades.",
+      "criterios_aceptacion": [
+        "Los filtros de puertos y fabricante se presentan como desplegables con valores válidos.",
+        "El cliente puede combinar múltiples filtros simultáneamente.",
+        "Los barcos no disponibles en el rango de fechas seleccionado aparecen marcados con una etiqueta 'No disponible'.",
+        "Los filtros se aplican correctamente al catálogo."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "L"
+    },
+    {
+      "id": "HU-08",
+      "titulo": "Ficha de barco con selección de cantidad",
+      "descripcion": "Como cliente, quiero acceder a la ficha detallada de un barco e indicar la cantidad que deseo alquilar, para añadirlo a la cesta.",
+      "criterios_aceptacion": [
+        "La ficha del barco muestra todos los detalles relevantes (nombre, descripción, precio, categoría, capacidad, puerto, fabricante).",
+        "El cliente puede seleccionar la cantidad de unidades a alquilar.",
+        "El cliente puede añadir el barco a la cesta desde la ficha."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-22",
+      "titulo": "Configuración de zona horaria y locale",
+      "descripcion": "Como sistema, quiero operar bajo la zona horaria 'Europe/Madrid' y presentar la interfaz íntegramente en español, para garantizar consistencia regional.",
+      "criterios_aceptacion": [
+        "La zona horaria del sistema está configurada como 'Europe/Madrid'.",
+        "Todos los textos de la interfaz están en español.",
+        "Las fechas y horas se muestran en formato español.",
+        "Los mensajes de error y validación están en español."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "S"
+    },
+    {
+      "id": "HU-23",
+      "titulo": "Empaquetado Docker",
+      "descripcion": "Como equipo de desarrollo, quiero que la aplicación se empaquete y ejecute como contenedor Docker, para facilitar el despliegue y la consistencia del entorno.",
+      "criterios_aceptacion": [
+        "Existe un Dockerfile que define la imagen de la aplicación.",
+        "La aplicación se ejecuta correctamente dentro del contenedor Docker.",
+        "El contenedor incluye todas las dependencias necesarias (Python, Django, SQLite).",
+        "El contenedor se puede construir y ejecutar sin errores."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-24",
+      "titulo": "Datos seed iniciales",
+      "descripcion": "Como sistema, quiero arrancar con datos predefinidos (5 barcos, 2 puertos, 2 fabricantes, 2 categorías, 1 usuario administrador y cliente), para que la aplicación sea funcional desde el inicio.",
+      "criterios_aceptacion": [
+        "La aplicación carga automáticamente 5 barcos al arrancar.",
+        "Se crean 2 puertos predefinidos.",
+        "Se crean 2 fabricantes predefinidos.",
+        "Se crean 2 categorías predefinidas.",
+        "Se crea 1 usuario administrador con credenciales de prueba.",
+        "Se crea 1 usuario cliente con credenciales de prueba.",
+        "Los datos seed se cargan de forma fiable en cada arranque."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    }
+  ]
+}

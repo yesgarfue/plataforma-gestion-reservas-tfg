@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Cesta - Hundidos{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 900px; margin: 40px auto;">
+    <h2>Mi Cesta</h2>
+    
+    {% if lineas_con_subtotal %}
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 30px;">
+            <thead>
+                <tr style="background-color: #003d82; color: white;">
+                    <th style="padding: 10px; text-align: left;">Barco</th>
+                    <th style="padding: 10px; text-align: center;">Cantidad</th>
+                    <th style="padding: 10px; text-align: center;">Fechas</th>
+                    <th style="padding: 10px; text-align: center;">Días</th>
+                    <th style="padding: 10px; text-align: right;">Precio/día</th>
+                    <th style="padding: 10px; text-align: right;">Subtotal</th>
+                    <th style="padding: 10px; text-align: center;">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in lineas_con_subtotal %}
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px;">{{ item.linea.barco.nombre }}</td>
+                        <td style="padding: 10px; text-align: center;">{{ item.linea.cantidad }}</td>
+                        <td style="padding: 10px; text-align: center;">{{ item.linea.fecha_inicio|date:'d/m/Y' }} - {{ item.linea.fecha_fin|date:'d/m/Y' }}</td>
+                        <td style="padding: 10px; text-align: center;">{{ item.dias }}</td>
+                        <td style="padding: 10px; text-align: right;">{{ item.linea.barco.precio_dia }}€</td>
+                        <td style="padding: 10px; text-align: right;">{{ item.subtotal }}€</td>
+                        <td style="padding: 10px; text-align: center;">
+                            <form method="post" action="{% url 'reservations:update_cart' %}" style="display: inline;">
+                                {% csrf_token %}
+                                <input type="hidden" name="linea_id" value="{{ item.linea.id }}">
+                                <input type="hidden" name="cantidad" value="0">
+                                <button type="submit" style="background-color: #cc0000; color: white; padding: 5px 10px; border: none; border-radius: 4px; cursor: pointer;">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <div style="background-color: #f9f9f9; padding: 20px; border-radius: 4px; margin-bottom: 30px; text-align: right;">
+            <h3 style="margin: 0 0 10px 0;">Total: {{ total }}€</h3>
+        </div>
+        
+        <div style="display: flex; gap: 10px; justify-content: flex-end;">
+            <form method="post" action="{% url 'reservations:clear_cart' %}" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" style="background-color: #999; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Vaciar Cesta</button>
+            </form>
+            <a href="{% url 'reservations:step1' %}" style="background-color: #003d82; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; display: inline-block;">Continuar con la Reserva</a>
+        </div>
+    {% else %}
+        <p>Tu cesta está vacía.</p>
+        <a href="{% url 'catalog:barco_list' %}" style="background-color: #003d82; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; display: inline-block;">Ver Catálogo</a>
+    {% endif %}
+</div>
+{% endblock %}

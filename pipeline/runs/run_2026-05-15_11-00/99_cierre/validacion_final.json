@@ -1,0 +1,231 @@
+{
+  "id_ejecucion": "run_2026-05-15_11-00",
+  "codigo_dir": "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-15_11-00\\06_sprint_3\\codigo",
+  "copia_validacion_dir": "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-15_11-00\\99_cierre\\_validacion_tmp\\codigo",
+  "ok_global": true,
+  "check": {
+    "nombre": "check",
+    "comando": [
+      "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Scripts\\python.exe",
+      "manage.py",
+      "check"
+    ],
+    "ejecutado": true,
+    "ok": true,
+    "returncode": 0,
+    "stdout_resumen": "System check identified no issues (0 silenced).",
+    "stderr_resumen": "",
+    "timeout_s": 60,
+    "timeout": false,
+    "motivo_no_ejecutado": ""
+  },
+  "migraciones": {
+    "ok": true,
+    "apps_con_modelos": [
+      "catalog",
+      "reservations"
+    ],
+    "apps_con_migraciones": [
+      "catalog",
+      "reservations"
+    ],
+    "apps_sin_migraciones": []
+  },
+  "migrate": {
+    "nombre": "migrate",
+    "comando": [
+      "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Scripts\\python.exe",
+      "manage.py",
+      "migrate",
+      "--noinput"
+    ],
+    "ejecutado": true,
+    "ok": true,
+    "returncode": 0,
+    "stdout_resumen": "Operations to perform:\n  Apply all migrations: accounts, admin, auth, cart, catalog, contenttypes, reservations, sessions\nRunning migrations:\n  Applying accounts.0001_initial... OK\n  Applying contenttypes.0001_initial... OK\n  Applying auth.0001_initial... OK\n  Applying admin.0001_initial... OK\n  Applying admin.0002_logentry_remove_auto_add... OK\n  Applying admin.0003_logentry_add_action_flag_choices... OK\n  Applying contenttypes.0002_remove_content_type_name... OK\n  Applying auth.0002_alter_permission_name_max_length... OK\n  Applying auth.0003_alter_user_email_max_length... OK\n  Applying auth.0004_alter_user_username_opts... OK\n  Applying auth.0005_alter_user_last_login_null... OK\n  Applying auth.0006_require_contenttypes_0002... OK\n  Applying auth.0007_alter_validators_add_error_messages... OK\n  Applying auth.0008_alter_user_username_max_length... OK\n  Applying auth.0009_alter_user_last_name_max_length... OK\n  Applying auth.0010_alter_group_name_max_length... OK\n  Applying auth.0011_update_proxy_permissions... OK\n  Applying auth.0012_alter_user_first_name_max_length... OK\n  Applying cart.0001_initial... OK\n  Applying catalog.0001_initial... OK\n  Applying reservations.0001_initial... OK\n  Applying sessions.0001_initial... OK",
+    "stderr_resumen": "",
+    "timeout_s": 60,
+    "timeout": false,
+    "motivo_no_ejecutado": ""
+  },
+  "seed_data": {
+    "nombre": "seed_data",
+    "comando": [
+      "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Scripts\\python.exe",
+      "manage.py",
+      "seed_data"
+    ],
+    "ejecutado": true,
+    "ok": true,
+    "returncode": 0,
+    "stdout_resumen": "Iniciando carga de datos de prueba...\nDatos de prueba cargados exitosamente.\nCredenciales de administrador:\n  Usuario: admin\n  Contraseña: admin123\nCredenciales de cliente:\n  Email: cliente@hundidos.com\n  Contraseña: cliente123",
+    "stderr_resumen": "",
+    "timeout_s": 60,
+    "timeout": false,
+    "motivo_no_ejecutado": ""
+  },
+  "runserver": {
+    "nombre": "runserver",
+    "comando": [
+      "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Scripts\\python.exe",
+      "manage.py",
+      "runserver",
+      "127.0.0.1:58950",
+      "--noreload"
+    ],
+    "ejecutado": true,
+    "ok": true,
+    "returncode": 0,
+    "stdout_resumen": "",
+    "stderr_resumen": "[15/May/2026 11:22:27] \"GET / HTTP/1.1\" 200 9111\n[15/May/2026 11:22:27] \"GET / HTTP/1.1\" 200 9111\n[15/May/2026 11:22:27] \"GET /barcos/ HTTP/1.1\" 200 12436\n[15/May/2026 11:22:27] \"GET /cesta/ HTTP/1.1\" 200 5960\n[15/May/2026 11:22:27] \"GET /accounts/registro/ HTTP/1.1\" 200 5753\n[15/May/2026 11:22:27] \"GET /accounts/login/ HTTP/1.1\" 200 4924\n[15/May/2026 11:22:27] \"GET /reserva/paso1/ HTTP/1.1\" 302 0\n[15/May/2026 11:22:27] \"GET /reserva/paso2/ HTTP/1.1\" 302 0\n[15/May/2026 11:22:27] \"GET /reserva/paso3/ HTTP/1.1\" 302 0\n[15/May/2026 11:22:27] \"GET /admin/ HTTP/1.1\" 302 0\n[15/May/2026 11:22:27] \"GET /admin-panel/ HTTP/1.1\" 302 0",
+    "timeout_s": 20,
+    "timeout": false,
+    "motivo_no_ejecutado": ""
+  },
+  "rutas": [
+    {
+      "path": "/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:58950/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/barcos/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:58950/barcos/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/cesta/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:58950/cesta/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/accounts/registro/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:58950/accounts/registro/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/accounts/login/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:58950/accounts/login/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/reserva/paso1/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 302,
+      "final_url": "/barcos/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/reserva/paso2/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 302,
+      "final_url": "/reserva/paso1/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/reserva/paso3/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 302,
+      "final_url": "/reserva/paso1/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/admin/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 302,
+      "final_url": "/admin/login/?next=/admin/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/admin-panel/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 302,
+      "final_url": "/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    }
+  ],
+  "templates": [
+    {
+      "template": "reservations/step3.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    }
+  ],
+  "preparacion_manual_requerida": [],
+  "observaciones": [],
+  "review_final": {
+    "protocolo_validacion": "validacion_final_v1",
+    "checks_planificados": [
+      "check",
+      "migraciones",
+      "migrate",
+      "seed_data",
+      "runserver",
+      "ruta:/",
+      "ruta:/barcos/",
+      "ruta:/cesta/",
+      "ruta:/accounts/registro/",
+      "ruta:/accounts/login/",
+      "ruta:/reserva/paso1/",
+      "ruta:/reserva/paso2/",
+      "ruta:/reserva/paso3/",
+      "ruta:/admin/",
+      "ruta:/admin-panel/",
+      "template:reservations/step3.html"
+    ],
+    "checks_ejecutados": [
+      "check",
+      "migrate",
+      "seed_data",
+      "runserver",
+      "migraciones",
+      "ruta:/",
+      "ruta:/barcos/",
+      "ruta:/cesta/",
+      "ruta:/accounts/registro/",
+      "ruta:/accounts/login/",
+      "ruta:/reserva/paso1/",
+      "ruta:/reserva/paso2/",
+      "ruta:/reserva/paso3/",
+      "ruta:/admin/",
+      "ruta:/admin-panel/",
+      "template:reservations/step3.html"
+    ],
+    "checks_no_ejecutados": {},
+    "incidencias": [],
+    "factores_bloqueantes": [],
+    "clasificacion": "apto_para_revision_funcional"
+  }
+}

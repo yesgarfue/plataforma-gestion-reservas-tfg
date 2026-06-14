@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block title %}Reserva - Paso 2 - Hundidos{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title mb-4">Reserva - Paso 2: Datos del Cliente</h2>
+                    <p class="text-muted">Completa tus datos de contacto.</p>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="{{ form.nombre_cliente.id_for_label }}" class="form-label">{{ form.nombre_cliente.label }}:</label>
+                            {{ form.nombre_cliente }}
+                            {% if form.nombre_cliente.errors %}
+                                <div class="alert alert-danger mt-2">{{ form.nombre_cliente.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="{{ form.apellido_cliente.id_for_label }}" class="form-label">{{ form.apellido_cliente.label }}:</label>
+                            {{ form.apellido_cliente }}
+                            {% if form.apellido_cliente.errors %}
+                                <div class="alert alert-danger mt-2">{{ form.apellido_cliente.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="{{ form.email_contacto.id_for_label }}" class="form-label">{{ form.email_contacto.label }}:</label>
+                            {{ form.email_contacto }}
+                            {% if form.email_contacto.errors %}
+                                <div class="alert alert-danger mt-2">{{ form.email_contacto.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="{{ form.telefono_cliente.id_for_label }}" class="form-label">{{ form.telefono_cliente.label }}:</label>
+                            {{ form.telefono_cliente }}
+                            {% if form.telefono_cliente.errors %}
+                                <div class="alert alert-danger mt-2">{{ form.telefono_cliente.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+                        {% endif %}
+
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'reservations:step1' %}" class="btn btn-secondary">Volver al Paso 1</a>
+                            <button type="submit" class="btn btn-primary">Continuar al Paso 3</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Resumen de la Reserva</h5>
+                    <hr>
+                    <p><strong>Fechas:</strong> {{ fecha_inicio|date:"d/m/Y" }} - {{ fecha_fin|date:"d/m/Y" }}</p>
+                    <p><strong>Días:</strong> {{ dias }}</p>
+                    <hr>
+                    <h6>Barcos:</h6>
+                    <ul class="list-unstyled">
+                        {% for item in items %}
+                            <li class="mb-3">
+                                <strong>{{ item.barco.nombre }}</strong><br>
+                                Cantidad: {{ item.cantidad }}<br>
+                                Precio/día: {{ item.precio_dia }}€<br>
+                                Tasa combustible: {{ item.tasa_combustible }}€/día<br>
+                                <small class="text-muted">Subtotal: {{ item.subtotal }}€</small>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <hr>
+                    <h5>Total: <span class="text-success">{{ total }}€</span></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

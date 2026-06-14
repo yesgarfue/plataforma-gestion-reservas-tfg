@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Reserva - Paso 1 - Hundidos{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 800px; margin: 40px auto;">
+    <h2>Reserva - Paso 1: Confirmación de Artículos</h2>
+    
+    <div style="background-color: #f9f9f9; padding: 20px; border-radius: 4px; margin-bottom: 30px;">
+        <h3>Artículos en tu reserva:</h3>
+        <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="background-color: #e0e0e0;">
+                    <th style="padding: 10px; text-align: left;">Barco</th>
+                    <th style="padding: 10px; text-align: center;">Cantidad</th>
+                    <th style="padding: 10px; text-align: center;">Fechas</th>
+                    <th style="padding: 10px; text-align: center;">Días</th>
+                    <th style="padding: 10px; text-align: right;">Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in lineas_con_subtotal %}
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px;">{{ item.linea.barco.nombre }}</td>
+                        <td style="padding: 10px; text-align: center;">{{ item.linea.cantidad }}</td>
+                        <td style="padding: 10px; text-align: center;">{{ item.linea.fecha_inicio|date:'d/m/Y' }} - {{ item.linea.fecha_fin|date:'d/m/Y' }}</td>
+                        <td style="padding: 10px; text-align: center;">{{ item.dias }}</td>
+                        <td style="padding: 10px; text-align: right;">{{ item.subtotal }}€</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div style="text-align: right; margin-top: 15px; font-size: 18px; font-weight: bold;">
+            Total: {{ total }}€
+        </div>
+    </div>
+    
+    <form method="post" style="text-align: center;">
+        {% csrf_token %}
+        <button type="submit" style="background-color: #003d82; color: white; padding: 12px 30px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; margin-right: 10px;">Continuar al Paso 2</button>
+        <a href="{% url 'reservations:cart' %}" style="background-color: #999; color: white; padding: 12px 30px; border-radius: 4px; text-decoration: none; display: inline-block;">Volver a la Cesta</a>
+    </form>
+</div>
+{% endblock %}

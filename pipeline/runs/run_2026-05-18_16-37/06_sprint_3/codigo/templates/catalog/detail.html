@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ barco.nombre }} - Hundidos{% endblock %}
+
+{% block content %}
+<div style="max-width: 900px; margin: 40px auto;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+        <div>
+            {% if barco.imagen %}
+                <img src="{{ barco.imagen.url }}" alt="{{ barco.nombre }}" style="width: 100%; border-radius: 8px;">
+            {% else %}
+                <div style="width: 100%; height: 400px; background-color: #e0e0e0; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+                    <span>Sin imagen</span>
+                </div>
+            {% endif %}
+        </div>
+        <div>
+            <h2>{{ barco.nombre }}</h2>
+            <p><strong>Categoría:</strong> {{ barco.categoria.nombre }}</p>
+            <p><strong>Fabricante:</strong> {{ barco.fabricante.nombre }}</p>
+            <p><strong>Puerto:</strong> {{ barco.puerto.nombre }}</p>
+            <p><strong>Capacidad:</strong> {{ barco.capacidad }} personas</p>
+            <p><strong>Precio:</strong> €{{ barco.precio_dia }}/día</p>
+            <p><strong>Disponibilidad:</strong> {% if barco.disponible %}<span style="color: green;">Disponible ({{ barco.cantidad_disponible }} unidades)</span>{% else %}<span style="color: red;">No disponible</span>{% endif %}</p>
+            
+            {% if barco.descripcion %}
+                <h3>Descripción</h3>
+                <p>{{ barco.descripcion }}</p>
+            {% endif %}
+
+            {% if barco.disponible %}
+                <form method="post" action="{% url 'cart:add' %}" style="margin-top: 30px;">
+                    {% csrf_token %}
+                    <input type="hidden" name="barco_id" value="{{ barco.id }}">
+                    <div style="margin-bottom: 15px;">
+                        <label for="cantidad">Cantidad:</label>
+                        <input type="number" id="cantidad" name="cantidad" value="1" min="1" max="{{ barco.cantidad_disponible }}" style="width: 100px;">
+                    </div>
+                    <button type="submit" class="btn" style="padding: 12px 30px; font-size: 16px;">Añadir a la Cesta</button>
+                </form>
+            {% else %}
+                <button class="btn" disabled style="padding: 12px 30px; font-size: 16px; opacity: 0.5; cursor: not-allowed; margin-top: 30px;">No Disponible</button>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<style>
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    textarea,
+    select {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    input[type="number"]:focus,
+    textarea:focus,
+    select:focus {
+        outline: none;
+        border-color: #003d82;
+        box-shadow: 0 0 5px rgba(0, 61, 130, 0.3);
+    }
+</style>
+{% endblock %}

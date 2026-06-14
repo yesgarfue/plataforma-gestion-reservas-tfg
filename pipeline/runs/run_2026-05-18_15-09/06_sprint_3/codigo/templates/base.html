@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Hundidos - Alquiler de Barcos{% endblock %}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background-color: #003d82;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        header nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        header h1 {
+            font-size: 28px;
+        }
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        header nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        header nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        footer {
+            background-color: #003d82;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Hundidos</h1>
+            <ul>
+                <li><a href="{% url 'home' %}">Inicio</a></li>
+                <li><a href="{% url 'catalog:barco_list' %}">Catálogo</a></li>
+                <li><a href="{% url 'reservations:cart' %}">Cesta</a></li>
+                <li><a href="{% url 'tracking:search' %}">Seguimiento</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'tracking:my_reservations' %}">Mis Reservas</a></li>
+                    <li><a href="{% url 'accounts:profile' %}">Perfil</a></li>
+                    <li><a href="{% url 'accounts:logout' %}">Salir</a></li>
+                    {% if user.is_staff %}
+                        <li><a href="{% url 'admin_panel:dashboard' %}">Panel Admin</a></li>
+                    {% endif %}
+                {% else %}
+                    <li><a href="{% url 'accounts:login' %}">Iniciar Sesión</a></li>
+                    <li><a href="{% url 'accounts:register' %}">Registrarse</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2026 Hundidos - Alquiler de Barcos. Todos los derechos reservados.</p>
+    </footer>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

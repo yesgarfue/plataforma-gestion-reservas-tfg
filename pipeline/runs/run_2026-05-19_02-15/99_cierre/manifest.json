@@ -1,0 +1,364 @@
+{
+  "schema_version": "manifest_v1",
+  "generated_at": "2026-05-19T03:03:47+02:00",
+  "run_id": "run_2026-05-19_02-15",
+  "resultado_final": "completo",
+  "run_dir": "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-19_02-15",
+  "protocolo": {
+    "pipeline_specs_path": "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\pipeline_specs.md",
+    "pipeline_specs_hash": "9f84616d71c6ea86f3c415e6933a6a9abbc316177b2a00af14000cdf9fce22a6",
+    "brief_hash": "e62bcd5b2a4f56841065a31fe202de9d8628e317db0846675e689257a2eeb394",
+    "pipeline_config_hash": "aece5a6d89558049e77eba3243093496cfce28b6bca1c346e5726fdb8fd163e0"
+  },
+  "versiones": {
+    "git_commit": "",
+    "python_pipeline": "3.11.7",
+    "crewai": "1.14.2",
+    "pydantic": "2.11.10",
+    "django_validacion": "3.2"
+  },
+  "modelos": {
+    "default": {
+      "provider": "anthropic",
+      "name": "anthropic/claude-haiku-4-5",
+      "temperature": 0.0,
+      "max_tokens": 8192
+    },
+    "pm": {
+      "provider": "anthropic",
+      "name": "anthropic/claude-haiku-4-5",
+      "temperature": 0.0,
+      "max_tokens": 8192
+    },
+    "architect": {
+      "provider": "anthropic",
+      "name": "anthropic/claude-haiku-4-5",
+      "temperature": 0.0,
+      "max_tokens": 8192
+    },
+    "developer": {
+      "provider": "anthropic",
+      "name": "anthropic/claude-haiku-4-5",
+      "temperature": 0.0,
+      "max_tokens": 24000
+    }
+  },
+  "fases": {
+    "01_requisitos": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "aceptado",
+      "duracion_s_ejec": 19.969000000011874,
+      "duracion_s_gate_humano": 973.5310000000172
+    },
+    "02_planificacion": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "aceptado",
+      "duracion_s_ejec": 67.60899999999674,
+      "duracion_s_gate_humano": 608.3910000000033
+    },
+    "03_arquitectura": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "aceptado",
+      "duracion_s_ejec": 19.203000000008615,
+      "duracion_s_gate_humano": 719.2340000000258
+    },
+    "03b_scaffold": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 16.953000000008615,
+      "duracion_s_gate_humano": 0.0
+    },
+    "04_sprint_1": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 199.0,
+      "duracion_s_gate_humano": 0.0
+    },
+    "05_sprint_2": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 100.29699999999139,
+      "duracion_s_gate_humano": 0.0
+    },
+    "06_sprint_3": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 53.375,
+      "duracion_s_gate_humano": 0.0
+    },
+    "99_cierre": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 6.4689999999827705,
+      "duracion_s_gate_humano": 0.0
+    }
+  },
+  "gates": [
+    {
+      "path": "01_requisitos/gate_humano.md",
+      "sha256": "84965ef07b8089fe840a1342636e648cf0e3720108c2b09e47f899701608ec49",
+      "metadata": {
+        "gate": 1,
+        "fase": "01_requisitos",
+        "decision": "aceptado",
+        "timestamp_revision_inicio": "2026-05-19T02:16:18+02:00",
+        "timestamp_revision_fin": "2026-05-19T02:32:18+02:00"
+      }
+    },
+    {
+      "path": "02_planificacion/gate_humano.md",
+      "sha256": "500b2f296a025160ddca97ddf17219aff5b5ba2a60b0adc8165cc320aeecbc12",
+      "metadata": {
+        "gate": 2,
+        "fase": "02_planificacion",
+        "decision": "aceptado",
+        "timestamp_revision_inicio": "2026-05-19T02:33:40+02:00",
+        "timestamp_revision_fin": "2026-05-19T02:43:40+02:00"
+      }
+    },
+    {
+      "path": "03_arquitectura/gate_humano.md",
+      "sha256": "cf08f72eaf84d82a1953c3dbedd94c924bfcb545138500bd9c2ab02830561322",
+      "metadata": {
+        "gate": 3,
+        "fase": "03_arquitectura",
+        "decision": "aceptado",
+        "timestamp_revision_inicio": "2026-05-19T02:44:08+02:00",
+        "timestamp_revision_fin": "2026-05-19T02:55:08+02:00"
+      }
+    }
+  ],
+  "validacion_final": {
+    "ok_global": true,
+    "clasificacion": "apto_para_revision_funcional",
+    "checks_planificados": 16,
+    "checks_ejecutados": 16,
+    "checks_no_ejecutados": 0,
+    "incidencias": [],
+    "factores_bloqueantes": [],
+    "preparacion_manual_requerida": []
+  },
+  "artefactos_principales": [
+    {
+      "path": "01_requisitos/gate_humano.md",
+      "sha256": "84965ef07b8089fe840a1342636e648cf0e3720108c2b09e47f899701608ec49"
+    },
+    {
+      "path": "01_requisitos/registro_requisitos.json",
+      "sha256": "c5b37cd6f44df58d1f1d5a4ece57b242c92dc617b7abb282001246fddb1dd2d0"
+    },
+    {
+      "path": "01_requisitos/registro_requisitos.md",
+      "sha256": "37b9f86a3e81b32a2bf33175e3a447b9ffc39cbac08e198f18b925c9f4ea0d9c"
+    },
+    {
+      "path": "02_planificacion/backlog.json",
+      "sha256": "f5f051a9a4516a453914494833ff830fe3ce9c859120296934799a2b6fe5251c"
+    },
+    {
+      "path": "02_planificacion/backlog.md",
+      "sha256": "02261ec0e846f0998a380e254f986ec9c2a87fddaa968f23329b6532a8b3c916"
+    },
+    {
+      "path": "02_planificacion/gate_humano.md",
+      "sha256": "500b2f296a025160ddca97ddf17219aff5b5ba2a60b0adc8165cc320aeecbc12"
+    },
+    {
+      "path": "02_planificacion/plan_sprints.json",
+      "sha256": "4573474617df53c22c57931944ed21a0dd99a706ce8babf09b9b56adc6a10a1d"
+    },
+    {
+      "path": "02_planificacion/plan_sprints.md",
+      "sha256": "ad8727c76b10be140dfa6f4ca0e503259dfad1580c3361893f6e363cdb1ee69f"
+    },
+    {
+      "path": "02_planificacion/riesgos.json",
+      "sha256": "cfe647e8533160becbe2948f0ae80d7440bf16b46f34c24591602efbf3cc9233"
+    },
+    {
+      "path": "02_planificacion/riesgos.md",
+      "sha256": "f1c1050377889dfe26f56dc9fcacbe154277fcae6989141d4db76685fc26fe3c"
+    },
+    {
+      "path": "03_arquitectura/diseno_tecnico.json",
+      "sha256": "98777c2b6bd25479e42dc99e80659c336cc83820475ee280935cc3924a626f49"
+    },
+    {
+      "path": "03_arquitectura/diseno_tecnico.md",
+      "sha256": "f05359b70eb1684ae571f288d7de9dcf0576843925360667f7cd802473be5cd5"
+    },
+    {
+      "path": "03_arquitectura/gate_humano.md",
+      "sha256": "cf08f72eaf84d82a1953c3dbedd94c924bfcb545138500bd9c2ab02830561322"
+    },
+    {
+      "path": "03b_scaffold/entrega_scaffold.json",
+      "sha256": "8edd6badc4a8bb22de28cc99562c92158652070138f0fb4f96dfe6f160245a08"
+    },
+    {
+      "path": "03b_scaffold/scaffold_check.json",
+      "sha256": "8c73b9320ab14c60bffafa8185f90c7f68e20ee4076f1c2f3d3b5fea4e521227"
+    },
+    {
+      "path": "04_sprint_1/backlog_sprint_1.json",
+      "sha256": "147c3e878c584a8f2ff155b70c4d044b0d1f74ee99a635f536a3a28db5f18616"
+    },
+    {
+      "path": "04_sprint_1/backlog_sprint_1.md",
+      "sha256": "5dce2b7e66059e39ed3b828a73fd60e244f90051b04552ed862c1188dee35dec"
+    },
+    {
+      "path": "04_sprint_1/entrega_sprint_1.json",
+      "sha256": "a7a919659033792c0be30428bea1165010d30ba3e1af8b0ac731dce304862c78"
+    },
+    {
+      "path": "04_sprint_1/review_sprint_1.json",
+      "sha256": "de39cff2c70a68f3ad5977f4f40e0ad7f17ee05436892ba61545d7406a6a6710"
+    },
+    {
+      "path": "04_sprint_1/review_sprint_1.md",
+      "sha256": "516104d76b60818f2761d1272998e9eeafc925fc6a5f8ad0d5b9d0df833ba81d"
+    },
+    {
+      "path": "05_sprint_2/backlog_sprint_2.json",
+      "sha256": "dff15ab6da2a5dccdfc674c607800d70c3635f6ae834b476bebed47289f0fea4"
+    },
+    {
+      "path": "05_sprint_2/backlog_sprint_2.md",
+      "sha256": "df053b218322ef83777e582699ef872250cf2e60f54c7cb4f061369a4d017905"
+    },
+    {
+      "path": "05_sprint_2/entrega_sprint_2.json",
+      "sha256": "dbecc5df3f1b15afc822300225e031e21632e57507421686baaaa37e5f5b1619"
+    },
+    {
+      "path": "05_sprint_2/review_sprint_2.json",
+      "sha256": "8027a9641f26b5cbb055e510f4bd89e1a2069662d3f928c88140a9dda6b7d48b"
+    },
+    {
+      "path": "05_sprint_2/review_sprint_2.md",
+      "sha256": "c6ea51b9f7377ad5faf0d094748500a80782810f21d6993168551a8f1fdacf1b"
+    },
+    {
+      "path": "06_sprint_3/backlog_sprint_3.json",
+      "sha256": "07edb012ed22247ee1e23a17d94fcc5ea80fd2e806230382d409a87ba988a540"
+    },
+    {
+      "path": "06_sprint_3/backlog_sprint_3.md",
+      "sha256": "fe6605369b9a99b7717ed8d61128f0452d704a5c6c1145fa244493dc3024540e"
+    },
+    {
+      "path": "06_sprint_3/entrega_sprint_3.json",
+      "sha256": "c560346d17f01f7d6848aeda6043fa4ecc8fe894c546a62739a7bd3ce944da98"
+    },
+    {
+      "path": "06_sprint_3/review_sprint_3.json",
+      "sha256": "98c50dc47818f4c3c6ca37b65fcaa8185e42cc435b82235eb76b01d2b14b5084"
+    },
+    {
+      "path": "06_sprint_3/review_sprint_3.md",
+      "sha256": "692818c92492849e7941dab15037f2be72e53d86b2692b762380d22bbb1a9244"
+    },
+    {
+      "path": "99_cierre/review_final.md",
+      "sha256": "6601b21c72db7d29fe437d3f267d229f692de75a3f64d7d929dc65b9980933a8"
+    },
+    {
+      "path": "99_cierre/validacion_final.json",
+      "sha256": "fa08233230896b33b6589c42eda3bfbacb0681c3bac9813422878faf23276e0c"
+    },
+    {
+      "path": "run_summary.json",
+      "sha256": "91ed13ac27c3ad50820e398a39c274593ca56315a5f747a7e478712c17342d3b"
+    }
+  ],
+  "run_summary": {
+    "run_id": "run_2026-05-19_02-15",
+    "resultado_final": "completo",
+    "mensaje": "Run finalizado con resultado_final = completo",
+    "timestamp_cierre": "2026-05-19T03:03:47+02:00",
+    "fases": {
+      "01_requisitos": {
+        "reintentos_automaticos": 0,
+        "regeneraciones_humanas": 0,
+        "gate_decision": "aceptado",
+        "duracion_s_ejec": 19.969000000011874,
+        "duracion_s_gate_humano": 973.5310000000172
+      },
+      "02_planificacion": {
+        "reintentos_automaticos": 0,
+        "regeneraciones_humanas": 0,
+        "gate_decision": "aceptado",
+        "duracion_s_ejec": 67.60899999999674,
+        "duracion_s_gate_humano": 608.3910000000033
+      },
+      "03_arquitectura": {
+        "reintentos_automaticos": 0,
+        "regeneraciones_humanas": 0,
+        "gate_decision": "aceptado",
+        "duracion_s_ejec": 19.203000000008615,
+        "duracion_s_gate_humano": 719.2340000000258
+      },
+      "03b_scaffold": {
+        "reintentos_automaticos": 0,
+        "regeneraciones_humanas": 0,
+        "gate_decision": "N/A",
+        "duracion_s_ejec": 16.953000000008615,
+        "duracion_s_gate_humano": 0.0
+      },
+      "04_sprint_1": {
+        "reintentos_automaticos": 0,
+        "regeneraciones_humanas": 0,
+        "gate_decision": "N/A",
+        "duracion_s_ejec": 199.0,
+        "duracion_s_gate_humano": 0.0
+      },
+      "05_sprint_2": {
+        "reintentos_automaticos": 0,
+        "regeneraciones_humanas": 0,
+        "gate_decision": "N/A",
+        "duracion_s_ejec": 100.29699999999139,
+        "duracion_s_gate_humano": 0.0
+      },
+      "06_sprint_3": {
+        "reintentos_automaticos": 0,
+        "regeneraciones_humanas": 0,
+        "gate_decision": "N/A",
+        "duracion_s_ejec": 53.375,
+        "duracion_s_gate_humano": 0.0
+      },
+      "99_cierre": {
+        "reintentos_automaticos": 0,
+        "regeneraciones_humanas": 0,
+        "gate_decision": "N/A",
+        "duracion_s_ejec": 6.4689999999827705,
+        "duracion_s_gate_humano": 0.0
+      }
+    },
+    "duracion_s_ejec_total": 482.875,
+    "duracion_s_gate_humano_total": 2301.1560000000463,
+    "duracion_s_total_contabilizada": 2784.0310000000463,
+    "validacion_final": {
+      "ejecutada": true,
+      "ok_global": true,
+      "clasificacion": "apto_para_revision_funcional",
+      "checks_planificados_total": 16,
+      "checks_ejecutados_total": 16,
+      "checks_no_ejecutados_total": 0,
+      "incidencias_total": 0,
+      "factores_bloqueantes_total": 0
+    }
+  },
+  "observaciones": [
+    "Manifest generado de forma determinista a partir del estado del Flow y artefactos del run.",
+    "Los tiempos oficiales de gate son los calculados por el Flow; timestamps manuales en gate_humano.md son documentales."
+  ]
+}

@@ -1,0 +1,85 @@
+# src/pipeline/config/pipeline_config.yaml
+# ---------------------------------------------------------------------------
+# Parámetros del pipeline Caso 02 (Hundidos).
+#
+# Todas las fases activas usan Anthropic por decision metodologica
+# documentada en bitacora. El modelo local de fase 01 se descarta antes
+# de congelar protocolo porque no mantuvo cobertura/fidelidad estable
+# durante el gate de requisitos del Run 18.
+#
+# La API key de Anthropic NO vive aquí. Debe estar en `.env` o en el
+# entorno como ANTHROPIC_API_KEY.
+# ---------------------------------------------------------------------------
+
+model:
+  default:
+    provider: "anthropic"
+    name: "anthropic/claude-haiku-4-5"
+    api_key_env: "ANTHROPIC_API_KEY"
+    temperature: 0.0
+    max_tokens: 8192
+
+  pm:
+    provider: "anthropic"
+    name: "anthropic/claude-haiku-4-5"
+    api_key_env: "ANTHROPIC_API_KEY"
+    temperature: 0.0
+    max_tokens: 8192
+
+  architect:
+    provider: "anthropic"
+    name: "anthropic/claude-haiku-4-5"
+    api_key_env: "ANTHROPIC_API_KEY"
+    temperature: 0.0
+    max_tokens: 8192
+
+  developer:
+    provider: "anthropic"
+    name: "anthropic/claude-haiku-4-5"
+    api_key_env: "ANTHROPIC_API_KEY"
+    temperature: 0.0
+    max_tokens: 24000
+
+# Perfiles documentales. En Anthropic, los parametros se pasan desde
+# llm_factory. El perfil local previo queda documentado solo como fallback.
+generation:
+  default:
+    provider: "anthropic"
+    modelo: "anthropic/claude-haiku-4-5"
+    temperature_documentada: 0.0
+    max_tokens_documentados: 8192
+    seed_documentada: null
+  pm:
+    provider: "anthropic"
+    modelo: "anthropic/claude-haiku-4-5"
+    temperature_documentada: 0.0
+    max_tokens_documentados: 8192
+    seed_documentada: null
+  architect:
+    provider: "anthropic"
+    modelo: "anthropic/claude-haiku-4-5"
+    temperature_documentada: 0.0
+    max_tokens_documentados: 8192
+    seed_documentada: null
+  developer:
+    provider: "anthropic"
+    modelo: "anthropic/claude-haiku-4-5"
+    temperature_documentada: 0.0
+    max_tokens_documentados: 24000
+    seed_documentada: null
+
+# Timeouts (Bloque 8 del spec).
+timeouts:
+  llm_call_s: 1800
+  django_check_s: 60
+  docker_build_s: 600
+
+# Límites de reintentos (Bloques 5 y 8 del spec).
+retries:
+  schema_auto_retries: 3
+  human_regenerations: 3
+
+# Fallback manual documentado. NO se usa en ejecución medida.
+fallback_model:
+  name: "ollama/hundidos-analista:latest"
+  note: "Modelo local usado durante maduracion. Descartado antes de ejecucion medida por inestabilidad de cobertura en fase 01."

@@ -1,0 +1,130 @@
+{
+  "id_ejecucion": "run_2026-05-17_18-49",
+  "numero_sprint": 1,
+  "historias": [
+    {
+      "id": "HU-01",
+      "titulo": "Registro de cliente",
+      "descripcion": "Como visitante, quiero registrarme mediante correo electrónico y contraseña, para poder acceder a mi cuenta y consultar mis reservas.",
+      "criterios_aceptacion": [
+        "El formulario de registro acepta correo electrónico y contraseña.",
+        "Las contraseñas se almacenan usando el mecanismo estándar de Django, no en texto plano.",
+        "Tras registrarse, el cliente queda autenticado en la sesión.",
+        "Se validan todos los formularios y está activa la protección CSRF."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-02",
+      "titulo": "Inicio de sesión de cliente",
+      "descripcion": "Como cliente registrado, quiero iniciar sesión con correo y contraseña, para acceder a las funcionalidades reservadas a usuarios autenticados.",
+      "criterios_aceptacion": [
+        "El formulario de login acepta correo electrónico y contraseña.",
+        "Tras un login correcto, el cliente accede a su cuenta.",
+        "Tras un login incorrecto, se muestra un mensaje de error.",
+        "Se valida el formulario y está activa la protección CSRF."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "S"
+    },
+    {
+      "id": "HU-03",
+      "titulo": "Cierre de sesión",
+      "descripcion": "Como cliente autenticado, quiero cerrar sesión explícitamente, para terminar mi sesión de forma segura.",
+      "criterios_aceptacion": [
+        "El cliente puede acceder a una opción de cerrar sesión desde cualquier página.",
+        "Al cerrar sesión, la sesión se termina y el cliente es redirigido a la página principal.",
+        "Tras cerrar sesión, el cliente no puede acceder a funcionalidades autenticadas sin volver a iniciar sesión."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "S"
+    },
+    {
+      "id": "HU-04",
+      "titulo": "Catálogo de barcos por categorías",
+      "descripcion": "Como cliente, quiero ver un catálogo de barcos organizado por categorías en la página principal, para explorar las opciones disponibles.",
+      "criterios_aceptacion": [
+        "La página principal muestra un catálogo de barcos con nombre, imagen, categoría, fabricante, puerto, capacidad y precio por día.",
+        "Los barcos se organizan por categorías.",
+        "Los barcos agotados o no disponibles aparecen claramente marcados en el catálogo.",
+        "La interfaz está íntegramente en español."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-05",
+      "titulo": "Búsqueda de barcos por nombre",
+      "descripcion": "Como cliente, quiero buscar barcos por nombre o título desde la página de inicio, para encontrar rápidamente el barco que me interesa.",
+      "criterios_aceptacion": [
+        "El cliente puede introducir un término de búsqueda en un campo de búsqueda.",
+        "La búsqueda filtra los barcos por nombre o título coincidentes.",
+        "Los resultados se actualizan dinámicamente o tras enviar el formulario."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-06",
+      "titulo": "Filtros combinables de catálogo",
+      "descripcion": "Como cliente, quiero aplicar filtros combinables de puertos, fabricantes, precio, categoría, capacidad y rango de fechas de forma simultánea e independiente, para refinar mi búsqueda.",
+      "criterios_aceptacion": [
+        "El cliente puede filtrar por puerto mediante un desplegable con valores válidos.",
+        "El cliente puede filtrar por fabricante mediante un desplegable con valores válidos.",
+        "El cliente puede filtrar por rango de precio.",
+        "El cliente puede filtrar por categoría.",
+        "El cliente puede filtrar por capacidad.",
+        "El cliente puede filtrar por rango de fechas.",
+        "Los filtros se aplican de forma combinada e independiente.",
+        "Al filtrar por fechas, se muestran todos los barcos del catálogo, marcando con una etiqueta 'No disponible' los que no están disponibles en ese rango sin ocultarlos."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "L"
+    },
+    {
+      "id": "HU-07",
+      "titulo": "Ficha de barco y selección de cantidad",
+      "descripcion": "Como cliente, quiero acceder a la ficha del barco desde el catálogo, visualizar sus datos e imagen, y seleccionar la cantidad de unidades disponibles para añadir a la cesta.",
+      "criterios_aceptacion": [
+        "El cliente puede hacer clic en un barco del catálogo para acceder a su ficha.",
+        "La ficha muestra todos los datos del barco y su imagen.",
+        "El cliente puede seleccionar la cantidad de unidades disponibles.",
+        "El cliente puede añadir el barco a la cesta desde la ficha.",
+        "Se valida que la cantidad seleccionada no exceda la disponibilidad."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-21",
+      "titulo": "Configuración de zona horaria y locale",
+      "descripcion": "Como sistema, quiero configurar la zona horaria en Europe/Madrid y el locale en español para que todas las fechas y textos se muestren correctamente.",
+      "criterios_aceptacion": [
+        "La zona horaria configurada es Europe/Madrid.",
+        "El locale está configurado en español.",
+        "Todas las fechas se muestran en la zona horaria Europe/Madrid.",
+        "La interfaz de usuario está íntegramente en español.",
+        "Los nombres de variables, clases, funciones y rutas están en inglés; comentarios y docstrings en español."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "S"
+    },
+    {
+      "id": "HU-22",
+      "titulo": "Datos precargados de ejemplo",
+      "descripcion": "Como sistema, quiero que la aplicación arranque con datos precargados para facilitar las pruebas y demostraciones.",
+      "criterios_aceptacion": [
+        "La aplicación arranca con mínimo 5 barcos precargados.",
+        "Hay 2 puertos precargados.",
+        "Hay 2 fabricantes precargados.",
+        "Hay 2 categorías precargadas, incluyendo velero.",
+        "Hay 1 usuario administrador de prueba precargado.",
+        "Hay 1 usuario cliente de prueba precargado.",
+        "Los datos se cargan de forma fiable en cada arranque."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "S"
+    }
+  ]
+}

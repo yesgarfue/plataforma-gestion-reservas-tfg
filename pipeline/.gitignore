@@ -1,0 +1,23 @@
+.env
+.venv/
+.venv_Test/
+__pycache__/
+lib/
+.DS_Store
+
+# Los runs historicos conservan sus artefactos, pero no las copias de codigo
+# generadas. Los tres runs oficiales se publican completos.
+runs/run_*/**/codigo/
+!runs/run_2026-05-18_15-09/**/codigo/
+!runs/run_2026-05-18_15-09/**/codigo/**
+!runs/run_2026-05-18_16-37/**/codigo/
+!runs/run_2026-05-18_16-37/**/codigo/**
+!runs/run_2026-05-19_02-15/**/codigo/
+!runs/run_2026-05-19_02-15/**/codigo/**
+
+# Copias temporales creadas durante la validacion final.
+**/_validacion_tmp/
+
+# Cache y bytecode de Python, tambien dentro de los runs oficiales.
+**/__pycache__/
+*.py[cod]

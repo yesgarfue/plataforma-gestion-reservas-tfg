@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Mis Reservas - Hundidos{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Mis Reservas</h1>
+
+    {% if reservas %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Fechas</th>
+                        <th>Estado</th>
+                        <th>Total</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reserva in reservas %}
+                        <tr>
+                            <td><strong>{{ reserva.codigo_seguimiento }}</strong></td>
+                            <td>{{ reserva.fecha_inicio|date:"d/m/Y" }} - {{ reserva.fecha_fin|date:"d/m/Y" }}</td>
+                            <td>
+                                {% if reserva.estado == 'PENDIENTE_DE_PAGO' %}
+                                    <span class="badge bg-warning">Pendiente de Pago</span>
+                                {% elif reserva.estado == 'PAGADO' %}
+                                    <span class="badge bg-success">Pagado</span>
+                                {% elif reserva.estado == 'EN_USO' %}
+                                    <span class="badge bg-info">En Uso</span>
+                                {% elif reserva.estado == 'DEVUELTO' %}
+                                    <span class="badge bg-secondary">Devuelto</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ reserva.importe_total }}€</td>
+                            <td>
+                                <a href="{% url 'reservations:tracking_detail' reserva.codigo_seguimiento %}" class="btn btn-sm btn-primary">Ver Detalle</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            No tienes reservas aún. <a href="{% url 'catalog:barco_list' %}">Explora nuestro catálogo</a>
+        </div>
+    {% endif %}
+
+    <a href="{% url 'home' %}" class="btn btn-secondary mt-4">Volver al Inicio</a>
+</div>
+{% endblock %}

@@ -1,0 +1,84 @@
+{
+  "id_ejecucion": "run_2026-05-18_15-09",
+  "numero_sprint": 2,
+  "historias": [
+    {
+      "id": "HU-07",
+      "titulo": "Gestión de cesta",
+      "descripcion": "Como cliente, quiero ver la cesta siempre visible, modificar cantidades y revisar su estado desde el catálogo, para gestionar mis compras.",
+      "criterios_aceptacion": [
+        "La cesta está siempre visible desde cualquier página de la aplicación.",
+        "El usuario puede ampliar o reducir la cantidad de unidades de cada barco en la cesta.",
+        "El usuario puede revisar el estado de la cesta desde el catálogo.",
+        "El usuario puede vaciar la cesta completamente.",
+        "Al entrar en modo administrador, la cesta se vacía y el administrador no puede añadir barcos al carro."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-08",
+      "titulo": "Proceso de reserva sin registro previo",
+      "descripcion": "Como cliente, quiero completar una reserva en no más de tres pasos sin haberse registrado previamente, para alquilar un barco de forma rápida.",
+      "criterios_aceptacion": [
+        "El cliente puede completar una reserva sin haberse registrado previamente.",
+        "El proceso de reserva se realiza en no más de tres pasos.",
+        "Durante el proceso de reserva se solicitan los datos del cliente y los datos de pago.",
+        "Si hay sesión iniciada, los datos del cliente se heredan automáticamente.",
+        "El cliente puede iniciar sesión durante el proceso de reserva y recuperar su cesta al volver de la página de login."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "L"
+    },
+    {
+      "id": "HU-09",
+      "titulo": "Métodos de pago",
+      "descripcion": "Como cliente, quiero elegir entre PayPal Sandbox y contra-reembolso como métodos de pago durante la reserva.",
+      "criterios_aceptacion": [
+        "El sistema ofrece PayPal Sandbox como método de pago.",
+        "El sistema ofrece contra-reembolso como método de pago.",
+        "El cliente puede seleccionar uno de los dos métodos durante el proceso de reserva.",
+        "La integración de PayPal utiliza el entorno Sandbox, no producción."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "L"
+    },
+    {
+      "id": "HU-10",
+      "titulo": "Confirmación de reserva y código de seguimiento",
+      "descripcion": "Como cliente, quiero recibir un correo electrónico con los datos de mi reserva y un código de seguimiento, para confirmar y rastrear mi alquiler.",
+      "criterios_aceptacion": [
+        "Al finalizar la reserva, el cliente recibe un correo electrónico con los datos del barco, rango de fechas, importe total y código de seguimiento.",
+        "El correo incluye el código de seguimiento único para consultar el estado de la reserva.",
+        "El correo está redactado en español."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-11",
+      "titulo": "Tasa de combustible",
+      "descripcion": "Como sistema, quiero aplicar una tasa de combustible diferenciada según la categoría del barco, para calcular correctamente el importe total de la reserva.",
+      "criterios_aceptacion": [
+        "El sistema aplica una tasa de combustible de 50 € por día para barcos que no sean veleros.",
+        "El sistema aplica una tasa de combustible de 0 € por día para barcos de categoría velero.",
+        "La tasa se incluye en el cálculo del importe total de la reserva.",
+        "El importe total se muestra al cliente antes de confirmar la reserva."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-12",
+      "titulo": "Estados de reserva",
+      "descripcion": "Como sistema, quiero gestionar los estados de las reservas para reflejar su ciclo de vida.",
+      "criterios_aceptacion": [
+        "Cada reserva tiene uno de los estados: PENDIENTE DE PAGO, PAGADO, EN USO o DEVUELTO.",
+        "El estado inicial de una reserva es PENDIENTE DE PAGO.",
+        "El estado se actualiza según las transiciones aplicables del ciclo de vida."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "S"
+    }
+  ]
+}

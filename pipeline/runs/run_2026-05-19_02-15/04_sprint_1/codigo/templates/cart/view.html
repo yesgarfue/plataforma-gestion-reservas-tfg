@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}Cesta de Compra - Hundidos{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Cesta de Compra</h1>
+
+    {% if items %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Barco</th>
+                        <th>Precio/Día</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'catalog:barco_detail' item.barco.id %}">{{ item.barco.nombre }}</a>
+                            </td>
+                            <td>{{ item.precio_dia }}€</td>
+                            <td>
+                                <form method="post" action="{% url 'cart:update' %}" style="display: inline;">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="barco_id" value="{{ item.barco.id }}">
+                                    <input type="number" name="cantidad" value="{{ item.cantidad }}" min="1" max="{{ item.barco.disponibilidad }}" class="form-control" style="width: 80px; display: inline;">
+                                    <button type="submit" class="btn btn-sm btn-warning">Actualizar</button>
+                                </form>
+                            </td>
+                            <td>{{ item.subtotal }}€</td>
+                            <td>
+                                <form method="post" action="{% url 'cart:update' %}" style="display: inline;">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="barco_id" value="{{ item.barco.id }}">
+                                    <input type="hidden" name="cantidad" value="0">
+                                    <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <a href="{% url 'catalog:barco_list' %}" class="btn btn-secondary">Continuar Comprando</a>
+            </div>
+            <div class="col-md-6 text-end">
+                <h3>Total: {{ total }}€</h3>
+                <form method="post" action="{% url 'cart:clear' %}" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Vaciar Cesta</button>
+                </form>
+                <a href="{% url 'reservations:step1' %}" class="btn btn-primary">Proceder a Reserva</a>
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            Tu cesta está vacía. <a href="{% url 'catalog:barco_list' %}">Explora nuestro catálogo</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

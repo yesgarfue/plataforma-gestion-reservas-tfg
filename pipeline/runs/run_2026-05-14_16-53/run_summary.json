@@ -1,0 +1,77 @@
+{
+  "run_id": "run_2026-05-14_16-53",
+  "resultado_final": "completo",
+  "mensaje": "Run finalizado con resultado_final = completo",
+  "timestamp_cierre": "2026-05-14T17:17:36+02:00",
+  "fases": {
+    "01_requisitos": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "aceptado",
+      "duracion_s_ejec": 19.32799999999952,
+      "duracion_s_gate_humano": 784.625
+    },
+    "02_planificacion": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "aceptado",
+      "duracion_s_ejec": 51.96899999999914,
+      "duracion_s_gate_humano": 60.6869999999999
+    },
+    "03_arquitectura": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "aceptado",
+      "duracion_s_ejec": 19.75,
+      "duracion_s_gate_humano": 174.92200000000048
+    },
+    "03b_scaffold": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 13.234000000000378,
+      "duracion_s_gate_humano": 0.0
+    },
+    "04_sprint_1": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 120.3119999999999,
+      "duracion_s_gate_humano": 0.0
+    },
+    "05_sprint_2": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 75.70299999999952,
+      "duracion_s_gate_humano": 0.0
+    },
+    "06_sprint_3": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 75.48400000000038,
+      "duracion_s_gate_humano": 0.0
+    },
+    "99_cierre": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 4.75,
+      "duracion_s_gate_humano": 0.0
+    }
+  },
+  "duracion_s_ejec_total": 380.52999999999884,
+  "duracion_s_gate_humano_total": 1020.2340000000004,
+  "duracion_s_total_contabilizada": 1400.7639999999992,
+  "validacion_final": {
+    "ejecutada": true,
+    "ok_global": false,
+    "clasificacion": "parcial_con_incidencias",
+    "checks_planificados_total": 16,
+    "checks_ejecutados_total": 16,
+    "checks_no_ejecutados_total": 0,
+    "incidencias_total": 3,
+    "factores_bloqueantes_total": 0
+  }
+}

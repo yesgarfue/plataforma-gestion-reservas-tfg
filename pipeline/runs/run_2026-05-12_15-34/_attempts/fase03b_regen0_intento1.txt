@@ -1,0 +1,300 @@
+# Intento fallido fase 03b_scaffold
+# regeneración humana: 0
+# intento dentro de la regeneración: 1
+# error: Contenido insuficiente: EntregaSprint: Archivos sin contenido: ['admin_panel/__init__.py', 'cart/__init__.py', 'catalog/__init__.py', 'core/__init__.py', 'core/management/__init__.py', 'core/management/commands/__init__.py', 'hundidos/__init__.py', 'media/.gitkeep', 'reservations/__init__.py', 'reservations/management/__init__.py', 'reservations/management/commands/__init__.py', 'reservations/services/__init__.py', 'static/.gitkeep'].
+
+---- raw ----
+{
+  "id_ejecucion": "run_2026-05-12_15-34",
+  "numero_sprint": 0,
+  "archivos": [
+    {
+      "path": "manage.py",
+      "contenido": "#!/usr/bin/env python\n\"\"\"Django's command-line utility for administrative tasks.\"\"\"\nimport os\nimport sys\n\n\ndef main():\n    \"\"\"Run administrative tasks.\"\"\"\n    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'hundidos.settings')\n    try:\n        from django.core.management import execute_from_command_line\n    except ImportError as exc:\n        raise ImportError(\n            \"Couldn't import Django. Are you sure it's installed and \"\n            \"available on your PYTHONPATH environment variable? Did you \"\n            \"forget to activate a virtual environment?\"\n        ) from exc\n    execute_from_command_line(sys.argv)\n\n\nif __name__ == '__main__':\n    main()"
+    },
+    {
+      "path": "hundidos/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "hundidos/settings.py",
+      "contenido": "from pathlib import Path\nimport os\nfrom datetime import timedelta\n\nBASE_DIR = Path(__file__).resolve().parent.parent\n\nSECRET_KEY = 'django-insecure-dev-key-change-in-production'\n\nDEBUG = True\n\nALLOWED_HOSTS = ['*']\n\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'core',\n    'catalog',\n    'cart',\n    'reservations',\n    'admin_panel',\n]\n\nMIDDLEWARE = [\n    'django.middleware.security.SecurityMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    'django.middleware.csrf.CsrfViewMiddleware',\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n]\n\nROOT_URLCONF = 'hundidos.urls'\n\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [BASE_DIR / 'templates'],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',\n                'django.contrib.messages.context_processors.messages',\n            ],\n        },\n    },\n]\n\nWSGI_APPLICATION = 'hundidos.wsgi.application'\n\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}\n\nAUTH_PASSWORD_VALIDATORS = [\n    {\n        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',\n    },\n]\n\nLANGUAGE_CODE = 'es-es'\n\nTIME_ZONE = 'Europe/Madrid'\n\nUSE_I18N = True\n\nUSE_L10N = True\n\nUSE_TZ = True\n\nSTATIC_URL = '/static/'\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\nSTATICFILES_DIRS = [BASE_DIR / 'static']\n\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'media'\n\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n\nLOGIN_URL = 'core:login'\nLOGIN_REDIRECT_URL = 'core:home'\nLOGOUT_REDIRECT_URL = 'core:home'\n\nEMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'\n\nSESSION_ENGINE = 'django.contrib.sessions.backends.db'\nSESSION_COOKIE_AGE = 86400\nSESSION_COOKIE_SECURE = False\nSESSION_COOKIE_HTTPONLY = True\n\nCSRF_COOKIE_SECURE = False\nCSRF_COOKIE_HTTPONLY = True\n\nPAYPAL_SANDBOX_MODE = True\nPAYPAL_CLIENT_ID = 'sandbox-client-id'\nPAYPAL_CLIENT_SECRET = 'sandbox-client-secret'\n\nCARRITO_SESSION_KEY = 'carrito'"
+    },
+    {
+      "path": "hundidos/urls.py",
+      "contenido": "from django.contrib import admin\nfrom django.urls import path, include\nfrom django.conf import settings\nfrom django.conf.urls.static import static\n\nurlpatterns = [\n    path('admin/', admin.site.urls),\n    path('', include('core.urls', namespace='core')),\n    path('', include('catalog.urls', namespace='catalog')),\n    path('', include('cart.urls', namespace='cart')),\n    path('', include('reservations.urls', namespace='reservations')),\n    path('', include('admin_panel.urls', namespace='admin_panel')),\n]\n\nif settings.DEBUG:\n    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)\n    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)"
+    },
+    {
+      "path": "hundidos/wsgi.py",
+      "contenido": "import os\n\nfrom django.core.wsgi import get_wsgi_application\n\nos.environ.setdefault('DJANGO_SETTINGS_MODULE', 'hundidos.settings')\n\napplication = get_wsgi_application()"
+    },
+    {
+      "path": "hundidos/asgi.py",
+      "contenido": "import os\n\nfrom django.core.asgi import get_asgi_application\n\nos.environ.setdefault('DJANGO_SETTINGS_MODULE', 'hundidos.settings')\n\napplication = get_asgi_application()"
+    },
+    {
+      "path": "core/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "core/apps.py",
+      "contenido": "from django.apps import AppConfig\n\n\nclass CoreConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'core'"
+    },
+    {
+      "path": "core/models.py",
+      "contenido": "from django.db import models\nfrom django.contrib.auth.models import User\n\n\nclass UserProfile(models.Model):\n    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')\n    telefono = models.CharField(max_length=20, blank=True)\n    direccion = models.CharField(max_length=255, blank=True)\n    ciudad = models.CharField(max_length=120, blank=True)\n    codigo_postal = models.CharField(max_length=10, blank=True)\n    created_at = models.DateTimeField(auto_now_add=True)\n    updated_at = models.DateTimeField(auto_now=True)\n\n    def __str__(self):\n        return f'Perfil de {self.user.username}'"
+    },
+    {
+      "path": "core/views.py",
+      "contenido": "from django.shortcuts import render, redirect\nfrom django.views import View\nfrom django.contrib.auth import authenticate, login, logout\nfrom django.contrib.auth.models import User\nfrom django.contrib.auth.decorators import login_required\nfrom django.utils.decorators import method_decorator\nfrom django.http import HttpResponse\n\n\nclass HomeView(View):\n    def get(self, request):\n        return render(request, 'core/home.html')\n\n\nclass RegisterView(View):\n    def get(self, request):\n        return render(request, 'core/register.html')\n\n    def post(self, request):\n        return render(request, 'core/register.html')\n\n\nclass LoginView(View):\n    def get(self, request):\n        return render(request, 'core/login.html')\n\n    def post(self, request):\n        return render(request, 'core/login.html')\n\n\nclass LogoutView(View):\n    def post(self, request):\n        logout(request)\n        return redirect('core:home')\n\n\n@method_decorator(login_required, name='dispatch')\nclass AccountView(View):\n    def get(self, request):\n        return render(request, 'core/account.html')"
+    },
+    {
+      "path": "core/urls.py",
+      "contenido": "from django.urls import path\nfrom . import views\n\napp_name = 'core'\n\nurlpatterns = [\n    path('', views.HomeView.as_view(), name='home'),\n    path('registro/', views.RegisterView.as_view(), name='register'),\n    path('login/', views.LoginView.as_view(), name='login'),\n    path('logout/', views.LogoutView.as_view(), name='logout'),\n    path('cuenta/', views.AccountView.as_view(), name='account'),\n]"
+    },
+    {
+      "path": "core/admin.py",
+      "contenido": "from django.contrib import admin\nfrom .models import UserProfile\n\n\n@admin.register(UserProfile)\nclass UserProfileAdmin(admin.ModelAdmin):\n    list_display = ('user', 'telefono', 'ciudad', 'created_at')\n    search_fields = ('user__username', 'user__email', 'ciudad')\n    readonly_fields = ('created_at', 'updated_at')"
+    },
+    {
+      "path": "core/forms.py",
+      "contenido": "from django import forms\nfrom django.contrib.auth.models import User\nfrom .models import UserProfile\n\n\nclass RegisterForm(forms.ModelForm):\n    password = forms.CharField(widget=forms.PasswordInput)\n    password_confirm = forms.CharField(widget=forms.PasswordInput)\n\n    class Meta:\n        model = User\n        fields = ('username', 'email', 'first_name', 'last_name')\n\n\nclass UserProfileForm(forms.ModelForm):\n    class Meta:\n        model = UserProfile\n        fields = ('telefono', 'direccion', 'ciudad', 'codigo_postal')"
+    },
+    {
+      "path": "core/management/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "core/management/commands/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "core/management/commands/seed_data.py",
+      "contenido": "from django.core.management.base import BaseCommand\nfrom django.contrib.auth.models import User\nfrom catalog.models import Categoria, Puerto, Fabricante, Barco\nfrom decimal import Decimal\n\n\nclass Command(BaseCommand):\n    help = 'Carga datos iniciales en la base de datos'\n\n    def handle(self, *args, **options):\n        self.stdout.write('Iniciando carga de datos...')\n\n        if User.objects.filter(username='admin').exists():\n            self.stdout.write(self.style.WARNING('Usuario admin ya existe'))\n        else:\n            User.objects.create_superuser('admin', 'admin@hundidos.local', 'admin123')\n            self.stdout.write(self.style.SUCCESS('Usuario admin creado'))\n\n        if User.objects.filter(username='cliente').exists():\n            self.stdout.write(self.style.WARNING('Usuario cliente ya existe'))\n        else:\n            User.objects.create_user('cliente', 'cliente@hundidos.local', 'cliente123')\n            self.stdout.write(self.style.SUCCESS('Usuario cliente creado'))\n\n        if Categoria.objects.exists():\n            self.stdout.write(self.style.WARNING('Categorías ya existen'))\n        else:\n            cat_velero = Categoria.objects.create(\n                nombre='Velero',\n                descripcion='Barcos de vela tradicionales'\n            )\n            cat_motor = Categoria.objects.create(\n                nombre='Lancha Motora',\n                descripcion='Barcos con motor'\n            )\n            self.stdout.write(self.style.SUCCESS('Categorías creadas'))\n\n        if Puerto.objects.exists():\n            self.stdout.write(self.style.WARNING('Puertos ya existen'))\n        else:\n            Puerto.objects.create(\n                nombre='Puerto de Barcelona',\n                ubicacion='Barcelona, España'\n            )\n            Puerto.objects.create(\n                nombre='Puerto de Málaga',\n                ubicacion='Málaga, España'\n            )\n            self.stdout.write(self.style.SUCCESS('Puertos creados'))\n\n        if Fabricante.objects.exists():\n            self.stdout.write(self.style.WARNING('Fabricantes ya existen'))\n        else:\n            Fabricante.objects.create(\n                nombre='Beneteau',\n                pais='Francia'\n            )\n            Fabricante.objects.create(\n                nombre='Sunseeker',\n                pais='Reino Unido'\n            )\n            self.stdout.write(self.style.SUCCESS('Fabricantes creados'))\n\n        if Barco.objects.exists():\n            self.stdout.write(self.style.WARNING('Barcos ya existen'))\n        else:\n            cat_velero = Categoria.objects.get(nombre='Velero')\n            cat_motor = Categoria.objects.get(nombre='Lancha Motora')\n            puerto_bcn = Puerto.objects.get(nombre='Puerto de Barcelona')\n            puerto_mal = Puerto.objects.get(nombre='Puerto de Málaga')\n            fab_beneteau = Fabricante.objects.get(nombre='Beneteau')\n            fab_sunseeker = Fabricante.objects.get(nombre='Sunseeker')\n\n            Barco.objects.create(\n                nombre='Vela Blanca',\n                descripcion='Hermoso velero de 12 metros',\n                categoria=cat_velero,\n                puerto=puerto_bcn,\n                fabricante=fab_beneteau,\n                precio_dia=Decimal('150.00'),\n                capacidad=6,\n                cantidad_disponible=2\n            )\n            Barco.objects.create(\n                nombre='Vela Azul',\n                descripcion='Velero deportivo de 10 metros',\n                categoria=cat_velero,\n                puerto=puerto_mal,\n                fabricante=fab_beneteau,\n                precio_dia=Decimal('120.00'),\n                capacidad=4,\n                cantidad_disponible=1\n            )\n            Barco.objects.create(\n                nombre='Lancha Rápida',\n                descripcion='Lancha motora de lujo',\n                categoria=cat_motor,\n                puerto=puerto_bcn,\n                fabricante=fab_sunseeker,\n                precio_dia=Decimal('250.00'),\n                capacidad=8,\n                cantidad_disponible=1\n            )\n            Barco.objects.create(\n                nombre='Lancha Confort',\n                descripcion='Lancha motora familiar',\n                categoria=cat_motor,\n                puerto=puerto_mal,\n                fabricante=fab_sunseeker,\n                precio_dia=Decimal('180.00'),\n                capacidad=6,\n                cantidad_disponible=2\n            )\n            Barco.objects.create(\n                nombre='Vela Clásica',\n                descripcion='Velero clásico restaurado',\n                categoria=cat_velero,\n                puerto=puerto_bcn,\n                fabricante=fab_beneteau,\n                precio_dia=Decimal('200.00'),\n                capacidad=10,\n                cantidad_disponible=1\n            )\n            self.stdout.write(self.style.SUCCESS('Barcos creados'))\n\n        self.stdout.write(self.style.SUCCESS('Carga de datos completada'))"
+    },
+    {
+      "path": "catalog/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "catalog/apps.py",
+      "contenido": "from django.apps import AppConfig\n\n\nclass CatalogConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'catalog'"
+    },
+    {
+      "path": "catalog/models.py",
+      "contenido": "from django.db import models\n\n\nclass Categoria(models.Model):\n    nombre = models.CharField(max_length=120, unique=True)\n    descripcion = models.TextField(blank=True)\n    created_at = models.DateTimeField(auto_now_add=True)\n    updated_at = models.DateTimeField(auto_now=True)\n\n    class Meta:\n        verbose_name_plural = 'Categorías'\n        ordering = ['nombre']\n\n    def __str__(self):\n        return self.nombre\n\n\nclass Puerto(models.Model):\n    nombre = models.CharField(max_length=120, unique=True)\n    ubicacion = models.CharField(max_length=255)\n    created_at = models.DateTimeField(auto_now_add=True)\n    updated_at = models.DateTimeField(auto_now=True)\n\n    class Meta:\n        verbose_name_plural = 'Puertos'\n        ordering = ['nombre']\n\n    def __str__(self):\n        return self.nombre\n\n\nclass Fabricante(models.Model):\n    nombre = models.CharField(max_length=120, unique=True)\n    pais = models.CharField(max_length=120, blank=True)\n    created_at = models.DateTimeField(auto_now_add=True)\n    updated_at = models.DateTimeField(auto_now=True)\n\n    class Meta:\n        ordering = ['nombre']\n\n    def __str__(self):\n        return self.nombre\n\n\nclass Barco(models.Model):\n    nombre = models.CharField(max_length=120)\n    descripcion = models.TextField()\n    categoria = models.ForeignKey(Categoria, on_delete=models.PROTECT, related_name='barcos')\n    puerto = models.ForeignKey(Puerto, on_delete=models.PROTECT, related_name='barcos')\n    fabricante = models.ForeignKey(Fabricante, on_delete=models.PROTECT, related_name='barcos')\n    precio_dia = models.DecimalField(max_digits=8, decimal_places=2)\n    capacidad = models.PositiveIntegerField()\n    cantidad_disponible = models.PositiveIntegerField()\n    created_at = models.DateTimeField(auto_now_add=True)\n    updated_at = models.DateTimeField(auto_now=True)\n\n    class Meta:\n        ordering = ['nombre']\n\n    def __str__(self):\n        return self.nombre"
+    },
+    {
+      "path": "catalog/views.py",
+      "contenido": "from django.shortcuts import render, get_object_or_404\nfrom django.views import View\nfrom .models import Barco, Categoria, Puerto\n\n\nclass BarcoListView(View):\n    def get(self, request):\n        barcos = Barco.objects.all()\n        categorias = Categoria.objects.all()\n        puertos = Puerto.objects.all()\n        context = {\n            'barcos': barcos,\n            'categorias': categorias,\n            'puertos': puertos,\n        }\n        return render(request, 'catalog/list.html', context)\n\n\nclass BarcoDetailView(View):\n    def get(self, request, id):\n        barco = get_object_or_404(Barco, id=id)\n        context = {'barco': barco}\n        return render(request, 'catalog/detail.html', context)"
+    },
+    {
+      "path": "catalog/urls.py",
+      "contenido": "from django.urls import path\nfrom . import views\n\napp_name = 'catalog'\n\nurlpatterns = [\n    path('barcos/', views.BarcoListView.as_view(), name='barco_list'),\n    path('barcos/<int:id>/', views.BarcoDetailView.as_view(), name='barco_detail'),\n]"
+    },
+    {
+      "path": "catalog/admin.py",
+      "contenido": "from django.contrib import admin\nfrom .models import Categoria, Puerto, Fabricante, Barco\n\n\n@admin.register(Categoria)\nclass CategoriaAdmin(admin.ModelAdmin):\n    list_display = ('nombre', 'created_at')\n    search_fields = ('nombre',)\n    readonly_fields = ('created_at', 'updated_at')\n\n\n@admin.register(Puerto)\nclass PuertoAdmin(admin.ModelAdmin):\n    list_display = ('nombre', 'ubicacion', 'created_at')\n    search_fields = ('nombre', 'ubicacion')\n    readonly_fields = ('created_at', 'updated_at')\n\n\n@admin.register(Fabricante)\nclass FabricanteAdmin(admin.ModelAdmin):\n    list_display = ('nombre', 'pais', 'created_at')\n    search_fields = ('nombre', 'pais')\n    readonly_fields = ('created_at', 'updated_at')\n\n\n@admin.register(Barco)\nclass BarcoAdmin(admin.ModelAdmin):\n    list_display = ('nombre', 'categoria', 'puerto', 'precio_dia', 'cantidad_disponible', 'created_at')\n    list_filter = ('categoria', 'puerto', 'fabricante')\n    search_fields = ('nombre', 'descripcion')\n    readonly_fields = ('created_at', 'updated_at')\n    fieldsets = (\n        ('Información General', {\n            'fields': ('nombre', 'descripcion', 'categoria', 'fabricante')\n        }),\n        ('Ubicación y Disponibilidad', {\n            'fields': ('puerto', 'cantidad_disponible', 'capacidad')\n        }),\n        ('Precios', {\n            'fields': ('precio_dia',)\n        }),\n        ('Timestamps', {\n            'fields': ('created_at', 'updated_at'),\n            'classes': ('collapse',)\n        }),\n    )"
+    },
+    {
+      "path": "catalog/filters.py",
+      "contenido": "from django.db.models import Q\nfrom .models import Barco\n\n\nclass BarcoFilter:\n    @staticmethod\n    def filter_barcos(queryset, categoria_id=None, puerto_id=None, precio_min=None, precio_max=None):\n        if categoria_id:\n            queryset = queryset.filter(categoria_id=categoria_id)\n        if puerto_id:\n            queryset = queryset.filter(puerto_id=puerto_id)\n        if precio_min:\n            queryset = queryset.filter(precio_dia__gte=precio_min)\n        if precio_max:\n            queryset = queryset.filter(precio_dia__lte=precio_max)\n        return queryset"
+    },
+    {
+      "path": "cart/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "cart/apps.py",
+      "contenido": "from django.apps import AppConfig\n\n\nclass CartConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'cart'"
+    },
+    {
+      "path": "cart/models.py",
+      "contenido": "from django.db import models\n\n\nclass CartItem(models.Model):\n    barco_id = models.PositiveIntegerField()\n    cantidad = models.PositiveIntegerField(default=1)\n    fecha_inicio = models.DateField()\n    fecha_fin = models.DateField()\n    precio_unitario_dia = models.DecimalField(max_digits=8, decimal_places=2)\n    created_at = models.DateTimeField(auto_now_add=True)\n\n    def __str__(self):\n        return f'CartItem {self.barco_id}'"
+    },
+    {
+      "path": "cart/views.py",
+      "contenido": "from django.shortcuts import render, redirect\nfrom django.views import View\nfrom django.http import JsonResponse\nfrom .services import CartService\n\n\nclass CartView(View):\n    def get(self, request):\n        carrito = CartService.get_cart(request)\n        context = {'carrito': carrito}\n        return render(request, 'cart/cart.html', context)\n\n\nclass AddToCartView(View):\n    def post(self, request):\n        return JsonResponse({'status': 'ok'})\n\n\nclass UpdateCartView(View):\n    def post(self, request):\n        return JsonResponse({'status': 'ok'})\n\n\nclass ClearCartView(View):\n    def post(self, request):\n        CartService.clear_cart(request)\n        return redirect('cart:cart_view')"
+    },
+    {
+      "path": "cart/urls.py",
+      "contenido": "from django.urls import path\nfrom . import views\n\napp_name = 'cart'\n\nurlpatterns = [\n    path('cesta/', views.CartView.as_view(), name='cart_view'),\n    path('cesta/agregar/', views.AddToCartView.as_view(), name='add_to_cart'),\n    path('cesta/actualizar/', views.UpdateCartView.as_view(), name='update_cart'),\n    path('cesta/vaciar/', views.ClearCartView.as_view(), name='clear_cart'),\n]"
+    },
+    {
+      "path": "cart/admin.py",
+      "contenido": "from django.contrib import admin\nfrom .models import CartItem\n\n\n@admin.register(CartItem)\nclass CartItemAdmin(admin.ModelAdmin):\n    list_display = ('barco_id', 'cantidad', 'fecha_inicio', 'fecha_fin', 'created_at')\n    list_filter = ('fecha_inicio', 'fecha_fin')\n    search_fields = ('barco_id',)\n    readonly_fields = ('created_at',)"
+    },
+    {
+      "path": "cart/services.py",
+      "contenido": "from django.conf import settings\n\n\nclass CartService:\n    @staticmethod\n    def get_cart(request):\n        return request.session.get(settings.CARRITO_SESSION_KEY, [])\n\n    @staticmethod\n    def add_to_cart(request, barco_id, cantidad, fecha_inicio, fecha_fin, precio_unitario_dia):\n        carrito = CartService.get_cart(request)\n        item = {\n            'barco_id': barco_id,\n            'cantidad': cantidad,\n            'fecha_inicio': str(fecha_inicio),\n            'fecha_fin': str(fecha_fin),\n            'precio_unitario_dia': str(precio_unitario_dia),\n        }\n        carrito.append(item)\n        request.session[settings.CARRITO_SESSION_KEY] = carrito\n        request.session.modified = True\n\n    @staticmethod\n    def update_cart(request, index, cantidad):\n        carrito = CartService.get_cart(request)\n        if 0 <= index < len(carrito):\n            carrito[index]['cantidad'] = cantidad\n            request.session[settings.CARRITO_SESSION_KEY] = carrito\n            request.session.modified = True\n\n    @staticmethod\n    def clear_cart(request):\n        request.session[settings.CARRITO_SESSION_KEY] = []\n        request.session.modified = True"
+    },
+    {
+      "path": "reservations/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "reservations/apps.py",
+      "contenido": "from django.apps import AppConfig\n\n\nclass ReservationsConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'reservations'"
+    },
+    {
+      "path": "reservations/models.py",
+      "contenido": "from django.db import models\nfrom django.contrib.auth.models import User\nfrom catalog.models import Barco\nimport uuid\n\n\nclass Reserva(models.Model):\n    ESTADO_CHOICES = [\n        ('PENDIENTE_DE_PAGO', 'Pendiente de Pago'),\n        ('PAGADO', 'Pagado'),\n        ('EN_USO', 'En Uso'),\n        ('DEVUELTO', 'Devuelto'),\n        ('CANCELADO', 'Cancelado'),\n    ]\n    METODO_PAGO_CHOICES = [\n        ('PAYPAL', 'PayPal'),\n        ('CONTRA_REEMBOLSO', 'Contra-reembolso'),\n    ]\n\n    codigo_seguimiento = models.CharField(max_length=32, unique=True, default=uuid.uuid4)\n    cliente = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL, related_name='reservas')\n    nombre_cliente = models.CharField(max_length=120)\n    email_cliente = models.EmailField()\n    telefono_cliente = models.CharField(max_length=20, blank=True)\n    estado = models.CharField(max_length=20, choices=ESTADO_CHOICES, default='PENDIENTE_DE_PAGO')\n    metodo_pago = models.CharField(max_length=20, choices=METODO_PAGO_CHOICES)\n    importe_total = models.DecimalField(max_digits=10, decimal_places=2)\n    importe_combustible = models.DecimalField(max_digits=10, decimal_places=2, default=0)\n    fecha_inicio = models.DateField()\n    fecha_fin = models.DateField()\n    created_at = models.DateTimeField(auto_now_add=True)\n    updated_at = models.DateTimeField(auto_now=True)\n\n    class Meta:\n        ordering = ['-created_at']\n\n    def __str__(self):\n        return f'Reserva {self.codigo_seguimiento}'\n\n\nclass LineaReserva(models.Model):\n    reserva = models.ForeignKey(Reserva, on_delete=models.CASCADE, related_name='lineas')\n    barco = models.ForeignKey(Barco, on_delete=models.PROTECT)\n    cantidad = models.PositiveIntegerField()\n    precio_unitario_dia = models.DecimalField(max_digits=8, decimal_places=2)\n    subtotal = models.DecimalField(max_digits=10, decimal_places=2)\n    created_at = models.DateTimeField(auto_now_add=True)\n\n    def __str__(self):\n        return f'Línea {self.id} - {self.barco.nombre}'"
+    },
+    {
+      "path": "reservations/views.py",
+      "contenido": "from django.shortcuts import render, redirect, get_object_or_404\nfrom django.views import View\nfrom django.contrib.auth.decorators import login_required\nfrom django.utils.decorators import method_decorator\nfrom .models import Reserva, LineaReserva\n\n\nclass CheckoutStep1View(View):\n    def get(self, request):\n        return render(request, 'reservations/checkout_step1.html')\n\n    def post(self, request):\n        return render(request, 'reservations/checkout_step1.html')\n\n\nclass CheckoutStep2View(View):\n    def get(self, request):\n        return render(request, 'reservations/checkout_step2.html')\n\n    def post(self, request):\n        return render(request, 'reservations/checkout_step2.html')\n\n\nclass CheckoutStep3View(View):\n    def get(self, request):\n        return render(request, 'reservations/checkout_step3.html')\n\n    def post(self, request):\n        return render(request, 'reservations/checkout_step3.html')\n\n\nclass ConfirmationView(View):\n    def get(self, request):\n        return render(request, 'reservations/confirmation.html')\n\n\nclass PayPalReturnView(View):\n    def get(self, request):\n        return render(request, 'reservations/paypal_return.html')\n\n\nclass PayPalCancelView(View):\n    def get(self, request):\n        return render(request, 'reservations/paypal_cancel.html')\n\n\nclass TrackingView(View):\n    def get(self, request):\n        return render(request, 'reservations/tracking.html')\n\n    def post(self, request):\n        return render(request, 'reservations/tracking.html')\n\n\n@method_decorator(login_required, name='dispatch')\nclass ReservationHistoryView(View):\n    def get(self, request):\n        reservas = Reserva.objects.filter(cliente=request.user)\n        context = {'reservas': reservas}\n        return render(request, 'reservations/history.html', context)\n\n\n@method_decorator(login_required, name='dispatch')\nclass CancelReservationView(View):\n    def post(self, request, id):\n        reserva = get_object_or_404(Reserva, id=id, cliente=request.user)\n        reserva.estado = 'CANCELADO'\n        reserva.save()\n        return redirect('reservations:history')"
+    },
+    {
+      "path": "reservations/urls.py",
+      "contenido": "from django.urls import path\nfrom . import views\n\napp_name = 'reservations'\n\nurlpatterns = [\n    path('reserva/paso1/', views.CheckoutStep1View.as_view(), name='checkout_step1'),\n    path('reserva/paso2/', views.CheckoutStep2View.as_view(), name='checkout_step2'),\n    path('reserva/paso3/', views.CheckoutStep3View.as_view(), name='checkout_step3'),\n    path('reserva/confirmacion/', views.ConfirmationView.as_view(), name='confirmation'),\n    path('reserva/paypal/return/', views.PayPalReturnView.as_view(), name='paypal_return'),\n    path('reserva/paypal/cancel/', views.PayPalCancelView.as_view(), name='paypal_cancel'),\n    path('seguimiento/', views.TrackingView.as_view(), name='tracking'),\n    path('mis-reservas/', views.ReservationHistoryView.as_view(), name='history'),\n    path('reserva/<int:id>/cancelar/', views.CancelReservationView.as_view(), name='cancel'),\n]"
+    },
+    {
+      "path": "reservations/admin.py",
+      "contenido": "from django.contrib import admin\nfrom .models import Reserva, LineaReserva\n\n\nclass LineaReservaInline(admin.TabularInline):\n    model = LineaReserva\n    extra = 0\n    readonly_fields = ('created_at',)\n\n\n@admin.register(Reserva)\nclass ReservaAdmin(admin.ModelAdmin):\n    list_display = ('codigo_seguimiento', 'nombre_cliente', 'estado', 'metodo_pago', 'importe_total', 'created_at')\n    list_filter = ('estado', 'metodo_pago', 'created_at')\n    search_fields = ('codigo_seguimiento', 'nombre_cliente', 'email_cliente')\n    readonly_fields = ('codigo_seguimiento', 'created_at', 'updated_at')\n    inlines = [LineaReservaInline]\n    fieldsets = (\n        ('Información de Seguimiento', {\n            'fields': ('codigo_seguimiento', 'estado')\n        }),\n        ('Datos del Cliente', {\n            'fields': ('cliente', 'nombre_cliente', 'email_cliente', 'telefono_cliente')\n        }),\n        ('Pago', {\n            'fields': ('metodo_pago', 'importe_total', 'importe_combustible')\n        }),\n        ('Fechas', {\n            'fields': ('fecha_inicio', 'fecha_fin')\n        }),\n        ('Timestamps', {\n            'fields': ('created_at', 'updated_at'),\n            'classes': ('collapse',)\n        }),\n    )\n\n\n@admin.register(LineaReserva)\nclass LineaReservaAdmin(admin.ModelAdmin):\n    list_display = ('reserva', 'barco', 'cantidad', 'precio_unitario_dia', 'subtotal')\n    list_filter = ('reserva__estado', 'created_at')\n    search_fields = ('reserva__codigo_seguimiento', 'barco__nombre')\n    readonly_fields = ('created_at',)"
+    },
+    {
+      "path": "reservations/forms.py",
+      "contenido": "from django import forms\nfrom .models import Reserva\n\n\nclass ReservaForm(forms.ModelForm):\n    class Meta:\n        model = Reserva\n        fields = ('nombre_cliente', 'email_cliente', 'telefono_cliente', 'metodo_pago')\n\n\nclass ReservaStep1Form(forms.Form):\n    fecha_inicio = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))\n    fecha_fin = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))\n\n\nclass ReservaStep2Form(forms.Form):\n    nombre_cliente = forms.CharField(max_length=120)\n    email_cliente = forms.EmailField()\n    telefono_cliente = forms.CharField(max_length=20, required=False)\n\n\nclass ReservaStep3Form(forms.Form):\n    METODO_PAGO_CHOICES = [\n        ('PAYPAL', 'PayPal'),\n        ('CONTRA_REEMBOLSO', 'Contra-reembolso'),\n    ]\n    metodo_pago = forms.ChoiceField(choices=METODO_PAGO_CHOICES)\n    importe_combustible = forms.DecimalField(max_digits=10, decimal_places=2, required=False)"
+    },
+    {
+      "path": "reservations/services/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "reservations/services/paypal.py",
+      "contenido": "class PayPalService:\n    @staticmethod\n    def create_payment(reserva):\n        pass\n\n    @staticmethod\n    def execute_payment(payment_id, payer_id):\n        pass\n\n    @staticmethod\n    def get_payment_status(payment_id):\n        pass"
+    },
+    {
+      "path": "reservations/services/email.py",
+      "contenido": "from django.core.mail import send_mail\nfrom django.conf import settings\n\n\nclass EmailService:\n    @staticmethod\n    def send_confirmation_email(reserva):\n        subject = f'Confirmación de Reserva {reserva.codigo_seguimiento}'\n        message = f'Su reserva ha sido confirmada.'\n        send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [reserva.email_cliente])\n\n    @staticmethod\n    def send_reminder_email(reserva):\n        subject = f'Recordatorio de Reserva {reserva.codigo_seguimiento}'\n        message = f'Le recordamos que su reserva comienza pronto.'\n        send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [reserva.email_cliente])"
+    },
+    {
+      "path": "reservations/management/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "reservations/management/commands/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "reservations/management/commands/send_reminders.py",
+      "contenido": "from django.core.management.base import BaseCommand\nfrom reservations.models import Reserva\nfrom reservations.services.email import EmailService\nfrom datetime import timedelta\nfrom django.utils import timezone\n\n\nclass Command(BaseCommand):\n    help = 'Envía recordatorios de reservas próximas'\n\n    def handle(self, *args, **options):\n        tomorrow = timezone.now().date() + timedelta(days=1)\n        reservas = Reserva.objects.filter(fecha_inicio=tomorrow, estado='PAGADO')\n        for reserva in reservas:\n            EmailService.send_reminder_email(reserva)\n            self.stdout.write(self.style.SUCCESS(f'Recordatorio enviado para {reserva.codigo_seguimiento}'))"
+    },
+    {
+      "path": "admin_panel/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "admin_panel/apps.py",
+      "contenido": "from django.apps import AppConfig\n\n\nclass AdminPanelConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'admin_panel'"
+    },
+    {
+      "path": "admin_panel/views.py",
+      "contenido": "from django.shortcuts import render, redirect, get_object_or_404\nfrom django.views import View\nfrom django.contrib.auth.decorators import login_required, user_passes_test\nfrom django.utils.decorators import method_decorator\nfrom django.contrib.auth.models import User\nfrom reservations.models import Reserva\nfrom catalog.models import Barco\n\n\ndef is_admin(user):\n    return user.is_staff and user.is_superuser\n\n\n@method_decorator(login_required, name='dispatch')\n@method_decorator(user_passes_test(is_admin), name='dispatch')\nclass AdminReservationsListView(View):\n    def get(self, request):\n        reservas = Reserva.objects.all()\n        context = {'reservas': reservas}\n        return render(request, 'admin_panel/reservations_list.html', context)\n\n\n@method_decorator(login_required, name='dispatch')\n@method_decorator(user_passes_test(is_admin), name='dispatch')\nclass ChangeReservationStatusView(View):\n    def post(self, request, id):\n        reserva = get_object_or_404(Reserva, id=id)\n        nuevo_estado = request.POST.get('estado')\n        if nuevo_estado in dict(Reserva.ESTADO_CHOICES):\n            reserva.estado = nuevo_estado\n            reserva.save()\n        return redirect('admin_panel:reservations_list')\n\n\n@method_decorator(login_required, name='dispatch')\n@method_decorator(user_passes_test(is_admin), name='dispatch')\nclass AdminClientsListView(View):\n    def get(self, request):\n        clientes = User.objects.filter(is_staff=False)\n        context = {'clientes': clientes}\n        return render(request, 'admin_panel/clients_list.html', context)\n\n\n@method_decorator(login_required, name='dispatch')\n@method_decorator(user_passes_test(is_admin), name='dispatch')\nclass DeleteClientView(View):\n    def post(self, request, id):\n        cliente = get_object_or_404(User, id=id)\n        reservas_pendientes = Reserva.objects.filter(cliente=cliente, estado__in=['PENDIENTE_DE_PAGO', 'PAGADO', 'EN_USO'])\n        if not reservas_pendientes.exists():\n            cliente.delete()\n        return redirect('admin_panel:clients_list')\n\n\n@method_decorator(login_required, name='dispatch')\n@method_decorator(user_passes_test(is_admin), name='dispatch')\nclass AdminBoatsListView(View):\n    def get(self, request):\n        barcos = Barco.objects.all()\n        context = {'barcos': barcos}\n        return render(request, 'admin_panel/boats_list.html', context)"
+    },
+    {
+      "path": "admin_panel/urls.py",
+      "contenido": "from django.urls import path\nfrom . import views\n\napp_name = 'admin_panel'\n\nurlpatterns = [\n    path('admin/reservas/', views.AdminReservationsListView.as_view(), name='reservations_list'),\n    path('admin/reservas/<int:id>/cambiar-estado/', views.ChangeReservationStatusView.as_view(), name='change_reservation_status'),\n    path('admin/clientes/', views.AdminClientsListView.as_view(), name='clients_list'),\n    path('admin/clientes/<int:id>/eliminar/', views.DeleteClientView.as_view(), name='delete_client'),\n    path('admin/barcos/', views.AdminBoatsListView.as_view(), name='boats_list'),\n]"
+    },
+    {
+      "path": "admin_panel/forms.py",
+      "contenido": "from django import forms\nfrom reservations.models import Reserva\n\n\nclass ChangeReservationStatusForm(forms.Form):\n    estado = forms.ChoiceField(choices=Reserva.ESTADO_CHOICES)"
+    },
+    {
+      "path": "templates/base.html",
+      "contenido": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>{% block title %}Hundidos - Alquiler de Barcos{% endblock %}</title>\n    <style>\n        * {\n            margin: 0;\n            padding: 0;\n            box-sizing: border-box;\n        }\n        body {\n            font-family: Arial, sans-serif;\n            background-color: #f5f5f5;\n            color: #333;\n        }\n        header {\n            background-color: #003d82;\n            color: white;\n            padding: 20px 0;\n            box-shadow: 0 2px 4px rgba(0,0,0,0.1);\n        }\n        header nav {\n            max-width: 1200px;\n            margin: 0 auto;\n            display: flex;\n            justify-content: space-between;\n            align-items: center;\n            padding: 0 20px;\n        }\n        header h1 {\n            font-size: 24px;\n        }\n        header nav ul {\n            list-style: none;\n            display: flex;\n            gap: 20px;\n        }\n        header nav a {\n            color: white;\n            text-decoration: none;\n        }\n        header nav a:hover {\n            text-decoration: underline;\n        }\n        main {\n            max-width: 1200px;\n            margin: 20px auto;\n            padding: 0 20px;\n        }\n        footer {\n            background-color: #003d82;\n            color: white;\n            text-align: center;\n            padding: 20px;\n            margin-top: 40px;\n        }\n        .container {\n            background-color: white;\n            padding: 20px;\n            border-radius: 4px;\n            box-shadow: 0 1px 3px rgba(0,0,0,0.1);\n        }\n    </style>\n    {% block extra_css %}{% endblock %}\n</head>\n<body>\n    <header>\n        <nav>\n            <h1><a href=\"{% url 'core:home' %}\">Hundidos</a></h1>\n            <ul>\n                <li><a href=\"{% url 'catalog:barco_list' %}\">Catálogo</a></li>\n                <li><a href=\"{% url 'cart:cart_view' %}\">Cesta</a></li>\n                {% if user.is_authenticated %}\n                    <li><a href=\"{% url 'core:account' %}\">Mi Cuenta</a></li>\n                    <li><a href=\"{% url 'reservations:history' %}\">Mis Reservas</a></li>\n                    {% if user.is_staff %}\n                        <li><a href=\"{% url 'admin_panel:reservations_list' %}\">Admin</a></li>\n                    {% endif %}\n                    <li>\n                        <form method=\"post\" action=\"{% url 'core:logout' %}\" style=\"display:inline;\">\n                            {% csrf_token %}\n                            <button type=\"submit\" style=\"background:none;border:none;color:white;cursor:pointer;text-decoration:underline;\">Logout</button>\n                        </form>\n                    </li>\n                {% else %}\n                    <li><a href=\"{% url 'core:login' %}\">Login</a></li>\n                    <li><a href=\"{% url 'core:register' %}\">Registro</a></li>\n                {% endif %}\n            </ul>\n        </nav>\n    </header>\n    <main>\n        {% if messages %}\n            <div class=\"messages\">\n                {% for message in messages %}\n                    <div class=\"alert alert-{{ message.tags }}\">\n                        {{ message }}\n                    </div>\n                {% endfor %}\n            </div>\n        {% endif %}\n        {% block content %}{% endblock %}\n    </main>\n    <footer>\n        <p>&copy; 2026 Hundidos. Todos los derechos reservados.</p>\n    </footer>\n</body>\n</html>"
+    },
+    {
+      "path": "templates/core/home.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Inicio - Hundidos{% endblock %}\n\n{% block content %}\n<div class=\"container\">\n    <h2>Bienvenido a Hundidos</h2>\n    <p>Tu plataforma de alquiler de barcos en línea.</p>\n    <p><a href=\"{% url 'catalog:barco_list' %}\">Ver catálogo de barcos</a></p>\n</div>\n{% endblock %}"
+    },
+    {
+      "path": "templates/core/register.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Registro - Hundidos{% endblock %}\n\n{% block content %}\n<div class=\"container\">\n    <h2>Registro</h2>\n    <p>Formulario de registro (por implementar)</p>\n</div>\n{% endblock %}"
+    },
+    {
+      "path": "templates/core/login.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Login - Hundidos{% endblock %}\n\n{% block content %}\n<div class=\"container\">\n    <h2>Login</h2>\n    <p>Formulario de login (por implementar)</p>\n</div>\n{% endblock %}"
+    },
+    {
+      "path": "templates/core/account.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Mi Cuenta - Hundidos{% endblock %}\n\n{% block content %}\n<div class=\"container\">\n    <h2>Mi Cuenta</h2>\n    <p>Datos de la cuenta (por implementar)</p>\n</div>\n{% endblock %}"
+    },
+    {
+      "path": "templates/catalog/list.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Catálogo de Barcos - Hundidos{% endblock %}\n\n{% block content %}\n<div class=\"container\">\n    <h2>Catálogo de Barcos</h2>\n    <div class=\"barcos-list\">\n        {% for barco in barcos %}\n            <div class=\"barco-item\">\n                <h3>{{ barco.nombre }}</h3>\n                <p>{{ barco.descripcion }}</p>\n                <p><strong>Precio:</strong> {{ barco.precio_dia }}€/día</p>\n                <p><strong>Capacidad:</strong> {{ barco.capacidad }} personas</p>\n                <p><strong>Disponibles:</strong> {{ barco.cantidad_disponible }}</p>\n                <a href=\"{% url 'catalog:barco_detail' barco.id %}\">Ver detalles</a>\n            </div>\n        {% empty %}\n            <p>No hay barcos disponibles.</p>\n        {% endfor %}\n    </div>\n</div>\n{% endblock %}"
+    },
+    {
+      "path": "templates/catalog/detail.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}{{ barco.nombre }} - Hundidos{% endblock %}\n\n{% block content %}\n<div class=\"container\">\n    <h2>{{ barco.nombre }}</h2>\n    <p>{{ barco.descripcion }}</p>\n    <p><strong>Categoría:</strong> {{ barco.categoria.nombre }}</p>\n    <p><strong>Puerto:</strong> {{ barco.puerto.nombre }}</p>\n    <p><strong>Fabricante:</strong> {{ barco.fabricante.nombre }}</p>\n    <p><strong>Precio:</strong> {{ barco.precio_dia }}€/día</p>\n    <p><strong>Capacidad:</strong> {{ barco.capacidad }} personas</p>\n    <p><strong>Disponibles:</strong> {{ barco.cantidad_disponible }}</p>\n    <a href=\"{% url 'catalog:barco_list' %}\">Volver al catálogo</a>\n</div>\n{% endblock %}"
+    },
+    {
+      "path": "templates/cart/cart.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Cesta - Hundidos{% endblock %}\n\n{% block content %}\n<div class=\"container\">\n    <h2>Cesta de Compra</h2>\n    <p>Cesta (por implementar)</p>\n</div>\n{% endblock %}"
+    },
+    {
+      "path": "templates/reservations/checkout_step1.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Paso 1 - Hundidos{% endblock %}\n\n{% block content %}\n<div class=\"container\">\n    <h2>Paso 1: Seleccionar Fechas</h2>\n    <p>Formulario paso 1 (por implementar)</p>\n</div>\n{% endblock %}"
+    },
+    {
+      "path": "templates/reservations/checkout_step2.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Paso 2 - Hundidos{% endblock %}\n\n{% block content %}\n<div class=\"container\">\n    <h2>Paso 2: Datos del Cliente</h2>\n    <p>Formulario paso 2 (por implementar)</p>\n</div>\n{% endblock %}"
+    },
+    {
+      "path": "templates/reservations/checkout_step3.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Paso 3 - Hundidos{% endblock %}\n\n{% block content %}\n<div class=\"container\">\n    <h2>Paso 3: Método de Pago</h2>\n    <p>Formulario paso 3 (por implementar)</p>\n</div>\n{% endblock %}"
+    },
+    {
+      "path": "templates/reservations/confirmation.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Confirmación - Hundidos{% endblock %}\n\n{% block content %}\n<div class=\"container\">\n    <h2>Confirmación de Reserva</h2>\n    <p>Confirmación (por implementar)</p>\n</div>\n{% endblock %}"
+    },
+    {
+      "path": "templates/reservations/tracking.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Seguimiento - Hundidos{% endblock %}\n\n{% block content %}\n<div class=\"container\">\n    <h2>Seguimiento de Reserva</h2>\n    <p>Seguimiento (por implementar)</p>\n</div>\n{% endblock %}"
+    },
+    {
+      "path": "templates/reservations/history.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Mis Reservas - Hundidos{% endblock %}\n\n{% block content %}\n<div class=\"container\">\n    <h2>Mis Reservas</h2>\n    {% if reservas %}\n        <table>\n            <thead>\n                <tr>\n                    <th>Código</th>\n                    <th>Estado</th>\n                    <th>Importe</th>\n                    <th>Fecha Inicio</th>\n                    <th>Fecha Fin</th>\n                </tr>\n            </thead>\n            <tbody>\n                {% for reserva in reservas %}\n                    <tr>\n                        <td>{{ reserva.codigo_seguimiento }}</td>\n                        <td>{{ reserva.get_estado_display }}</td>\n                        <td>{{ reserva.importe_total }}€</td>\n                        <td>{{ reserva.fecha_inicio }}</td>\n                        <td>{{ reserva.fecha_fin }}</td>\n                    </tr>\n                {% endfor %}\n            </tbody>\n        </table>\n    {% else %}\n        <p>No tienes reservas.</p>\n    {% endif %}\n</div>\n{% endblock %}"
+    },
+    {
+      "path": "templates/admin_panel/reservations_list.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Admin - Reservas - Hundidos{% endblock %}\n\n{% block content %}\n<div class=\"container\">\n    <h2>Gestión de Reservas</h2>\n    {% if reservas %}\n        <table>\n            <thead>\n                <tr>\n                    <th>Código</th>\n                    <th>Cliente</th>\n                    <th>Estado</th>\n                    <th>Importe</th>\n                    <th>Acciones</th>\n                </tr>\n            </thead>\n            <tbody>\n                {% for reserva in reservas %}\n                    <tr>\n                        <td>{{ reserva.codigo_seguimiento }}</td>\n                        <td>{{ reserva.nombre_cliente }}</td>\n                        <td>{{ reserva.get_estado_display }}</td>\n                        <td>{{ reserva.importe_total }}€</td>\n                        <td>\n                            <form method=\"post\" action=\"{% url 'admin_panel:change_reservation_status' reserva.id %}\" style=\"display:inline;\">\n                                {% csrf_token %}\n                                <select name=\"estado\">\n                                    {% for value, label in reserva.ESTADO_CHOICES %}\n                                        <option value=\"{{ value }}\" {% if reserva.estado == value %}selected{% endif %}>{{ label }}</option>\n                                    {% endfor %}\n                                </select>\n                                <button type=\"submit\">Cambiar</button>\n                            </form>\n                        </td>\n                    </tr>\n                {% endfor %}\n            </tbody>\n        </table>\n    {% else %}\n        <p>No hay reservas.</p>\n    {% endif %}\n</div>\n{% endblock %}"
+    },
+    {
+      "path": "templates/admin_panel/clients_list.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Admin - Clientes - Hundidos{% endblock %}\n\n{% block content %}\n<div class=\"container\">\n    <h2>Gestión de Clientes</h2>\n    {% if clientes %}\n        <table>\n            <thead>\n                <tr>\n                    <th>Usuario</th>\n                    <th>Email</th>\n                    <th>Acciones</th>\n                </tr>\n            </thead>\n            <tbody>\n                {% for cliente in clientes %}\n                    <tr>\n                        <td>{{ cliente.username }}</td>\n                        <td>{{ cliente.email }}</td>\n                        <td>\n                            <form method=\"post\" action=\"{% url 'admin_panel:delete_client' cliente.id %}\" style=\"display:inline;\">\n                                {% csrf_token %}\n                                <button type=\"submit\" onclick=\"return confirm('¿Estás seguro?')\">Eliminar</button>\n                            </form>\n                        </td>\n                    </tr>\n                {% endfor %}\n            </tbody>\n        </table>\n    {% else %}\n        <p>No hay clientes.</p>\n    {% endif %}\n</div>\n{% endblock %}"
+    },
+    {
+      "path": "templates/admin_panel/boats_list.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Admin - Barcos - Hundidos{% endblock %}\n\n{% block content %}\n<div class=\"container\">\n    <h2>Gestión de Barcos</h2>\n    {% if barcos %}\n        <table>\n            <thead>\n                <tr>\n                    <th>Nombre</th>\n                    <th>Categoría</th>\n                    <th>Puerto</th>\n                    <th>Precio/Día</th>\n                    <th>Disponibles</th>\n                </tr>\n            </thead>\n            <tbody>\n                {% for barco in barcos %}\n                    <tr>\n                        <td>{{ barco.nombre }}</td>\n                        <td>{{ barco.categoria.nombre }}</td>\n                        <td>{{ barco.puerto.nombre }}</td>\n                        <td>{{ barco.precio_dia }}€</td>\n                        <td>{{ barco.cantidad_disponible }}</td>\n                    </tr>\n                {% endfor %}\n            </tbody>\n        </table>\n    {% else %}\n        <p>No hay barcos.</p>\n    {% endif %}\n</div>\n{% endblock %}"
+    },
+    {
+      "path": ".gitignore",
+      "contenido": "*.pyc\n__pycache__/\n*.egg-info/\ndist/\nbuild/\n.env\n.venv\nenv/\nvenv/\ndb.sqlite3\n.DS_Store\n*.log\n.idea/\n.vscode/\nstaticfiles/\nmedia/"
+    },
+    {
+      "path": "requirements.txt",
+      "contenido": "Django==3.2.0\ndjango-extensions==3.1.1\npython-decouple==3.4\nrequests==2.26.0"
+    },
+    {
+      "path": "Dockerfile",
+      "contenido": "FROM python:3.9-slim\n\nWORKDIR /app\n\nCOPY requirements.txt .\nRUN pip install --no-cache-dir -r requirements.txt\n\nCOPY . .\n\nRUN python manage.py collectstatic --noinput\n\nEXPOSE 8000\n\nCMD [\"python\", \"manage.py\", \"runserver\", \"0.0.0.0:8000\"]"
+    },
+    {
+      "path": "docker-compose.yml",
+      "contenido": "version: '3.8'\n\nservices:\n  web:\n    build: .\n    ports:\n      - \"8000:8000\"\n    volumes:\n      - .:/app\n    environment:\n      - DEBUG=True\n    command: python manage.py runserver 0.0.0.0:8000"
+    },
+    {
+      "path": "README.md",
+      "contenido": "# Hundidos - Alquiler de Barcos\n\nAplicación web monolítica de alquiler de barcos construida con Django 3.2.\n\n## Instalación\n\n### Requisitos\n- Python 3.9+\n- pip\n- virtualenv (recomendado)\n\n### Pasos\n\n1. Clonar el repositorio:\n```bash\ngit clone <repo-url>\ncd hundidos\n```\n\n2. Crear entorno virtual:\n```bash\npython -m venv venv\nsource venv/bin/activate  # En Windows: venv\\Scripts\\activate\n```\n\n3. Instalar dependencias:\n```bash\npip install -r requirements.txt\n```\n\n4. Ejecutar migraciones:\n```bash\npython manage.py migrate\n```\n\n5. Cargar datos iniciales:\n```bash\npython manage.py seed_data\n```\n\n6. Crear superusuario (opcional):\n```bash\npython manage.py createsuperuser\n```\n\n7. Ejecutar servidor de desarrollo:\n```bash\npython manage.py runserver\n```\n\nLa aplicación estará disponible en http://localhost:8000\n\n## Uso con Docker\n\n```bash\ndocker-compose up\n```\n\n## Estructura del Proyecto\n\n- `core/` - Autenticación y gestión de usuarios\n- `catalog/` - Catálogo de barcos\n- `cart/` - Cesta de compra\n- `reservations/` - Gestión de reservas\n- `admin_panel/` - Panel administrativo\n- `templates/` - Plantillas HTML\n- `static/` - Archivos estáticos\n\n## Credenciales de Prueba\n\n- Admin: `admin` / `admin123`\n- Cliente: `cliente` / `cliente123`"
+    },
+    {
+      "path": "static/.gitkeep",
+      "contenido": ""
+    },
+    {
+      "path": "media/.gitkeep",
+      "contenido": ""
+    }
+  ]
+}

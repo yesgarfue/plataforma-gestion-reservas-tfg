@@ -1,0 +1,281 @@
+{
+  "schema_version": "manifest_v1",
+  "generated_at": "2026-05-15T10:04:11+02:00",
+  "run_id": "run_2026-05-15_09-52",
+  "resultado_final": "abortado_por_limite",
+  "run_dir": "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-15_09-52",
+  "protocolo": {
+    "pipeline_specs_path": "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\pipeline_specs.md",
+    "pipeline_specs_hash": "e11d977184af93336b573046fa167c44422bc56a74706afac50d4e53f5ed69e8",
+    "brief_hash": "e62bcd5b2a4f56841065a31fe202de9d8628e317db0846675e689257a2eeb394",
+    "pipeline_config_hash": "1fce5d2b7031924a4d92947b4738f52def7b778e6e63eda62f0a5a47ea3d7048"
+  },
+  "versiones": {
+    "git_commit": "",
+    "python_pipeline": "3.11.7",
+    "crewai": "1.14.2",
+    "pydantic": "2.11.10",
+    "django_validacion": "3.2"
+  },
+  "modelos": {
+    "default": {
+      "provider": "anthropic",
+      "name": "anthropic/claude-haiku-4-5",
+      "temperature": 0.0,
+      "max_tokens": 8192
+    },
+    "pm": {
+      "provider": "anthropic",
+      "name": "anthropic/claude-haiku-4-5",
+      "temperature": 0.0,
+      "max_tokens": 8192
+    },
+    "architect": {
+      "provider": "anthropic",
+      "name": "anthropic/claude-haiku-4-5",
+      "temperature": 0.0,
+      "max_tokens": 8192
+    },
+    "developer": {
+      "provider": "anthropic",
+      "name": "anthropic/claude-haiku-4-5",
+      "temperature": 0.0,
+      "max_tokens": 8192
+    }
+  },
+  "fases": {
+    "01_requisitos": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "aceptado",
+      "duracion_s_ejec": 19.687999999994645,
+      "duracion_s_gate_humano": 286.26600000000326
+    },
+    "02_planificacion": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "aceptado",
+      "duracion_s_ejec": 49.79700000000594,
+      "duracion_s_gate_humano": 62.35899999999674
+    },
+    "03_arquitectura": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "aceptado",
+      "duracion_s_ejec": 17.610000000000582,
+      "duracion_s_gate_humano": 69.0
+    },
+    "03b_scaffold": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 17.656000000002678,
+      "duracion_s_gate_humano": 0.0
+    },
+    "04_sprint_1": {
+      "reintentos_automaticos": 3,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 0.0,
+      "duracion_s_gate_humano": 0.0
+    }
+  },
+  "gates": [
+    {
+      "path": "01_requisitos/gate_humano.md",
+      "sha256": "ead9f39bdfc314adcb29591b3c0d1b06322cf245fb2592491e6af02f3b8ad79c",
+      "metadata": {
+        "gate": 1,
+        "fase": "01_requisitos",
+        "decision": "aceptado",
+        "timestamp_revision_inicio": "2026-05-15T09:52:37+02:00",
+        "timestamp_revision_fin": null
+      }
+    },
+    {
+      "path": "02_planificacion/gate_humano.md",
+      "sha256": "d27a8c6df621eadbf78bf257283be531c512fa8ae13da47b61b1a09c5d807b76",
+      "metadata": {
+        "gate": 2,
+        "fase": "02_planificacion",
+        "decision": "aceptado",
+        "timestamp_revision_inicio": "2026-05-15T09:58:14+02:00",
+        "timestamp_revision_fin": null
+      }
+    },
+    {
+      "path": "03_arquitectura/gate_humano.md",
+      "sha256": "0f0f67594edc007615d10e7ba79fb94268953a003cbe20895b76923edaecf5f5",
+      "metadata": {
+        "gate": 3,
+        "fase": "03_arquitectura",
+        "decision": "aceptado",
+        "timestamp_revision_inicio": "2026-05-15T09:59:34+02:00",
+        "timestamp_revision_fin": null
+      }
+    }
+  ],
+  "validacion_final": null,
+  "artefactos_principales": [
+    {
+      "path": "01_requisitos/gate_humano.md",
+      "sha256": "ead9f39bdfc314adcb29591b3c0d1b06322cf245fb2592491e6af02f3b8ad79c"
+    },
+    {
+      "path": "01_requisitos/registro_requisitos.json",
+      "sha256": "f76a64d07e9861256f91ab0fa22c107338a72f76ec9c248df9b4abd902e176b0"
+    },
+    {
+      "path": "01_requisitos/registro_requisitos.md",
+      "sha256": "91c2d5b38b064f0554cbef5644fc298aee26733be7759ace0b59a1aa6df136b6"
+    },
+    {
+      "path": "02_planificacion/backlog.json",
+      "sha256": "bba5682e6754cc6ccec5862a10b63690547db70fbb761a87425b87c203ff6332"
+    },
+    {
+      "path": "02_planificacion/backlog.md",
+      "sha256": "352c0b058b1d13692d5f6e0a56492320c43fb62f20c0a8da2d7520fb9a7f01bd"
+    },
+    {
+      "path": "02_planificacion/gate_humano.md",
+      "sha256": "d27a8c6df621eadbf78bf257283be531c512fa8ae13da47b61b1a09c5d807b76"
+    },
+    {
+      "path": "02_planificacion/plan_sprints.json",
+      "sha256": "92cebb3fdf4685a76633f563de6e7fa8ab8ea4c4e60998bece82714e05181f14"
+    },
+    {
+      "path": "02_planificacion/plan_sprints.md",
+      "sha256": "4450465760cf232ba365e99250585ac0ed417a91a8edf92b47346575c033451a"
+    },
+    {
+      "path": "02_planificacion/riesgos.json",
+      "sha256": "bfc7048cd8bf015dd6954c380bb92970892c959c68d81fff99aa1946d1e798de"
+    },
+    {
+      "path": "02_planificacion/riesgos.md",
+      "sha256": "97e2083511c84c925570d2c47c9282627e543a8b3e4131f9eb57c20a43ad8d3e"
+    },
+    {
+      "path": "03_arquitectura/diseno_tecnico.json",
+      "sha256": "c91de475aaadbcf9e47fae704750a0d08a90563c1c1691e07b2c0362b329a925"
+    },
+    {
+      "path": "03_arquitectura/diseno_tecnico.md",
+      "sha256": "41054f02d1095a053312f375a2c84ba4ab1f8b7524e486db93aac49a4c2115a9"
+    },
+    {
+      "path": "03_arquitectura/gate_humano.md",
+      "sha256": "0f0f67594edc007615d10e7ba79fb94268953a003cbe20895b76923edaecf5f5"
+    },
+    {
+      "path": "03b_scaffold/entrega_scaffold.json",
+      "sha256": "dfcac068ebecc6c60e8fef2331bc8cbfcbaf8b25b8819d5e1b206d121b4a5327"
+    },
+    {
+      "path": "03b_scaffold/scaffold_check.json",
+      "sha256": "53db2072c4c4a543bfed32ab86b5b4e0d806ae0fe127920764776ab1b702d2de"
+    },
+    {
+      "path": "04_sprint_1/backlog_sprint_1.json",
+      "sha256": "456bc7f4b24f292410c5a6b36f87af49fd3906837877b2e7c5dfe2ac3c9e6c5b"
+    },
+    {
+      "path": "04_sprint_1/backlog_sprint_1.md",
+      "sha256": "cc91be133e3282b31ee1998d67a6f63347bba2b71e716ec357cb963fd1517ad5"
+    },
+    {
+      "path": "05_sprint_2/backlog_sprint_2.json",
+      "sha256": "550d2f8210bcbc4ea28ea28d0d7bbc502ca638f8fc319aec6d46265d56f7960a"
+    },
+    {
+      "path": "05_sprint_2/backlog_sprint_2.md",
+      "sha256": "0cf60bc989e5ccd5836cee9ede6fb25384748c901547e7383efc7f7f0e0ac2a1"
+    },
+    {
+      "path": "06_sprint_3/backlog_sprint_3.json",
+      "sha256": "c886294a12a72ee1ee5d45ec35b5d442944ceb8cc7bff0cdd310eb33e9d1cb6f"
+    },
+    {
+      "path": "06_sprint_3/backlog_sprint_3.md",
+      "sha256": "e237469aa7dbe0443f9ff08713aa2a6aefed258b2adc2aeae282074e60e545b5"
+    },
+    {
+      "path": "_attempts/fase04_regen0_intento1.txt",
+      "sha256": "bad63795fbbafc578dbfb713478c49b6c193931269ad2b1e76840fd7c4d1c33a"
+    },
+    {
+      "path": "_attempts/fase04_regen0_intento2.txt",
+      "sha256": "bed050195e42968c34e4853ca23f96ef7a1bdc8e5ab1451ef763ef8cf8bec106"
+    },
+    {
+      "path": "_attempts/fase04_regen0_intento3.txt",
+      "sha256": "c004af8e23f3cffc664ce1c09383079154c2ba547324fa432fa1826ab704c993"
+    },
+    {
+      "path": "run_summary.json",
+      "sha256": "02fd203447f62260bbb2676eaf97a8421f7b0bde9bee9b4f7e21d01ee266ae57"
+    }
+  ],
+  "run_summary": {
+    "run_id": "run_2026-05-15_09-52",
+    "resultado_final": "abortado_por_limite",
+    "mensaje": "Run finalizado con resultado_final = abortado_por_limite",
+    "timestamp_cierre": "2026-05-15T10:04:11+02:00",
+    "fases": {
+      "01_requisitos": {
+        "reintentos_automaticos": 0,
+        "regeneraciones_humanas": 0,
+        "gate_decision": "aceptado",
+        "duracion_s_ejec": 19.687999999994645,
+        "duracion_s_gate_humano": 286.26600000000326
+      },
+      "02_planificacion": {
+        "reintentos_automaticos": 0,
+        "regeneraciones_humanas": 0,
+        "gate_decision": "aceptado",
+        "duracion_s_ejec": 49.79700000000594,
+        "duracion_s_gate_humano": 62.35899999999674
+      },
+      "03_arquitectura": {
+        "reintentos_automaticos": 0,
+        "regeneraciones_humanas": 0,
+        "gate_decision": "aceptado",
+        "duracion_s_ejec": 17.610000000000582,
+        "duracion_s_gate_humano": 69.0
+      },
+      "03b_scaffold": {
+        "reintentos_automaticos": 0,
+        "regeneraciones_humanas": 0,
+        "gate_decision": "N/A",
+        "duracion_s_ejec": 17.656000000002678,
+        "duracion_s_gate_humano": 0.0
+      },
+      "04_sprint_1": {
+        "reintentos_automaticos": 3,
+        "regeneraciones_humanas": 0,
+        "gate_decision": "N/A",
+        "duracion_s_ejec": 0.0,
+        "duracion_s_gate_humano": 0.0
+      }
+    },
+    "duracion_s_ejec_total": 104.75100000000384,
+    "duracion_s_gate_humano_total": 417.625,
+    "duracion_s_total_contabilizada": 522.3760000000038,
+    "validacion_final": {
+      "ejecutada": false,
+      "ok_global": null,
+      "clasificacion": null,
+      "checks_planificados_total": 0,
+      "checks_ejecutados_total": 0,
+      "checks_no_ejecutados_total": 0,
+      "incidencias_total": 0,
+      "factores_bloqueantes_total": 0
+    }
+  },
+  "observaciones": [
+    "Manifest generado de forma determinista a partir del estado del Flow y artefactos del run.",
+    "Los tiempos oficiales de gate son los calculados por el Flow; timestamps manuales en gate_humano.md son documentales."
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "ok": false,
+  "returncode": 1,
+  "stdout_resumen": "",
+  "stderr_resumen": "Traceback (most recent call last):\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-12_16-48\\03b_scaffold\\codigo\\manage.py\", line 11, in main\n    from django.core.management import execute_from_command_line\nModuleNotFoundError: No module named 'django'\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-12_16-48\\03b_scaffold\\codigo\\manage.py\", line 22, in <module>\n    main()\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-12_16-48\\03b_scaffold\\codigo\\manage.py\", line 13, in main\n    raise ImportError(\nImportError: Couldn't import Django. Are you sure it's installed and available on your PYTHONPATH environment variable? Did you forget to activate a virtual environment?",
+  "timeout_s": 60,
+  "timeout": false
+}

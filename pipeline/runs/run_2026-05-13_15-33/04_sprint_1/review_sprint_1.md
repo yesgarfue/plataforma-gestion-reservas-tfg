@@ -1,0 +1,100 @@
+---
+run_id: run_2026-05-13_15-33
+fase: 04_sprint_1
+agente: Script
+modelo: deterministico
+timestamp: 2026-05-13T15:57:28+02:00
+hash_brief: e62bcd5b2a4f56841065a31fe202de9d8628e317db0846675e689257a2eeb394
+regeneraciones_previas: 0
+---
+
+# Sprint 1 — Review automático
+
+**ID de ejecución**: `run_2026-05-13_15-33`
+
+## Arranque
+
+- **Comando**: `python manage.py check`
+- **OK**: `True`
+- **Return code**: `0`
+- **Timeout**: `False` (60s)
+
+### stdout
+
+```text
+System check identified no issues (0 silenced).
+```
+
+## Cumplimiento por historia
+
+| Historia | Estado |
+|---|---|
+| `HU-01` | `ok` |
+| `HU-02` | `ok` |
+| `HU-03` | `ok` |
+| `HU-05` | `ok` |
+| `HU-06` | `ok` |
+| `HU-22` | `ok` |
+| `HU-23` | `ok` |
+| `HU-24` | `ok` |
+| `HU-25` | `ok` |
+
+## Archivos inspeccionados
+
+- `accounts/__init__.py`
+- `accounts/apps.py`
+- `accounts/forms.py`
+- `accounts/migrations/0001_initial.py`
+- `accounts/migrations/__init__.py`
+- `accounts/models.py`
+- `accounts/urls.py`
+- `accounts/views.py`
+- `admin_panel/__init__.py`
+- `admin_panel/apps.py`
+- `admin_panel/urls.py`
+- `admin_panel/views.py`
+- `cart/__init__.py`
+- `cart/apps.py`
+- `cart/urls.py`
+- `cart/views.py`
+- `catalog/__init__.py`
+- `catalog/apps.py`
+- `catalog/migrations/0001_initial.py`
+- `catalog/migrations/__init__.py`
+- `catalog/models.py`
+- `catalog/urls.py`
+- `catalog/views.py`
+- `core/__init__.py`
+- `core/apps.py`
+- `core/management/__init__.py`
+- `core/management/commands/__init__.py`
+- `core/management/commands/seed_data.py`
+- `Dockerfile`
+- `hundidos/__init__.py`
+- `hundidos/asgi.py`
+- `hundidos/settings.py`
+- `hundidos/urls.py`
+- `hundidos/wsgi.py`
+- `manage.py`
+- `media/.gitkeep`
+- `README.md`
+- `requirements.txt`
+- `reservations/__init__.py`
+- `reservations/apps.py`
+- `reservations/migrations/0001_initial.py`
+- `reservations/migrations/__init__.py`
+- `reservations/models.py`
+- `reservations/urls.py`
+- `reservations/views.py`
+- `static/.gitkeep`
+- `templates/.gitkeep`
+- `templates/accounts/login.html`
+- `templates/accounts/profile.html`
+- `templates/accounts/register.html`
+- `templates/admin_panel/dashboard.html`
+- `templates/base.html`
+- `templates/cart/summary.html`
+- `templates/catalog/detail.html`
+- `templates/catalog/list.html`
+- `templates/home.html`
+- `templates/reservations/checkout_step1.html`

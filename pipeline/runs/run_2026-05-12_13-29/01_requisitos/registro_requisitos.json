@@ -1,0 +1,169 @@
+{
+  "id_ejecucion": "run_2026-05-12_13-29",
+  "requisitos_funcionales": [
+    {
+      "id": "RF-01",
+      "descripcion": "El cliente puede registrarse mediante correo electrónico y contraseña.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-02",
+      "descripcion": "El cliente puede iniciar sesión con correo y contraseña.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-03",
+      "descripcion": "El cliente puede cerrar sesión explícitamente.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-04",
+      "descripcion": "El registro de cliente es opcional para realizar una reserva sin haberse registrado.",
+      "prioridad": "Baja"
+    },
+    {
+      "id": "RF-05",
+      "descripcion": "El inicio de sesión puede realizarse durante el proceso de reserva manteniendo la cesta.",
+      "prioridad": "Media"
+    },
+    {
+      "id": "RF-06",
+      "descripcion": "Un administrador puede eliminar un usuario cliente únicamente si ese usuario no tiene reservas pendientes.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-07",
+      "descripcion": "La página principal muestra un catálogo de barcos organizado por categorías.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-08",
+      "descripcion": "Los barcos tienen los campos: nombre, imagen (una imagen obligatoria), categoría, fabricante, puerto, capacidad y precio por día.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-09",
+      "descripcion": "La búsqueda está disponible en la página de inicio, acepta búsquedas por nombre o título del barco y aplica filtros combinables.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-10",
+      "descripcion": "Los barcos agotados o no disponibles son claramente marcados en el catálogo.",
+      "prioridad": "Baja"
+    },
+    {
+      "id": "RF-11",
+      "descripcion": "Se puede seleccionar la cantidad de unidades del barco desde la ficha y añadir a la cesta.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-12",
+      "descripcion": "La cesta está siempre visible desde cualquier página de la aplicación.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-13",
+      "descripcion": "El usuario puede aumentar o reducir la cantidad de unidades de cada barco en la cesta.",
+      "prioridad": "Media"
+    },
+    {
+      "id": "RF-14",
+      "descripcion": "Al entrar en modo administrador, la cesta se vacía y el administrador no puede añadir al carro.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-15",
+      "descripcion": "La compra puede completarse en un proceso de tres pasos sin necesidad de registro previo.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-16",
+      "descripcion": "Se ofrece dos métodos de pago: PayPal Sandbox y contra-reembolso.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-17",
+      "descripcion": "El cliente recibe un correo electrónico con los datos del barco reservado, rango de fechas, importe total y código de seguimiento.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-18",
+      "descripcion": "Se aplica una tasa de combustible de 50 € por día, salvo para los veleros donde no hay tasa.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-19",
+      "descripcion": "Una reserva puede cancelarse solo si está en estado PENDIENTE DE PAGO y es eliminada del sistema.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-20",
+      "descripcion": "Se envía un correo de recordatorio al usuario una día antes del inicio de la reserva cuando esta sigue en estado PENDIENTE DE PAGO.",
+      "prioridad": "Baja"
+    },
+    {
+      "id": "RF-21",
+      "descripcion": "El administrador puede cambiar el estado de una reserva desde el panel de reservas para transiciones aplicables.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-22",
+      "descripcion": "La consulta del estado de la reserva se realiza usando el código de seguimiento recibido por email, incluso si el cliente no está registrado.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-23",
+      "descripcion": "El usuario registrado puede consultar el estado de sus reservas desde su cuenta en el sistema.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-24",
+      "descripcion": "El administrador puede consultar el estado de cualquier reserva.",
+      "prioridad": "Alta"
+    }
+  ],
+  "requisitos_no_funcionales": [
+    {
+      "id": "RNF-01",
+      "categoria": "Lenguaje y framework",
+      "condicion_metrica": "La aplicación se desarrolla con Python y basada en Django 3.2.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-02",
+      "categoria": "Base de datos",
+      "condicion_metrica": "Se utiliza SQLite como base de datos.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-03",
+      "categoria": "Pasarela de pago",
+      "condicion_metrica": "Se utiliza la pasarela de pago PayPal Sandbox para pruebas.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-04",
+      "categoria": "Empaquetado",
+      "condicion_metrica": "La aplicación debe ser entregada como contenedor Docker con instrucciones de construcción y arranque en un README.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-05",
+      "categoria": "Zona horaria y locale",
+      "condicion_metrica": "La aplicación debe funcionar bajo la zona horaria Europe/Madrid y locale español.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-06",
+      "categoria": "Seguridad mínima",
+      "condicion_metrica": "Las contraseñas no están almacenadas en texto plano; CSRF activo; validación de formularios.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-07",
+      "categoria": "Datos seed precargados",
+      "condicion_metrica": "La aplicación debe arrancar con datos precargados (5 barcos, 2 puertos, 2 fabricantes, 2 categorías, 1 usuario administrador y 1 cliente).",
+      "prioridad": "Alta"
+    }
+  ]
+}

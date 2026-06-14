@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Gestión de Barcos - Hundidos{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Gestión de Barcos</h1>
+        <a href="{% url 'admin:boat_create' %}" class="btn btn-success">+ Crear Barco</a>
+    </div>
+
+    {% if barcos %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Categoría</th>
+                        <th>Puerto</th>
+                        <th>Fabricante</th>
+                        <th>Precio/Día</th>
+                        <th>Capacidad</th>
+                        <th>Disponibilidad</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for barco in barcos %}
+                        <tr>
+                            <td>{{ barco.nombre }}</td>
+                            <td>{{ barco.categoria.nombre }}</td>
+                            <td>{{ barco.puerto.nombre }}</td>
+                            <td>{{ barco.fabricante.nombre }}</td>
+                            <td>{{ barco.precio_dia }}€</td>
+                            <td>{{ barco.capacidad }}</td>
+                            <td>{{ barco.disponibilidad }}</td>
+                            <td>
+                                {% if barco.activo %}
+                                    <span class="badge bg-success">Activo</span>
+                                {% else %}
+                                    <span class="badge bg-danger">Inactivo</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{% url 'admin:boat_edit' barco.id %}" class="btn btn-sm btn-warning">Editar</a>
+                                <form method="post" action="{% url 'admin:boat_delete' barco.id %}" style="display: inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro?')">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="alert alert-info">No hay barcos registrados.</div>
+    {% endif %}
+
+    <a href="{% url 'admin:dashboard' %}" class="btn btn-secondary mt-4">Volver al Panel</a>
+</div>
+{% endblock %}

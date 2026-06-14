@@ -1,0 +1,21 @@
+{
+  "run_id": "run_2026-04-25_10-11",
+  "resultado_final": "completo",
+  "mensaje": "Fase 01 completada correctamente.",
+  "fases_status": {
+    "01_requisitos": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 1185.625,
+      "duracion_s_gate_humano": 0.0
+    }
+  },
+  "hashes": {
+    "brief": "e62bcd5b2a4f56841065a31fe202de9d8628e317db0846675e689257a2eeb394",
+    "pipeline_specs": "98630b41d99b86f68e06daaff357c81325106bc5549cc54ffb6f492981437ce9",
+    "pipeline_config": "73a6504df3e682dffe3e6cf6f307e67fd6bc34d1218eb705a72db92e2b7c9d7a",
+    "agents_yaml_por_crew": {},
+    "tasks_yaml_por_crew": {}
+  }
+}

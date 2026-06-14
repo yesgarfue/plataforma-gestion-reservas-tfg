@@ -1,0 +1,102 @@
+{
+  "id_ejecucion": "run_2026-05-14_19-50",
+  "numero_sprint": 0,
+  "archivos": [
+    {
+      "path": "manage.py",
+      "contenido": "#!/usr/bin/env python\n\"\"\"Django's command-line utility for administrative tasks.\"\"\"\nimport os\nimport sys\n\n\ndef main():\n    \"\"\"Run administrative tasks.\"\"\"\n    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'hundidos.settings')\n    try:\n        from django.core.management import execute_from_command_line\n    except ImportError as exc:\n        raise ImportError(\n            \"Couldn't import Django. Are you sure it's installed and \"\n            \"available on your PYTHONPATH environment variable? Did you \"\n            \"forget to activate a virtual environment?\"\n        ) from exc\n    execute_from_command_line(sys.argv)\n\n\nif __name__ == '__main__':\n    main()"
+    },
+    {
+      "path": "hundidos/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "hundidos/settings.py",
+      "contenido": "from pathlib import Path\nimport os\nfrom datetime import timedelta\n\nBASE_DIR = Path(__file__).resolve().parent.parent\n\nSECRET_KEY = 'django-insecure-hundidos-sprint0-dev-key-change-in-production'\n\nDEBUG = True\n\nALLOWED_HOSTS = ['*']\n\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'accounts',\n    'catalog',\n    'reservations',\n    'admin_panel',\n    'core',\n]\n\nMIDDLEWARE = [\n    'django.middleware.security.SecurityMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    'django.middleware.csrf.CsrfViewMiddleware',\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n]\n\nROOT_URLCONF = 'hundidos.urls'\n\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [BASE_DIR / 'templates'],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',\n                'django.contrib.messages.context_processors.messages',\n            ],\n        },\n    },\n]\n\nWSGI_APPLICATION = 'hundidos.wsgi.application'\n\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}\n\nAUTH_PASSWORD_VALIDATORS = [\n    {\n        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',\n    },\n]\n\nLANGUAGE_CODE = 'es-es'\n\nTIME_ZONE = 'Europe/Madrid'\n\nUSE_I18N = True\n\nUSE_L10N = True\n\nUSE_TZ = True\n\nSTATIC_URL = '/static/'\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\nSTATICFILES_DIRS = [BASE_DIR / 'static']\n\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'media'\n\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n\nLOGIN_URL = 'accounts:login'\nLOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'\n\nEMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'\n\nSESSION_ENGINE = 'django.contrib.sessions.backends.db'\nSESSION_COOKIE_AGE = 86400\nSESSION_COOKIE_HTTPONLY = True\nSESSION_COOKIE_SECURE = False\n\nCSRF_COOKIE_SECURE = False\nCSRF_COOKIE_HTTPONLY = True\n\nPAYPAL_SANDBOX_MODE = True\nPAYPAL_CLIENT_ID = 'sandbox-client-id'\nPAYPAL_CLIENT_SECRET = 'sandbox-client-secret'\n\nLOGGING = {\n    'version': 1,\n    'disable_existing_loggers': False,\n    'handlers': {\n        'console': {\n            'class': 'logging.StreamHandler',\n        },\n    },\n    'root': {\n        'handlers': ['console'],\n        'level': 'INFO',\n    },\n}"
+    },
+    {
+      "path": "hundidos/urls.py",
+      "contenido": "from django.contrib import admin\nfrom django.urls import path, include\nfrom django.conf import settings\nfrom django.conf.urls.static import static\nfrom django.views.generic import TemplateView\n\nurlpatterns = [\n    path('admin/', admin.site.urls),\n    path('', TemplateView.as_view(template_name='home.html'), name='home'),\n    path('accounts/', include('accounts.urls')),\n    path('barcos/', include('catalog.urls')),\n    path('cesta/', include('reservations.urls')),\n    path('reserva/', include('reservations.urls')),\n    path('admin-panel/', include('admin_panel.urls')),\n]\n\nif settings.DEBUG:\n    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)\n    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)"
+    },
+    {
+      "path": "hundidos/wsgi.py",
+      "contenido": "import os\n\nfrom django.core.wsgi import get_wsgi_application\n\nos.environ.setdefault('DJANGO_SETTINGS_MODULE', 'hundidos.settings')\n\napplication = get_wsgi_application()"
+    },
+    {
+      "path": "hundidos/asgi.py",
+      "contenido": "import os\n\nfrom django.core.asgi import get_asgi_application\n\nos.environ.setdefault('DJANGO_SETTINGS_MODULE', 'hundidos.settings')\n\napplication = get_asgi_application()"
+    },
+    {
+      "path": "accounts/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "accounts/apps.py",
+      "contenido": "from django.apps import AppConfig\n\n\nclass AccountsConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'accounts'\n    verbose_name = 'Cuentas de Usuario'"
+    },
+    {
+      "path": "accounts/urls.py",
+      "contenido": "from django.urls import path\n\napp_name = 'accounts'\n\nurlpatterns = []"
+    },
+    {
+      "path": "catalog/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "catalog/apps.py",
+      "contenido": "from django.apps import AppConfig\n\n\nclass CatalogConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'catalog'\n    verbose_name = 'Catálogo de Barcos'"
+    },
+    {
+      "path": "catalog/urls.py",
+      "contenido": "from django.urls import path\n\napp_name = 'catalog'\n\nurlpatterns = []"
+    },
+    {
+      "path": "reservations/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "reservations/apps.py",
+      "contenido": "from django.apps import AppConfig\n\n\nclass ReservationsConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'reservations'\n    verbose_name = 'Reservas y Cesta'"
+    },
+    {
+      "path": "reservations/urls.py",
+      "contenido": "from django.urls import path\n\napp_name = 'reservations'\n\nurlpatterns = []"
+    },
+    {
+      "path": "admin_panel/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "admin_panel/apps.py",
+      "contenido": "from django.apps import AppConfig\n\n\nclass AdminPanelConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'admin_panel'\n    verbose_name = 'Panel de Administración'"
+    },
+    {
+      "path": "admin_panel/urls.py",
+      "contenido": "from django.urls import path\n\napp_name = 'admin'\n\nurlpatterns = []"
+    },
+    {
+      "path": "core/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "core/apps.py",
+      "contenido": "from django.apps import AppConfig\n\n\nclass CoreConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'core'\n    verbose_name = 'Núcleo'"
+    },
+    {
+      "path": "core/management/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "core/management/commands/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "templates/home.html",
+      "contenido": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Hundidos - Alquiler de Barcos</title>\n    <style>\n        * {\n            margin: 0;\n            padding: 0;\n            box-sizing: border-box;\n        }\n        body {\n            font-family: Arial, sans-serif;\n            background-color: #f5f5f5;\n        }\n        header {\n            background-color: #003d82;\n            color: white;\n            padding: 20px;\n            text-align: center;\n        }\n        nav {\n            background-color: #002d5c;\n            padding: 10px;\n            text-align: center;\n        }\n        nav a {\n            color: white;\n            text-decoration: none;\n            margin: 0 15px;\n            font-size: 14px;\n        }\n        nav a:hover {\n            text-decoration: underline;\n        }\n        .container {\n            max-width: 1200px;\n            margin: 40px auto;\n            padding: 20px;\n            background-color: white;\n            border-radius: 8px;\n            box-shadow: 0 2px 4px rgba(0,0,0,0.1);\n        }\n        h1 {\n            color: #003d82;\n            margin-bottom: 20px;\n        }\n        p {\n            color: #333;\n            line-height: 1.6;\n            margin-bottom: 15px;\n        }\n        .btn {\n            display: inline-block;\n            background-color: #003d82;\n            color: white;\n            padding: 10px 20px;\n            text-decoration: none;\n            border-radius: 4px;\n            margin-top: 10px;\n        }\n        .btn:hover {\n            background-color: #002d5c;\n        }\n        footer {\n            background-color: #003d82;\n            color: white;\n            text-align: center;\n            padding: 20px;\n            margin-top: 40px;\n        }\n    </style>\n</head>\n<body>\n    <header>\n        <h1>Hundidos</h1>\n        <p>Alquiler de Barcos en Línea</p>\n    </header>\n    <nav>\n        <a href=\"/\">Inicio</a>\n        <a href=\"/barcos/\">Catálogo</a>\n        <a href=\"/cesta/\">Cesta</a>\n        <a href=\"/accounts/login/\">Iniciar Sesión</a>\n        <a href=\"/accounts/registro/\">Registro</a>\n    </nav>\n    <div class=\"container\">\n        <h1>Bienvenido a Hundidos</h1>\n        <p>Somos la plataforma líder en alquiler de barcos. Explora nuestro catálogo de embarcaciones y reserva la tuya hoy mismo.</p>\n        <p>Ofrecemos una amplia variedad de barcos para todas tus necesidades, desde pequeñas embarcaciones hasta yates de lujo.</p>\n        <a href=\"/barcos/\" class=\"btn\">Ver Catálogo</a>\n    </div>\n    <footer>\n        <p>&copy; 2026 Hundidos. Todos los derechos reservados.</p>\n    </footer>\n</body>\n</html>"
+    },
+    {
+      "path": ".gitkeep",
+      "contenido": ""
+    }
+  ]
+}

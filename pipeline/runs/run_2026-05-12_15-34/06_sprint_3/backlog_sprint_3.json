@@ -1,0 +1,84 @@
+{
+  "id_ejecucion": "run_2026-05-12_15-34",
+  "numero_sprint": 3,
+  "historias": [
+    {
+      "id": "HU-14",
+      "titulo": "Cancelación de reserva en estado PENDIENTE DE PAGO",
+      "descripcion": "Como cliente, quiero cancelar mi reserva si está en estado PENDIENTE DE PAGO, para desistir de mi compra si cambio de opinión.",
+      "criterios_aceptacion": [
+        "El cliente puede cancelar una reserva únicamente si está en estado PENDIENTE DE PAGO.",
+        "Tras cancelar, la reserva se elimina del sistema.",
+        "La reserva desaparece del listado de reservas del cliente.",
+        "Se muestra un mensaje de confirmación tras la cancelación."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-15",
+      "titulo": "Recordatorio por email antes del inicio de reserva",
+      "descripcion": "Como sistema, quiero enviar un recordatorio por email al cliente si falta un día para el inicio de su reserva, para que no olvide su alquiler.",
+      "criterios_aceptacion": [
+        "Se envía un email automático si falta exactamente un día para el inicio de la reserva.",
+        "El email contiene los datos de la reserva y el código de seguimiento.",
+        "El email se envía solo si la reserva está en estado CONFIRMADA o posterior."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-16",
+      "titulo": "Consulta de estado de reserva por código de seguimiento",
+      "descripcion": "Como cliente no registrado, quiero consultar el estado de mi reserva usando el código de seguimiento recibido por email, para saber el estado de mi alquiler sin necesidad de registrarme.",
+      "criterios_aceptacion": [
+        "El cliente puede introducir un código de seguimiento en un formulario de búsqueda.",
+        "Se muestra el estado actual de la reserva (PENDIENTE DE PAGO, CONFIRMADA, CANCELADA, etc.).",
+        "Se muestran los datos de la reserva (barco, fechas, importe).",
+        "Si el código no existe, se muestra un mensaje de error."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-17",
+      "titulo": "Historial de reservas del cliente registrado",
+      "descripcion": "Como cliente registrado, quiero consultar el historial de todas mis reservas desde mi cuenta, para revisar mis alquileres anteriores y actuales.",
+      "criterios_aceptacion": [
+        "El cliente autenticado puede acceder a su historial de reservas.",
+        "Se muestran todas las reservas del cliente (pasadas, actuales y canceladas).",
+        "Cada reserva muestra el barco, fechas, importe y estado.",
+        "El cliente puede ver el código de seguimiento de cada reserva."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-18",
+      "titulo": "Gestión administrativa de reservas",
+      "descripcion": "Como administrador, quiero gestionar las reservas, ver su estado y cambiar el estado de una reserva que esté en PENDIENTE DE PAGO, para administrar los alquileres.",
+      "criterios_aceptacion": [
+        "El administrador puede ver un listado de todas las reservas del sistema.",
+        "El administrador puede ver los detalles de cada reserva (cliente, barco, fechas, estado, importe).",
+        "El administrador puede cambiar el estado de una reserva únicamente si está en PENDIENTE DE PAGO.",
+        "El administrador puede cambiar el estado a CONFIRMADA o CANCELADA.",
+        "Se muestra un mensaje de confirmación tras cambiar el estado."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "L"
+    },
+    {
+      "id": "HU-19",
+      "titulo": "Eliminación de cliente por administrador",
+      "descripcion": "Como administrador, quiero eliminar un cliente únicamente si no tiene reservas pendientes, para mantener la integridad de los datos.",
+      "criterios_aceptacion": [
+        "El administrador puede ver un listado de clientes.",
+        "El administrador puede eliminar un cliente solo si no tiene reservas pendientes.",
+        "Si el cliente tiene reservas pendientes, se muestra un mensaje indicando que no puede ser eliminado.",
+        "Tras eliminar un cliente, se muestra un mensaje de confirmación."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    }
+  ]
+}

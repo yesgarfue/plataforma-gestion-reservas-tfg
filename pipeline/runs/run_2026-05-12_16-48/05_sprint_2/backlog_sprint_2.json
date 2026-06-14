@@ -1,0 +1,97 @@
+{
+  "id_ejecucion": "run_2026-05-12_16-48",
+  "numero_sprint": 2,
+  "historias": [
+    {
+      "id": "HU-04",
+      "titulo": "Reserva sin registro previo",
+      "descripcion": "Como visitante, quiero realizar una reserva sin necesidad de registrarme previamente, para agilizar el proceso de compra.",
+      "criterios_aceptacion": [
+        "El cliente puede completar una reserva sin tener una cuenta registrada.",
+        "Se solicitan los datos del cliente durante el proceso de reserva.",
+        "El cliente recibe un código de seguimiento para consultar el estado de su reserva."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-08",
+      "titulo": "Gestión de cesta",
+      "descripcion": "Como cliente, quiero ver, modificar y vaciar mi cesta desde cualquier página, para gestionar mis compras antes de finalizar.",
+      "criterios_aceptacion": [
+        "La cesta está siempre visible desde cualquier página de la aplicación.",
+        "El usuario puede ampliar o reducir la cantidad de unidades en la cesta.",
+        "El usuario puede revisar el estado de la cesta desde el catálogo.",
+        "El usuario puede vaciar la cesta completamente.",
+        "Cuando el administrador entra en modo administrador, la cesta se vacía y no puede añadir artículos."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-09",
+      "titulo": "Proceso de reserva en tres pasos",
+      "descripcion": "Como cliente, quiero completar una reserva en no más de tres pasos sin exigir registro previo, para finalizar mi compra de forma rápida.",
+      "criterios_aceptacion": [
+        "El proceso de reserva consta de no más de tres pasos.",
+        "Se solicitan los datos del cliente durante el proceso.",
+        "Se solicitan los datos de pago durante el proceso.",
+        "El cliente puede completar la reserva sin estar registrado.",
+        "Se calcula el precio total incluyendo la tasa de combustible cuando aplique."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "L"
+    },
+    {
+      "id": "HU-10",
+      "titulo": "Métodos de pago",
+      "descripcion": "Como cliente, quiero elegir entre dos métodos de pago para completar mi reserva, para usar la opción que me resulte más conveniente.",
+      "criterios_aceptacion": [
+        "Se ofrecen dos métodos de pago: PayPal Sandbox y contra-reembolso.",
+        "El cliente puede seleccionar el método de pago durante el proceso de reserva.",
+        "El pago se procesa según el método seleccionado.",
+        "Se valida que los datos de pago sean correctos antes de procesar."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "L"
+    },
+    {
+      "id": "HU-11",
+      "titulo": "Confirmación de reserva y código de seguimiento",
+      "descripcion": "Como cliente, quiero recibir un correo electrónico con los datos de mi reserva y un código de seguimiento, para poder consultar el estado de mi pedido.",
+      "criterios_aceptacion": [
+        "Tras completar la reserva, se envía un correo electrónico al cliente.",
+        "El correo contiene los datos del barco reservado, el rango de fechas y el código de seguimiento.",
+        "El cliente recibe el código de seguimiento para consultar el estado de su reserva.",
+        "El correo se envía de forma fiable en el entorno configurado."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-12",
+      "titulo": "Cálculo de precio con tasa de combustible",
+      "descripcion": "Como sistema, quiero calcular el precio total de la reserva aplicando la tasa de combustible según la categoría del barco, para cobrar el importe correcto.",
+      "criterios_aceptacion": [
+        "Los alquileres se miden por día.",
+        "Se aplica una tasa de combustible de 50 €/día para barcos que no sean de categoría 'velero'.",
+        "Para barcos de categoría 'velero', no se aplica tasa de combustible.",
+        "El precio total se calcula correctamente en el proceso de reserva."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-13",
+      "titulo": "Estados de reserva",
+      "descripcion": "Como sistema, quiero gestionar los estados de las reservas para reflejar su ciclo de vida, desde la creación hasta la devolución.",
+      "criterios_aceptacion": [
+        "Cada reserva tiene uno de los estados: PENDIENTE DE PAGO, PAGADO, EN USO o DEVUELTO.",
+        "Una reserva puede cancelarse únicamente si está en estado PENDIENTE DE PAGO.",
+        "El estado de la reserva se actualiza correctamente en el sistema."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    }
+  ]
+}

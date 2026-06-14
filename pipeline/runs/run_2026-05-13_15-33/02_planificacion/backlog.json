@@ -1,0 +1,352 @@
+{
+  "id_ejecucion": "run_2026-05-13_15-33",
+  "historias": [
+    {
+      "id": "HU-01",
+      "titulo": "Registro de cliente",
+      "descripcion": "Como visitante, quiero registrarme con correo electrónico y contraseña, para poder acceder a mi cuenta y consultar mis reservas.",
+      "criterios_aceptacion": [
+        "El formulario de registro acepta correo electrónico y contraseña.",
+        "Las contraseñas se almacenan de forma segura, no en texto plano.",
+        "Tras registrarse, el cliente queda autenticado en la sesión.",
+        "Se valida que el correo no esté ya registrado."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-02",
+      "titulo": "Inicio de sesión",
+      "descripcion": "Como cliente registrado, quiero iniciar sesión con correo y contraseña, para acceder a las funcionalidades reservadas a usuarios autenticados.",
+      "criterios_aceptacion": [
+        "El formulario de login acepta correo y contraseña.",
+        "Tras un login correcto, el cliente accede a su cuenta.",
+        "Tras un login incorrecto, se muestra un mensaje de error genérico.",
+        "La sesión se mantiene activa durante la navegación."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "S"
+    },
+    {
+      "id": "HU-03",
+      "titulo": "Cierre de sesión",
+      "descripcion": "Como cliente autenticado, quiero cerrar sesión explícitamente, para asegurar que mi cuenta no queda accesible desde el dispositivo.",
+      "criterios_aceptacion": [
+        "El cliente puede hacer clic en un botón 'Cerrar sesión'.",
+        "Tras cerrar sesión, el cliente es redirigido a la página principal.",
+        "La sesión se invalida y el cliente no puede acceder a funcionalidades autenticadas sin volver a iniciar sesión."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "S"
+    },
+    {
+      "id": "HU-04",
+      "titulo": "Eliminación de cliente por administrador",
+      "descripcion": "Como administrador, quiero eliminar un cliente si no tiene reservas pendientes, para mantener la base de datos limpia.",
+      "criterios_aceptacion": [
+        "El administrador puede acceder a un listado de clientes desde el panel de administración.",
+        "El administrador puede eliminar un cliente solo si no tiene reservas pendientes.",
+        "Si el cliente tiene reservas pendientes, se muestra un mensaje indicando que no puede ser eliminado.",
+        "Tras la eliminación, el cliente desaparece del sistema."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-05",
+      "titulo": "Catálogo de barcos por categorías",
+      "descripcion": "Como cliente, quiero ver el catálogo de barcos organizado por categorías en la página principal, para explorar las opciones disponibles.",
+      "criterios_aceptacion": [
+        "La página principal muestra un catálogo de barcos.",
+        "Los barcos están organizados por categorías.",
+        "Cada barco muestra: nombre, imagen, categoría, fabricante, puerto, capacidad y precio por día.",
+        "El catálogo es accesible sin necesidad de autenticación."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-06",
+      "titulo": "Búsqueda y filtros combinables de barcos",
+      "descripcion": "Como cliente, quiero buscar y filtrar barcos por nombre, puertos, fabricantes, precio, categoría, capacidad y fechas, para encontrar la embarcación que se ajuste a mis necesidades.",
+      "criterios_aceptacion": [
+        "La búsqueda funciona por nombre o título del barco.",
+        "Los filtros de puertos, fabricante y precio se presentan como desplegables.",
+        "Los filtros de categoría y capacidad están disponibles.",
+        "El filtro de fechas muestra todos los barcos del catálogo; los no disponibles en ese rango aparecen marcados con una etiqueta 'No disponible'.",
+        "Los filtros son combinables entre sí.",
+        "Los resultados se actualizan al aplicar o modificar filtros."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "L"
+    },
+    {
+      "id": "HU-07",
+      "titulo": "Selección de cantidad y adición a cesta",
+      "descripcion": "Como cliente, quiero seleccionar la cantidad de unidades de un barco desde su ficha y añadirlo a la cesta, para preparar mi reserva.",
+      "criterios_aceptacion": [
+        "La ficha del barco muestra un campo para seleccionar cantidad.",
+        "El cliente puede añadir el barco a la cesta con la cantidad seleccionada.",
+        "Se muestra una confirmación de que el barco ha sido añadido a la cesta.",
+        "La cantidad debe ser un número entero positivo."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-08",
+      "titulo": "Cesta visible y modificable",
+      "descripcion": "Como cliente, quiero que la cesta esté siempre visible desde cualquier página y poder modificar las cantidades o vaciarla, para gestionar mis reservas antes de finalizar la compra.",
+      "criterios_aceptacion": [
+        "La cesta es visible desde cualquier página de la aplicación.",
+        "El cliente puede ampliar y reducir la cantidad de unidades de cada barco en la cesta.",
+        "El cliente puede revisar el estado de la cesta desde el catálogo.",
+        "El cliente puede vaciar la cesta completamente.",
+        "Se muestra el total de la cesta actualizado en tiempo real."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-09",
+      "titulo": "Vaciado de cesta al entrar como administrador",
+      "descripcion": "Como administrador, quiero que la cesta se vacíe al cambiar a modo administrador y no poder añadir barcos al carro, para evitar confusiones entre roles.",
+      "criterios_aceptacion": [
+        "Al cambiar a modo administrador, la cesta se vacía automáticamente.",
+        "El administrador no puede añadir barcos a la cesta.",
+        "Se muestra un mensaje indicando que el modo administrador no permite usar la cesta."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "S"
+    },
+    {
+      "id": "HU-10",
+      "titulo": "Proceso de reserva en tres pasos sin registro previo",
+      "descripcion": "Como cliente, quiero completar una reserva en no más de tres pasos sin necesidad de estar registrado previamente, para agilizar el proceso de compra.",
+      "criterios_aceptacion": [
+        "El proceso de reserva consta de máximo tres pasos.",
+        "El registro previo no es obligatorio para realizar una reserva.",
+        "Se solicitan los datos del cliente (nombre, correo, teléfono) durante el proceso.",
+        "Se solicitan los datos de pago durante el proceso.",
+        "El cliente puede completar la reserva sin haber creado una cuenta."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "L"
+    },
+    {
+      "id": "HU-11",
+      "titulo": "Métodos de pago: PayPal Sandbox y contra-reembolso",
+      "descripcion": "Como cliente, quiero elegir entre dos métodos de pago (PayPal Sandbox y contra-reembolso) para completar mi reserva.",
+      "criterios_aceptacion": [
+        "El cliente puede seleccionar PayPal Sandbox como método de pago.",
+        "El cliente puede seleccionar contra-reembolso como método de pago.",
+        "La integración con PayPal Sandbox permite procesar pagos en línea.",
+        "El método contra-reembolso registra la reserva sin procesar pago inmediato."
+      ],
+      "prioridad": "Media",
+      "estimacion": "L"
+    },
+    {
+      "id": "HU-12",
+      "titulo": "Correo de confirmación con código de seguimiento",
+      "descripcion": "Como cliente, quiero recibir un correo electrónico tras finalizar la reserva con los datos del barco, rango de fechas, importe total y código de seguimiento, para tener constancia de mi reserva.",
+      "criterios_aceptacion": [
+        "Al finalizar la reserva, se envía un correo electrónico al cliente.",
+        "El correo incluye los datos del barco reservado.",
+        "El correo incluye el rango de fechas de la reserva.",
+        "El correo incluye el importe total.",
+        "El correo incluye un código de seguimiento único.",
+        "El código de seguimiento permite consultar el estado de la reserva."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-13",
+      "titulo": "Tasa de combustible por día",
+      "descripcion": "Como sistema, quiero aplicar una tasa de combustible de 50 € por día a cada reserva, excepto si el barco es de categoría 'velero', para reflejar los costos operativos.",
+      "criterios_aceptacion": [
+        "Se aplica una tasa de combustible de 50 € por día a la reserva.",
+        "La tasa de combustible no se aplica si el barco es de categoría 'velero'.",
+        "El importe total de la reserva incluye la tasa de combustible calculada correctamente.",
+        "El cliente ve el desglose de costos (precio del barco + tasa de combustible) antes de confirmar."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-14",
+      "titulo": "Estados de reserva y transiciones",
+      "descripcion": "Como sistema, quiero gestionar los estados de reserva (PENDIENTE DE PAGO, PAGADO, EN USO, DEVUELTO) para controlar el ciclo de vida de cada reserva.",
+      "criterios_aceptacion": [
+        "Cada reserva tiene uno de los estados: PENDIENTE DE PAGO, PAGADO, EN USO o DEVUELTO.",
+        "Una reserva comienza en estado PENDIENTE DE PAGO.",
+        "El administrador puede cambiar el estado de una reserva desde el panel de reservas.",
+        "Las transiciones de estado se registran en el sistema."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-15",
+      "titulo": "Cancelación de reserva en estado PENDIENTE DE PAGO",
+      "descripcion": "Como cliente, quiero cancelar una reserva únicamente si está en estado PENDIENTE DE PAGO, para poder desistir antes de realizar el pago.",
+      "criterios_aceptacion": [
+        "El cliente puede cancelar una reserva solo si está en estado PENDIENTE DE PAGO.",
+        "Si la reserva está en otro estado, no aparece la opción de cancelación.",
+        "Al cancelar, la reserva se elimina del sistema.",
+        "Se muestra un mensaje de confirmación antes de cancelar."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-16",
+      "titulo": "Correo de recordatorio de pago pendiente",
+      "descripcion": "Como sistema, quiero enviar un correo de recordatorio al cliente si falta un día para el inicio de la reserva y sigue en estado PENDIENTE DE PAGO, para evitar que olvide completar el pago.",
+      "criterios_aceptacion": [
+        "El sistema identifica reservas en estado PENDIENTE DE PAGO con inicio en 24 horas.",
+        "Se envía un correo de recordatorio al cliente.",
+        "El correo incluye los datos de la reserva y un enlace para completar el pago.",
+        "El recordatorio se envía una sola vez por reserva."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-17",
+      "titulo": "Consulta de estado de reserva por código de seguimiento",
+      "descripcion": "Como cliente, quiero consultar el estado de mi reserva usando el código de seguimiento, para verificar el progreso sin necesidad de estar registrado.",
+      "criterios_aceptacion": [
+        "El cliente puede ingresar un código de seguimiento en un formulario de búsqueda.",
+        "El sistema muestra el estado actual de la reserva.",
+        "Se muestran los datos de la reserva (barco, fechas, importe).",
+        "La búsqueda es accesible sin autenticación."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-18",
+      "titulo": "Consulta de reservas del cliente autenticado",
+      "descripcion": "Como cliente registrado, quiero consultar el estado de todas mis reservas desde mi cuenta, para tener un historial de mis alquileres.",
+      "criterios_aceptacion": [
+        "El cliente autenticado puede acceder a un listado de sus reservas.",
+        "Se muestra el estado de cada reserva.",
+        "Se muestran los datos de cada reserva (barco, fechas, importe).",
+        "El cliente puede filtrar por estado de reserva."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-19",
+      "titulo": "Consulta de reservas por administrador",
+      "descripcion": "Como administrador, quiero consultar el estado de cualquier reserva en el sistema, para supervisar todas las transacciones.",
+      "criterios_aceptacion": [
+        "El administrador puede acceder a un listado de todas las reservas.",
+        "Se muestra el estado de cada reserva.",
+        "Se muestran los datos de cada reserva (cliente, barco, fechas, importe).",
+        "El administrador puede filtrar por estado, cliente o barco."
+      ],
+      "prioridad": "Media",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-20",
+      "titulo": "Panel de administración",
+      "descripcion": "Como administrador, quiero acceder a un panel de administración propio de la aplicación, para gestionar barcos, clientes y reservas.",
+      "criterios_aceptacion": [
+        "Existe un panel de administración accesible solo para administradores.",
+        "El panel proporciona acceso a la gestión de barcos.",
+        "El panel proporciona acceso a la gestión de clientes.",
+        "El panel proporciona acceso a la gestión de reservas.",
+        "El panel muestra estadísticas o resúmenes del sistema."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "L"
+    },
+    {
+      "id": "HU-21",
+      "titulo": "Gestión de barcos (alta, edición, baja)",
+      "descripcion": "Como administrador, quiero crear, editar y eliminar barcos en el sistema, para mantener el catálogo actualizado.",
+      "criterios_aceptacion": [
+        "El administrador puede crear un nuevo barco con todos sus campos (nombre, imagen, categoría, fabricante, puerto, capacidad, precio).",
+        "El administrador puede editar los datos de un barco existente.",
+        "El administrador puede eliminar un barco del catálogo.",
+        "Se valida que los datos del barco sean correctos antes de guardar.",
+        "Se muestra un mensaje de confirmación tras cada operación."
+      ],
+      "prioridad": "Media",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-22",
+      "titulo": "Configuración de zona horaria y locale",
+      "descripcion": "Como sistema, quiero operar con zona horaria Europe/Madrid y locale español, para que todas las fechas, horas y textos se muestren correctamente.",
+      "criterios_aceptacion": [
+        "La aplicación está configurada con zona horaria Europe/Madrid.",
+        "La aplicación utiliza locale español.",
+        "Las fechas y horas se muestran en formato español.",
+        "Los textos de la interfaz están en español."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "S"
+    },
+    {
+      "id": "HU-23",
+      "titulo": "Datos seed precargados",
+      "descripcion": "Como desarrollador, quiero que la aplicación arranque con datos precargados que permitan probar todas las funcionalidades sin trabajo previo, para facilitar las pruebas y demostraciones.",
+      "criterios_aceptacion": [
+        "La aplicación incluye un conjunto de barcos de ejemplo en diferentes categorías.",
+        "La aplicación incluye clientes de ejemplo.",
+        "La aplicación incluye reservas de ejemplo en diferentes estados.",
+        "Los datos seed se cargan automáticamente al iniciar la aplicación.",
+        "Los datos seed permiten probar todos los filtros y funcionalidades."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-24",
+      "titulo": "Seguridad: contraseñas, CSRF y validación",
+      "descripcion": "Como sistema, quiero implementar medidas de seguridad mínima para proteger los datos de los usuarios.",
+      "criterios_aceptacion": [
+        "Las contraseñas no se almacenan en texto plano.",
+        "La protección CSRF está activa en todos los formularios.",
+        "Se validan todos los formularios en el servidor.",
+        "Se validan los datos de entrada para prevenir inyecciones.",
+        "Los errores de validación se muestran al usuario sin revelar información sensible."
+      ],
+      "prioridad": "Media",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-25",
+      "titulo": "Empaquetado en Docker",
+      "descripcion": "Como operador, quiero que la aplicación esté empaquetada como contenedor Docker con instrucciones claras de construcción y arranque, para facilitar el despliegue.",
+      "criterios_aceptacion": [
+        "Existe un Dockerfile que define la construcción de la imagen.",
+        "Existe un README con instrucciones de construcción del contenedor.",
+        "Existe un README con instrucciones de arranque del contenedor.",
+        "El contenedor incluye todas las dependencias necesarias.",
+        "La aplicación funciona correctamente al ejecutarse desde el contenedor."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-26",
+      "titulo": "Inicio de sesión durante el proceso de reserva",
+      "descripcion": "Como cliente, quiero poder iniciar sesión durante el proceso de reserva, para acceder a mis datos guardados sin completar el registro.",
+      "criterios_aceptacion": [
+        "Durante el proceso de reserva, se ofrece la opción de iniciar sesión.",
+        "El cliente puede ingresar sus credenciales sin abandonar el flujo de reserva.",
+        "Tras iniciar sesión, los datos del cliente se cargan automáticamente.",
+        "El cliente puede continuar con la reserva sin necesidad de completar el registro."
+      ],
+      "prioridad": "Media",
+      "estimacion": "M"
+    }
+  ]
+}

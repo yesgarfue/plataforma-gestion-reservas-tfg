@@ -1,0 +1,8 @@
+# Intento fallido fase 04_sprint_1
+# regeneración humana: 0
+# intento dentro de la regeneración: 3
+# error: Excepción en kickoff: ValidationError: 1 validation error for EntregaSprint
+  Invalid JSON: EOF while parsing a string at line 1 column 25749 [type=json_invalid, input_value='{"id_ejecucion": "run_20... Barco\\nimport uuid\\n', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/json_invalid
+
+---- raw ----

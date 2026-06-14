@@ -1,0 +1,387 @@
+# src/pipeline/crews/planificacion_crew/config/tasks.yaml
+# Versión 1. Tres tasks secuenciales del PM:
+#   1. construir_backlog: produce Backlog a partir del registro de requisitos.
+#   2. planificar_sprints: produce PlanSprints a partir del backlog.
+#   3. analizar_riesgos: produce Riesgos a partir del registro + backlog + plan.
+#
+# El context entre tasks lo declara la clase PlanificacionCrew en 8e.
+# Aquí solo se definen las descripciones, esquemas de salida y el agente.
+
+# ===========================================================================
+# Task 1 — Construir backlog
+# ===========================================================================
+
+construir_backlog:
+  description: >
+    Lee el registro de requisitos del proyecto Hundidos y construye un
+    backlog de historias de usuario.
+
+    El registro es tu ÚNICA fuente. No incluyas historias que no se
+    deriven de uno o más requisitos del registro. Si algo no aparece en
+    el registro, omítelo.
+
+    REGLA DE COBERTURA. Cada área funcional reflejada en los RF del
+    registro debe estar representada por al menos una historia de
+    usuario. Las áreas funcionales esperadas, siempre que estén
+    presentes en el registro aceptado, son:
+
+      - Usuarios, registro y sesión.
+      - Catálogo y búsqueda con filtros combinables.
+      - Ficha de barco con selección de cantidad.
+      - Cesta (visibilidad permanente, modificación, vaciado al entrar
+        como administrador).
+      - Proceso de reserva y pago (con sus dos métodos de pago, correo
+        de confirmación con código de seguimiento, tasa de combustible).
+      - Estados de reserva y cancelación.
+      - Seguimiento de pedidos por código.
+      - Gestión administrativa (barcos, clientes, reservas).
+
+    Los requisitos no funcionales (RNF) del registro pueden traducirse
+    en historias propias (por ejemplo, "el equipo configura locale
+    Europe/Madrid en el proyecto Django") o en criterios de aceptación
+    de historias funcionales relacionadas. Tú decides cuál es más
+    natural caso por caso.
+
+    Umbral cuantitativo: AL MENOS 11 historias. El umbral es un piso,
+    no un techo. Si la cobertura por áreas requiere más, supera el
+    umbral.
+
+    Reglas de redacción (recordatorio):
+
+      - ID 'HU-NN' (dos dígitos), numeración continua desde 'HU-01'.
+      - Descripción en formato 'Como X, quiero Y, para Z'.
+      - Criterios de aceptación: lista no vacía, cada criterio una
+        afirmación verificable.
+      - Prioridad: 'Alta', 'Media' o 'Baja' (con mayúscula inicial).
+      - Estimación: tu juicio profesional como string ('S', 'M', 'L'
+        o '2 días', etc.). Sé consistente dentro del backlog.
+
+    Vocabulario literal del registro: 'barco', 'cliente',
+    'administrador', 'puerto', 'fabricante', 'categoría', 'reserva',
+    'código de seguimiento', 'cesta', 'velero'.
+
+    El valor del campo 'id_ejecucion' debe ser exactamente: {run_id}
+
+    ------ INICIO DEL REGISTRO DE REQUISITOS ------
+    {registro_requisitos_json}
+    ------ FIN DEL REGISTRO DE REQUISITOS ------
+
+    {feedback_humano}
+
+  expected_output: >
+    Un objeto JSON válido, y SOLO el objeto JSON. Sin prefacios, sin
+    comentarios, sin markdown, sin bloques de código ```. El objeto
+    debe ajustarse EXACTAMENTE a este esquema (el ejemplo muestra
+    2 historias solo para ilustrar la forma; tu respuesta real debe
+    contener al menos 11 historias y cubrir todas las áreas):
+
+    {
+      "id_ejecucion": "{run_id}",
+      "historias": [
+        {
+          "id": "HU-01",
+          "titulo": "Registro de cliente",
+          "descripcion": "Como visitante, quiero registrarme con correo electrónico y contraseña, para poder acceder a mi cuenta y consultar mis reservas.",
+          "criterios_aceptacion": [
+            "El formulario de registro acepta correo electrónico y contraseña.",
+            "Tras registrarse, el cliente queda autenticado en la sesión."
+          ],
+          "prioridad": "Alta",
+          "estimacion": "M"
+        },
+        {
+          "id": "HU-02",
+          "titulo": "Inicio de sesión",
+          "descripcion": "Como cliente registrado, quiero iniciar sesión con correo y contraseña, para acceder a las funcionalidades reservadas a usuarios autenticados.",
+          "criterios_aceptacion": [
+            "El formulario de login acepta correo y contraseña.",
+            "Tras un login correcto, el cliente accede a su cuenta.",
+            "Tras un login incorrecto, se muestra un mensaje de error sin revelar qué campo es incorrecto."
+          ],
+          "prioridad": "Alta",
+          "estimacion": "S"
+        }
+      ]
+    }
+
+    Reglas de formato innegociables:
+
+      - El valor de 'prioridad' debe ser exactamente una de: 'Alta',
+        'Media' o 'Baja' (con mayúscula inicial).
+      - Los IDs siguen el formato 'HU-NN' con dos dígitos, numerados
+        consecutivamente desde 01.
+      - 'criterios_aceptacion' es una lista de strings, no vacía.
+      - 'estimacion' es un string libre, no un número.
+      - No añadas campos que no aparezcan en el esquema.
+      - El valor de 'id_ejecucion' debe ser la cadena literal {run_id}.
+      - Responde SOLO con el JSON. Nada antes, nada después.
+
+  agent: pm
+
+
+# ===========================================================================
+# Task 2 — Planificar sprints
+# ===========================================================================
+
+planificar_sprints:
+  description: >
+    Has producido el backlog del proyecto Hundidos en la task anterior.
+    Ahora reparte TODAS las historias de ese backlog en EXACTAMENTE TRES
+    sprints, numerados 1, 2 y 3.
+
+    PROCEDIMIENTO OBLIGATORIO ANTES DE RESPONDER:
+
+      1. Lee el backlog recibido en el contexto.
+      2. Extrae todos sus IDs de historia en orden: HU-01, HU-02, ...
+      3. Construye tres listas 'historias_ids'.
+      4. Comprueba que la unión de las tres listas contiene TODOS los
+         IDs del backlog, una sola vez cada uno.
+      5. Si falta cualquier ID del backlog, añádelo a uno de los tres
+         sprints antes de emitir el JSON.
+
+    REGLAS DURAS DE LA PARTICIÓN:
+
+      - Cada historia del backlog aparece en EXACTAMENTE UN sprint.
+        En 'historias_ids' del sprint, referencias la historia por su
+        ID 'HU-NN'.
+      - La unión de las 'historias_ids' de los tres sprints contiene
+        TODOS los IDs del backlog. No puede quedar ninguna historia
+        sin asignar.
+      - Ninguna historia aparece en dos sprints distintos.
+      - Solo usas IDs que existan realmente en el backlog que tú
+        mismo acabas de producir. No inventes IDs.
+      - Si el backlog contiene HU-01 hasta HU-11, el plan debe contener
+        HU-01 hasta HU-11 exactamente una vez. Si contiene HU-01 hasta
+        HU-29, el plan debe contener HU-01 hasta HU-29 exactamente una
+        vez. Aplica esta regla al tamaño real del backlog recibido.
+
+    Reglas de contenido por sprint:
+
+      - Sprint 1: prioriza el camino crítico mínimo. Modelo de datos
+        básico, autenticación, catálogo, ficha de barco. Es el PMV
+        demoable.
+      - Sprint 2: añade típicamente el flujo de reserva, cesta y pago.
+      - Sprint 3: cierra cancelaciones, seguimiento, gestión
+        administrativa y pulido.
+
+    Estos repartos típicos son una guía. Si el backlog que has
+    producido sugiere otra distribución más sensata, úsala. Lo que
+    no es negociable es la partición exacta.
+
+    Cada sprint tiene:
+
+      - 'numero': 1, 2 o 3.
+      - 'objetivo': 2-4 frases que dicen qué se demuestra al cierre
+        del sprint y por qué esa agrupación de historias tiene sentido
+        en la secuencia del proyecto.
+      - 'historias_ids': lista de IDs 'HU-NN' del backlog asignados a
+        este sprint.
+      - 'entregable_verificable': qué se puede ejecutar y comprobar al
+        cerrar el sprint (p.ej. "el cliente puede registrarse, navegar
+        el catálogo y ver la ficha de un barco").
+
+    REGLA DE VALOR DEL PLAN. El plan de sprints no debe limitarse a
+    partir el backlog. Debe explicar la lógica de secuencia y producir
+    información útil para revisar y comparar runs.
+
+    Para cada sprint:
+
+      - En 'objetivo', incluye la justificación de secuencia: por qué
+        esas historias van juntas y qué dependencias preparan para los
+        sprints posteriores.
+      - En 'entregable_verificable', incluye de forma concisa:
+          1. qué funcionalidad queda operativa al cerrar el sprint;
+          2. qué dependencias técnicas o funcionales desbloquea para el
+             siguiente sprint;
+          3. checks mínimos observables para considerar cerrado el
+             sprint;
+          4. riesgo principal del sprint si ese incremento se implementa
+             mal.
+      - En 'entregable_verificable', usa exactamente estas etiquetas
+        Markdown internas, en este orden, dentro de un único string:
+        '**Funcionalidad operativa:**', '**Dependencias desbloqueadas:**',
+        '**Checks mínimos:**', '**Riesgo principal:**'.
+      - No uses listas Markdown ni saltos de sección dentro de
+        'entregable_verificable'. Debe ser un texto continuo, legible y
+        etiquetado.
+      - No añadas campos nuevos. Integra esta información dentro de los
+        campos existentes 'objetivo' y 'entregable_verificable'.
+
+    El valor del campo 'id_ejecucion' debe ser exactamente: {run_id}
+
+    {feedback_humano}
+
+  expected_output: >
+    Un objeto JSON válido, y SOLO el objeto JSON. Sin prefacios, sin
+    comentarios, sin markdown, sin bloques de código ```.
+
+    El objeto raíz contiene exactamente:
+
+      - 'id_ejecucion': la cadena literal {run_id}.
+      - 'sprints': lista de exactamente 3 objetos.
+
+    Cada objeto de 'sprints' contiene exactamente:
+
+      - 'numero': entero 1, 2 o 3.
+      - 'objetivo': objetivo verificable del sprint.
+      - 'historias_ids': lista de IDs reales del backlog asignados a
+        ese sprint.
+      - 'entregable_verificable': resultado ejecutable y comprobable al
+        cerrar ese sprint.
+
+    Reglas de contenido obligatorias:
+
+      - 'objetivo' debe incluir justificación de secuencia, no solo una
+        lista de funcionalidades.
+      - 'entregable_verificable' debe incluir funcionalidad operativa,
+        dependencias desbloqueadas, checks mínimos observables y riesgo
+        principal del sprint.
+      - 'entregable_verificable' debe usar exactamente las etiquetas
+        Markdown internas '**Funcionalidad operativa:**',
+        '**Dependencias desbloqueadas:**', '**Checks mínimos:**' y
+        '**Riesgo principal:**', en ese orden y dentro del mismo string.
+      - Los checks mínimos deben ser comprobaciones concretas, por
+        ejemplo rutas accesibles, comando seed_data ejecutable,
+        manage.py check correcto, flujo de reserva navegable, o panel
+        administrativo accesible según corresponda al sprint.
+
+    Reglas de formato innegociables:
+
+      - Exactamente 3 sprints.
+      - 'numero' es un entero (1, 2 o 3), no un string.
+      - 'historias_ids' es una lista de strings con formato 'HU-NN'.
+      - Toda historia del backlog aparece en exactamente un sprint.
+      - La unión de las tres listas 'historias_ids' debe coincidir
+        exactamente con el conjunto completo de IDs del backlog.
+      - Ninguna lista 'historias_ids' debe contener textos explicativos;
+        solo IDs reales como "HU-01", "HU-02", etc.
+      - No añadas campos que no aparezcan en el esquema.
+      - El valor de 'id_ejecucion' debe ser la cadena literal {run_id}.
+      - Responde SOLO con el JSON. Nada antes, nada después.
+
+  agent: pm
+
+
+# ===========================================================================
+# Task 3 — Analizar riesgos
+# ===========================================================================
+
+analizar_riesgos:
+  description: >
+    A partir del registro de requisitos, del backlog y del plan de
+    sprints que has producido, identifica los riesgos operativos del
+    proyecto Hundidos y propón mitigaciones concretas.
+
+    Los riesgos son riesgos del proyecto Hundidos: cosas que pueden
+    salir mal durante el desarrollo o el uso del producto. NO son
+    riesgos del proceso de generación con IA ni del experimento que
+    enmarca el desarrollo.
+
+    Áreas a cubrir (al menos un riesgo por cada área aplicable):
+
+      - Dependencias externas: PayPal Sandbox puede no estar
+        disponible durante una demo o desarrollo; el envío de correos
+        depende de un SMTP configurado; la construcción Docker
+        depende de imágenes base externas.
+      - Riesgos técnicos: Django 3.2 es versión antigua con soporte
+        limitado; SQLite tiene concurrencia limitada para reservas
+        simultáneas; los datos seed deben cargarse de forma fiable
+        en cada arranque.
+      - Riesgos de alcance: los filtros combinables son más complejos
+        de lo que aparentan; el proceso de reserva en 3 pasos sin
+        registro previo tiene casos borde; la tasa de combustible
+        con excepción para 'velero' es una regla con excepción fácil
+        de olvidar.
+      - Riesgos de proceso del proyecto: tres sprints son ajustados
+        para el alcance comprometido; el reparto entre sprints puede
+        dejar dependencias cruzadas (p.ej. el sprint del pago necesita
+        el modelo de reserva del sprint anterior).
+
+    RELACIÓN CON SPRINTS:
+
+      - Cada riesgo debe derivarse del registro, del backlog o del plan
+        de sprints.
+      - Si el riesgo afecta principalmente a un sprint concreto, empieza
+        la descripción con el marcador '[Sprint N]'.
+      - Si el riesgo afecta a todo el proyecto o no corresponde a un
+        sprint concreto, empieza la descripción con el marcador
+        '[Proyecto]'.
+      - Usa riesgos de sprint para capturar problemas de secuencia,
+        dependencias entre historias, criterios de salida y checks
+        mínimos que pueden fallar.
+      - Usa riesgos de proyecto para dependencias externas, versión de
+        framework, SQLite, Docker u otros asuntos transversales.
+      - La mitigación debe ser verificable y, cuando aplique, asociarse
+        a un check concreto del sprint o del cierre del proyecto.
+
+    Ejemplo de riesgo bien formulado:
+    "PayPal Sandbox puede no estar disponible durante una demo o
+    durante el desarrollo. Mitigación: implementar y dejar
+    completamente funcional el flujo de contra-reembolso antes de
+    abordar la integración con PayPal, para que la aplicación sea
+    demoable aunque la pasarela falle."
+
+    Umbral cuantitativo: AL MENOS 5 riesgos. El umbral es un piso,
+    no un techo.
+
+    Reglas de redacción:
+
+      - ID 'R-NN' (dos dígitos), numeración continua desde 'R-01'.
+      - Descripción concreta en 1-2 frases. Nada de "puede haber
+        retrasos" o "cambios de alcance" sin contexto del proyecto.
+      - Probabilidad: 'baja', 'media' o 'alta', en MINÚSCULA.
+      - Impacto: 'bajo', 'medio' o 'alto', en MINÚSCULA.
+      - Mitigación: una acción operativa concreta. "Hacer pruebas" no
+        es mitigación; "ejecutar manage.py check antes de cada commit
+        y bloquear merge si falla" sí lo es.
+
+    El valor del campo 'id_ejecucion' debe ser exactamente: {run_id}
+
+    {feedback_humano}
+
+  expected_output: >
+    Un objeto JSON válido, y SOLO el objeto JSON. Sin prefacios, sin
+    comentarios, sin markdown, sin bloques de código ```. El objeto
+    debe ajustarse EXACTAMENTE a este esquema (el ejemplo muestra
+    2 riesgos solo para ilustrar la forma; tu respuesta real debe
+    contener al menos 5 riesgos cubriendo las áreas relevantes):
+
+    {
+      "id_ejecucion": "{run_id}",
+      "riesgos": [
+        {
+          "id": "R-01",
+          "descripcion": "[Proyecto] PayPal Sandbox puede no estar disponible durante una demo o durante el desarrollo, bloqueando la prueba del flujo de pago.",
+          "probabilidad": "media",
+          "impacto": "alto",
+          "mitigacion": "Implementar y dejar completamente funcional el flujo de contra-reembolso antes de abordar la integración con PayPal, para que la aplicación sea demoable aunque la pasarela falle."
+        },
+        {
+          "id": "R-02",
+          "descripcion": "[Sprint 2] La tasa de combustible tiene una excepción para barcos de categoría 'velero' (0 € en lugar de 50 €/día) que es fácil de olvidar al implementar el cálculo del importe.",
+          "probabilidad": "alta",
+          "impacto": "medio",
+          "mitigacion": "Cubrir explícitamente el caso de 'velero' con un test unitario en el cálculo de la tasa antes de cerrar la historia del proceso de pago."
+        }
+      ]
+    }
+
+    Reglas de formato innegociables:
+
+      - Los IDs siguen el formato 'R-NN' con dos dígitos, numerados
+        consecutivamente desde 01.
+      - 'probabilidad' es exactamente una de: 'baja', 'media', 'alta'
+        (en MINÚSCULA, distinta capitalización que la 'prioridad' del
+        backlog).
+      - 'impacto' es exactamente una de: 'bajo', 'medio', 'alto' (en
+        MINÚSCULA).
+      - 'mitigacion' es una acción concreta, no genérica.
+      - Cada 'descripcion' empieza con '[Sprint 1]', '[Sprint 2]',
+        '[Sprint 3]' o '[Proyecto]' según corresponda.
+      - Si usas '[Sprint N]', la mitigación debe mencionar al menos un
+        check verificable del sprint afectado.
+      - No añadas campos que no aparezcan en el esquema.
+      - El valor de 'id_ejecucion' debe ser la cadena literal {run_id}.
+      - Responde SOLO con el JSON. Nada antes, nada después.
+
+  agent: pm

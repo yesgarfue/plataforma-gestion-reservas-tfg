@@ -1,0 +1,237 @@
+{
+  "id_ejecucion": "run_2026-05-14_16-53",
+  "codigo_dir": "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-14_16-53\\06_sprint_3\\codigo",
+  "copia_validacion_dir": "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-14_16-53\\99_cierre\\_validacion_tmp\\codigo",
+  "ok_global": false,
+  "check": {
+    "nombre": "check",
+    "comando": [
+      "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Scripts\\python.exe",
+      "manage.py",
+      "check"
+    ],
+    "ejecutado": true,
+    "ok": true,
+    "returncode": 0,
+    "stdout_resumen": "System check identified no issues (0 silenced).",
+    "stderr_resumen": "",
+    "timeout_s": 60,
+    "timeout": false,
+    "motivo_no_ejecutado": ""
+  },
+  "migraciones": {
+    "ok": true,
+    "apps_con_modelos": [
+      "accounts",
+      "catalog",
+      "reservations"
+    ],
+    "apps_con_migraciones": [
+      "accounts",
+      "catalog",
+      "reservations"
+    ],
+    "apps_sin_migraciones": []
+  },
+  "migrate": {
+    "nombre": "migrate",
+    "comando": [
+      "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Scripts\\python.exe",
+      "manage.py",
+      "migrate",
+      "--noinput"
+    ],
+    "ejecutado": true,
+    "ok": true,
+    "returncode": 0,
+    "stdout_resumen": "Operations to perform:\n  Apply all migrations: accounts, admin, auth, catalog, contenttypes, reservations, sessions\nRunning migrations:\n  Applying contenttypes.0001_initial... OK\n  Applying auth.0001_initial... OK\n  Applying accounts.0001_initial... OK\n  Applying admin.0001_initial... OK\n  Applying admin.0002_logentry_remove_auto_add... OK\n  Applying admin.0003_logentry_add_action_flag_choices... OK\n  Applying contenttypes.0002_remove_content_type_name... OK\n  Applying auth.0002_alter_permission_name_max_length... OK\n  Applying auth.0003_alter_user_email_max_length... OK\n  Applying auth.0004_alter_user_username_opts... OK\n  Applying auth.0005_alter_user_last_login_null... OK\n  Applying auth.0006_require_contenttypes_0002... OK\n  Applying auth.0007_alter_validators_add_error_messages... OK\n  Applying auth.0008_alter_user_username_max_length... OK\n  Applying auth.0009_alter_user_last_name_max_length... OK\n  Applying auth.0010_alter_group_name_max_length... OK\n  Applying auth.0011_update_proxy_permissions... OK\n  Applying auth.0012_alter_user_first_name_max_length... OK\n  Applying catalog.0001_initial... OK\n  Applying reservations.0001_initial... OK\n  Applying reservations.0002_reserva_cancelada... OK\n  Applying sessions.0001_initial... OK",
+    "stderr_resumen": "",
+    "timeout_s": 60,
+    "timeout": false,
+    "motivo_no_ejecutado": ""
+  },
+  "seed_data": {
+    "nombre": "seed_data",
+    "comando": [
+      "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Scripts\\python.exe",
+      "manage.py",
+      "seed_data"
+    ],
+    "ejecutado": true,
+    "ok": false,
+    "returncode": 1,
+    "stdout_resumen": "",
+    "stderr_resumen": "Unknown command: 'seed_data'\nType 'manage.py help' for usage.",
+    "timeout_s": 60,
+    "timeout": false,
+    "motivo_no_ejecutado": ""
+  },
+  "runserver": {
+    "nombre": "runserver",
+    "comando": [
+      "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Scripts\\python.exe",
+      "manage.py",
+      "runserver",
+      "127.0.0.1:62357",
+      "--noreload"
+    ],
+    "ejecutado": true,
+    "ok": true,
+    "returncode": 0,
+    "stdout_resumen": "",
+    "stderr_resumen": "[14/May/2026 17:17:36] \"GET / HTTP/1.1\" 200 6301\n[14/May/2026 17:17:36] \"GET / HTTP/1.1\" 200 6301\n[14/May/2026 17:17:36] \"GET /barcos/ HTTP/1.1\" 200 8001\nNot Found: /cesta/\n[14/May/2026 17:17:36] \"GET /cesta/ HTTP/1.1\" 404 2897\n[14/May/2026 17:17:36] \"GET /accounts/registro/ HTTP/1.1\" 200 6345\n[14/May/2026 17:17:36] \"GET /accounts/login/ HTTP/1.1\" 200 6060\n[14/May/2026 17:17:36] \"GET /reserva/paso1/ HTTP/1.1\" 302 0\n[14/May/2026 17:17:36] \"GET /reserva/paso2/ HTTP/1.1\" 302 0\n[14/May/2026 17:17:36] \"GET /reserva/paso3/ HTTP/1.1\" 302 0\n[14/May/2026 17:17:36] \"GET /admin/ HTTP/1.1\" 302 0\n[14/May/2026 17:17:36] \"GET /admin-panel/ HTTP/1.1\" 302 0",
+    "timeout_s": 20,
+    "timeout": false,
+    "motivo_no_ejecutado": ""
+  },
+  "rutas": [
+    {
+      "path": "/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:62357/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/barcos/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:62357/barcos/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/cesta/",
+      "ejecutado": true,
+      "ok": false,
+      "status_code": 404,
+      "final_url": "",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/accounts/registro/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:62357/accounts/registro/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/accounts/login/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:62357/accounts/login/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/reserva/paso1/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 302,
+      "final_url": "/reserva/cesta/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/reserva/paso2/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 302,
+      "final_url": "/reserva/paso1/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/reserva/paso3/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 302,
+      "final_url": "/reserva/paso1/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/admin/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 302,
+      "final_url": "/admin/login/?next=/admin/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/admin-panel/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 302,
+      "final_url": "/accounts/login/?next=/admin-panel/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    }
+  ],
+  "templates": [
+    {
+      "template": "reservations/checkout_step3.html",
+      "ejecutado": true,
+      "ok": false,
+      "error": "Traceback (most recent call last):\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-14_16-53\\99_cierre\\_validacion_tmp\\codigo\\manage.py\", line 22, in <module>\n    main()\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-14_16-53\\99_cierre\\_validacion_tmp\\codigo\\manage.py\", line 18, in main\n    execute_from_command_line(sys.argv)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\__init__.py\", line 419, in execute_from_command_line\n    utility.execute()\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\__init__.py\", line 413, in execute\n    self.fetch_command(subcommand).run_from_argv(self.argv)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 354, in run_from_argv\n    self.execute(*args, **cmd_options)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 398, in execute\n    output = self.handle(*args, **options)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\commands\\shell.py\", line 87, in handle\n    exec(options['command'], globals())\n  File \"<string>\", line 2, in <module>\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\loader.py\", line 19, in get_template\n    raise TemplateDoesNotExist(template_name, chain=chain)\ndjango.template.exceptions.TemplateDoesNotExist: reservations/checkout_step3.html",
+      "motivo_no_ejecutado": ""
+    }
+  ],
+  "preparacion_manual_requerida": [],
+  "observaciones": [],
+  "review_final": {
+    "protocolo_validacion": "validacion_final_v1",
+    "checks_planificados": [
+      "check",
+      "migraciones",
+      "migrate",
+      "seed_data",
+      "runserver",
+      "ruta:/",
+      "ruta:/barcos/",
+      "ruta:/cesta/",
+      "ruta:/accounts/registro/",
+      "ruta:/accounts/login/",
+      "ruta:/reserva/paso1/",
+      "ruta:/reserva/paso2/",
+      "ruta:/reserva/paso3/",
+      "ruta:/admin/",
+      "ruta:/admin-panel/",
+      "template:reservations/checkout_step3.html"
+    ],
+    "checks_ejecutados": [
+      "check",
+      "migrate",
+      "seed_data",
+      "runserver",
+      "migraciones",
+      "ruta:/",
+      "ruta:/barcos/",
+      "ruta:/cesta/",
+      "ruta:/accounts/registro/",
+      "ruta:/accounts/login/",
+      "ruta:/reserva/paso1/",
+      "ruta:/reserva/paso2/",
+      "ruta:/reserva/paso3/",
+      "ruta:/admin/",
+      "ruta:/admin-panel/",
+      "template:reservations/checkout_step3.html"
+    ],
+    "checks_no_ejecutados": {},
+    "incidencias": [
+      "seed_data no se ejecuto correctamente o no existe.",
+      "Ruta /cesta/ no supero smoke test: status 404.",
+      "Template reservations/checkout_step3.html no compila: Traceback (most recent call last):\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-14_16-53\\99_cierre\\_validacion_tmp\\codigo\\manage.py\", line 22, in <module>\n    main()\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-14_16-53\\99_cierre\\_validacion_tmp\\codigo\\manage.py\", line 18, in main\n    execute_from_command_line(sys.argv)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\__init__.py\", line 419, in execute_from_command_line\n    utility.execute()\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\__init__.py\", line 413, in execute\n    self.fetch_command(subcommand).run_from_argv(self.argv)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 354, in run_from_argv\n    self.execute(*args, **cmd_options)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 398, in execute\n    output = self.handle(*args, **options)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\commands\\shell.py\", line 87, in handle\n    exec(options['command'], globals())\n  File \"<string>\", line 2, in <module>\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\loader.py\", line 19, in get_template\n    raise TemplateDoesNotExist(template_name, chain=chain)\ndjango.template.exceptions.TemplateDoesNotExist: reservations/checkout_step3.html."
+    ],
+    "factores_bloqueantes": [],
+    "clasificacion": "parcial_con_incidencias"
+  }
+}

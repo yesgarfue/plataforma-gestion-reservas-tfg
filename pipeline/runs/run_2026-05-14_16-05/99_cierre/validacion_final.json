@@ -1,0 +1,255 @@
+{
+  "id_ejecucion": "run_2026-05-14_16-05",
+  "codigo_dir": "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-14_16-05\\06_sprint_3\\codigo",
+  "copia_validacion_dir": "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-14_16-05\\99_cierre\\_validacion_tmp\\codigo",
+  "ok_global": false,
+  "check": {
+    "nombre": "check",
+    "comando": [
+      "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Scripts\\python.exe",
+      "manage.py",
+      "check"
+    ],
+    "ejecutado": true,
+    "ok": false,
+    "returncode": 1,
+    "stdout_resumen": "",
+    "stderr_resumen": "Traceback (most recent call last):\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-14_16-05\\99_cierre\\_validacion_tmp\\codigo\\manage.py\", line 22, in <module>\n    main()\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-14_16-05\\99_cierre\\_validacion_tmp\\codigo\\manage.py\", line 18, in main\n    execute_from_command_line(sys.argv)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\__init__.py\", line 419, in execute_from_command_line\n    utility.execute()\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\__init__.py\", line 413, in execute\n    self.fetch_command(subcommand).run_from_argv(self.argv)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 354, in run_from_argv\n    self.execute(*args, **cmd_options)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 398, in execute\n    output = self.handle(*args, **options)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\commands\\check.py\", line 63, in handle\n    self.check(\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 419, in check\n    all_issues = checks.run_checks(\n                 ^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\checks\\registry.py\", line 76, in run_checks\n    new_errors = check(app_configs=app_configs, databases=databases)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\checks\\urls.py\", line 13, in check_url_config\n    return check_resolver(resolver)\n           ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\checks\\urls.py\", line 23, in check_resolver\n    return check_method()\n           ^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\urls\\resolvers.py\", line 412, in check\n    for pattern in self.url_patterns:\n                   ^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\utils\\functional.py\", line 48, in __get__\n    res = instance.__dict__[self.name] = self.func(instance)\n                                         ^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\urls\\resolvers.py\", line 598, in url_patterns\n    patterns = getattr(self.urlconf_module, \"urlpatterns\", self.urlconf_module)\n                       ^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\utils\\functional.py\", line 48, in __get__\n    res = instance.__dict__[self.name] = self.func(instance)\n                                         ^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\urls\\resolvers.py\", line 591, in urlconf_module\n    return import_module(self.urlconf_name)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Yesi\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\__init__.py\", line 126, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1204, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1176, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1147, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 690, in _load_unlocked\n  File \"<frozen importlib._bootstra\n...[salida truncada]...",
+    "timeout_s": 60,
+    "timeout": false,
+    "motivo_no_ejecutado": ""
+  },
+  "migraciones": {
+    "ok": true,
+    "apps_con_modelos": [
+      "accounts",
+      "catalog",
+      "reservations"
+    ],
+    "apps_con_migraciones": [
+      "accounts",
+      "catalog",
+      "reservations"
+    ],
+    "apps_sin_migraciones": []
+  },
+  "migrate": {
+    "nombre": "migrate",
+    "comando": [
+      "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Scripts\\python.exe",
+      "manage.py",
+      "migrate",
+      "--noinput"
+    ],
+    "ejecutado": true,
+    "ok": false,
+    "returncode": 1,
+    "stdout_resumen": "",
+    "stderr_resumen": "Traceback (most recent call last):\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-14_16-05\\99_cierre\\_validacion_tmp\\codigo\\manage.py\", line 22, in <module>\n    main()\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-14_16-05\\99_cierre\\_validacion_tmp\\codigo\\manage.py\", line 18, in main\n    execute_from_command_line(sys.argv)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\__init__.py\", line 419, in execute_from_command_line\n    utility.execute()\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\__init__.py\", line 413, in execute\n    self.fetch_command(subcommand).run_from_argv(self.argv)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 354, in run_from_argv\n    self.execute(*args, **cmd_options)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 398, in execute\n    output = self.handle(*args, **options)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 89, in wrapped\n    res = handle_func(*args, **kwargs)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\commands\\migrate.py\", line 75, in handle\n    self.check(databases=[database])\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 419, in check\n    all_issues = checks.run_checks(\n                 ^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\checks\\registry.py\", line 76, in run_checks\n    new_errors = check(app_configs=app_configs, databases=databases)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\checks\\urls.py\", line 13, in check_url_config\n    return check_resolver(resolver)\n           ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\checks\\urls.py\", line 23, in check_resolver\n    return check_method()\n           ^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\urls\\resolvers.py\", line 412, in check\n    for pattern in self.url_patterns:\n                   ^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\utils\\functional.py\", line 48, in __get__\n    res = instance.__dict__[self.name] = self.func(instance)\n                                         ^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\urls\\resolvers.py\", line 598, in url_patterns\n    patterns = getattr(self.urlconf_module, \"urlpatterns\", self.urlconf_module)\n                       ^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\utils\\functional.py\", line 48, in __get__\n    res = instance.__dict__[self.name] = self.func(instance)\n                                         ^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\urls\\resolvers.py\", line 591, in urlconf_module\n    return import_module(self.urlconf_name)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Yesi\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\__init__.py\", line 126, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1204, in _gcd_import\n  File \"<fr\n...[salida truncada]...",
+    "timeout_s": 60,
+    "timeout": false,
+    "motivo_no_ejecutado": ""
+  },
+  "seed_data": {
+    "nombre": "seed_data",
+    "comando": [
+      "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Scripts\\python.exe",
+      "manage.py",
+      "seed_data"
+    ],
+    "ejecutado": true,
+    "ok": false,
+    "returncode": 1,
+    "stdout_resumen": "",
+    "stderr_resumen": "Traceback (most recent call last):\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-14_16-05\\99_cierre\\_validacion_tmp\\codigo\\manage.py\", line 22, in <module>\n    main()\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-14_16-05\\99_cierre\\_validacion_tmp\\codigo\\manage.py\", line 18, in main\n    execute_from_command_line(sys.argv)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\__init__.py\", line 419, in execute_from_command_line\n    utility.execute()\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\__init__.py\", line 413, in execute\n    self.fetch_command(subcommand).run_from_argv(self.argv)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 354, in run_from_argv\n    self.execute(*args, **cmd_options)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 393, in execute\n    self.check()\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 419, in check\n    all_issues = checks.run_checks(\n                 ^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\checks\\registry.py\", line 76, in run_checks\n    new_errors = check(app_configs=app_configs, databases=databases)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\checks\\urls.py\", line 13, in check_url_config\n    return check_resolver(resolver)\n           ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\checks\\urls.py\", line 23, in check_resolver\n    return check_method()\n           ^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\urls\\resolvers.py\", line 412, in check\n    for pattern in self.url_patterns:\n                   ^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\utils\\functional.py\", line 48, in __get__\n    res = instance.__dict__[self.name] = self.func(instance)\n                                         ^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\urls\\resolvers.py\", line 598, in url_patterns\n    patterns = getattr(self.urlconf_module, \"urlpatterns\", self.urlconf_module)\n                       ^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\utils\\functional.py\", line 48, in __get__\n    res = instance.__dict__[self.name] = self.func(instance)\n                                         ^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\urls\\resolvers.py\", line 591, in urlconf_module\n    return import_module(self.urlconf_name)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Yesi\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\__init__.py\", line 126, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1204, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1176, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1147, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 690, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 940, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-14_16-05\\99_cierre\\_validacion_tmp\\codigo\n...[salida truncada]...",
+    "timeout_s": 60,
+    "timeout": false,
+    "motivo_no_ejecutado": ""
+  },
+  "runserver": {
+    "nombre": "runserver",
+    "comando": [
+      "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Scripts\\python.exe",
+      "manage.py",
+      "runserver",
+      "127.0.0.1:64183",
+      "--noreload"
+    ],
+    "ejecutado": true,
+    "ok": false,
+    "returncode": 1,
+    "stdout_resumen": "Performing system checks...",
+    "stderr_resumen": "Traceback (most recent call last):\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-14_16-05\\99_cierre\\_validacion_tmp\\codigo\\manage.py\", line 22, in <module>\n    main()\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-14_16-05\\99_cierre\\_validacion_tmp\\codigo\\manage.py\", line 18, in main\n    execute_from_command_line(sys.argv)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\__init__.py\", line 419, in execute_from_command_line\n    utility.execute()\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\__init__.py\", line 413, in execute\n    self.fetch_command(subcommand).run_from_argv(self.argv)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 354, in run_from_argv\n    self.execute(*args, **cmd_options)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\commands\\runserver.py\", line 61, in execute\n    super().execute(*args, **options)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 398, in execute\n    output = self.handle(*args, **options)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\commands\\runserver.py\", line 96, in handle\n    self.run(**options)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\commands\\runserver.py\", line 105, in run\n    self.inner_run(None, **options)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\commands\\runserver.py\", line 118, in inner_run\n    self.check(display_num_errors=True)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 419, in check\n    all_issues = checks.run_checks(\n                 ^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\checks\\registry.py\", line 76, in run_checks\n    new_errors = check(app_configs=app_configs, databases=databases)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\checks\\urls.py\", line 13, in check_url_config\n    return check_resolver(resolver)\n           ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\checks\\urls.py\", line 23, in check_resolver\n    return check_method()\n           ^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\urls\\resolvers.py\", line 412, in check\n    for pattern in self.url_patterns:\n                   ^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\utils\\functional.py\", line 48, in __get__\n    res = instance.__dict__[self.name] = self.func(instance)\n                                         ^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\urls\\resolvers.py\", line 598, in url_patterns\n    patterns = getattr(self.urlconf_module, \"urlpatterns\", self.urlconf_module)\n                       ^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\utils\\functional.py\", line 48, in __get__\n    res = instance.__dict__[self.name] = self.func(instance)\n                                         ^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\urls\\resolvers.py\", line 591, in urlconf_module\n    return import_module(self.urlconf_name)\n           ^^^^^^^^^^^^\n...[salida truncada]...",
+    "timeout_s": 20,
+    "timeout": true,
+    "motivo_no_ejecutado": ""
+  },
+  "rutas": [
+    {
+      "path": "/",
+      "ejecutado": false,
+      "ok": false,
+      "status_code": null,
+      "final_url": "",
+      "error": "",
+      "motivo_no_ejecutado": "runserver no arranco correctamente"
+    },
+    {
+      "path": "/barcos/",
+      "ejecutado": false,
+      "ok": false,
+      "status_code": null,
+      "final_url": "",
+      "error": "",
+      "motivo_no_ejecutado": "runserver no arranco correctamente"
+    },
+    {
+      "path": "/cesta/",
+      "ejecutado": false,
+      "ok": false,
+      "status_code": null,
+      "final_url": "",
+      "error": "",
+      "motivo_no_ejecutado": "runserver no arranco correctamente"
+    },
+    {
+      "path": "/accounts/registro/",
+      "ejecutado": false,
+      "ok": false,
+      "status_code": null,
+      "final_url": "",
+      "error": "",
+      "motivo_no_ejecutado": "runserver no arranco correctamente"
+    },
+    {
+      "path": "/accounts/login/",
+      "ejecutado": false,
+      "ok": false,
+      "status_code": null,
+      "final_url": "",
+      "error": "",
+      "motivo_no_ejecutado": "runserver no arranco correctamente"
+    },
+    {
+      "path": "/reserva/paso1/",
+      "ejecutado": false,
+      "ok": false,
+      "status_code": null,
+      "final_url": "",
+      "error": "",
+      "motivo_no_ejecutado": "runserver no arranco correctamente"
+    },
+    {
+      "path": "/reserva/paso2/",
+      "ejecutado": false,
+      "ok": false,
+      "status_code": null,
+      "final_url": "",
+      "error": "",
+      "motivo_no_ejecutado": "runserver no arranco correctamente"
+    },
+    {
+      "path": "/reserva/paso3/",
+      "ejecutado": false,
+      "ok": false,
+      "status_code": null,
+      "final_url": "",
+      "error": "",
+      "motivo_no_ejecutado": "runserver no arranco correctamente"
+    },
+    {
+      "path": "/admin/",
+      "ejecutado": false,
+      "ok": false,
+      "status_code": null,
+      "final_url": "",
+      "error": "",
+      "motivo_no_ejecutado": "runserver no arranco correctamente"
+    },
+    {
+      "path": "/admin-panel/",
+      "ejecutado": false,
+      "ok": false,
+      "status_code": null,
+      "final_url": "",
+      "error": "",
+      "motivo_no_ejecutado": "runserver no arranco correctamente"
+    }
+  ],
+  "templates": [
+    {
+      "template": "reservations/checkout_step3.html",
+      "ejecutado": true,
+      "ok": false,
+      "error": "Traceback (most recent call last):\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-14_16-05\\99_cierre\\_validacion_tmp\\codigo\\manage.py\", line 22, in <module>\n    main()\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-14_16-05\\99_cierre\\_validacion_tmp\\codigo\\manage.py\", line 18, in main\n    execute_from_command_line(sys.argv)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\__init__.py\", line 419, in execute_from_command_line\n    utility.execute()\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\__init__.py\", line 413, in execute\n    self.fetch_command(subcommand).run_from_argv(self.argv)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 354, in run_from_argv\n    self.execute(*args, **cmd_options)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 398, in execute\n    output = self.handle(*args, **options)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\commands\\shell.py\", line 87, in handle\n    exec(options['command'], globals())\n  File \"<string>\", line 2, in <module>\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\loader.py\", line 19, in get_template\n    raise TemplateDoesNotExist(template_name, chain=chain)\ndjango.template.exceptions.TemplateDoesNotExist: reservations/checkout_step3.html",
+      "motivo_no_ejecutado": ""
+    }
+  ],
+  "preparacion_manual_requerida": [
+    "El `migrate` estandar no fue correcto. No se ejecuta `migrate --run-syncdb` como correccion dentro del validador."
+  ],
+  "observaciones": [],
+  "review_final": {
+    "protocolo_validacion": "validacion_final_v1",
+    "checks_planificados": [
+      "check",
+      "migraciones",
+      "migrate",
+      "seed_data",
+      "runserver",
+      "ruta:/",
+      "ruta:/barcos/",
+      "ruta:/cesta/",
+      "ruta:/accounts/registro/",
+      "ruta:/accounts/login/",
+      "ruta:/reserva/paso1/",
+      "ruta:/reserva/paso2/",
+      "ruta:/reserva/paso3/",
+      "ruta:/admin/",
+      "ruta:/admin-panel/",
+      "template:reservations/checkout_step3.html"
+    ],
+    "checks_ejecutados": [
+      "check",
+      "migrate",
+      "seed_data",
+      "runserver",
+      "migraciones",
+      "template:reservations/checkout_step3.html"
+    ],
+    "checks_no_ejecutados": {
+      "ruta:/": "runserver no arranco correctamente",
+      "ruta:/barcos/": "runserver no arranco correctamente",
+      "ruta:/cesta/": "runserver no arranco correctamente",
+      "ruta:/accounts/registro/": "runserver no arranco correctamente",
+      "ruta:/accounts/login/": "runserver no arranco correctamente",
+      "ruta:/reserva/paso1/": "runserver no arranco correctamente",
+      "ruta:/reserva/paso2/": "runserver no arranco correctamente",
+      "ruta:/reserva/paso3/": "runserver no arranco correctamente",
+      "ruta:/admin/": "runserver no arranco correctamente",
+      "ruta:/admin-panel/": "runserver no arranco correctamente"
+    },
+    "incidencias": [
+      "manage.py check no fue correcto.",
+      "manage.py migrate --noinput no fue correcto.",
+      "seed_data no se ejecuto correctamente o no existe.",
+      "runserver no arranco correctamente.",
+      "Ruta / no supero smoke test: runserver no arranco correctamente.",
+      "Ruta /barcos/ no supero smoke test: runserver no arranco correctamente.",
+      "Ruta /cesta/ no supero smoke test: runserver no arranco correctamente.",
+      "Ruta /accounts/registro/ no supero smoke test: runserver no arranco correctamente.",
+      "Ruta /accounts/login/ no supero smoke test: runserver no arranco correctamente.",
+      "Ruta /reserva/paso1/ no supero smoke test: runserver no arranco correctamente.",
+      "Ruta /reserva/paso2/ no supero smoke test: runserver no arranco correctamente.",
+      "Ruta /reserva/paso3/ no supero smoke test: runserver no arranco correctamente.",
+      "Ruta /admin/ no supero smoke test: runserver no arranco correctamente.",
+      "Ruta /admin-panel/ no supero smoke test: runserver no arranco correctamente.",
+      "Template reservations/checkout_step3.html no compila: Traceback (most recent call last):\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-14_16-05\\99_cierre\\_validacion_tmp\\codigo\\manage.py\", line 22, in <module>\n    main()\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-14_16-05\\99_cierre\\_validacion_tmp\\codigo\\manage.py\", line 18, in main\n    execute_from_command_line(sys.argv)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\__init__.py\", line 419, in execute_from_command_line\n    utility.execute()\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\__init__.py\", line 413, in execute\n    self.fetch_command(subcommand).run_from_argv(self.argv)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 354, in run_from_argv\n    self.execute(*args, **cmd_options)\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\base.py\", line 398, in execute\n    output = self.handle(*args, **options)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\core\\management\\commands\\shell.py\", line 87, in handle\n    exec(options['command'], globals())\n  File \"<string>\", line 2, in <module>\n  File \"D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Lib\\site-packages\\django\\template\\loader.py\", line 19, in get_template\n    raise TemplateDoesNotExist(template_name, chain=chain)\ndjango.template.exceptions.TemplateDoesNotExist: reservations/checkout_step3.html."
+    ],
+    "factores_bloqueantes": [
+      "El proyecto no supera manage.py check.",
+      "El servidor Django no arranca para smoke tests."
+    ],
+    "clasificacion": "bloqueado_arranque"
+  }
+}

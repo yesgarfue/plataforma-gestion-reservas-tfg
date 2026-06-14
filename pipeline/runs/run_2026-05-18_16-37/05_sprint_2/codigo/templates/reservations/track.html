@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block title %}Seguimiento de Reserva - Hundidos{% endblock %}
+
+{% block content %}
+<div style="max-width: 700px; margin: 40px auto;">
+    <h2>Seguimiento de Reserva</h2>
+    
+    <div style="background-color: white; padding: 30px; border-radius: 8px; margin-bottom: 30px;">
+        <form method="post">
+            {% csrf_token %}
+            <div style="margin-bottom: 15px;">
+                <label for="codigo_seguimiento"><strong>Ingresa tu código de seguimiento:</strong></label>
+                <input type="text" id="codigo_seguimiento" name="codigo_seguimiento" placeholder="Ej: ABC12345" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; margin-top: 10px; font-size: 14px;">
+            </div>
+            <button type="submit" class="btn" style="width: 100%; padding: 12px;">Buscar Reserva</button>
+        </form>
+    </div>
+    
+    {% if reserva %}
+        <div style="background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            <h3>Detalles de tu Reserva</h3>
+            
+            <div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #ddd;">
+                <p><strong>Código de Seguimiento:</strong> {{ reserva.codigo_seguimiento }}</p>
+                <p><strong>Fecha de Creación:</strong> {{ reserva.created_at|date:"d/m/Y H:i" }}</p>
+            </div>
+            
+            <div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #ddd;">
+                <h4>Estado de la Reserva</h4>
+                <p style="font-size: 18px; color: #003d82; font-weight: bold;">{{ reserva.get_estado_display }}</p>
+            </div>
+            
+            <div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #ddd;">
+                <h4>Datos del Cliente</h4>
+                <p><strong>Nombre:</strong> {{ reserva.nombre_cliente }}</p>
+                <p><strong>Correo:</strong> {{ reserva.email_cliente }}</p>
+                <p><strong>Teléfono:</strong> {{ reserva.telefono_cliente|default:"No proporcionado" }}</p>
+            </div>
+            
+            <div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #ddd;">
+                <h4>Fechas de Alquiler</h4>
+                <p><strong>Fecha de Inicio:</strong> {{ reserva.fecha_inicio|date:"d/m/Y" }}</p>
+                <p><strong>Fecha de Fin:</strong> {{ reserva.fecha_fin|date:"d/m/Y" }}</p>
+            </div>
+            
+            <div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #ddd;">
+                <h4>Barcos Reservados</h4>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: #f5f5f5;">
+                            <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">Barco</th>
+                            <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">Cantidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for linea in reserva.lineas.all %}
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 8px;">{{ linea.barco.nombre }}</td>
+                                <td style="padding: 8px;">{{ linea.cantidad }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+            <div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #ddd;">
+                <h4>Importe Total</h4>
+                <p style="font-size: 18px; color: #003d82; font-weight: bold;">€{{ reserva.importe_total }}</p>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <h4>Método de Pago</h4>
+                <p>{{ reserva.get_metodo_pago_display }}</p>
+            </div>
+            
+            {% if reserva.estado == 'PENDIENTE_DE_PAGO' %}
+                <div style="background-color: #fff3cd; padding: 15px; border-radius: 4px; margin-top: 20px;">
+                    <p style="color: #856404; margin: 0;"><strong>Nota:</strong> Tu reserva está pendiente de pago. Por favor, completa el pago para confirmar tu alquiler.</p>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+
+<style>
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    textarea,
+    select {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    textarea:focus,
+    select:focus {
+        outline: none;
+        border-color: #003d82;
+        box-shadow: 0 0 5px rgba(0, 61, 130, 0.3);
+    }
+</style>
+{% endblock %}

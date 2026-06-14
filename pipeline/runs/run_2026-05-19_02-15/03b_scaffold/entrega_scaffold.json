@@ -1,0 +1,138 @@
+{
+  "id_ejecucion": "run_2026-05-19_02-15",
+  "numero_sprint": 0,
+  "archivos": [
+    {
+      "path": "manage.py",
+      "contenido": "#!/usr/bin/env python\n\"\"\"Django's command-line utility for administrative tasks.\"\"\"\nimport os\nimport sys\n\n\ndef main():\n    \"\"\"Run administrative tasks.\"\"\"\n    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'hundidos.settings')\n    try:\n        from django.core.management import execute_from_command_line\n    except ImportError as exc:\n        raise ImportError(\n            \"Couldn't import Django. Are you sure it's installed and \"\n            \"available on your PYTHONPATH environment variable? Did you \"\n            \"forget to activate a virtual environment?\"\n        ) from exc\n    execute_from_command_line(sys.argv)\n\n\nif __name__ == '__main__':\n    main()"
+    },
+    {
+      "path": "hundidos/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "hundidos/settings.py",
+      "contenido": "from pathlib import Path\nimport os\nfrom datetime import timedelta\n\nBASE_DIR = Path(__file__).resolve().parent.parent\n\nSECRET_KEY = 'django-insecure-scaffold-sprint0-hundidos-2026'\n\nDEBUG = True\n\nALLOWED_HOSTS = ['*']\n\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'accounts',\n    'catalog',\n    'cart',\n    'reservations',\n    'payments',\n    'admin_panel',\n    'core',\n]\n\nMIDDLEWARE = [\n    'django.middleware.security.SecurityMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    'django.middleware.csrf.CsrfViewMiddleware',\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n]\n\nROOT_URLCONF = 'hundidos.urls'\n\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [os.path.join(BASE_DIR, 'templates')],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',\n                'django.contrib.messages.context_processors.messages',\n            ],\n        },\n    },\n]\n\nWSGI_APPLICATION = 'hundidos.wsgi.application'\n\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}\n\nAUTH_PASSWORD_VALIDATORS = [\n    {\n        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',\n    },\n]\n\nLANGUAGE_CODE = 'es-es'\n\nTIME_ZONE = 'Europe/Madrid'\n\nUSE_I18N = True\n\nUSE_L10N = True\n\nUSE_TZ = True\n\nSTATIC_URL = '/static/'\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\nSTATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]\n\nMEDIA_URL = '/media/'\nMEDIA_ROOT = os.path.join(BASE_DIR, 'media')\n\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n\nLOGIN_URL = 'accounts:login'\nLOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'\n\nSESSION_ENGINE = 'django.contrib.sessions.backends.db'\nSESSION_COOKIE_AGE = 1209600\nSESSION_COOKIE_HTTPONLY = True\n\nEMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'\nDEFAULT_FROM_EMAIL = 'noreply@hundidos.local'\n\nPAYPAL_SANDBOX_MODE = True\nPAYPAL_CLIENT_ID = 'sandbox_client_id'\nPAYPAL_CLIENT_SECRET = 'sandbox_client_secret'\n\nCSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://127.0.0.1:8000']"
+    },
+    {
+      "path": "hundidos/urls.py",
+      "contenido": "from django.contrib import admin\nfrom django.urls import path, include\nfrom django.conf import settings\nfrom django.conf.urls.static import static\n\nurlpatterns = [\n    path('admin/', admin.site.urls),\n    path('accounts/', include('accounts.urls')),\n    path('barcos/', include('catalog.urls')),\n    path('cesta/', include('cart.urls')),\n    path('reserva/', include('reservations.urls')),\n    path('pago/', include('payments.urls')),\n    path('admin-panel/', include('admin_panel.urls')),\n]\n\nif settings.DEBUG:\n    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)\n    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)"
+    },
+    {
+      "path": "hundidos/wsgi.py",
+      "contenido": "import os\n\nfrom django.core.wsgi import get_wsgi_application\n\nos.environ.setdefault('DJANGO_SETTINGS_MODULE', 'hundidos.settings')\n\napplication = get_wsgi_application()"
+    },
+    {
+      "path": "hundidos/asgi.py",
+      "contenido": "import os\n\nfrom django.core.asgi import get_asgi_application\n\nos.environ.setdefault('DJANGO_SETTINGS_MODULE', 'hundidos.settings')\n\napplication = get_asgi_application()"
+    },
+    {
+      "path": "accounts/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "accounts/apps.py",
+      "contenido": "from django.apps import AppConfig\n\n\nclass AccountsConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'accounts'\n    verbose_name = 'Cuentas de Usuario'"
+    },
+    {
+      "path": "accounts/urls.py",
+      "contenido": "from django.urls import path\n\napp_name = 'accounts'\n\nurlpatterns = []"
+    },
+    {
+      "path": "catalog/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "catalog/apps.py",
+      "contenido": "from django.apps import AppConfig\n\n\nclass CatalogConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'catalog'\n    verbose_name = 'Catálogo de Barcos'"
+    },
+    {
+      "path": "catalog/urls.py",
+      "contenido": "from django.urls import path\n\napp_name = 'catalog'\n\nurlpatterns = []"
+    },
+    {
+      "path": "cart/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "cart/apps.py",
+      "contenido": "from django.apps import AppConfig\n\n\nclass CartConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'cart'\n    verbose_name = 'Cesta de Compra'"
+    },
+    {
+      "path": "cart/urls.py",
+      "contenido": "from django.urls import path\n\napp_name = 'cart'\n\nurlpatterns = []"
+    },
+    {
+      "path": "reservations/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "reservations/apps.py",
+      "contenido": "from django.apps import AppConfig\n\n\nclass ReservationsConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'reservations'\n    verbose_name = 'Reservas'"
+    },
+    {
+      "path": "reservations/urls.py",
+      "contenido": "from django.urls import path\n\napp_name = 'reservations'\n\nurlpatterns = []"
+    },
+    {
+      "path": "payments/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "payments/apps.py",
+      "contenido": "from django.apps import AppConfig\n\n\nclass PaymentsConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'payments'\n    verbose_name = 'Pagos'"
+    },
+    {
+      "path": "payments/urls.py",
+      "contenido": "from django.urls import path\n\napp_name = 'payments'\n\nurlpatterns = []"
+    },
+    {
+      "path": "admin_panel/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "admin_panel/apps.py",
+      "contenido": "from django.apps import AppConfig\n\n\nclass AdminPanelConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'admin_panel'\n    verbose_name = 'Panel de Administración'"
+    },
+    {
+      "path": "admin_panel/urls.py",
+      "contenido": "from django.urls import path\n\napp_name = 'admin'\n\nurlpatterns = []"
+    },
+    {
+      "path": "core/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "core/apps.py",
+      "contenido": "from django.apps import AppConfig\n\n\nclass CoreConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'core'\n    verbose_name = 'Core'"
+    },
+    {
+      "path": "core/management/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "core/management/commands/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": ".gitignore",
+      "contenido": "*.pyc\n__pycache__/\n*.egg-info/\ndist/\nbuild/\n.env\n.venv\nvenv/\nENV/\ndb.sqlite3\n*.log\n.DS_Store\n.idea/\n.vscode/\n*.swp\n*.swo\nmedia/\nstaticfiles/\n.pytest_cache/\n.coverage\nhtmlcov/"
+    },
+    {
+      "path": "requirements.txt",
+      "contenido": "Django==3.2.0\nPillow==9.0.0\ndjango-filter==21.1\nrequests==2.27.1"
+    },
+    {
+      "path": "README.md",
+      "contenido": "# Hundidos - Alquiler de Barcos\n\nAplicación web monolítica de alquiler de barcos construida con Django 3.2, SQLite y PayPal Sandbox.\n\n## Instalación\n\n1. Crear entorno virtual:\n   ```bash\n   python -m venv venv\n   source venv/bin/activate  # En Windows: venv\\Scripts\\activate\n   ```\n\n2. Instalar dependencias:\n   ```bash\n   pip install -r requirements.txt\n   ```\n\n3. Ejecutar migraciones:\n   ```bash\n   python manage.py migrate\n   ```\n\n4. Crear datos de prueba:\n   ```bash\n   python manage.py seed_data\n   ```\n\n5. Ejecutar servidor:\n   ```bash\n   python manage.py runserver\n   ```\n\nLa aplicación estará disponible en http://localhost:8000/\n\n## Estructura del Proyecto\n\n- `accounts/` - Autenticación y gestión de usuarios\n- `catalog/` - Catálogo de barcos\n- `cart/` - Cesta de compra\n- `reservations/` - Gestión de reservas\n- `payments/` - Procesamiento de pagos\n- `admin_panel/` - Panel de administración\n- `core/` - Configuración central y utilidades"
+    },
+    {
+      "path": "static/.gitkeep",
+      "contenido": ""
+    },
+    {
+      "path": "templates/.gitkeep",
+      "contenido": ""
+    }
+  ]
+}

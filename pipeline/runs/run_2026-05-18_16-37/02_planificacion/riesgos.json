@@ -1,0 +1,89 @@
+{
+  "id_ejecucion": "run_2026-05-18_16-37",
+  "riesgos": [
+    {
+      "id": "R-01",
+      "descripcion": "[Proyecto] PayPal Sandbox puede no estar disponible durante una demo o durante el desarrollo, bloqueando la prueba del flujo de pago completo.",
+      "probabilidad": "media",
+      "impacto": "alto",
+      "mitigacion": "Implementar y dejar completamente funcional el flujo de contra-reembolso antes de abordar la integración con PayPal, para que la aplicación sea demoable aunque la pasarela falle. Verificar en el check mínimo del Sprint 2 que ambos métodos de pago funcionan independientemente."
+    },
+    {
+      "id": "R-02",
+      "descripcion": "[Sprint 2] La tasa de combustible tiene una excepción para barcos de categoría 'velero' (0 € en lugar de 50 €/día) que es fácil de olvidar al implementar el cálculo del importe total.",
+      "probabilidad": "alta",
+      "impacto": "medio",
+      "mitigacion": "Cubrir explícitamente el caso de 'velero' con un test unitario en el cálculo de la tasa de combustible antes de cerrar HU-12. El test debe verificar que una reserva de velero tiene tasa 0 € y una reserva de otro barco tiene tasa 50 €/día."
+    },
+    {
+      "id": "R-03",
+      "descripcion": "[Sprint 1] Los filtros combinables (puerto, fabricante, precio, categoría, capacidad, fechas) son más complejos de lo que aparentan en la lógica de consultas SQL, especialmente el filtro de fechas que debe mostrar todos los barcos marcando 'No disponible' sin ocultarlos.",
+      "probabilidad": "alta",
+      "impacto": "medio",
+      "mitigacion": "Implementar y probar la lógica de filtros de forma incremental: primero filtros simples (puerto, fabricante), luego precio y capacidad, finalmente el filtro de fechas con la lógica de disponibilidad. Incluir en el check mínimo del Sprint 1 la verificación de que al filtrar por un rango de fechas, todos los barcos aparecen pero los no disponibles están marcados."
+    },
+    {
+      "id": "R-04",
+      "descripcion": "[Sprint 2] El proceso de reserva en tres pasos sin registro previo tiene casos borde en validación de datos (correo duplicado, datos incompletos) y recuperación de sesión si el cliente inicia sesión durante el flujo.",
+      "probabilidad": "media",
+      "impacto": "medio",
+      "mitigacion": "Documentar explícitamente los tres pasos del flujo de reserva (datos cliente, datos pago, confirmación) y los casos borde (cliente registrado vs no registrado, login durante reserva). Incluir en el check mínimo del Sprint 2 la verificación de que se puede completar una reserva sin registro, iniciar sesión durante el flujo y recuperar la cesta intacta."
+    },
+    {
+      "id": "R-05",
+      "descripcion": "[Proyecto] SQLite tiene concurrencia limitada para reservas simultáneas, lo que puede causar bloqueos si múltiples clientes intentan reservar el mismo barco al mismo tiempo.",
+      "probabilidad": "media",
+      "impacto": "alto",
+      "mitigacion": "Implementar transacciones explícitas en el modelo de reservas con SELECT FOR UPDATE en la consulta de disponibilidad de barcos. Documentar en el README que SQLite es adecuado para desarrollo y pruebas pero no para producción con alta concurrencia. Realizar pruebas de carga con al menos 5 reservas simultáneas antes de cerrar el proyecto."
+    },
+    {
+      "id": "R-06",
+      "descripcion": "[Proyecto] Django 3.2 es una versión antigua con soporte limitado (LTS hasta abril 2024), lo que puede dejar vulnerabilidades de seguridad sin parches.",
+      "probabilidad": "baja",
+      "impacto": "alto",
+      "mitigacion": "Ejecutar pip check y pip audit antes de cada release para detectar dependencias vulnerables. Documentar en el README que la aplicación usa Django 3.2 y que se recomienda actualizar a una versión LTS más reciente (Django 4.2 o superior) para producción."
+    },
+    {
+      "id": "R-07",
+      "descripcion": "[Proyecto] El envío de correos (confirmación de reserva, recordatorio de pago) depende de un SMTP configurado que puede no estar disponible en el entorno de desarrollo o demo.",
+      "probabilidad": "alta",
+      "impacto": "medio",
+      "mitigacion": "Configurar Django para usar un backend de correo en memoria (console backend) en desarrollo y un backend de fichero para pruebas. Incluir en el README instrucciones para configurar SMTP en producción. Verificar en el check mínimo del Sprint 2 que el correo de confirmación se genera correctamente aunque no se envíe."
+    },
+    {
+      "id": "R-08",
+      "descripcion": "[Sprint 1] La construcción del contenedor Docker depende de imágenes base externas (python:3.x, postgres o similar) que pueden no estar disponibles o cambiar de forma incompatible.",
+      "probabilidad": "baja",
+      "impacto": "medio",
+      "mitigacion": "Fijar versiones explícitas de imágenes base en el Dockerfile (p.ej. python:3.9-slim, no python:3.9). Incluir en el README instrucciones para construir la imagen con docker build y verificar que arranca correctamente. Ejecutar docker build antes de cada release para detectar problemas de compatibilidad."
+    },
+    {
+      "id": "R-09",
+      "descripcion": "[Sprint 3] La restricción de no eliminar clientes con reservas pendientes requiere validación cuidadosa en la lógica de eliminación, y puede dejar inconsistencias si no se valida correctamente.",
+      "probabilidad": "media",
+      "impacto": "medio",
+      "mitigacion": "Implementar la validación en el modelo (método clean() o validador personalizado) antes de permitir la eliminación. Incluir un test unitario que intente eliminar un cliente con reservas pendientes y verifique que falla con un mensaje de error claro. Verificar en el check mínimo del Sprint 3 que el botón de eliminar está deshabilitado para clientes con reservas pendientes."
+    },
+    {
+      "id": "R-10",
+      "descripcion": "[Sprint 3] El envío automático de recordatorios de pago (1 día antes del inicio) depende de un mecanismo de tareas programadas (celery, cron, etc.) que puede no estar configurado o fallar silenciosamente.",
+      "probabilidad": "media",
+      "impacto": "medio",
+      "mitigacion": "Implementar el recordatorio como un comando de Django (manage.py send_payment_reminders) que se ejecuta manualmente o vía cron. Incluir en el README instrucciones para configurar cron o celery. Verificar en el check mínimo del Sprint 3 que el comando se ejecuta sin errores y genera los correos esperados."
+    },
+    {
+      "id": "R-11",
+      "descripcion": "[Proyecto] Los datos seed deben cargarse de forma fiable en cada arranque del contenedor Docker, pero pueden fallar si hay conflictos de claves primarias o restricciones de integridad.",
+      "probabilidad": "media",
+      "impacto": "medio",
+      "mitigacion": "Implementar el seed data como un fixture de Django o un comando manage.py que primero limpia la base de datos (flush) y luego carga los datos. Incluir en el Dockerfile un comando que ejecute el seed automáticamente al arrancar. Verificar en el check mínimo del Sprint 1 que el contenedor arranca con los datos precargados correctamente."
+    },
+    {
+      "id": "R-12",
+      "descripcion": "[Sprint 2] El código de seguimiento debe ser único y no predecible para evitar que clientes accedan a reservas ajenas consultando códigos secuenciales.",
+      "probabilidad": "media",
+      "impacto": "alto",
+      "mitigacion": "Generar el código de seguimiento usando uuid.uuid4() o secrets.token_urlsafe() en lugar de un contador secuencial. Incluir un test unitario que verifique que dos códigos generados son diferentes. Verificar en el check mínimo del Sprint 2 que se puede consultar una reserva por código de seguimiento pero no se puede acceder a otras reservas adivinando códigos."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recordatorio de Pago</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f5f5f5; padding: 20px;">
+    <div style="max-width: 600px; margin: 0 auto; background-color: white; padding: 30px; border-radius: 8px;">
+        <h2 style="color: #ff6b6b;">Recordatorio de Pago Pendiente</h2>
+        <p>Hola {{ reserva.nombre_cliente }},</p>
+        <p>Tu reserva {{ reserva.codigo_seguimiento }} está pendiente de pago.</p>
+        
+        <div style="background-color: #fff3cd; padding: 15px; border-radius: 4px; margin: 20px 0; border-left: 4px solid #ff6b6b;">
+            <p><strong>Código de Seguimiento:</strong> {{ reserva.codigo_seguimiento }}</p>
+            <p><strong>Importe Pendiente:</strong> €{{ reserva.importe_total }}</p>
+            <p><strong>Fecha de Inicio:</strong> {{ reserva.fecha_inicio|date:"d/m/Y" }}</p>
+        </div>
+        
+        <p>Por favor, completa el pago para confirmar tu alquiler. Si ya has realizado el pago, ignora este mensaje.</p>
+        
+        <p style="margin-top: 30px; color: #666; font-size: 12px;">
+            Hundidos - Alquiler de Barcos<br>
+            Email: info@hundidos.com
+        </p>
+    </div>
+</body>
+</html>

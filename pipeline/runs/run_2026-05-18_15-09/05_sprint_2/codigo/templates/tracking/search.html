@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Seguimiento de Reserva - Hundidos{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 600px; margin: 40px auto;">
+    <h2>Seguimiento de Reserva</h2>
+    
+    <form method="post" style="background-color: #f9f9f9; padding: 20px; border-radius: 4px; margin-bottom: 30px;">
+        {% csrf_token %}
+        <div style="margin-bottom: 15px;">
+            <label for="codigo">Código de Seguimiento:</label>
+            <input type="text" name="codigo" id="codigo" placeholder="Ingresa tu código de seguimiento" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+        </div>
+        <button type="submit" style="background-color: #003d82; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; width: 100%;">Buscar</button>
+    </form>
+    
+    {% if error %}
+        <div style="background-color: #ffcccc; border: 1px solid #cc0000; color: #cc0000; padding: 15px; border-radius: 4px;">
+            {{ error }}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

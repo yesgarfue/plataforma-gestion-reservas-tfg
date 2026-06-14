@@ -1,0 +1,77 @@
+{
+  "run_id": "run_2026-05-14_16-05",
+  "resultado_final": "completo",
+  "mensaje": "Run finalizado con resultado_final = completo",
+  "timestamp_cierre": "2026-05-14T16:22:46+02:00",
+  "fases": {
+    "01_requisitos": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "aceptado",
+      "duracion_s_ejec": 19.48399999999856,
+      "duracion_s_gate_humano": 212.39099999999962
+    },
+    "02_planificacion": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "aceptado",
+      "duracion_s_ejec": 51.71899999999914,
+      "duracion_s_gate_humano": 136.03099999999904
+    },
+    "03_arquitectura": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "aceptado",
+      "duracion_s_ejec": 18.34399999999914,
+      "duracion_s_gate_humano": 240.21899999999914
+    },
+    "03b_scaffold": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 11.890999999999622,
+      "duracion_s_gate_humano": 0.0
+    },
+    "04_sprint_1": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 115.13999999999942,
+      "duracion_s_gate_humano": 0.0
+    },
+    "05_sprint_2": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 78.0,
+      "duracion_s_gate_humano": 0.0
+    },
+    "06_sprint_3": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 101.53100000000086,
+      "duracion_s_gate_humano": 0.0
+    },
+    "99_cierre": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 23.57800000000134,
+      "duracion_s_gate_humano": 0.0
+    }
+  },
+  "duracion_s_ejec_total": 419.6869999999981,
+  "duracion_s_gate_humano_total": 588.6409999999978,
+  "duracion_s_total_contabilizada": 1008.3279999999959,
+  "validacion_final": {
+    "ejecutada": true,
+    "ok_global": false,
+    "clasificacion": "bloqueado_arranque",
+    "checks_planificados_total": 16,
+    "checks_ejecutados_total": 6,
+    "checks_no_ejecutados_total": 10,
+    "incidencias_total": 15,
+    "factores_bloqueantes_total": 2
+  }
+}

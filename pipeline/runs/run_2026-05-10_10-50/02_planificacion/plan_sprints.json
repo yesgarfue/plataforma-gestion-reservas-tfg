@@ -1,0 +1,52 @@
+{
+  "id_ejecucion": "run_2026-05-10_10-50",
+  "sprints": [
+    {
+      "numero": 1,
+      "objetivo": "Establecer la base técnica y el catálogo navegable. El cliente puede registrarse, iniciar sesión, explorar barcos por categorías, buscar y filtrar, ver fichas detalladas y añadir barcos a la cesta.",
+      "historias_ids": [
+        "HU-01",
+        "HU-02",
+        "HU-03",
+        "HU-04",
+        "HU-05",
+        "HU-06",
+        "HU-07",
+        "HU-08",
+        "HU-24",
+        "HU-25",
+        "HU-26"
+      ],
+      "entregable_verificable": "Aplicación Django con autenticación funcional, catálogo de barcos con búsqueda y filtros combinables, ficha de barco con selección de cantidad, cesta visible y persistente, datos seed precargados, zona horaria y locale configurados, y seguridad implementada."
+    },
+    {
+      "numero": 2,
+      "objetivo": "Implementar el flujo completo de reserva y pago. El cliente puede reservar sin registro previo, iniciar sesión durante la reserva, completar el proceso en tres pasos, pagar mediante PayPal o contra-reembolso, y recibir confirmación con código de seguimiento.",
+      "historias_ids": [
+        "HU-09",
+        "HU-10",
+        "HU-11",
+        "HU-12",
+        "HU-13",
+        "HU-14",
+        "HU-15",
+        "HU-16",
+        "HU-17"
+      ],
+      "entregable_verificable": "Proceso de reserva en tres pasos sin registro previo, cálculo correcto de tasa de combustible, integración con PayPal Sandbox y contra-reembolso, envío de correos de confirmación con código de seguimiento, y gestión de estados de reserva (PENDIENTE DE PAGO, PAGADO, EN USO, DEVUELTO)."
+    },
+    {
+      "numero": 3,
+      "objetivo": "Completar la gestión administrativa y el seguimiento de pedidos. El administrador puede gestionar barcos, clientes y reservas; el cliente puede consultar el estado de sus reservas por código de seguimiento o desde su cuenta.",
+      "historias_ids": [
+        "HU-18",
+        "HU-19",
+        "HU-20",
+        "HU-21",
+        "HU-22",
+        "HU-23"
+      ],
+      "entregable_verificable": "Panel administrativo completo con gestión de barcos, clientes y reservas; página pública de seguimiento de pedidos por código de seguimiento; sección 'Mis reservas' para clientes autenticados; cancelación de reservas por administrador; y filtrado avanzado de reservas."
+    }
+  ]
+}

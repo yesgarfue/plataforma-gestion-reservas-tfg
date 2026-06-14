@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+
+{% block title %}Reserva - Paso 1 - Hundidos{% endblock %}
+
+{% block content %}
+<div style="max-width: 900px; margin: 40px auto;">
+    <h2>Proceso de Reserva - Paso 1: Datos del Cliente</h2>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+        <div>
+            <h3>Tu Cesta</h3>
+            {% if cart_items %}
+                <table style="width: 100%; border-collapse: collapse; background-color: white;">
+                    <thead>
+                        <tr style="background-color: #f5f5f5;">
+                            <th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">Barco</th>
+                            <th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">Cantidad</th>
+                            <th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in cart_items %}
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 12px;">{{ item.barco.nombre }}</td>
+                                <td style="padding: 12px;">{{ item.cantidad }}</td>
+                                <td style="padding: 12px;">€{{ item.subtotal }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div style="text-align: right; margin-top: 15px;">
+                    <h4>Total: €{{ cart_total }}</h4>
+                </div>
+            {% else %}
+                <p>Tu cesta está vacía.</p>
+            {% endif %}
+        </div>
+        
+        <div>
+            <h3>Datos del Cliente</h3>
+            <form method="post" style="background-color: white; padding: 20px; border-radius: 8px;">
+                {% csrf_token %}
+                
+                <div style="margin-bottom: 15px;">
+                    <label for="{{ form.fecha_inicio.id_for_label }}">{{ form.fecha_inicio.label }}</label>
+                    {{ form.fecha_inicio }}
+                    {% if form.fecha_inicio.errors %}
+                        <div style="color: red; font-size: 12px;">
+                            {% for error in form.fecha_inicio.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <label for="{{ form.fecha_fin.id_for_label }}">{{ form.fecha_fin.label }}</label>
+                    {{ form.fecha_fin }}
+                    {% if form.fecha_fin.errors %}
+                        <div style="color: red; font-size: 12px;">
+                            {% for error in form.fecha_fin.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <label for="{{ form.nombre_cliente.id_for_label }}">{{ form.nombre_cliente.label }}</label>
+                    {{ form.nombre_cliente }}
+                    {% if form.nombre_cliente.errors %}
+                        <div style="color: red; font-size: 12px;">
+                            {% for error in form.nombre_cliente.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <label for="{{ form.email_cliente.id_for_label }}">{{ form.email_cliente.label }}</label>
+                    {{ form.email_cliente }}
+                    {% if form.email_cliente.errors %}
+                        <div style="color: red; font-size: 12px;">
+                            {% for error in form.email_cliente.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <label for="{{ form.telefono_cliente.id_for_label }}">{{ form.telefono_cliente.label }}</label>
+                    {{ form.telefono_cliente }}
+                    {% if form.telefono_cliente.errors %}
+                        <div style="color: red; font-size: 12px;">
+                            {% for error in form.telefono_cliente.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                {% if form.non_field_errors %}
+                    <div style="color: red; margin-bottom: 15px;">
+                        {% for error in form.non_field_errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                
+                <div style="display: flex; gap: 10px;">
+                    <a href="{% url 'cart:view' %}" class="btn btn-secondary" style="flex: 1; text-align: center;">Volver a la Cesta</a>
+                    <button type="submit" class="btn" style="flex: 1;">Continuar al Paso 2</button>
+                </div>
+            </form>
+            
+            {% if not user_id %}
+                <p style="margin-top: 20px; text-align: center;">
+                    ¿Ya tienes cuenta? <a href="{% url 'accounts:login' %}?next={% url 'reservations:step1' %}">Inicia sesión aquí</a>
+                </p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<style>
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="date"],
+    textarea,
+    select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    input[type="date"]:focus,
+    textarea:focus,
+    select:focus {
+        outline: none;
+        border-color: #003d82;
+        box-shadow: 0 0 5px rgba(0, 61, 130, 0.3);
+    }
+</style>
+{% endblock %}

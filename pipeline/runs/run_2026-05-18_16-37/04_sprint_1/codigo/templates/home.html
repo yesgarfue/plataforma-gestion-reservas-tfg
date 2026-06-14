@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio - Hundidos{% endblock %}
+
+{% block content %}
+<div style="text-align: center; margin-bottom: 40px;">
+    <h2>Bienvenido a Hundidos</h2>
+    <p>Tu plataforma de alquiler de barcos en línea</p>
+</div>
+
+<div style="margin-bottom: 40px;">
+    <h3>Barcos Destacados</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+        {% for barco in barcos %}
+            <div style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                {% if barco.imagen %}
+                    <img src="{{ barco.imagen.url }}" alt="{{ barco.nombre }}" style="width: 100%; height: 200px; object-fit: cover;">
+                {% else %}
+                    <div style="width: 100%; height: 200px; background-color: #e0e0e0; display: flex; align-items: center; justify-content: center;">
+                        <span>Sin imagen</span>
+                    </div>
+                {% endif %}
+                <div style="padding: 15px;">
+                    <h4>{{ barco.nombre }}</h4>
+                    <p><strong>Categoría:</strong> {{ barco.categoria.nombre }}</p>
+                    <p><strong>Fabricante:</strong> {{ barco.fabricante.nombre }}</p>
+                    <p><strong>Puerto:</strong> {{ barco.puerto.nombre }}</p>
+                    <p><strong>Capacidad:</strong> {{ barco.capacidad }} personas</p>
+                    <p><strong>Precio:</strong> €{{ barco.precio_dia }}/día</p>
+                    {% if barco.disponible %}
+                        <a href="{% url 'catalog:barco_detail' barco.id %}" class="btn" style="display: block; text-align: center; margin-top: 10px;">Ver Detalles</a>
+                    {% else %}
+                        <button class="btn" disabled style="display: block; width: 100%; margin-top: 10px; opacity: 0.5; cursor: not-allowed;">No Disponible</button>
+                    {% endif %}
+                </div>
+            </div>
+        {% empty %}
+            <p>No hay barcos disponibles en este momento.</p>
+        {% endfor %}
+    </div>
+</div>
+
+<div style="text-align: center; margin-top: 40px;">
+    <a href="{% url 'catalog:barco_list' %}" class="btn" style="padding: 12px 30px; font-size: 16px;">Ver Catálogo Completo</a>
+</div>
+{% endblock %}

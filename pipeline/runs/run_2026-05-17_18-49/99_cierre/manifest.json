@@ -1,0 +1,388 @@
+{
+  "schema_version": "manifest_v1",
+  "generated_at": "2026-05-17T19:56:17+02:00",
+  "run_id": "run_2026-05-17_18-49",
+  "resultado_final": "completo",
+  "run_dir": "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-17_18-49",
+  "protocolo": {
+    "pipeline_specs_path": "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\pipeline_specs.md",
+    "pipeline_specs_hash": "9f84616d71c6ea86f3c415e6933a6a9abbc316177b2a00af14000cdf9fce22a6",
+    "brief_hash": "e62bcd5b2a4f56841065a31fe202de9d8628e317db0846675e689257a2eeb394",
+    "pipeline_config_hash": "aece5a6d89558049e77eba3243093496cfce28b6bca1c346e5726fdb8fd163e0"
+  },
+  "versiones": {
+    "git_commit": "",
+    "python_pipeline": "3.11.7",
+    "crewai": "1.14.2",
+    "pydantic": "2.11.10",
+    "django_validacion": "3.2"
+  },
+  "modelos": {
+    "default": {
+      "provider": "anthropic",
+      "name": "anthropic/claude-haiku-4-5",
+      "temperature": 0.0,
+      "max_tokens": 8192
+    },
+    "pm": {
+      "provider": "anthropic",
+      "name": "anthropic/claude-haiku-4-5",
+      "temperature": 0.0,
+      "max_tokens": 8192
+    },
+    "architect": {
+      "provider": "anthropic",
+      "name": "anthropic/claude-haiku-4-5",
+      "temperature": 0.0,
+      "max_tokens": 8192
+    },
+    "developer": {
+      "provider": "anthropic",
+      "name": "anthropic/claude-haiku-4-5",
+      "temperature": 0.0,
+      "max_tokens": 24000
+    }
+  },
+  "fases": {
+    "01_requisitos": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "aceptado",
+      "duracion_s_ejec": 24.063000000009197,
+      "duracion_s_gate_humano": 1115.8119999999908
+    },
+    "02_planificacion": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "aceptado",
+      "duracion_s_ejec": 63.70299999999406,
+      "duracion_s_gate_humano": 1034.6089999999967
+    },
+    "03_arquitectura": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 1,
+      "gate_decision": "aceptado",
+      "duracion_s_ejec": 47.312000000005355,
+      "duracion_s_gate_humano": 933.6089999999967
+    },
+    "03b_scaffold": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 21.938000000009197,
+      "duracion_s_gate_humano": 0.0
+    },
+    "04_sprint_1": {
+      "reintentos_automaticos": 1,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 82.78199999999197,
+      "duracion_s_gate_humano": 0.0
+    },
+    "05_sprint_2": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 171.92199999999139,
+      "duracion_s_gate_humano": 0.0
+    },
+    "06_sprint_3": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 125.53100000000268,
+      "duracion_s_gate_humano": 0.0
+    },
+    "99_cierre": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 24.73399999999674,
+      "duracion_s_gate_humano": 0.0
+    }
+  },
+  "gates": [
+    {
+      "path": "01_requisitos/gate_humano.md",
+      "sha256": "d3a082610840df2724552ef0bd28d66b9755de3ebaa8de2ee3527bb560350f5f",
+      "metadata": {
+        "gate": 1,
+        "fase": "01_requisitos",
+        "decision": "aceptado",
+        "timestamp_revision_inicio": "2026-05-17T18:50:17+02:00",
+        "timestamp_revision_fin": "2026-05-17T19:08:17+02:00"
+      }
+    },
+    {
+      "path": "02_planificacion/gate_humano.md",
+      "sha256": "760b5d18ca0ec6c6b7215404cf3a1f442b2c9eccbb45febf6a9a88307abaa5ae",
+      "metadata": {
+        "gate": 2,
+        "fase": "02_planificacion",
+        "decision": "aceptado",
+        "timestamp_revision_inicio": "2026-05-17T19:09:57+02:00",
+        "timestamp_revision_fin": "2026-05-17T19:26:57+02:00"
+      }
+    },
+    {
+      "path": "03_arquitectura/gate_humano.md",
+      "sha256": "a4c953f3384df6427c37ccb26fc67e973d92fe1d22c53fbdd1489a1a2db782f0",
+      "metadata": {
+        "gate": 3,
+        "fase": "03_arquitectura",
+        "decision": "aceptado",
+        "timestamp_revision_inicio": "2026-05-17T19:27:40+02:00",
+        "timestamp_revision_fin": "2026-05-17T19:43:40+02:00"
+      }
+    }
+  ],
+  "validacion_final": {
+    "ok_global": false,
+    "clasificacion": "bloqueado_arranque",
+    "checks_planificados": 16,
+    "checks_ejecutados": 6,
+    "checks_no_ejecutados": 10,
+    "incidencias": [
+      "manage.py check no fue correcto.",
+      "manage.py migrate --noinput no fue correcto.",
+      "seed_data no se ejecuto correctamente o no existe.",
+      "runserver no arranco correctamente.",
+      "Ruta / no supero smoke test: runserver no arranco correctamente.",
+      "Ruta /barcos/ no supero smoke test: runserver no arranco correctamente.",
+      "Ruta /cesta/ no supero smoke test: runserver no arranco correctamente.",
+      "Ruta /accounts/registro/ no supero smoke test: runserver no arranco correctamente.",
+      "Ruta /accounts/login/ no supero smoke test: runserver no arranco correctamente.",
+      "Ruta /reserva/paso1/ no supero smoke test: runserver no arranco correctamente.",
+      "Ruta /reserva/paso2/ no supero smoke test: runserver no arranco correctamente.",
+      "Ruta /reserva/paso3/ no supero smoke test: runserver no arranco correctamente.",
+      "Ruta /admin/ no supero smoke test: runserver no arranco correctamente.",
+      "Ruta /admin-panel/ no supero smoke test: runserver no arranco correctamente."
+    ],
+    "factores_bloqueantes": [
+      "El proyecto no supera manage.py check.",
+      "El servidor Django no arranca para smoke tests."
+    ],
+    "preparacion_manual_requerida": [
+      "El `migrate` estandar no fue correcto. No se ejecuta `migrate --run-syncdb` como correccion dentro del validador."
+    ]
+  },
+  "artefactos_principales": [
+    {
+      "path": "01_requisitos/gate_humano.md",
+      "sha256": "d3a082610840df2724552ef0bd28d66b9755de3ebaa8de2ee3527bb560350f5f"
+    },
+    {
+      "path": "01_requisitos/registro_requisitos.json",
+      "sha256": "df90bfab495999f18ff7a8d977352b1e3a6873f62a41478e8e0f0cdac3432db1"
+    },
+    {
+      "path": "01_requisitos/registro_requisitos.md",
+      "sha256": "38c992df7874547558cd485e5ef4d993c849ffa5ab4dc93fa27f2672c2c68aa7"
+    },
+    {
+      "path": "02_planificacion/backlog.json",
+      "sha256": "f3665ed0a4847972e0285000227e095eaa208d0468f69507b3471329a83e64fe"
+    },
+    {
+      "path": "02_planificacion/backlog.md",
+      "sha256": "57626b8dbb34361ff86e0c207f2df9ff412fca75c70e510bcd13c50182b6d086"
+    },
+    {
+      "path": "02_planificacion/gate_humano.md",
+      "sha256": "760b5d18ca0ec6c6b7215404cf3a1f442b2c9eccbb45febf6a9a88307abaa5ae"
+    },
+    {
+      "path": "02_planificacion/plan_sprints.json",
+      "sha256": "f453bd1f3fe2267846562849c1b140a2b7bed1923739279169b18ba66eaf815a"
+    },
+    {
+      "path": "02_planificacion/plan_sprints.md",
+      "sha256": "5bf1bb986dc1f12f01c6c24cc45ea67fee09f035bb08dd207e974e43277fe235"
+    },
+    {
+      "path": "02_planificacion/riesgos.json",
+      "sha256": "c54bf9e34acf857571e2023384046c87fb12e7249c52e4c9e5a131c750b4c509"
+    },
+    {
+      "path": "02_planificacion/riesgos.md",
+      "sha256": "7d9d6930053bd4f49763706619d49c03d470384d98584b2a72745845558806b2"
+    },
+    {
+      "path": "03_arquitectura/diseno_tecnico.json",
+      "sha256": "c7da3ec18a4d5c23a6cae592a0d03b802381ce54798631cc47980dcfdadfb1ec"
+    },
+    {
+      "path": "03_arquitectura/diseno_tecnico.md",
+      "sha256": "5f25d67e4382bd0da5a6efaa2e3fc6efb04bf68e467318f4bbeb2a92d154cf94"
+    },
+    {
+      "path": "03_arquitectura/gate_humano.md",
+      "sha256": "a4c953f3384df6427c37ccb26fc67e973d92fe1d22c53fbdd1489a1a2db782f0"
+    },
+    {
+      "path": "03b_scaffold/entrega_scaffold.json",
+      "sha256": "cf0c97c009b89c15e46cd62d2c2755bdbd6fbef0a3e4418ccf5d4629c2383eed"
+    },
+    {
+      "path": "03b_scaffold/scaffold_check.json",
+      "sha256": "53db2072c4c4a543bfed32ab86b5b4e0d806ae0fe127920764776ab1b702d2de"
+    },
+    {
+      "path": "04_sprint_1/backlog_sprint_1.json",
+      "sha256": "2241a5f3ad0f5f6440368f5a0caf143910cbf1c9bf52a6ff417f5226ef366632"
+    },
+    {
+      "path": "04_sprint_1/backlog_sprint_1.md",
+      "sha256": "bf52626d98bbeccfc9e9679e0501a70d7cb3c0f58e4e8932e1fc9fbdad00c67d"
+    },
+    {
+      "path": "04_sprint_1/entrega_sprint_1.json",
+      "sha256": "6766ee2cebb9c93e3940e9b071bd95c1a6e486fc6aa5bc778786de0c107b447b"
+    },
+    {
+      "path": "04_sprint_1/review_sprint_1.json",
+      "sha256": "4689eae7afc8dfbc3eb3f82c69cc9bdd13d5a638756c7032118f2bb850e55f8b"
+    },
+    {
+      "path": "04_sprint_1/review_sprint_1.md",
+      "sha256": "4e519cb6ffa29c1f7a013db907d86177b3a151833d8e3d308d7b8348b799a21f"
+    },
+    {
+      "path": "05_sprint_2/backlog_sprint_2.json",
+      "sha256": "3e6be5bc1f61a72b90426aa099c56c960e2c7e5dd71ec6598a01f17d3c8c4ce6"
+    },
+    {
+      "path": "05_sprint_2/backlog_sprint_2.md",
+      "sha256": "fb78fb54b4b98f52546e1495986012c4682226564181baff372482712620f165"
+    },
+    {
+      "path": "05_sprint_2/entrega_sprint_2.json",
+      "sha256": "9a3144450ae31587a1778d552911e0b389c2289e723210922765742f8fe6ee95"
+    },
+    {
+      "path": "05_sprint_2/review_sprint_2.json",
+      "sha256": "92c33ff41f86a24d63c632e6a4eaade7ec014d22830bbfd3f96e5d106cea8750"
+    },
+    {
+      "path": "05_sprint_2/review_sprint_2.md",
+      "sha256": "abac63f494c59991888cc9328a87a5052f68a3548c0f5852b7f39cb8ff7c33b1"
+    },
+    {
+      "path": "06_sprint_3/backlog_sprint_3.json",
+      "sha256": "bfc9ddea23f4b6518c7f278b9b0fce2e82dc915d1e77fc7177a6f5685af3c402"
+    },
+    {
+      "path": "06_sprint_3/backlog_sprint_3.md",
+      "sha256": "ccd69a869704f0b5cb167e64494499115cc3f488f7b01e4d18e5b6964fd95fea"
+    },
+    {
+      "path": "06_sprint_3/entrega_sprint_3.json",
+      "sha256": "3fe1717c722a45e29ba30981458ab70e4cbd758c8e218e8d831703f43566f05c"
+    },
+    {
+      "path": "06_sprint_3/review_sprint_3.json",
+      "sha256": "318ac0971effb1ba094c8d37aa9bbf8945f11cd59300f539f5762f39002690ba"
+    },
+    {
+      "path": "06_sprint_3/review_sprint_3.md",
+      "sha256": "fef37c922ab2d5caf6bfcc8a6e288f3af89b4f482373208a108190781300de94"
+    },
+    {
+      "path": "99_cierre/review_final.md",
+      "sha256": "428e44e2d8858932ac8b8acfe3eaa03cb4db5b245bb638a8f7f00f0882d1dfac"
+    },
+    {
+      "path": "99_cierre/validacion_final.json",
+      "sha256": "dec593fdecf5247ea707349ce764422aa088a4dc74e6ff90782c90207a806ff2"
+    },
+    {
+      "path": "_attempts/fase04_regen0_intento1.txt",
+      "sha256": "ac224f19fdd18996dca605918fd3b8c6d02343e75433ad03766f8e05ffba61cc"
+    },
+    {
+      "path": "run_summary.json",
+      "sha256": "e4c3138f1b6a197d2badca25cad7a5b51094f883248d239702e50ad03d368ac0"
+    }
+  ],
+  "run_summary": {
+    "run_id": "run_2026-05-17_18-49",
+    "resultado_final": "completo",
+    "mensaje": "Run finalizado con resultado_final = completo",
+    "timestamp_cierre": "2026-05-17T19:56:17+02:00",
+    "fases": {
+      "01_requisitos": {
+        "reintentos_automaticos": 0,
+        "regeneraciones_humanas": 0,
+        "gate_decision": "aceptado",
+        "duracion_s_ejec": 24.063000000009197,
+        "duracion_s_gate_humano": 1115.8119999999908
+      },
+      "02_planificacion": {
+        "reintentos_automaticos": 0,
+        "regeneraciones_humanas": 0,
+        "gate_decision": "aceptado",
+        "duracion_s_ejec": 63.70299999999406,
+        "duracion_s_gate_humano": 1034.6089999999967
+      },
+      "03_arquitectura": {
+        "reintentos_automaticos": 0,
+        "regeneraciones_humanas": 1,
+        "gate_decision": "aceptado",
+        "duracion_s_ejec": 47.312000000005355,
+        "duracion_s_gate_humano": 933.6089999999967
+      },
+      "03b_scaffold": {
+        "reintentos_automaticos": 0,
+        "regeneraciones_humanas": 0,
+        "gate_decision": "N/A",
+        "duracion_s_ejec": 21.938000000009197,
+        "duracion_s_gate_humano": 0.0
+      },
+      "04_sprint_1": {
+        "reintentos_automaticos": 1,
+        "regeneraciones_humanas": 0,
+        "gate_decision": "N/A",
+        "duracion_s_ejec": 82.78199999999197,
+        "duracion_s_gate_humano": 0.0
+      },
+      "05_sprint_2": {
+        "reintentos_automaticos": 0,
+        "regeneraciones_humanas": 0,
+        "gate_decision": "N/A",
+        "duracion_s_ejec": 171.92199999999139,
+        "duracion_s_gate_humano": 0.0
+      },
+      "06_sprint_3": {
+        "reintentos_automaticos": 0,
+        "regeneraciones_humanas": 0,
+        "gate_decision": "N/A",
+        "duracion_s_ejec": 125.53100000000268,
+        "duracion_s_gate_humano": 0.0
+      },
+      "99_cierre": {
+        "reintentos_automaticos": 0,
+        "regeneraciones_humanas": 0,
+        "gate_decision": "N/A",
+        "duracion_s_ejec": 24.73399999999674,
+        "duracion_s_gate_humano": 0.0
+      }
+    },
+    "duracion_s_ejec_total": 561.9850000000006,
+    "duracion_s_gate_humano_total": 3084.0299999999843,
+    "duracion_s_total_contabilizada": 3646.014999999985,
+    "validacion_final": {
+      "ejecutada": true,
+      "ok_global": false,
+      "clasificacion": "bloqueado_arranque",
+      "checks_planificados_total": 16,
+      "checks_ejecutados_total": 6,
+      "checks_no_ejecutados_total": 10,
+      "incidencias_total": 14,
+      "factores_bloqueantes_total": 2
+    }
+  },
+  "observaciones": [
+    "Manifest generado de forma determinista a partir del estado del Flow y artefactos del run.",
+    "Los tiempos oficiales de gate son los calculados por el Flow; timestamps manuales en gate_humano.md son documentales."
+  ]
+}

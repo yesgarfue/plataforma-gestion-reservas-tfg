@@ -1,0 +1,98 @@
+{
+  "id_ejecucion": "run_2026-05-14_19-50",
+  "numero_sprint": 3,
+  "historias": [
+    {
+      "id": "HU-12",
+      "titulo": "Cancelación de reserva",
+      "descripcion": "Como cliente, quiero cancelar una reserva que está en estado PENDIENTE DE PAGO, para eliminarla del sistema sin dejar registro posterior.",
+      "criterios_aceptacion": [
+        "Una reserva puede cancelarse únicamente si está en estado PENDIENTE DE PAGO.",
+        "Al cancelar, la reserva se elimina del sistema sin dejar registro posterior.",
+        "El cliente recibe una confirmación de cancelación.",
+        "Las reservas en otros estados no pueden cancelarse."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-13",
+      "titulo": "Recordatorio de reserva pendiente",
+      "descripcion": "Como sistema, quiero enviar un correo de recordatorio al cliente si falta un día para el inicio de la reserva y sigue en estado PENDIENTE DE PAGO.",
+      "criterios_aceptacion": [
+        "El sistema identifica reservas en estado PENDIENTE DE PAGO con fecha de inicio en el próximo día.",
+        "El sistema envía un correo de recordatorio al cliente.",
+        "El correo contiene los datos de la reserva y un enlace para completar el pago."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-14",
+      "titulo": "Consulta de reserva por código de seguimiento",
+      "descripcion": "Como cliente, quiero consultar el estado de mi reserva usando el código de seguimiento recibido por email, incluso sin estar registrado.",
+      "criterios_aceptacion": [
+        "El cliente puede acceder a una página de consulta de reserva por código de seguimiento.",
+        "El sistema busca la reserva por código de seguimiento.",
+        "Se muestra el estado actual de la reserva.",
+        "No se requiere autenticación para consultar por código de seguimiento."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-15",
+      "titulo": "Consulta de reservas del cliente",
+      "descripcion": "Como cliente registrado, quiero consultar el estado de todas mis reservas desde mi cuenta.",
+      "criterios_aceptacion": [
+        "El cliente autenticado puede acceder a un listado de sus reservas.",
+        "Se muestra el estado actual de cada reserva.",
+        "Se muestran los datos del barco, rango de fechas e importe de cada reserva.",
+        "El cliente puede acceder a los detalles de cada reserva."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-16",
+      "titulo": "Panel de administración de barcos",
+      "descripcion": "Como administrador, quiero gestionar barcos desde el panel de administración: dar de alta, editar y dar de baja.",
+      "criterios_aceptacion": [
+        "El administrador accede a un panel de administración propio.",
+        "El administrador puede dar de alta nuevos barcos con todos los campos requeridos.",
+        "El administrador puede editar los datos de un barco existente.",
+        "El administrador puede dar de baja un barco.",
+        "Los cambios se reflejan inmediatamente en el catálogo."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-17",
+      "titulo": "Panel de administración de clientes",
+      "descripcion": "Como administrador, quiero consultar y eliminar clientes desde el panel de administración, respetando la restricción de no eliminar usuarios con reservas pendientes.",
+      "criterios_aceptacion": [
+        "El administrador puede consultar un listado de todos los clientes.",
+        "El administrador puede eliminar un cliente únicamente si ese cliente no tiene reservas pendientes.",
+        "Si un cliente tiene reservas pendientes, se muestra un mensaje indicando que no puede eliminarse.",
+        "Se muestra información de contacto y reservas de cada cliente."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-18",
+      "titulo": "Panel de administración de reservas",
+      "descripcion": "Como administrador, quiero consultar y cambiar el estado de reservas desde el panel de administración mediante botones por transición aplicable.",
+      "criterios_aceptacion": [
+        "El administrador puede consultar un listado de todas las reservas.",
+        "El administrador puede ver el estado actual de cada reserva.",
+        "El administrador puede cambiar el estado de una reserva mediante botones por transición aplicable.",
+        "Se muestran los datos del barco, cliente, rango de fechas e importe de cada reserva.",
+        "Los cambios de estado se registran en el sistema."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    }
+  ]
+}

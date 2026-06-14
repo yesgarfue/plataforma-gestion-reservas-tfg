@@ -1,0 +1,109 @@
+{
+  "id_ejecucion": "run_2026-05-15_11-00",
+  "numero_sprint": 1,
+  "historias": [
+    {
+      "id": "HU-01",
+      "titulo": "Registro de cliente",
+      "descripcion": "Como visitante, quiero registrarme con correo electrónico y contraseña, para poder acceder a mi cuenta y consultar mis reservas.",
+      "criterios_aceptacion": [
+        "El formulario de registro acepta correo electrónico y contraseña.",
+        "Tras registrarse, el cliente queda autenticado en la sesión.",
+        "Las contraseñas se almacenan usando el mecanismo estándar de Django, no en texto plano."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-02",
+      "titulo": "Inicio de sesión",
+      "descripcion": "Como cliente registrado, quiero iniciar sesión con correo y contraseña, para acceder a las funcionalidades reservadas a usuarios autenticados.",
+      "criterios_aceptacion": [
+        "El formulario de login acepta correo y contraseña.",
+        "Tras un login correcto, el cliente accede a su cuenta.",
+        "Tras un login incorrecto, se muestra un mensaje de error."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "S"
+    },
+    {
+      "id": "HU-03",
+      "titulo": "Cierre de sesión",
+      "descripcion": "Como cliente autenticado, quiero cerrar sesión explícitamente, para salir de mi cuenta de forma segura.",
+      "criterios_aceptacion": [
+        "El cliente puede pulsar un botón de cierre de sesión desde cualquier página.",
+        "Tras cerrar sesión, el cliente es redirigido a la página principal sin autenticación.",
+        "La sesión se elimina del servidor."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "S"
+    },
+    {
+      "id": "HU-04",
+      "titulo": "Catálogo de barcos por categorías",
+      "descripcion": "Como cliente, quiero ver un catálogo de barcos organizado por categorías en la página principal, para explorar las opciones disponibles.",
+      "criterios_aceptacion": [
+        "La página principal muestra un catálogo de barcos con nombre, imagen, categoría, fabricante, puerto, capacidad y precio por día.",
+        "Los barcos se organizan por categorías.",
+        "Los barcos agotados o no disponibles aparecen claramente marcados en el catálogo."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-05",
+      "titulo": "Búsqueda de barcos por nombre",
+      "descripcion": "Como cliente, quiero buscar barcos por nombre o título desde la página de inicio, para encontrar rápidamente el barco que me interesa.",
+      "criterios_aceptacion": [
+        "El cliente puede introducir un término de búsqueda en un campo de búsqueda.",
+        "El catálogo se filtra mostrando solo los barcos cuyo nombre o título coincide con el término.",
+        "Si no hay resultados, se muestra un mensaje indicando que no hay barcos disponibles."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-06",
+      "titulo": "Filtros combinables de catálogo",
+      "descripcion": "Como cliente, quiero aplicar filtros combinables de puertos, fabricantes, precio, categoría, capacidad y rango de fechas de forma simultánea e independiente, para refinar mi búsqueda.",
+      "criterios_aceptacion": [
+        "El cliente puede seleccionar filtros de puerto, fabricante, categoría y capacidad desde desplegables con valores válidos.",
+        "El cliente puede introducir un rango de precio mínimo y máximo.",
+        "El cliente puede seleccionar un rango de fechas de disponibilidad.",
+        "Los filtros se aplican de forma combinada y simultánea.",
+        "El filtro de fechas muestra todos los barcos del catálogo, marcando con una etiqueta 'No disponible' aquellos no disponibles en ese rango sin ocultarlos."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "L"
+    },
+    {
+      "id": "HU-07",
+      "titulo": "Ficha de barco con selección de cantidad",
+      "descripcion": "Como cliente, quiero acceder a la ficha del barco desde el catálogo y seleccionar la cantidad de unidades disponibles para añadir a la cesta, para preparar mi reserva.",
+      "criterios_aceptacion": [
+        "El cliente puede pulsar sobre un barco en el catálogo para acceder a su ficha.",
+        "La ficha muestra los datos completos del barco e imagen.",
+        "El cliente puede seleccionar la cantidad de unidades disponibles.",
+        "El cliente puede añadir el barco a la cesta con la cantidad seleccionada.",
+        "Tras añadir a la cesta, se muestra un mensaje de confirmación."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-08",
+      "titulo": "Gestión de cesta",
+      "descripcion": "Como cliente, quiero visualizar, modificar y vaciar mi cesta desde cualquier página de la aplicación, para gestionar mis selecciones antes de reservar.",
+      "criterios_aceptacion": [
+        "La cesta está siempre visible desde cualquier página de la aplicación.",
+        "El usuario puede revisar el estado de la cesta desde el catálogo.",
+        "El usuario puede ampliar o reducir la cantidad de unidades de cada barco en la cesta.",
+        "El usuario puede eliminar un barco de la cesta.",
+        "El usuario puede vaciar completamente la cesta.",
+        "Al entrar en modo administrador, la cesta se vacía automáticamente."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    }
+  ]
+}

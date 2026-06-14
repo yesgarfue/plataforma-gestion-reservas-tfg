@@ -1,0 +1,96 @@
+{
+  "id_ejecucion": "run_2026-05-13_06-57",
+  "numero_sprint": 2,
+  "historias": [
+    {
+      "id": "HU-04",
+      "titulo": "Reserva sin registro previo",
+      "descripcion": "Como visitante, quiero poder reservar un barco sin registrarme previamente, para agilizar el proceso de alquiler.",
+      "criterios_aceptacion": [
+        "El proceso de reserva permite continuar sin estar registrado.",
+        "El cliente puede proporcionar sus datos de contacto durante el proceso de reserva.",
+        "Si el cliente inicia sesión durante el proceso, la cesta se recupera y se continúa con el proceso."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-09",
+      "titulo": "Cesta visible e interactiva",
+      "descripcion": "Como cliente, quiero que la cesta esté siempre visible e interactiva desde cualquier página de la aplicación, para gestionar mis selecciones fácilmente.",
+      "criterios_aceptacion": [
+        "La cesta es visible en todas las páginas de la aplicación.",
+        "El cliente puede ampliar o reducir la cantidad de unidades de cada barco en la cesta.",
+        "El cliente puede vaciar la cesta completamente.",
+        "La cesta del administrador se vacía automáticamente al entrar como admin y no permite añadir productos."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-10",
+      "titulo": "Proceso de reserva en tres pasos",
+      "descripcion": "Como cliente, quiero completar el proceso de reserva en tres pasos sin exigir registro previo, para alquilar un barco de forma rápida.",
+      "criterios_aceptacion": [
+        "El proceso de reserva consta de tres pasos claramente definidos.",
+        "El cliente puede completar la reserva sin estar registrado.",
+        "Los datos de la reserva se validan correctamente en cada paso.",
+        "El cliente puede navegar entre pasos o cancelar el proceso."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "L"
+    },
+    {
+      "id": "HU-11",
+      "titulo": "Métodos de pago",
+      "descripcion": "Como cliente, quiero elegir entre dos métodos de pago (PayPal Sandbox y contra-reembolso) para completar mi reserva.",
+      "criterios_aceptacion": [
+        "Se presentan dos opciones de pago: PayPal Sandbox y contra-reembolso.",
+        "El cliente puede seleccionar uno de los métodos.",
+        "El flujo de pago se adapta según el método seleccionado.",
+        "El pago se procesa correctamente en ambos casos."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "L"
+    },
+    {
+      "id": "HU-12",
+      "titulo": "Cálculo de tasa de combustible",
+      "descripcion": "Como sistema, quiero aplicar una tasa de combustible de 50 € por día en el cálculo del alquiler, excepto para los barcos en la categoría 'velero'.",
+      "criterios_aceptacion": [
+        "La tasa de combustible se calcula como 50 € por día.",
+        "Los barcos en la categoría 'velero' no incluyen tasa de combustible.",
+        "El total del alquiler incluye la tasa de combustible calculada correctamente.",
+        "El cliente ve el desglose de costos en el resumen de la reserva."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-13",
+      "titulo": "Confirmación de reserva por correo",
+      "descripcion": "Como cliente, quiero recibir un correo electrónico con los datos de mi reserva, incluyendo el código de seguimiento, para tener constancia de mi alquiler.",
+      "criterios_aceptacion": [
+        "Se envía un correo electrónico tras completar la reserva.",
+        "El correo incluye los datos del barco, el rango de fechas y la información total del alquiler.",
+        "El correo incluye el código de seguimiento único.",
+        "El correo se envía a la dirección de correo proporcionada por el cliente."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-14",
+      "titulo": "Estados de reserva",
+      "descripcion": "Como sistema, quiero gestionar los estados de las reservas (PENDIENTE DE PAGO, PAGADO, EN USO, DEVUELTO) para controlar el ciclo de vida de cada alquiler.",
+      "criterios_aceptacion": [
+        "Las reservas tienen cuatro estados: PENDIENTE DE PAGO, PAGADO, EN USO, DEVUELTO.",
+        "El estado inicial de una reserva es PENDIENTE DE PAGO.",
+        "El estado se actualiza correctamente según el flujo de la reserva.",
+        "El administrador puede cambiar el estado de una reserva desde el panel."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    }
+  ]
+}

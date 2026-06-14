@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}Gestión de Reservas - Hundidos{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Gestión de Reservas</h1>
+
+    <div class="mb-4">
+        <form method="get" class="row g-3">
+            <div class="col-md-6">
+                <select name="estado" class="form-select">
+                    <option value="">Todos los estados</option>
+                    {% for value, label in estados %}
+                        <option value="{{ value }}" {% if estado_filter == value %}selected{% endif %}>{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-primary">Filtrar</button>
+            </div>
+        </form>
+    </div>
+
+    {% if reservas %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Cliente</th>
+                        <th>Email</th>
+                        <th>Fechas</th>
+                        <th>Estado</th>
+                        <th>Total</th>
+                        <th>Método de Pago</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reserva in reservas %}
+                        <tr>
+                            <td><strong>{{ reserva.codigo_seguimiento }}</strong></td>
+                            <td>{{ reserva.nombre_cliente }} {{ reserva.apellido_cliente }}</td>
+                            <td>{{ reserva.email_contacto }}</td>
+                            <td>{{ reserva.fecha_inicio|date:"d/m/Y" }} - {{ reserva.fecha_fin|date:"d/m/Y" }}</td>
+                            <td>
+                                {% if reserva.estado == 'PENDIENTE_DE_PAGO' %}
+                                    <span class="badge bg-warning">Pendiente de Pago</span>
+                                {% elif reserva.estado == 'PAGADO' %}
+                                    <span class="badge bg-success">Pagado</span>
+                                {% elif reserva.estado == 'EN_USO' %}
+                                    <span class="badge bg-info">En Uso</span>
+                                {% elif reserva.estado == 'DEVUELTO' %}
+                                    <span class="badge bg-secondary">Devuelto</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ reserva.importe_total }}€</td>
+                            <td>{{ reserva.get_metodo_pago_display }}</td>
+                            <td>
+                                <a href="{% url 'admin:reservation_detail' reserva.id %}" class="btn btn-sm btn-primary">Ver Detalle</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="alert alert-info">No hay reservas con los filtros seleccionados.</div>
+    {% endif %}
+
+    <a href="{% url 'admin:dashboard' %}" class="btn btn-secondary mt-4">Volver al Panel</a>
+</div>
+{% endblock %}

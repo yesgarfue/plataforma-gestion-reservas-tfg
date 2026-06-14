@@ -1,0 +1,75 @@
+{
+  "id_ejecucion": "run_2026-05-14_02-35",
+  "riesgos": [
+    {
+      "id": "R-01",
+      "descripcion": "PayPal Sandbox puede no estar disponible durante una demo o durante el desarrollo, bloqueando la prueba del flujo de pago integrado.",
+      "probabilidad": "media",
+      "impacto": "alto",
+      "mitigacion": "Implementar y dejar completamente funcional el flujo de contra-reembolso antes de abordar la integración con PayPal, para que la aplicación sea demoable aunque la pasarela falle."
+    },
+    {
+      "id": "R-02",
+      "descripcion": "La tasa de combustible tiene una excepción para barcos de categoría 'velero' (0 € en lugar de 50 €/día) que es fácil de olvidar al implementar el cálculo del importe total.",
+      "probabilidad": "alta",
+      "impacto": "medio",
+      "mitigacion": "Crear un test unitario explícito que valide el cálculo de tarifa para barcos de categoría velero antes de cerrar la historia HU-11, y añadir un comentario en el código señalando la excepción."
+    },
+    {
+      "id": "R-03",
+      "descripcion": "SQLite tiene concurrencia limitada y puede generar bloqueos si múltiples clientes intentan reservar simultáneamente, especialmente durante demostraciones o picos de uso.",
+      "probabilidad": "media",
+      "impacto": "alto",
+      "mitigacion": "Implementar un mecanismo de transacciones explícitas con aislamiento SERIALIZABLE en el modelo de Reserva, y ejecutar pruebas de carga con al menos 10 reservas simultáneas antes de cerrar el Sprint 2."
+    },
+    {
+      "id": "R-04",
+      "descripcion": "El envío de correos electrónicos (confirmación de reserva, recordatorios, notificaciones) depende de un servidor SMTP configurado que puede no estar disponible en el entorno de desarrollo o demo.",
+      "probabilidad": "alta",
+      "impacto": "medio",
+      "mitigacion": "Configurar un backend de correo en memoria (console backend) para desarrollo y pruebas, y documentar en el README la configuración de SMTP para producción. Implementar un log de correos fallidos para auditoría."
+    },
+    {
+      "id": "R-05",
+      "descripcion": "Los filtros combinables de puertos, fabricantes, precio, categoría, capacidad y rango de fechas son más complejos de lo que aparentan, con múltiples casos borde en la lógica de disponibilidad.",
+      "probabilidad": "alta",
+      "impacto": "medio",
+      "mitigacion": "Crear un conjunto de tests de integración que cubra al menos 15 combinaciones de filtros diferentes, incluyendo casos borde como rango de fechas vacío, precio mínimo igual a máximo, y capacidad sin barcos disponibles."
+    },
+    {
+      "id": "R-06",
+      "descripcion": "El proceso de reserva en tres pasos sin registro previo tiene casos borde complejos: cliente inicia sesión durante el proceso, recupera cesta, pero los datos de pago pueden no sincronizarse correctamente.",
+      "probabilidad": "media",
+      "impacto": "alto",
+      "mitigacion": "Implementar un flujo de sesión con tokens CSRF persistentes en la cesta y ejecutar pruebas de usuario que simulen login durante el proceso de reserva antes de cerrar el Sprint 2."
+    },
+    {
+      "id": "R-07",
+      "descripcion": "Django 3.2 es una versión antigua con soporte limitado (fin de soporte en abril 2024) y puede tener vulnerabilidades de seguridad no parcheadas.",
+      "probabilidad": "baja",
+      "impacto": "alto",
+      "mitigacion": "Ejecutar manage.py check antes de cada commit y bloquear merge si hay advertencias de seguridad. Documentar en el README que la aplicación requiere actualizaciones de seguridad periódicas y que Django 3.2 debe ser reemplazado por una versión LTS más reciente en producción."
+    },
+    {
+      "id": "R-08",
+      "descripcion": "Los datos seed deben cargarse de forma fiable en cada arranque del contenedor Docker, pero un fallo en la carga puede dejar la base de datos en estado inconsistente.",
+      "probabilidad": "media",
+      "impacto": "medio",
+      "mitigacion": "Crear un script de inicialización que valide la integridad de los datos seed (5 barcos, 2 puertos, 2 fabricantes, 2 categorías, usuarios de prueba) y lance una excepción si alguno falta. Ejecutar este script en el entrypoint del Dockerfile."
+    },
+    {
+      "id": "R-09",
+      "descripcion": "Tres sprints son ajustados para el alcance comprometido, y el reparto entre sprints puede dejar dependencias cruzadas: el Sprint 2 (pago) depende del modelo de Reserva del Sprint 1, y el Sprint 3 (administración) depende de ambos.",
+      "probabilidad": "alta",
+      "impacto": "medio",
+      "mitigacion": "Completar el modelo de Reserva con todos sus estados (PENDIENTE DE PAGO, PAGADO, EN USO, DEVUELTO) y transiciones válidas en el Sprint 1, antes de iniciar el Sprint 2. Realizar una revisión de arquitectura al cierre del Sprint 1 para validar que no hay bloqueos."
+    },
+    {
+      "id": "R-10",
+      "descripcion": "La construcción del contenedor Docker depende de imágenes base externas (python:3.x, postgres o similar) que pueden no estar disponibles o tener vulnerabilidades.",
+      "probabilidad": "media",
+      "impacto": "medio",
+      "mitigacion": "Especificar versiones exactas de imágenes base en el Dockerfile (p.ej. python:3.9-slim-bullseye) y ejecutar docker build con --pull para obtener la última versión segura. Documentar en el README las versiones mínimas requeridas."
+    }
+  ]
+}

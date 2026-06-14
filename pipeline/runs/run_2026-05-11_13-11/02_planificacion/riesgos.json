@@ -1,0 +1,75 @@
+{
+  "id_ejecucion": "run_2026-05-11_13-11",
+  "riesgos": [
+    {
+      "id": "R-01",
+      "descripcion": "PayPal Sandbox puede no estar disponible durante una demo o durante el desarrollo, bloqueando la prueba del flujo de pago integrado.",
+      "probabilidad": "media",
+      "impacto": "alto",
+      "mitigacion": "Implementar y dejar completamente funcional el flujo de contra-reembolso antes de abordar la integración con PayPal, para que la aplicación sea demoable aunque la pasarela falle."
+    },
+    {
+      "id": "R-02",
+      "descripcion": "La tasa de combustible tiene una excepción para barcos de categoría 'velero' (0 € en lugar de 50 €/día) que es fácil de olvidar al implementar el cálculo del importe total.",
+      "probabilidad": "alta",
+      "impacto": "medio",
+      "mitigacion": "Cubrir explícitamente el caso de 'velero' con un test unitario en el cálculo de la tasa de combustible antes de cerrar la historia HU-15, y añadir un comentario en el código que explique la excepción."
+    },
+    {
+      "id": "R-03",
+      "descripcion": "SQLite tiene concurrencia limitada para múltiples reservas simultáneas, lo que puede causar bloqueos o pérdida de datos si varios clientes reservan al mismo tiempo.",
+      "probabilidad": "media",
+      "impacto": "alto",
+      "mitigacion": "Implementar transacciones explícitas con nivel de aislamiento SERIALIZABLE en el modelo de reserva, ejecutar pruebas de carga con al menos 10 reservas concurrentes antes de cerrar el sprint 2, y documentar las limitaciones de SQLite en la guía de despliegue."
+    },
+    {
+      "id": "R-04",
+      "descripcion": "El envío de correos de confirmación y recordatorio depende de un servidor SMTP configurado correctamente, que puede no estar disponible en el entorno de desarrollo o demo.",
+      "probabilidad": "media",
+      "impacto": "medio",
+      "mitigacion": "Implementar un backend de correo en memoria (console backend) para desarrollo y pruebas, y crear un script de validación que verifique la configuración SMTP antes de cada despliegue en producción."
+    },
+    {
+      "id": "R-05",
+      "descripcion": "Los datos seed (5 barcos, 2 puertos, 2 fabricantes, 2 categorías, usuarios) deben cargarse de forma fiable en cada arranque del contenedor Docker, pero pueden fallar si las migraciones no se ejecutan correctamente.",
+      "probabilidad": "media",
+      "impacto": "medio",
+      "mitigacion": "Crear un script de inicialización (entrypoint.sh) que ejecute manage.py migrate y manage.py loaddata en orden, con validación de errores, y añadir un test de integración que verifique que los datos seed están presentes tras el arranque."
+    },
+    {
+      "id": "R-06",
+      "descripcion": "El proceso de reserva en tres pasos sin registro previo tiene múltiples casos borde (sesión expirada, datos incompletos, cambio de cesta durante el proceso) que pueden causar reservas inconsistentes.",
+      "probabilidad": "alta",
+      "impacto": "medio",
+      "mitigacion": "Implementar un flujo de reserva con estado persistente en la sesión, crear tests de aceptación para cada caso borde (sesión expirada, volver atrás, cambiar cesta), y añadir validación de integridad antes de confirmar la reserva."
+    },
+    {
+      "id": "R-07",
+      "descripcion": "Los filtros combinables del catálogo (puertos, fabricantes, precio, categoría, capacidad, rango de fechas) son más complejos de lo que aparentan y pueden generar queries SQL ineficientes o resultados incorrectos.",
+      "probabilidad": "media",
+      "impacto": "medio",
+      "mitigacion": "Implementar los filtros de forma incremental en la historia HU-05, crear tests unitarios para cada combinación de filtros, y ejecutar EXPLAIN PLAN en las queries generadas para asegurar que usan índices correctamente."
+    },
+    {
+      "id": "R-08",
+      "descripcion": "Django 3.2 es una versión antigua con soporte limitado (fin de soporte en abril de 2024), lo que puede causar vulnerabilidades de seguridad no parcheadas.",
+      "probabilidad": "baja",
+      "impacto": "alto",
+      "mitigacion": "Ejecutar manage.py check --deploy antes de cada despliegue, aplicar todos los parches de seguridad disponibles para Django 3.2, y documentar un plan de migración a una versión más reciente de Django para después del lanzamiento inicial."
+    },
+    {
+      "id": "R-09",
+      "descripcion": "La construcción del contenedor Docker depende de imágenes base externas (python:3.x, etc.) que pueden no estar disponibles o tener vulnerabilidades.",
+      "probabilidad": "baja",
+      "impacto": "medio",
+      "mitigacion": "Especificar versiones exactas de las imágenes base en el Dockerfile (no usar 'latest'), ejecutar docker build en el pipeline de CI/CD antes de cada merge, y usar herramientas como Trivy para escanear vulnerabilidades en las imágenes."
+    },
+    {
+      "id": "R-10",
+      "descripcion": "El reparto de funcionalidades entre tres sprints puede dejar dependencias cruzadas, por ejemplo el sprint 2 (pago) depende del modelo de reserva del sprint 1, lo que puede causar retrasos si el sprint 1 se retrasa.",
+      "probabilidad": "media",
+      "impacto": "medio",
+      "mitigacion": "Implementar el modelo de reserva (HU-17) al inicio del sprint 1, crear un contrato de interfaz claro entre sprints, y ejecutar pruebas de integración entre sprints al final de cada uno para detectar incompatibilidades temprano."
+    }
+  ]
+}

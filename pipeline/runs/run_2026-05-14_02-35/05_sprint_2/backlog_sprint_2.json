@@ -1,0 +1,73 @@
+{
+  "id_ejecucion": "run_2026-05-14_02-35",
+  "numero_sprint": 2,
+  "historias": [
+    {
+      "id": "HU-07",
+      "titulo": "Proceso de reserva sin registro previo",
+      "descripcion": "Como cliente, quiero completar una reserva en no más de tres pasos sin haberse registrado previamente, proporcionando datos del cliente y datos de pago.",
+      "criterios_aceptacion": [
+        "El cliente puede completar una reserva sin haberse registrado previamente.",
+        "El proceso de reserva se realiza en no más de tres pasos.",
+        "Durante el proceso de reserva se solicitan los datos del cliente y los datos de pago.",
+        "Si hay sesión iniciada, los datos del cliente se heredan automáticamente.",
+        "El cliente puede iniciar sesión durante el proceso de reserva y recuperar su cesta al volver de la página de login.",
+        "Desde la cesta el usuario puede finalizar la compra iniciando el proceso de reserva."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "L"
+    },
+    {
+      "id": "HU-08",
+      "titulo": "Pago mediante PayPal Sandbox",
+      "descripcion": "Como cliente, quiero pagar mi reserva mediante PayPal Sandbox, para completar la transacción de forma segura.",
+      "criterios_aceptacion": [
+        "El cliente puede seleccionar PayPal Sandbox como método de pago.",
+        "La integración de PayPal utiliza el entorno Sandbox, no producción.",
+        "El cliente es redirigido a PayPal para completar el pago.",
+        "Tras completar el pago en PayPal, el cliente regresa a la aplicación.",
+        "El estado de la reserva se actualiza a PAGADO tras un pago exitoso."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "L"
+    },
+    {
+      "id": "HU-09",
+      "titulo": "Pago mediante contra-reembolso",
+      "descripcion": "Como cliente, quiero pagar mi reserva mediante contra-reembolso, para completar la reserva sin pagar en línea.",
+      "criterios_aceptacion": [
+        "El cliente puede seleccionar contra-reembolso como método de pago.",
+        "Al seleccionar contra-reembolso, la reserva se crea en estado PENDIENTE DE PAGO.",
+        "El cliente recibe un correo de confirmación con los datos de la reserva."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-10",
+      "titulo": "Confirmación de reserva y código de seguimiento",
+      "descripcion": "Como cliente, quiero recibir un correo electrónico con los datos de mi reserva y un código de seguimiento, para poder consultar el estado de mi reserva posteriormente.",
+      "criterios_aceptacion": [
+        "Al finalizar la reserva, el cliente recibe un correo electrónico.",
+        "El correo contiene los datos del barco, rango de fechas, importe total y código de seguimiento.",
+        "El código de seguimiento es único y permite consultar el estado de la reserva sin estar registrado."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-11",
+      "titulo": "Cálculo de tarifa con tasa de combustible",
+      "descripcion": "Como sistema, quiero calcular el importe total de la reserva considerando el precio diario del barco, la cantidad de días y una tasa de combustible diferenciada por categoría.",
+      "criterios_aceptacion": [
+        "Los alquileres se miden por día.",
+        "Se aplica una tasa de combustible de 50 euros por día para todos los barcos.",
+        "Para barcos de categoría velero, la tasa de combustible es 0 euros.",
+        "El importe total se calcula como: (precio_diario * cantidad_dias * cantidad_barcos) + (tasa_combustible * cantidad_dias * cantidad_barcos).",
+        "El importe total se muestra al cliente antes de confirmar la reserva."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    }
+  ]
+}

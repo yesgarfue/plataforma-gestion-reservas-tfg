@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio - Hundidos{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Bienvenido a Hundidos</h2>
+    <p>Tu plataforma de alquiler de barcos en línea.</p>
+    <p>Explora nuestro catálogo de barcos disponibles y realiza tu reserva en tres sencillos pasos.</p>
+    <ul>
+        <li><a href="{% url 'catalog:barco_list' %}">Ver Catálogo de Barcos</a></li>
+        <li><a href="{% url 'tracking:search' %}">Seguimiento de Reservas</a></li>
+    </ul>
+</div>
+{% endblock %}

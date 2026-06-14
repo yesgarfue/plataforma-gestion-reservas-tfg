@@ -1,0 +1,15 @@
+{
+  "run_id": "run_2026-05-13_23-50",
+  "resultado_final": "abortado_por_limite",
+  "mensaje": "Run finalizado con resultado_final = abortado_por_limite",
+  "timestamp_cierre": "2026-05-14T01:08:09+02:00",
+  "fases": {
+    "01_requisitos": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 3,
+      "gate_decision": "rechazado",
+      "duracion_s_ejec": 2102.4360000000015,
+      "duracion_s_gate_humano": 2571.5
+    }
+  }
+}

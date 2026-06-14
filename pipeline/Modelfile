@@ -1,0 +1,16 @@
+# Modelfile del pipeline Caso 02 (Hundidos).
+# Modelo derivado de qwen2.5-coder:7b con los parámetros del perfil
+# "default" del pipeline_specs.md (Bloque 1) bakeados.
+#
+# Para crear o recrear el modelo:
+#     ollama create hundidos-analista -f Modelfile
+#
+# Verificar parámetros:
+#     ollama show hundidos-analista --modelfile
+
+FROM qwen2.5-coder:7b
+
+PARAMETER num_ctx 16384
+PARAMETER temperature 0.2
+PARAMETER top_p 0.9
+PARAMETER seed 42

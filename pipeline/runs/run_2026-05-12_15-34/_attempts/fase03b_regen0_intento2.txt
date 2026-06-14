@@ -1,0 +1,300 @@
+# Intento fallido fase 03b_scaffold
+# regeneración humana: 0
+# intento dentro de la regeneración: 2
+# error: Contenido insuficiente: EntregaSprint: Archivos sin contenido: ['admin_panel/__init__.py', 'cart/__init__.py', 'catalog/__init__.py', 'core/__init__.py', 'core/management/__init__.py', 'core/management/commands/__init__.py', 'hundidos/__init__.py', 'reservations/__init__.py', 'reservations/management/__init__.py', 'reservations/management/commands/__init__.py', 'reservations/services/__init__.py'].
+
+---- raw ----
+{
+  "id_ejecucion": "run_2026-05-12_15-34",
+  "numero_sprint": 0,
+  "archivos": [
+    {
+      "path": "manage.py",
+      "contenido": "#!/usr/bin/env python\n\"\"\"Django's command-line utility for administrative tasks.\"\"\"\nimport os\nimport sys\n\n\ndef main():\n    \"\"\"Run administrative tasks.\"\"\"\n    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'hundidos.settings')\n    try:\n        from django.core.management import execute_from_command_line\n    except ImportError as exc:\n        raise ImportError(\n            \"Couldn't import Django. Are you sure it's installed and \"\n            \"available on your PYTHONPATH environment variable? Did you \"\n            \"forget to activate a virtual environment?\"\n        ) from exc\n    execute_from_command_line(sys.argv)\n\n\nif __name__ == '__main__':\n    main()"
+    },
+    {
+      "path": "hundidos/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "hundidos/settings.py",
+      "contenido": "from pathlib import Path\nimport os\n\nBASE_DIR = Path(__file__).resolve().parent.parent\n\nSECRET_KEY = 'django-insecure-dev-key-change-in-production'\n\nDEBUG = True\n\nALLOWED_HOSTS = ['*']\n\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'core',\n    'catalog',\n    'cart',\n    'reservations',\n    'admin_panel',\n]\n\nMIDDLEWARE = [\n    'django.middleware.security.SecurityMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    'django.middleware.csrf.CsrfViewMiddleware',\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n]\n\nROOT_URLCONF = 'hundidos.urls'\n\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [BASE_DIR / 'templates'],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',\n                'django.contrib.messages.context_processors.messages',\n            ],\n        },\n    },\n]\n\nWSGI_APPLICATION = 'hundidos.wsgi.application'\n\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}\n\nAUTH_PASSWORD_VALIDATORS = [\n    {\n        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',\n    },\n]\n\nLANGUAGE_CODE = 'es-es'\n\nTIME_ZONE = 'Europe/Madrid'\n\nUSE_I18N = True\n\nUSE_L10N = True\n\nUSE_TZ = True\n\nSTATIC_URL = '/static/'\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\nSTATICFILES_DIRS = [BASE_DIR / 'static']\n\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'media'\n\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n\nLOGIN_URL = 'core:login'\nLOGIN_REDIRECT_URL = 'core:home'\nLOGOUT_REDIRECT_URL = 'core:home'\n\nEMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'\n\nSESSION_ENGINE = 'django.contrib.sessions.backends.db'\nSESSION_COOKIE_AGE = 86400\nSESSION_COOKIE_SECURE = False\nSESSION_COOKIE_HTTPONLY = True\n\nCSRF_COOKIE_SECURE = False\nCSRF_COOKIE_HTTPONLY = True\n\nPAYPAL_SANDBOX_MODE = True\nPAYPAL_CLIENT_ID = 'sandbox-client-id'\nPAYPAL_CLIENT_SECRET = 'sandbox-client-secret'\n\nCARRITO_SESSION_KEY = 'carrito'"
+    },
+    {
+      "path": "hundidos/urls.py",
+      "contenido": "from django.contrib import admin\nfrom django.urls import path, include\nfrom django.conf import settings\nfrom django.conf.urls.static import static\n\nurlpatterns = [\n    path('admin/', admin.site.urls),\n    path('', include('core.urls', namespace='core')),\n    path('', include('catalog.urls', namespace='catalog')),\n    path('', include('cart.urls', namespace='cart')),\n    path('', include('reservations.urls', namespace='reservations')),\n    path('', include('admin_panel.urls', namespace='admin_panel')),\n]\n\nif settings.DEBUG:\n    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)\n    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)"
+    },
+    {
+      "path": "hundidos/wsgi.py",
+      "contenido": "import os\n\nfrom django.core.wsgi import get_wsgi_application\n\nos.environ.setdefault('DJANGO_SETTINGS_MODULE', 'hundidos.settings')\n\napplication = get_wsgi_application()"
+    },
+    {
+      "path": "hundidos/asgi.py",
+      "contenido": "import os\n\nfrom django.core.asgi import get_asgi_application\n\nos.environ.setdefault('DJANGO_SETTINGS_MODULE', 'hundidos.settings')\n\napplication = get_asgi_application()"
+    },
+    {
+      "path": "core/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "core/apps.py",
+      "contenido": "from django.apps import AppConfig\n\n\nclass CoreConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'core'"
+    },
+    {
+      "path": "core/models.py",
+      "contenido": "from django.db import models\n\n\nclass UserProfile(models.Model):\n    pass"
+    },
+    {
+      "path": "core/views.py",
+      "contenido": "from django.shortcuts import render\nfrom django.views import View\n\n\nclass HomeView(View):\n    def get(self, request):\n        return render(request, 'core/home.html')\n\n\nclass RegisterView(View):\n    def get(self, request):\n        return render(request, 'core/register.html')\n\n    def post(self, request):\n        return render(request, 'core/register.html')\n\n\nclass LoginView(View):\n    def get(self, request):\n        return render(request, 'core/login.html')\n\n    def post(self, request):\n        return render(request, 'core/login.html')\n\n\nclass LogoutView(View):\n    def post(self, request):\n        return render(request, 'core/home.html')\n\n\nclass AccountView(View):\n    def get(self, request):\n        return render(request, 'core/account.html')"
+    },
+    {
+      "path": "core/urls.py",
+      "contenido": "from django.urls import path\nfrom . import views\n\napp_name = 'core'\n\nurlpatterns = [\n    path('', views.HomeView.as_view(), name='home'),\n    path('registro/', views.RegisterView.as_view(), name='register'),\n    path('login/', views.LoginView.as_view(), name='login'),\n    path('logout/', views.LogoutView.as_view(), name='logout'),\n    path('cuenta/', views.AccountView.as_view(), name='account'),\n]"
+    },
+    {
+      "path": "core/admin.py",
+      "contenido": "from django.contrib import admin\n\n\nclass CoreAdmin(admin.ModelAdmin):\n    pass"
+    },
+    {
+      "path": "core/forms.py",
+      "contenido": "from django import forms\n\n\nclass BaseForm(forms.Form):\n    pass"
+    },
+    {
+      "path": "core/management/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "core/management/commands/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "core/management/commands/seed_data.py",
+      "contenido": "from django.core.management.base import BaseCommand\n\n\nclass Command(BaseCommand):\n    help = 'Carga datos iniciales en la base de datos'\n\n    def handle(self, *args, **options):\n        self.stdout.write('Iniciando carga de datos...')"
+    },
+    {
+      "path": "catalog/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "catalog/apps.py",
+      "contenido": "from django.apps import AppConfig\n\n\nclass CatalogConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'catalog'"
+    },
+    {
+      "path": "catalog/models.py",
+      "contenido": "from django.db import models\n\n\nclass Categoria(models.Model):\n    pass\n\n\nclass Puerto(models.Model):\n    pass\n\n\nclass Fabricante(models.Model):\n    pass\n\n\nclass Barco(models.Model):\n    pass"
+    },
+    {
+      "path": "catalog/views.py",
+      "contenido": "from django.shortcuts import render\nfrom django.views import View\n\n\nclass BarcoListView(View):\n    def get(self, request):\n        return render(request, 'catalog/list.html')\n\n\nclass BarcoDetailView(View):\n    def get(self, request, id):\n        return render(request, 'catalog/detail.html')"
+    },
+    {
+      "path": "catalog/urls.py",
+      "contenido": "from django.urls import path\nfrom . import views\n\napp_name = 'catalog'\n\nurlpatterns = [\n    path('barcos/', views.BarcoListView.as_view(), name='barco_list'),\n    path('barcos/<int:id>/', views.BarcoDetailView.as_view(), name='barco_detail'),\n]"
+    },
+    {
+      "path": "catalog/admin.py",
+      "contenido": "from django.contrib import admin\n\n\nclass CatalogAdmin(admin.ModelAdmin):\n    pass"
+    },
+    {
+      "path": "catalog/filters.py",
+      "contenido": "class BarcoFilter:\n    pass"
+    },
+    {
+      "path": "cart/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "cart/apps.py",
+      "contenido": "from django.apps import AppConfig\n\n\nclass CartConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'cart'"
+    },
+    {
+      "path": "cart/models.py",
+      "contenido": "from django.db import models\n\n\nclass CartItem(models.Model):\n    pass"
+    },
+    {
+      "path": "cart/views.py",
+      "contenido": "from django.shortcuts import render\nfrom django.views import View\n\n\nclass CartView(View):\n    def get(self, request):\n        return render(request, 'cart/cart.html')\n\n\nclass AddToCartView(View):\n    def post(self, request):\n        return render(request, 'cart/cart.html')\n\n\nclass UpdateCartView(View):\n    def post(self, request):\n        return render(request, 'cart/cart.html')\n\n\nclass ClearCartView(View):\n    def post(self, request):\n        return render(request, 'cart/cart.html')"
+    },
+    {
+      "path": "cart/urls.py",
+      "contenido": "from django.urls import path\nfrom . import views\n\napp_name = 'cart'\n\nurlpatterns = [\n    path('cesta/', views.CartView.as_view(), name='cart_view'),\n    path('cesta/agregar/', views.AddToCartView.as_view(), name='add_to_cart'),\n    path('cesta/actualizar/', views.UpdateCartView.as_view(), name='update_cart'),\n    path('cesta/vaciar/', views.ClearCartView.as_view(), name='clear_cart'),\n]"
+    },
+    {
+      "path": "cart/admin.py",
+      "contenido": "from django.contrib import admin\n\n\nclass CartAdmin(admin.ModelAdmin):\n    pass"
+    },
+    {
+      "path": "cart/services.py",
+      "contenido": "class CartService:\n    pass"
+    },
+    {
+      "path": "reservations/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "reservations/apps.py",
+      "contenido": "from django.apps import AppConfig\n\n\nclass ReservationsConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'reservations'"
+    },
+    {
+      "path": "reservations/models.py",
+      "contenido": "from django.db import models\n\n\nclass Reserva(models.Model):\n    pass\n\n\nclass LineaReserva(models.Model):\n    pass"
+    },
+    {
+      "path": "reservations/views.py",
+      "contenido": "from django.shortcuts import render\nfrom django.views import View\n\n\nclass CheckoutStep1View(View):\n    def get(self, request):\n        return render(request, 'reservations/checkout_step1.html')\n\n    def post(self, request):\n        return render(request, 'reservations/checkout_step1.html')\n\n\nclass CheckoutStep2View(View):\n    def get(self, request):\n        return render(request, 'reservations/checkout_step2.html')\n\n    def post(self, request):\n        return render(request, 'reservations/checkout_step2.html')\n\n\nclass CheckoutStep3View(View):\n    def get(self, request):\n        return render(request, 'reservations/checkout_step3.html')\n\n    def post(self, request):\n        return render(request, 'reservations/checkout_step3.html')\n\n\nclass ConfirmationView(View):\n    def get(self, request):\n        return render(request, 'reservations/confirmation.html')\n\n\nclass PayPalReturnView(View):\n    def get(self, request):\n        return render(request, 'reservations/paypal_return.html')\n\n\nclass PayPalCancelView(View):\n    def get(self, request):\n        return render(request, 'reservations/paypal_cancel.html')\n\n\nclass TrackingView(View):\n    def get(self, request):\n        return render(request, 'reservations/tracking.html')\n\n    def post(self, request):\n        return render(request, 'reservations/tracking.html')\n\n\nclass ReservationHistoryView(View):\n    def get(self, request):\n        return render(request, 'reservations/history.html')\n\n\nclass CancelReservationView(View):\n    def post(self, request, id):\n        return render(request, 'reservations/history.html')"
+    },
+    {
+      "path": "reservations/urls.py",
+      "contenido": "from django.urls import path\nfrom . import views\n\napp_name = 'reservations'\n\nurlpatterns = [\n    path('reserva/paso1/', views.CheckoutStep1View.as_view(), name='checkout_step1'),\n    path('reserva/paso2/', views.CheckoutStep2View.as_view(), name='checkout_step2'),\n    path('reserva/paso3/', views.CheckoutStep3View.as_view(), name='checkout_step3'),\n    path('reserva/confirmacion/', views.ConfirmationView.as_view(), name='confirmation'),\n    path('reserva/paypal/return/', views.PayPalReturnView.as_view(), name='paypal_return'),\n    path('reserva/paypal/cancel/', views.PayPalCancelView.as_view(), name='paypal_cancel'),\n    path('seguimiento/', views.TrackingView.as_view(), name='tracking'),\n    path('mis-reservas/', views.ReservationHistoryView.as_view(), name='history'),\n    path('reserva/<int:id>/cancelar/', views.CancelReservationView.as_view(), name='cancel'),\n]"
+    },
+    {
+      "path": "reservations/admin.py",
+      "contenido": "from django.contrib import admin\n\n\nclass ReservationsAdmin(admin.ModelAdmin):\n    pass"
+    },
+    {
+      "path": "reservations/forms.py",
+      "contenido": "from django import forms\n\n\nclass ReservaForm(forms.Form):\n    pass"
+    },
+    {
+      "path": "reservations/services/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "reservations/services/paypal.py",
+      "contenido": "class PayPalService:\n    pass"
+    },
+    {
+      "path": "reservations/services/email.py",
+      "contenido": "class EmailService:\n    pass"
+    },
+    {
+      "path": "reservations/management/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "reservations/management/commands/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "reservations/management/commands/send_reminders.py",
+      "contenido": "from django.core.management.base import BaseCommand\n\n\nclass Command(BaseCommand):\n    help = 'Envía recordatorios de reservas próximas'\n\n    def handle(self, *args, **options):\n        pass"
+    },
+    {
+      "path": "admin_panel/__init__.py",
+      "contenido": ""
+    },
+    {
+      "path": "admin_panel/apps.py",
+      "contenido": "from django.apps import AppConfig\n\n\nclass AdminPanelConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'admin_panel'"
+    },
+    {
+      "path": "admin_panel/views.py",
+      "contenido": "from django.shortcuts import render\nfrom django.views import View\n\n\nclass AdminReservationsListView(View):\n    def get(self, request):\n        return render(request, 'admin_panel/reservations_list.html')\n\n\nclass ChangeReservationStatusView(View):\n    def post(self, request, id):\n        return render(request, 'admin_panel/reservations_list.html')\n\n\nclass AdminClientsListView(View):\n    def get(self, request):\n        return render(request, 'admin_panel/clients_list.html')\n\n\nclass DeleteClientView(View):\n    def post(self, request, id):\n        return render(request, 'admin_panel/clients_list.html')\n\n\nclass AdminBoatsListView(View):\n    def get(self, request):\n        return render(request, 'admin_panel/boats_list.html')"
+    },
+    {
+      "path": "admin_panel/urls.py",
+      "contenido": "from django.urls import path\nfrom . import views\n\napp_name = 'admin_panel'\n\nurlpatterns = [\n    path('admin/reservas/', views.AdminReservationsListView.as_view(), name='reservations_list'),\n    path('admin/reservas/<int:id>/cambiar-estado/', views.ChangeReservationStatusView.as_view(), name='change_reservation_status'),\n    path('admin/clientes/', views.AdminClientsListView.as_view(), name='clients_list'),\n    path('admin/clientes/<int:id>/eliminar/', views.DeleteClientView.as_view(), name='delete_client'),\n    path('admin/barcos/', views.AdminBoatsListView.as_view(), name='boats_list'),\n]"
+    },
+    {
+      "path": "admin_panel/forms.py",
+      "contenido": "from django import forms\n\n\nclass AdminForm(forms.Form):\n    pass"
+    },
+    {
+      "path": "templates/base.html",
+      "contenido": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>{% block title %}Hundidos{% endblock %}</title>\n</head>\n<body>\n    <header>\n        <h1>Hundidos</h1>\n    </header>\n    <main>\n        {% block content %}{% endblock %}\n    </main>\n    <footer>\n        <p>&copy; 2026 Hundidos</p>\n    </footer>\n</body>\n</html>"
+    },
+    {
+      "path": "templates/core/home.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Inicio - Hundidos{% endblock %}\n\n{% block content %}\n<h2>Bienvenido a Hundidos</h2>\n{% endblock %}"
+    },
+    {
+      "path": "templates/core/register.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Registro - Hundidos{% endblock %}\n\n{% block content %}\n<h2>Registro</h2>\n{% endblock %}"
+    },
+    {
+      "path": "templates/core/login.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Login - Hundidos{% endblock %}\n\n{% block content %}\n<h2>Login</h2>\n{% endblock %}"
+    },
+    {
+      "path": "templates/core/account.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Mi Cuenta - Hundidos{% endblock %}\n\n{% block content %}\n<h2>Mi Cuenta</h2>\n{% endblock %}"
+    },
+    {
+      "path": "templates/catalog/list.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Catálogo - Hundidos{% endblock %}\n\n{% block content %}\n<h2>Catálogo de Barcos</h2>\n{% endblock %}"
+    },
+    {
+      "path": "templates/catalog/detail.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Detalle - Hundidos{% endblock %}\n\n{% block content %}\n<h2>Detalle del Barco</h2>\n{% endblock %}"
+    },
+    {
+      "path": "templates/cart/cart.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Cesta - Hundidos{% endblock %}\n\n{% block content %}\n<h2>Cesta de Compra</h2>\n{% endblock %}"
+    },
+    {
+      "path": "templates/reservations/checkout_step1.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Paso 1 - Hundidos{% endblock %}\n\n{% block content %}\n<h2>Paso 1: Seleccionar Fechas</h2>\n{% endblock %}"
+    },
+    {
+      "path": "templates/reservations/checkout_step2.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Paso 2 - Hundidos{% endblock %}\n\n{% block content %}\n<h2>Paso 2: Datos del Cliente</h2>\n{% endblock %}"
+    },
+    {
+      "path": "templates/reservations/checkout_step3.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Paso 3 - Hundidos{% endblock %}\n\n{% block content %}\n<h2>Paso 3: Método de Pago</h2>\n{% endblock %}"
+    },
+    {
+      "path": "templates/reservations/confirmation.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Confirmación - Hundidos{% endblock %}\n\n{% block content %}\n<h2>Confirmación de Reserva</h2>\n{% endblock %}"
+    },
+    {
+      "path": "templates/reservations/paypal_return.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}PayPal Return - Hundidos{% endblock %}\n\n{% block content %}\n<h2>Retorno de PayPal</h2>\n{% endblock %}"
+    },
+    {
+      "path": "templates/reservations/paypal_cancel.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}PayPal Cancel - Hundidos{% endblock %}\n\n{% block content %}\n<h2>Cancelación de PayPal</h2>\n{% endblock %}"
+    },
+    {
+      "path": "templates/reservations/tracking.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Seguimiento - Hundidos{% endblock %}\n\n{% block content %}\n<h2>Seguimiento de Reserva</h2>\n{% endblock %}"
+    },
+    {
+      "path": "templates/reservations/history.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Mis Reservas - Hundidos{% endblock %}\n\n{% block content %}\n<h2>Mis Reservas</h2>\n{% endblock %}"
+    },
+    {
+      "path": "templates/admin_panel/reservations_list.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Admin Reservas - Hundidos{% endblock %}\n\n{% block content %}\n<h2>Gestión de Reservas</h2>\n{% endblock %}"
+    },
+    {
+      "path": "templates/admin_panel/clients_list.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Admin Clientes - Hundidos{% endblock %}\n\n{% block content %}\n<h2>Gestión de Clientes</h2>\n{% endblock %}"
+    },
+    {
+      "path": "templates/admin_panel/boats_list.html",
+      "contenido": "{% extends 'base.html' %}\n\n{% block title %}Admin Barcos - Hundidos{% endblock %}\n\n{% block content %}\n<h2>Gestión de Barcos</h2>\n{% endblock %}"
+    },
+    {
+      "path": ".gitignore",
+      "contenido": "*.pyc\n__pycache__/\n*.egg-info/\ndist/\nbuild/\n.env\n.venv\nenv/\nvenv/\ndb.sqlite3\n.DS_Store\n*.log\n.idea/\n.vscode/\nstaticfiles/\nmedia/"
+    },
+    {
+      "path": "requirements.txt",
+      "contenido": "Django==3.2.0\ndjango-extensions==3.1.1\npython-decouple==3.4\nrequests==2.26.0"
+    },
+    {
+      "path": "Dockerfile",
+      "contenido": "FROM python:3.9-slim\n\nWORKDIR /app\n\nCOPY requirements.txt .\nRUN pip install --no-cache-dir -r requirements.txt\n\nCOPY . .\n\nRUN python manage.py collectstatic --noinput\n\nEXPOSE 8000\n\nCMD [\"python\", \"manage.py\", \"runserver\", \"0.0.0.0:8000\"]"
+    },
+    {
+      "path": "docker-compose.yml",
+      "contenido": "version: '3.8'\n\nservices:\n  web:\n    build: .\n    ports:\n      - \"8000:8000\"\n    volumes:\n      - .:/app\n    environment:\n      - DEBUG=True\n    command: python manage.py runserver 0.0.0.0:8000"
+    },
+    {
+      "path": "README.md",
+      "contenido": "# Hundidos - Alquiler de Barcos\n\nAplicación web monolítica de alquiler de barcos construida con Django 3.2.\n\n## Instalación\n\n### Requisitos\n- Python 3.9+\n- pip\n- virtualenv (recomendado)\n\n### Pasos\n\n1. Clonar el repositorio\n2. Crear entorno virtual\n3. Instalar dependencias: pip install -r requirements.txt\n4. Ejecutar migraciones: python manage.py migrate\n5. Cargar datos iniciales: python manage.py seed_data\n6. Ejecutar servidor: python manage.py runserver\n\nLa aplicación estará disponible en http://localhost:8000\n\n## Uso con Docker\n\ndocker-compose up\n\n## Estructura del Proyecto\n\n- core/ - Autenticación y gestión de usuarios\n- catalog/ - Catálogo de barcos\n- cart/ - Cesta de compra\n- reservations/ - Gestión de reservas\n- admin_panel/ - Panel administrativo\n- templates/ - Plantillas HTML\n- static/ - Archivos estáticos"
+    }
+  ]
+}

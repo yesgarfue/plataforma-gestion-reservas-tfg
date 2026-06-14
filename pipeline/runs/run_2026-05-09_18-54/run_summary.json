@@ -1,0 +1,22 @@
+{
+  "run_id": "run_2026-05-09_18-54",
+  "resultado_final": "abortado_por_limite",
+  "mensaje": "Run finalizado con resultado_final = abortado_por_limite",
+  "timestamp_cierre": "2026-05-09T19:20:40+02:00",
+  "fases": {
+    "01_requisitos": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "aceptado",
+      "duracion_s_ejec": 443.65600000001723,
+      "duracion_s_gate_humano": 267.9529999999795
+    },
+    "02_planificacion": {
+      "reintentos_automaticos": 3,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 846.0930000000226,
+      "duracion_s_gate_humano": 0.0
+    }
+  }
+}

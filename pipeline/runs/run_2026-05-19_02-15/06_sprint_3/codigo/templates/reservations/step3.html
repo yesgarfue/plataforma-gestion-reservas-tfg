@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}Reserva - Paso 3 - Hundidos{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title mb-4">Reserva - Paso 3: Método de Pago</h2>
+                    <p class="text-muted">Selecciona cómo deseas pagar.</p>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-4">
+                            <h5>Método de Pago</h5>
+                            {% for value, label in form.metodo_pago %}
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="radio" name="metodo_pago" id="metodo_{{ value }}" value="{{ value }}" required>
+                                    <label class="form-check-label" for="metodo_{{ value }}">
+                                        <strong>{{ label }}</strong>
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            {% if form.metodo_pago.errors %}
+                                <div class="alert alert-danger mt-2">{{ form.metodo_pago.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="form-check">
+                                {{ form.terminos }}
+                                <label class="form-check-label" for="{{ form.terminos.id_for_label }}">
+                                    {{ form.terminos.label }}
+                                </label>
+                            </div>
+                            {% if form.terminos.errors %}
+                                <div class="alert alert-danger mt-2">{{ form.terminos.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+                        {% endif %}
+
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'reservations:step2' %}" class="btn btn-secondary">Volver al Paso 2</a>
+                            <button type="submit" class="btn btn-primary btn-lg">Confirmar Reserva</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Resumen Final</h5>
+                    <hr>
+                    <p><strong>Cliente:</strong> {{ nombre_cliente }} {{ apellido_cliente }}</p>
+                    <p><strong>Email:</strong> {{ email_contacto }}</p>
+                    <p><strong>Fechas:</strong> {{ fecha_inicio|date:"d/m/Y" }} - {{ fecha_fin|date:"d/m/Y" }}</p>
+                    <p><strong>Días:</strong> {{ dias }}</p>
+                    <hr>
+                    <h6>Barcos:</h6>
+                    <ul class="list-unstyled">
+                        {% for item in items %}
+                            <li class="mb-3">
+                                <strong>{{ item.barco.nombre }}</strong><br>
+                                Cantidad: {{ item.cantidad }}<br>
+                                Precio/día: {{ item.precio_dia }}€<br>
+                                Tasa combustible: {{ item.tasa_combustible }}€/día<br>
+                                <small class="text-muted">Subtotal: {{ item.subtotal }}€</small>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <hr>
+                    <h5>Total: <span class="text-success">{{ total }}€</span></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

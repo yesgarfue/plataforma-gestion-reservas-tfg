@@ -1,0 +1,75 @@
+{
+  "id_ejecucion": "run_2026-05-15_11-00",
+  "riesgos": [
+    {
+      "id": "R-01",
+      "descripcion": "PayPal Sandbox puede no estar disponible durante una demo o durante el desarrollo, bloqueando la prueba del flujo de pago integrado.",
+      "probabilidad": "media",
+      "impacto": "alto",
+      "mitigacion": "Implementar y dejar completamente funcional el flujo de contra-reembolso antes de abordar la integración con PayPal, para que la aplicación sea demoable aunque la pasarela falle."
+    },
+    {
+      "id": "R-02",
+      "descripcion": "La tasa de combustible tiene una excepción para barcos de categoría 'velero' (0 € en lugar de 50 €/día) que es fácil de olvidar al implementar el cálculo del importe total.",
+      "probabilidad": "alta",
+      "impacto": "medio",
+      "mitigacion": "Cubrir explícitamente el caso de 'velero' con un test unitario en el cálculo de la tasa de combustible antes de cerrar la historia HU-12, y añadir un comentario en el código señalando la excepción."
+    },
+    {
+      "id": "R-03",
+      "descripcion": "SQLite tiene concurrencia limitada para múltiples reservas simultáneas, lo que puede causar bloqueos o pérdida de datos si varios clientes reservan al mismo tiempo.",
+      "probabilidad": "media",
+      "impacto": "alto",
+      "mitigacion": "Implementar transacciones explícitas con nivel de aislamiento SERIALIZABLE en el modelo de reserva, y ejecutar pruebas de carga con al menos 10 reservas concurrentes antes de cerrar el Sprint 2."
+    },
+    {
+      "id": "R-04",
+      "descripcion": "El proceso de reserva en tres pasos sin registro previo tiene múltiples casos borde: cliente que inicia sesión a mitad del proceso, cesta que se pierde, datos heredados inconsistentes.",
+      "probabilidad": "alta",
+      "impacto": "medio",
+      "mitigacion": "Crear un documento de casos borde para HU-09 y HU-22 antes de comenzar el desarrollo, y ejecutar pruebas manuales de flujos cruzados (login durante reserva, cambio de datos, cancelación) antes de cerrar el Sprint 2."
+    },
+    {
+      "id": "R-05",
+      "descripcion": "Los filtros combinables de catálogo (puerto, fabricante, precio, categoría, capacidad, fechas) son más complejos de lo que aparentan, con riesgo de queries ineficientes o resultados incorrectos.",
+      "probabilidad": "media",
+      "impacto": "medio",
+      "mitigacion": "Implementar los filtros con índices de base de datos en los campos filtrados, y crear tests de integración que validen cada combinación de filtros (al menos 5 combinaciones) antes de cerrar HU-06 en el Sprint 1."
+    },
+    {
+      "id": "R-06",
+      "descripcion": "El envío de correos (confirmación de reserva, recordatorio de pago, cancelación) depende de un SMTP configurado correctamente, que puede no estar disponible en desarrollo o en producción.",
+      "probabilidad": "media",
+      "impacto": "medio",
+      "mitigacion": "Configurar un backend de correo en memoria (console backend) para desarrollo y testing, y crear un script de validación que verifique la configuración SMTP antes de cada arranque de la aplicación."
+    },
+    {
+      "id": "R-07",
+      "descripcion": "Django 3.2 es una versión antigua con soporte limitado (fin de soporte en abril 2024), lo que puede causar vulnerabilidades de seguridad no parcheadas.",
+      "probabilidad": "baja",
+      "impacto": "alto",
+      "mitigacion": "Ejecutar 'pip check' y 'safety check' en cada commit para detectar dependencias vulnerables, y documentar en el README que la aplicación requiere actualizaciones de seguridad periódicas."
+    },
+    {
+      "id": "R-08",
+      "descripcion": "Los datos seed (mínimo 5 barcos, 2 puertos, 2 fabricantes, 2 categorías incluyendo velero, 1 admin, 1 cliente) deben cargarse de forma fiable en cada arranque del contenedor Docker.",
+      "probabilidad": "media",
+      "impacto": "medio",
+      "mitigacion": "Crear un script de inicialización (manage.py seed) que sea idempotente y se ejecute automáticamente en el entrypoint del Dockerfile, con validación de que los datos existen antes de crear duplicados."
+    },
+    {
+      "id": "R-09",
+      "descripcion": "La construcción del contenedor Docker depende de imágenes base externas (python:3.x, etc.) que pueden no estar disponibles o tener vulnerabilidades.",
+      "probabilidad": "baja",
+      "impacto": "medio",
+      "mitigacion": "Especificar versiones exactas de imágenes base en el Dockerfile (no 'latest'), y ejecutar 'docker build' con '--pull' en cada construcción para obtener las últimas actualizaciones de seguridad."
+    },
+    {
+      "id": "R-10",
+      "descripcion": "Tres sprints son ajustados para el alcance comprometido (23 historias), con riesgo de que dependencias cruzadas entre sprints (p.ej. Sprint 2 necesita modelo de reserva de Sprint 1) causen retrasos.",
+      "probabilidad": "alta",
+      "impacto": "medio",
+      "mitigacion": "Realizar una reunión de planificación de dependencias antes de comenzar el Sprint 1, identificar explícitamente qué historias del Sprint 1 son bloqueantes para el Sprint 2, y ejecutar daily standups enfocados en dependencias."
+    }
+  ]
+}

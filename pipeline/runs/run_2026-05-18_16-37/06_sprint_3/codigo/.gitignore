@@ -1,0 +1,18 @@
+*.pyc
+__pycache__/
+*.egg-info/
+dist/
+build/
+.env
+.venv
+venv/
+ENV/
+# La base SQLite forma parte de la evidencia del run oficial.
+.DS_Store
+*.log
+.idea/
+.vscode/
+*.swp
+*.swo
+media/
+staticfiles/

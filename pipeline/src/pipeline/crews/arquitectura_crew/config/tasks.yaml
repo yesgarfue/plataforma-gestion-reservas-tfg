@@ -1,0 +1,197 @@
+# src/pipeline/crews/arquitectura_crew/config/tasks.yaml
+# Versión 1. Una única task de fase 03:
+#   diseñar_arquitectura: produce DisenoTecnico a partir de requisitos,
+#   backlog, plan de sprints y riesgos aceptados.
+#
+# No hay context entre tasks porque la arquitectura_crew tiene una sola
+# task. Todo el contexto entra por inputs del kickoff.
+
+disenar_arquitectura:
+  description: >
+    Diseña la arquitectura técnica del proyecto Hundidos a partir de los
+    artefactos ya aceptados por la operadora humana: registro de requisitos,
+    backlog, plan de sprints y registro de riesgos.
+
+    Tu salida debe ser un único objeto DisenoTecnico. No escribas markdown,
+    no expliques tu razonamiento y no añadas texto fuera del JSON.
+
+    ORDEN DE RAZONAMIENTO:
+
+      1. Usa el backlog y el plan de sprints para delimitar el alcance
+         implementable. No diseñes funcionalidades que no estén justificadas
+         por una o más historias de usuario.
+      2. Usa el registro de requisitos para preservar reglas de dominio,
+         restricciones técnicas y vocabulario exacto. No lo uses para ampliar
+         alcance si algo no aparece en el backlog.
+      3. Usa el registro de riesgos como cautela técnica: PayPal Sandbox,
+         contra-reembolso, SQLite, seed data, correo, Docker, locale español
+         y flujos críticos deben quedar reflejados cuando corresponda.
+      4. Produce un diseño Django 3.2 monolítico, simple y ejecutable en los
+         tres sprints ya definidos.
+
+    CONTENIDO ESPERADO:
+
+      - 'stack': lista de bullets técnicos. Debe mencionar explícitamente
+        Django 3.2, SQLite y PayPal. Incluye también, si encaja, Docker,
+        templates Django, zona horaria Europe/Madrid, locale español,
+        backend de correo, datos seed y contra-reembolso.
+
+      - 'apps_django': lista de apps Django con responsabilidades claras.
+        No crees más apps de las necesarias. Para cada app, indica propósito
+        y archivos principales. Usa rutas relativas plausibles como
+        'catalog/models.py', 'reservations/views.py',
+        'reservations/services/paypal.py',
+        'core/management/commands/seed_data.py' o
+        'templates/catalog/list.html'.
+
+      - 'modelos': lista de modelos Django necesarios para cubrir el backlog.
+        Para cada modelo, indica app y campos orientativos como strings:
+        'nombre: CharField(max_length=120)',
+        'precio_dia: DecimalField(max_digits=8, decimal_places=2)',
+        'estado: CharField(choices=PENDIENTE_DE_PAGO/PAGADO/EN_USO/DEVUELTO)',
+        'cliente: ForeignKey(User, null=True, blank=True)'.
+        Incluye relaciones y restricciones relevantes cuando sean críticas.
+
+      - 'rutas': lista de rutas URL concretas. Deben cubrir las áreas
+        presentes en el backlog aceptado. Para Hundidos, revisa
+        especialmente si el backlog incluye catálogo, búsqueda/filtros,
+        ficha de barco, cesta, reserva en tres pasos, pago PayPal,
+        contra-reembolso, seguimiento por código, cuenta del cliente y
+        administración de barcos/clientes/reservas. Si alguna de esas áreas
+        no aparece en el backlog, no la inventes como ruta nueva.
+        El producto debe exponer las rutas canonicas minimas del contrato
+        publico del producto cuando esas areas esten en el backlog. Puedes
+        incluir alias adicionales si mejoran la experiencia, pero no
+        sustituir las rutas canonicas. Ejemplos: '/', '/accounts/registro/',
+        '/accounts/login/', '/barcos/', '/cesta/', '/reserva/paso1/',
+        '/reserva/paso2/', '/reserva/paso3/', '/admin/' y '/admin-panel/'.
+
+    REGLAS DURAS:
+
+      - El campo 'id_ejecucion' debe ser exactamente: {run_id}
+      - No añadas campos fuera del schema DisenoTecnico.
+      - No introduzcas Django REST Framework, Celery, Redis, PostgreSQL,
+        Stripe, microservicios ni frontend SPA.
+      - No inventes nuevas historias, pantallas o flujos fuera del backlog.
+      - Usa 'auth' exactamente como una de estas cadenas: 'public',
+        'login_required' o 'admin_required'.
+      - Usa 'metodo' como 'GET', 'POST' o 'GET|POST'.
+      - Mantén los nombres y textos en español cuando representen dominio
+        o interfaz; usa nombres técnicos Django razonables para apps,
+        modelos, vistas y rutas.
+
+    ------ INICIO DEL REGISTRO DE REQUISITOS ------
+    {registro_requisitos_json}
+    ------ FIN DEL REGISTRO DE REQUISITOS ------
+
+    ------ INICIO DEL BACKLOG ------
+    {backlog_json}
+    ------ FIN DEL BACKLOG ------
+
+    ------ INICIO DEL PLAN DE SPRINTS ------
+    {plan_sprints_json}
+    ------ FIN DEL PLAN DE SPRINTS ------
+
+    ------ INICIO DEL REGISTRO DE RIESGOS ------
+    {riesgos_json}
+    ------ FIN DEL REGISTRO DE RIESGOS ------
+
+    {feedback_humano}
+
+  expected_output: >
+    Un objeto JSON válido, y SOLO el objeto JSON. Sin prefacios, sin
+    comentarios, sin markdown, sin bloques de código ```. El objeto debe
+    ajustarse EXACTAMENTE a este esquema:
+
+    {
+      "id_ejecucion": "{run_id}",
+      "stack": [
+        "Python con Django 3.2 como framework web monolítico.",
+        "SQLite como base de datos del PMV.",
+        "PayPal Sandbox para el flujo de pago online.",
+        "Templates Django server-side para la interfaz en español."
+      ],
+      "apps_django": [
+        {
+          "nombre": "catalog",
+          "proposito": "Gestionar catálogo, categorías, puertos, fabricantes, búsqueda, filtros y ficha de barco.",
+          "archivos_principales": [
+            "catalog/models.py",
+            "catalog/views.py",
+            "catalog/urls.py",
+            "templates/catalog/list.html",
+            "templates/catalog/detail.html"
+          ]
+        },
+        {
+          "nombre": "reservations",
+          "proposito": "Gestionar cesta, reserva en tres pasos, pagos, estados y seguimiento por código.",
+          "archivos_principales": [
+            "reservations/models.py",
+            "reservations/forms.py",
+            "reservations/views.py",
+            "reservations/urls.py",
+            "reservations/services/paypal.py"
+          ]
+        }
+      ],
+      "modelos": [
+        {
+          "nombre": "Barco",
+          "app": "catalog",
+          "campos": [
+            "nombre: CharField(max_length=120)",
+            "categoria: ForeignKey(Categoria, on_delete=PROTECT)",
+            "puerto: ForeignKey(Puerto, on_delete=PROTECT)",
+            "fabricante: ForeignKey(Fabricante, on_delete=PROTECT)",
+            "precio_dia: DecimalField(max_digits=8, decimal_places=2)",
+            "capacidad: PositiveIntegerField"
+          ]
+        },
+        {
+          "nombre": "Reserva",
+          "app": "reservations",
+          "campos": [
+            "codigo_seguimiento: CharField(max_length=32, unique=True)",
+            "estado: CharField(choices=PENDIENTE_DE_PAGO/PAGADO/EN_USO/DEVUELTO)",
+            "cliente: ForeignKey(User, null=True, blank=True, on_delete=SET_NULL)",
+            "email_contacto: EmailField",
+            "importe_total: DecimalField(max_digits=10, decimal_places=2)"
+          ]
+        }
+      ],
+      "rutas": [
+        {
+          "path": "/barcos/",
+          "name": "catalog:barco_list",
+          "metodo": "GET",
+          "auth": "public",
+          "vista": "BarcoListView"
+        },
+        {
+          "path": "/accounts/login/",
+          "name": "accounts:login",
+          "metodo": "GET|POST",
+          "auth": "public",
+          "vista": "LoginView"
+        }
+      ]
+    }
+
+    El ejemplo es ilustrativo y está incompleto. Tu respuesta real debe
+    cubrir el backlog completo, con suficientes apps, modelos y rutas para
+    guiar la implementación de los tres sprints.
+
+    Reglas de formato innegociables:
+
+      - 'id_ejecucion' debe ser la cadena literal {run_id}.
+      - 'stack', 'apps_django', 'modelos' y 'rutas' son listas no vacías.
+      - Cada app contiene exactamente: 'nombre', 'proposito',
+        'archivos_principales'.
+      - Cada modelo contiene exactamente: 'nombre', 'app', 'campos'.
+      - Cada ruta contiene exactamente: 'path', 'name', 'metodo', 'auth',
+        'vista'.
+      - No añadas campos extra.
+      - Responde SOLO con el JSON. Nada antes, nada después.
+
+  agent: arquitecto

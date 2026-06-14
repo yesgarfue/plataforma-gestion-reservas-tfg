@@ -1,0 +1,65 @@
+# src/pipeline/crews/requisitos_crew/config/tasks.yaml
+# Versión 2 (regenerada tras gate humano del Run 2026-04-25_01-10).
+# Cambios respecto a v1: introducción de la regla de cobertura por
+# subsecciones del brief y refuerzo del listado de áreas a representar.
+
+extraer_requisitos:
+  description: >
+    Analiza el brief del proyecto Hundidos y extrae de él un registro completo de requisitos. El brief es tu ÚNICA fuente de información. No incluyas ningún requisito 
+    que no se derive directamente del brief. Si algo no aparece explícitamente, omítelo.
+
+    REGLA DE COBERTURA. Cada subsección de la sección 3 del brief (3.1 Usuarios y sesión, 3.2 Catálogo y búsqueda, 3.3 Ficha de barco, 3.4 Cesta, 3.5 Proceso de 
+    reserva y pago, 3.6 Estados de reserva y cancelación, 3.7 Seguimiento, 3.8 Gestión administrativa) debe estar representada por al menos un requisito funcional. 
+    La sección 4 del brief (Restricciones técnicas) debe estar representada por al menos un requisito no funcional por bloque relevante: framework, base de datos, 
+    empaquetado, locale, seguridad, datos seed.
+
+    Umbrales de cantidad (mínimos):
+      - Al menos 15 requisitos funcionales (RF).
+      - Al menos 3 requisitos no funcionales (RNF).
+
+    Si la cobertura por áreas requiere más, supera el umbral. El umbral es un piso, no un techo. Usa el vocabulario literal del brief: 'barco', 'cliente', 
+    'administrador', 'puerto', 'fabricante', 'categoría', 'reserva', 'código de seguimiento', 'cesta', 'velero'. No sustituyas por sinónimos. El valor del campo 
+    'id_ejecucion' debe ser exactamente: {run_id}
+
+    ------ INICIO DEL BRIEF ------
+    {brief}
+    ------ FIN DEL BRIEF ------
+
+    {feedback_humano}
+
+  expected_output: >
+    Un objeto JSON válido, y SOLO el objeto JSON. Sin prefacios, sin comentarios, sin markdown, sin bloques de código ```. El objeto debe ajustarse EXACTAMENTE a 
+    este esquema (el ejemplo muestra 2 RF y 1 RNF solo para ilustrar la forma; tu respuesta real debe cubrir todas las áreas del brief con al menos 15 RF y 3 RNF):
+
+    {
+      "id_ejecucion": "{run_id}",
+      "requisitos_funcionales": [
+        {
+          "id": "RF-01",
+          "descripcion": "El cliente puede registrarse mediante correo electrónico y contraseña.",
+          "prioridad": "Alta"
+        },
+        {
+          "id": "RF-02",
+          "descripcion": "El cliente puede iniciar sesión con correo y contraseña.",
+          "prioridad": "Alta"
+        }
+      ],
+      "requisitos_no_funcionales": [
+        {
+          "id": "RNF-01",
+          "categoria": "Idioma",
+          "condicion_metrica": "La interfaz de usuario está íntegramente en español.",
+          "prioridad": "Alta"
+        }
+      ]
+    }
+
+    Reglas de formato innegociables:
+      - El valor de 'prioridad' debe ser exactamente una de: 'Alta', 'Media' o 'Baja' (con mayúscula inicial).
+      - Los IDs siguen el formato 'RF-NN' o 'RNF-NN' con dos dígitos, numerados consecutivamente desde 01.
+      - No añadas campos que no aparezcan en el esquema.
+      - El valor de 'id_ejecucion' debe ser la cadena literal {run_id}.
+      - Responde SOLO con el JSON. Nada antes, nada después.
+
+  agent: analista

@@ -1,0 +1,355 @@
+{
+  "id_ejecucion": "run_2026-05-15_11-00",
+  "sprint": 3,
+  "backlog_items_pedidos": [
+    "HU-14",
+    "HU-15",
+    "HU-16",
+    "HU-17",
+    "HU-18",
+    "HU-19",
+    "HU-20",
+    "HU-21",
+    "HU-23"
+  ],
+  "archivos_entregados": [
+    ".gitkeep",
+    "accounts/__init__.py",
+    "accounts/apps.py",
+    "accounts/forms.py",
+    "accounts/migrations/0001_initial.py",
+    "accounts/migrations/__init__.py",
+    "accounts/models.py",
+    "accounts/urls.py",
+    "accounts/views.py",
+    "admin_panel/__init__.py",
+    "admin_panel/apps.py",
+    "admin_panel/forms.py",
+    "admin_panel/urls.py",
+    "admin_panel/views.py",
+    "cart/__init__.py",
+    "cart/apps.py",
+    "cart/migrations/0001_initial.py",
+    "cart/migrations/__init__.py",
+    "cart/models.py",
+    "cart/services.py",
+    "cart/urls.py",
+    "cart/views.py",
+    "catalog/__init__.py",
+    "catalog/apps.py",
+    "catalog/migrations/0001_initial.py",
+    "catalog/migrations/__init__.py",
+    "catalog/models.py",
+    "catalog/urls.py",
+    "catalog/views.py",
+    "core/__init__.py",
+    "core/apps.py",
+    "core/management/__init__.py",
+    "core/management/commands/__init__.py",
+    "core/management/commands/seed_data.py",
+    "core/urls.py",
+    "core/views.py",
+    "hundidos/__init__.py",
+    "hundidos/asgi.py",
+    "hundidos/settings.py",
+    "hundidos/urls.py",
+    "hundidos/wsgi.py",
+    "manage.py",
+    "reservations/__init__.py",
+    "reservations/apps.py",
+    "reservations/forms.py",
+    "reservations/migrations/0001_initial.py",
+    "reservations/migrations/__init__.py",
+    "reservations/models.py",
+    "reservations/urls.py",
+    "reservations/views.py",
+    "templates/accounts/login.html",
+    "templates/accounts/profile.html",
+    "templates/accounts/register.html",
+    "templates/admin_panel/boat_detail.html",
+    "templates/admin_panel/boat_form.html",
+    "templates/admin_panel/boats_list.html",
+    "templates/admin_panel/client_detail.html",
+    "templates/admin_panel/clients_list.html",
+    "templates/admin_panel/dashboard.html",
+    "templates/admin_panel/reservation_detail.html",
+    "templates/admin_panel/reservations_list.html",
+    "templates/base.html",
+    "templates/cart/view.html",
+    "templates/catalog/detail.html",
+    "templates/catalog/list.html",
+    "templates/home.html",
+    "templates/reservations/confirmation.html",
+    "templates/reservations/my_reservation_detail.html",
+    "templates/reservations/my_reservations.html",
+    "templates/reservations/step1.html",
+    "templates/reservations/step2.html",
+    "templates/reservations/step3.html",
+    "templates/reservations/track.html",
+    "templates/reservations/track_detail.html"
+  ],
+  "cumplimiento": {
+    "HU-14": "ok",
+    "HU-15": "ok",
+    "HU-16": "ok",
+    "HU-17": "ok",
+    "HU-18": "ok",
+    "HU-19": "ok",
+    "HU-20": "ok",
+    "HU-21": "ok",
+    "HU-23": "ok"
+  },
+  "arranque": {
+    "ok": true,
+    "returncode": 0,
+    "stdout_resumen": "System check identified no issues (0 silenced).",
+    "stderr_resumen": "",
+    "timeout_s": 60,
+    "timeout": false
+  },
+  "rutas": [
+    {
+      "path": "/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:58930/",
+      "error": "",
+      "detalle": "http://127.0.0.1:58930/",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/barcos/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:58930/barcos/",
+      "error": "",
+      "detalle": "http://127.0.0.1:58930/barcos/",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/cesta/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:58930/cesta/",
+      "error": "",
+      "detalle": "http://127.0.0.1:58930/cesta/",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/accounts/registro/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:58930/accounts/registro/",
+      "error": "",
+      "detalle": "http://127.0.0.1:58930/accounts/registro/",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/accounts/login/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:58930/accounts/login/",
+      "error": "",
+      "detalle": "http://127.0.0.1:58930/accounts/login/",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/admin/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 302,
+      "final_url": "/admin/login/?next=/admin/",
+      "error": "",
+      "detalle": "/admin/login/?next=/admin/",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/admin-panel/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 302,
+      "final_url": "/",
+      "error": "",
+      "detalle": "/",
+      "motivo_no_ejecutado": ""
+    }
+  ],
+  "templates": [
+    {
+      "template": "accounts/login.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "accounts/profile.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "accounts/register.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "admin_panel/boat_detail.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "admin_panel/boat_form.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "admin_panel/boats_list.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "admin_panel/client_detail.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "admin_panel/clients_list.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "admin_panel/dashboard.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "admin_panel/reservation_detail.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "admin_panel/reservations_list.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "base.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "cart/view.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "catalog/detail.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "catalog/list.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "home.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "reservations/confirmation.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "reservations/my_reservation_detail.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "reservations/my_reservations.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "reservations/step1.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "reservations/step2.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "reservations/step3.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "reservations/track.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "template": "reservations/track_detail.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    }
+  ],
+  "incidencias": [
+    "La navegacion visible enlaza logout por GET, pero LogoutView solo define POST."
+  ]
+}

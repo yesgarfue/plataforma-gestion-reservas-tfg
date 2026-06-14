@@ -1,0 +1,101 @@
+{
+  "id_ejecucion": "run_2026-05-19_02-15",
+  "numero_sprint": 2,
+  "historias": [
+    {
+      "id": "HU-07",
+      "titulo": "Gestión de cesta",
+      "descripcion": "Como cliente, quiero ver la cesta siempre visible, modificar cantidades, revisar el estado y vaciarla si es necesario, para gestionar mis compras.",
+      "criterios_aceptacion": [
+        "La cesta está siempre visible desde cualquier página de la aplicación.",
+        "El usuario puede ampliar o reducir la cantidad de unidades de cada barco en la cesta.",
+        "El usuario puede revisar el estado de la cesta desde el catálogo.",
+        "El usuario puede vaciar la cesta completamente.",
+        "Al entrar en modo administrador, la cesta se vacía y el administrador no puede añadir barcos al carro."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-08",
+      "titulo": "Proceso de reserva sin registro previo",
+      "descripcion": "Como cliente, quiero completar una reserva en no más de tres pasos sin haberse registrado previamente, para alquilar un barco de forma rápida.",
+      "criterios_aceptacion": [
+        "El cliente puede completar una reserva sin haberse registrado previamente.",
+        "El proceso de reserva se realiza en no más de tres pasos.",
+        "Durante el proceso se solicitan los datos del cliente y los datos de pago.",
+        "Si hay sesión iniciada, los datos del cliente se heredan automáticamente.",
+        "El cliente puede iniciar sesión durante el proceso de reserva y recuperar su cesta al volver de la página de login."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "L"
+    },
+    {
+      "id": "HU-09",
+      "titulo": "Métodos de pago",
+      "descripcion": "Como cliente, quiero pagar mediante PayPal Sandbox o contra-reembolso, para elegir el método de pago que prefiero.",
+      "criterios_aceptacion": [
+        "El cliente puede pagar mediante PayPal Sandbox.",
+        "El cliente puede pagar mediante contra-reembolso.",
+        "La integración de PayPal utiliza el entorno Sandbox, no producción.",
+        "Se validan todos los formularios de pago.",
+        "El formulario de pago incluye validación CSRF."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "L"
+    },
+    {
+      "id": "HU-10",
+      "titulo": "Confirmación de reserva y código de seguimiento",
+      "descripcion": "Como cliente, quiero recibir un correo electrónico con los datos de la reserva y un código de seguimiento, para confirmar mi alquiler y poder consultarlo después.",
+      "criterios_aceptacion": [
+        "Al finalizar la reserva, el cliente recibe un correo electrónico.",
+        "El correo incluye los datos del barco, rango de fechas, importe total y código de seguimiento.",
+        "El código de seguimiento es único y permite consultar el estado de la reserva.",
+        "El correo se envía en español."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-11",
+      "titulo": "Cálculo de precio con tasa de combustible",
+      "descripcion": "Como sistema, quiero calcular el precio total de la reserva considerando el precio diario del barco, la cantidad de días y una tasa de combustible, para cobrar el importe correcto.",
+      "criterios_aceptacion": [
+        "Los alquileres se miden por día.",
+        "Se aplica una tasa de combustible de 50 euros por día.",
+        "Para barcos de categoría velero, la tasa de combustible es 0 euros.",
+        "El precio total se calcula correctamente en el proceso de reserva.",
+        "El precio total se muestra al cliente antes de confirmar el pago."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-12",
+      "titulo": "Estados de reserva",
+      "descripcion": "Como sistema, quiero gestionar los estados de las reservas para controlar su ciclo de vida.",
+      "criterios_aceptacion": [
+        "Cada reserva tiene uno de los estados: PENDIENTE DE PAGO, PAGADO, EN USO o DEVUELTO.",
+        "El estado inicial de una reserva es PENDIENTE DE PAGO o PAGADO según el método de pago.",
+        "El administrador puede cambiar el estado de una reserva desde el panel de reservas mediante botones por transición aplicable.",
+        "El sistema registra el historial de cambios de estado."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-14",
+      "titulo": "Recordatorio de reserva pendiente",
+      "descripcion": "Como sistema, quiero enviar un correo de recordatorio al cliente cuando falta un día para el inicio de la reserva y sigue en estado PENDIENTE DE PAGO.",
+      "criterios_aceptacion": [
+        "Si falta un día para el inicio de la reserva y sigue en estado PENDIENTE DE PAGO, el sistema envía un correo de recordatorio.",
+        "El correo incluye los datos de la reserva y un enlace para completar el pago.",
+        "El correo se envía en español.",
+        "El sistema registra que el recordatorio fue enviado."
+      ],
+      "prioridad": "Media",
+      "estimacion": "M"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}Reserva - Paso 2 - Hundidos{% endblock %}
+
+{% block content %}
+<div style="max-width: 900px; margin: 40px auto;">
+    <h2>Proceso de Reserva - Paso 2: Método de Pago</h2>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+        <div>
+            <h3>Resumen de la Reserva</h3>
+            <div style="background-color: white; padding: 20px; border-radius: 8px;">
+                <h4>Barcos</h4>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tbody>
+                        {% for item in cart_items %}
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 8px;">{{ item.barco.nombre }} x {{ item.cantidad }}</td>
+                                <td style="padding: 8px; text-align: right;">€{{ item.subtotal }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                
+                <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #ddd;">
+                    <p><strong>Subtotal:</strong> €{{ cart_total }}</p>
+                    <p><strong>Días de alquiler:</strong> {{ dias }}</p>
+                    <p><strong>Tasa de combustible (50€/día):</strong> €{{ tasa_combustible }}</p>
+                    <h4 style="margin-top: 15px; color: #003d82;">Total: €{{ importe_total }}</h4>
+                </div>
+            </div>
+        </div>
+        
+        <div>
+            <h3>Selecciona tu Método de Pago</h3>
+            <form method="post" style="background-color: white; padding: 20px; border-radius: 8px;">
+                {% csrf_token %}
+                
+                <div style="margin-bottom: 20px;">
+                    {% for value, label in form.metodo_pago %}
+                        <div style="margin-bottom: 15px; padding: 15px; border: 2px solid #ddd; border-radius: 4px; cursor: pointer;">
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                {{ value }}
+                                <span style="margin-left: 10px; font-weight: bold;">{{ label }}</span>
+                            </label>
+                        </div>
+                    {% endfor %}
+                </div>
+                
+                {% if form.metodo_pago.errors %}
+                    <div style="color: red; margin-bottom: 15px;">
+                        {% for error in form.metodo_pago.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                
+                <div style="display: flex; gap: 10px;">
+                    <a href="{% url 'reservations:step1' %}" class="btn btn-secondary" style="flex: 1; text-align: center;">Volver al Paso 1</a>
+                    <button type="submit" class="btn" style="flex: 1;">Continuar al Paso 3</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    input[type="radio"] {
+        margin-right: 10px;
+        cursor: pointer;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Reserva - Paso 3 - Hundidos{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 600px; margin: 40px auto;">
+    <h2>Reserva - Paso 3: Método de Pago</h2>
+    
+    <form method="post" novalidate style="background-color: #f9f9f9; padding: 20px; border-radius: 4px;">
+        {% csrf_token %}
+        
+        <div style="margin-bottom: 20px;">
+            {{ form.metodo_pago }}
+            {% if form.metodo_pago.errors %}
+                <div style="color: red; font-size: 12px;">
+                    {% for error in form.metodo_pago.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        
+        <div style="display: flex; gap: 10px; justify-content: center;">
+            <button type="submit" style="background-color: #003d82; color: white; padding: 12px 30px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">Confirmar Reserva</button>
+            <a href="{% url 'reservations:step2' %}" style="background-color: #999; color: white; padding: 12px 30px; border-radius: 4px; text-decoration: none; display: inline-block;">Volver</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

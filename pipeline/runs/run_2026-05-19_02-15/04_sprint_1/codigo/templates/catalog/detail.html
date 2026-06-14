@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ barco.nombre }} - Hundidos{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            {% if barco.imagen %}
+                <img src="{{ barco.imagen.url }}" class="img-fluid" alt="{{ barco.nombre }}" style="max-height: 400px; object-fit: cover;">
+            {% else %}
+                <div style="height: 400px; background-color: #e9ecef; display: flex; align-items: center; justify-content: center;">
+                    <span class="text-muted">Sin imagen disponible</span>
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-md-6">
+            <h1>{{ barco.nombre }}</h1>
+            <p class="text-muted">{{ barco.categoria.nombre }}</p>
+
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Información del Barco</h5>
+                    <ul class="list-unstyled">
+                        <li><strong>Fabricante:</strong> {{ barco.fabricante.nombre }} ({{ barco.fabricante.pais }})</li>
+                        <li><strong>Puerto Base:</strong> {{ barco.puerto.nombre }} ({{ barco.puerto.ubicacion }})</li>
+                        <li><strong>Capacidad:</strong> {{ barco.capacidad }} personas</li>
+                        <li><strong>Precio por día:</strong> <span class="text-success"><strong>{{ barco.precio_dia }}€</strong></span></li>
+                        <li>
+                            <strong>Disponibilidad:</strong>
+                            {% if barco.disponibilidad > 0 %}
+                                <span class="badge bg-success">{{ barco.disponibilidad }} unidades disponibles</span>
+                            {% else %}
+                                <span class="badge bg-danger">No disponible</span>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            {% if barco.disponibilidad > 0 %}
+                <form method="post" action="{% url 'cart:add' %}" class="mb-4">
+                    {% csrf_token %}
+                    <input type="hidden" name="barco_id" value="{{ barco.id }}">
+                    <div class="mb-3">
+                        <label for="cantidad" class="form-label">Cantidad:</label>
+                        <input type="number" id="cantidad" name="cantidad" class="form-control" min="1" max="{{ barco.disponibilidad }}" value="1" required>
+                        <small class="text-muted">Máximo: {{ barco.disponibilidad }} unidades</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg">Añadir a la Cesta</button>
+                </form>
+            {% else %}
+                <div class="alert alert-danger">
+                    Este barco no está disponible en este momento.
+                </div>
+            {% endif %}
+
+            <a href="{% url 'catalog:barco_list' %}" class="btn btn-secondary">Volver al Catálogo</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

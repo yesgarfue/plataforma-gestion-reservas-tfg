@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}Reserva - Paso 3 - Hundidos{% endblock %}
+
+{% block content %}
+<div style="max-width: 900px; margin: 40px auto;">
+    <h2>Proceso de Reserva - Paso 3: Confirmación</h2>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+        <div>
+            <h3>Resumen Final</h3>
+            <div style="background-color: white; padding: 20px; border-radius: 8px;">
+                <h4>Datos del Cliente</h4>
+                <p><strong>Nombre:</strong> {{ nombre_cliente }}</p>
+                <p><strong>Correo:</strong> {{ email_cliente }}</p>
+                
+                <h4 style="margin-top: 20px;">Barcos</h4>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tbody>
+                        {% for item in cart_items %}
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 8px;">{{ item.barco.nombre }} x {{ item.cantidad }}</td>
+                                <td style="padding: 8px; text-align: right;">€{{ item.subtotal }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                
+                <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #ddd;">
+                    <p><strong>Subtotal:</strong> €{{ cart_total }}</p>
+                    <p><strong>Tasa de combustible:</strong> €{{ tasa_combustible }}</p>
+                    <h4 style="margin-top: 15px; color: #003d82;">Total: €{{ importe_total }}</h4>
+                </div>
+                
+                <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #ddd;">
+                    <p><strong>Método de pago:</strong> {{ metodo_pago }}</p>
+                </div>
+            </div>
+        </div>
+        
+        <div>
+            <h3>Confirmar Reserva</h3>
+            <form method="post" style="background-color: white; padding: 20px; border-radius: 8px;">
+                {% csrf_token %}
+                
+                <div style="margin-bottom: 20px; padding: 15px; background-color: #f0f0f0; border-radius: 4px;">
+                    <label style="display: flex; align-items: flex-start; cursor: pointer;">
+                        {{ form.aceptar_terminos }}
+                        <span style="margin-left: 10px;">Acepto los términos y condiciones de la reserva</span>
+                    </label>
+                    {% if form.aceptar_terminos.errors %}
+                        <div style="color: red; font-size: 12px; margin-top: 5px;">
+                            {% for error in form.aceptar_terminos.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                {% if form.non_field_errors %}
+                    <div style="color: red; margin-bottom: 15px;">
+                        {% for error in form.non_field_errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                
+                <div style="display: flex; gap: 10px;">
+                    <a href="{% url 'reservations:step2' %}" class="btn btn-secondary" style="flex: 1; text-align: center;">Volver al Paso 2</a>
+                    <button type="submit" class="btn" style="flex: 1;">Confirmar Reserva</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    input[type="checkbox"] {
+        margin-right: 10px;
+        cursor: pointer;
+    }
+</style>
+{% endblock %}

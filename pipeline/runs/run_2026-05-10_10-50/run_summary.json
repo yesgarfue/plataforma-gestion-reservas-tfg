@@ -1,0 +1,22 @@
+{
+  "run_id": "run_2026-05-10_10-50",
+  "resultado_final": "completo",
+  "mensaje": "Run finalizado con resultado_final = completo",
+  "timestamp_cierre": "2026-05-10T11:01:14+02:00",
+  "fases": {
+    "01_requisitos": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "aceptado",
+      "duracion_s_ejec": 409.7820000000065,
+      "duracion_s_gate_humano": 73.40599999998813
+    },
+    "02_planificacion": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "aceptado",
+      "duracion_s_ejec": 67.07800000000861,
+      "duracion_s_gate_humano": 109.67200000002049
+    }
+  }
+}

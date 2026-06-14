@@ -1,0 +1,100 @@
+{
+  "id_ejecucion": "run_2026-04-25_01-10",
+  "requisitos_funcionales": [
+    {
+      "id": "RF-01",
+      "descripcion": "El cliente puede registrarse mediante correo electrónico y contraseña.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-02",
+      "descripcion": "El cliente puede iniciar sesión con correo y contraseña.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-03",
+      "descripcion": "El cliente puede cerrar sesión explícitamente.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-04",
+      "descripcion": "El cliente puede navegar por el catálogo de barcos organizado por categorías.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-05",
+      "descripcion": "El cliente puede buscar barcos por nombre o título del barco.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-06",
+      "descripcion": "El cliente puede aplicar filtros combinables (puertos, fabricantes, precio, categoría, capacidad, rango de fechas) durante la búsqueda.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-07",
+      "descripcion": "El cliente puede agregar un barco a la cesta desde la ficha del barco.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-08",
+      "descripcion": "El cliente puede ampliar o reducir la cantidad de unidades de cada barco en la cesta.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-09",
+      "descripcion": "El cliente puede revisar el estado de su cesta desde el catálogo.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-10",
+      "descripcion": "El cliente puede finalizar la compra (proceso de reserva) desde la cesta.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-11",
+      "descripcion": "El sistema aplica una tasa de combustible de 50 € por día, salvo que el barco sea de categoría 'velero', en cuyo caso la tasa es 0 €.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-12",
+      "descripcion": "El sistema envía un correo electrónico al cliente con los datos del barco reservado, el rango de fechas, el importe total y un código de seguimiento del alquiler.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-13",
+      "descripcion": "El cliente puede consultar el estado de su reserva usando el código de seguimiento recibido por email, incluso si no está registrado.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-14",
+      "descripcion": "El administrador puede gestionar barcos (alta, edición, baja) desde su panel de administración.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-15",
+      "descripcion": "El administrador puede gestionar clientes (consulta, eliminación) desde su panel de administración.",
+      "prioridad": "Alta"
+    }
+  ],
+  "requisitos_no_funcionales": [
+    {
+      "id": "RNF-01",
+      "categoria": "Idioma",
+      "condicion_metrica": "La interfaz de usuario está íntegramente en español.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-02",
+      "categoria": "Seguridad",
+      "condicion_metrica": "Contraseñas no almacenadas en texto plano (se usa el mecanismo estándar de Django); CSRF activo; validación de formularios.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-03",
+      "categoria": "Restricciones técnicas",
+      "condicion_metrica": "El lenguaje es Python.",
+      "prioridad": "Alta"
+    }
+  ]
+}

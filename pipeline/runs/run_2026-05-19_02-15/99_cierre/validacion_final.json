@@ -1,0 +1,235 @@
+{
+  "id_ejecucion": "run_2026-05-19_02-15",
+  "codigo_dir": "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-19_02-15\\06_sprint_3\\codigo",
+  "copia_validacion_dir": "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\runs\\run_2026-05-19_02-15\\99_cierre\\_validacion_tmp\\codigo",
+  "ok_global": true,
+  "check": {
+    "nombre": "check",
+    "comando": [
+      "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Scripts\\python.exe",
+      "manage.py",
+      "check"
+    ],
+    "ejecutado": true,
+    "ok": true,
+    "returncode": 0,
+    "stdout_resumen": "",
+    "stderr_resumen": "System check identified some issues:\n\nWARNINGS:\n?: (urls.W005) URL namespace 'admin' isn't unique. You may not be able to reverse all URLs in this namespace\n\nSystem check identified 1 issue (0 silenced).",
+    "timeout_s": 60,
+    "timeout": false,
+    "motivo_no_ejecutado": ""
+  },
+  "migraciones": {
+    "ok": true,
+    "apps_con_modelos": [
+      "accounts",
+      "catalog",
+      "payments",
+      "reservations"
+    ],
+    "apps_con_migraciones": [
+      "accounts",
+      "catalog",
+      "payments",
+      "reservations"
+    ],
+    "apps_sin_migraciones": []
+  },
+  "migrate": {
+    "nombre": "migrate",
+    "comando": [
+      "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Scripts\\python.exe",
+      "manage.py",
+      "migrate",
+      "--noinput"
+    ],
+    "ejecutado": true,
+    "ok": true,
+    "returncode": 0,
+    "stdout_resumen": "Operations to perform:\n  Apply all migrations: accounts, admin, auth, catalog, contenttypes, payments, reservations, sessions\nRunning migrations:\n  Applying contenttypes.0001_initial... OK\n  Applying auth.0001_initial... OK\n  Applying accounts.0001_initial... OK\n  Applying admin.0001_initial... OK\n  Applying admin.0002_logentry_remove_auto_add... OK\n  Applying admin.0003_logentry_add_action_flag_choices... OK\n  Applying contenttypes.0002_remove_content_type_name... OK\n  Applying auth.0002_alter_permission_name_max_length... OK\n  Applying auth.0003_alter_user_email_max_length... OK\n  Applying auth.0004_alter_user_username_opts... OK\n  Applying auth.0005_alter_user_last_login_null... OK\n  Applying auth.0006_require_contenttypes_0002... OK\n  Applying auth.0007_alter_validators_add_error_messages... OK\n  Applying auth.0008_alter_user_username_max_length... OK\n  Applying auth.0009_alter_user_last_name_max_length... OK\n  Applying auth.0010_alter_group_name_max_length... OK\n  Applying auth.0011_update_proxy_permissions... OK\n  Applying auth.0012_alter_user_first_name_max_length... OK\n  Applying catalog.0001_initial... OK\n  Applying reservations.0001_initial... OK\n  Applying payments.0001_initial... OK\n  Applying sessions.0001_initial... OK",
+    "stderr_resumen": "System check identified some issues:\n\nWARNINGS:\n?: (urls.W005) URL namespace 'admin' isn't unique. You may not be able to reverse all URLs in this namespace",
+    "timeout_s": 60,
+    "timeout": false,
+    "motivo_no_ejecutado": ""
+  },
+  "seed_data": {
+    "nombre": "seed_data",
+    "comando": [
+      "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Scripts\\python.exe",
+      "manage.py",
+      "seed_data"
+    ],
+    "ejecutado": true,
+    "ok": true,
+    "returncode": 0,
+    "stdout_resumen": "Categoría creada: Velero\nCategoría creada: Lancha\nPuerto creado: Puerto de Barcelona\nPuerto creado: Puerto de Palma\nFabricante creado: Beneteau\nFabricante creado: Jeanneau\nBarco creado: Velero Azul\nBarco creado: Velero Blanco\nBarco creado: Lancha Rápida\nBarco creado: Lancha Deportiva\nBarco creado: Velero Clásico\nUsuario administrador creado: admin@hundidos.local / admin123\nUsuario cliente creado: cliente@hundidos.local / cliente123\nDatos de prueba cargados correctamente.",
+    "stderr_resumen": "System check identified some issues:\n\nWARNINGS:\n?: (urls.W005) URL namespace 'admin' isn't unique. You may not be able to reverse all URLs in this namespace",
+    "timeout_s": 60,
+    "timeout": false,
+    "motivo_no_ejecutado": ""
+  },
+  "runserver": {
+    "nombre": "runserver",
+    "comando": [
+      "D:\\University\\TFG\\PRUEBAS\\multiagentes\\pipeline\\.venv_Test\\Scripts\\python.exe",
+      "manage.py",
+      "runserver",
+      "127.0.0.1:51741",
+      "--noreload"
+    ],
+    "ejecutado": true,
+    "ok": true,
+    "returncode": 0,
+    "stdout_resumen": "",
+    "stderr_resumen": "System check identified some issues:\n\nWARNINGS:\n?: (urls.W005) URL namespace 'admin' isn't unique. You may not be able to reverse all URLs in this namespace\n\nSystem check identified 1 issue (0 silenced).\n[19/May/2026 03:03:47] \"GET / HTTP/1.1\" 200 14283\n[19/May/2026 03:03:47] \"GET / HTTP/1.1\" 200 14283\n[19/May/2026 03:03:47] \"GET /barcos/ HTTP/1.1\" 200 12869\n[19/May/2026 03:03:47] \"GET /cesta/ HTTP/1.1\" 200 4324\n[19/May/2026 03:03:47] \"GET /accounts/registro/ HTTP/1.1\" 200 5974\n[19/May/2026 03:03:47] \"GET /accounts/login/ HTTP/1.1\" 200 5535\n[19/May/2026 03:03:47] \"GET /reserva/paso1/ HTTP/1.1\" 200 5933\n[19/May/2026 03:03:47] \"GET /reserva/paso2/ HTTP/1.1\" 302 0\n[19/May/2026 03:03:47] \"GET /reserva/paso3/ HTTP/1.1\" 302 0\n[19/May/2026 03:03:47] \"GET /admin/ HTTP/1.1\" 302 0\n[19/May/2026 03:03:47] \"GET /admin-panel/ HTTP/1.1\" 302 0",
+    "timeout_s": 20,
+    "timeout": false,
+    "motivo_no_ejecutado": ""
+  },
+  "rutas": [
+    {
+      "path": "/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:51741/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/barcos/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:51741/barcos/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/cesta/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:51741/cesta/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/accounts/registro/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:51741/accounts/registro/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/accounts/login/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:51741/accounts/login/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/reserva/paso1/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 200,
+      "final_url": "http://127.0.0.1:51741/reserva/paso1/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/reserva/paso2/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 302,
+      "final_url": "/reserva/paso1/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/reserva/paso3/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 302,
+      "final_url": "/reserva/paso1/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/admin/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 302,
+      "final_url": "/admin/login/?next=/admin/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    },
+    {
+      "path": "/admin-panel/",
+      "ejecutado": true,
+      "ok": true,
+      "status_code": 302,
+      "final_url": "/accounts/login/?next=/admin-panel/",
+      "error": "",
+      "motivo_no_ejecutado": ""
+    }
+  ],
+  "templates": [
+    {
+      "template": "reservations/step3.html",
+      "ejecutado": true,
+      "ok": true,
+      "error": "",
+      "motivo_no_ejecutado": ""
+    }
+  ],
+  "preparacion_manual_requerida": [],
+  "observaciones": [],
+  "review_final": {
+    "protocolo_validacion": "validacion_final_v1",
+    "checks_planificados": [
+      "check",
+      "migraciones",
+      "migrate",
+      "seed_data",
+      "runserver",
+      "ruta:/",
+      "ruta:/barcos/",
+      "ruta:/cesta/",
+      "ruta:/accounts/registro/",
+      "ruta:/accounts/login/",
+      "ruta:/reserva/paso1/",
+      "ruta:/reserva/paso2/",
+      "ruta:/reserva/paso3/",
+      "ruta:/admin/",
+      "ruta:/admin-panel/",
+      "template:reservations/step3.html"
+    ],
+    "checks_ejecutados": [
+      "check",
+      "migrate",
+      "seed_data",
+      "runserver",
+      "migraciones",
+      "ruta:/",
+      "ruta:/barcos/",
+      "ruta:/cesta/",
+      "ruta:/accounts/registro/",
+      "ruta:/accounts/login/",
+      "ruta:/reserva/paso1/",
+      "ruta:/reserva/paso2/",
+      "ruta:/reserva/paso3/",
+      "ruta:/admin/",
+      "ruta:/admin-panel/",
+      "template:reservations/step3.html"
+    ],
+    "checks_no_ejecutados": {},
+    "incidencias": [],
+    "factores_bloqueantes": [],
+    "clasificacion": "apto_para_revision_funcional"
+  }
+}

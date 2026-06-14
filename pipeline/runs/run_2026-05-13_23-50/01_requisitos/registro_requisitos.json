@@ -1,0 +1,182 @@
+{
+  "id_ejecucion": "run_2026-05-13_23-50",
+  "requisitos_funcionales": [
+    {
+      "id": "RF-01",
+      "descripcion": "El cliente puede registrarse mediante correo electrónico y contraseña.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-02",
+      "descripcion": "El cliente puede iniciar sesión con correo y contraseña.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-03",
+      "descripcion": "El cliente puede cerrar sesión explícitamente.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-04",
+      "descripcion": "El registro de cliente es opcional para la reserva.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-05",
+      "descripcion": "El inicio de sesión puede realizarse durante el proceso de reserva, recuperando la cesta y continuando el proceso.",
+      "prioridad": "Baja"
+    },
+    {
+      "id": "RF-06",
+      "descripcion": "Un administrador puede eliminar un usuario cliente únicamente si ese usuario no tiene reservas pendientes.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-07",
+      "descripcion": "La página principal muestra el catálogo de barcos organizado por categorías.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-08",
+      "descripcion": "Los clientes pueden buscar barcos por nombre o título.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-09",
+      "descripcion": "Existen filtros combinables para puertos, fabricantes, precio, categoría y capacidad de barco.",
+      "prioridad": "Baja"
+    },
+    {
+      "id": "RF-10",
+      "descripcion": "Los barcos no disponibles en un rango de fechas aparecen marcados como 'No disponible'.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-11",
+      "descripcion": "El cliente puede seleccionar la cantidad de unidades del barco y añadirlo a la cesta.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-12",
+      "descripcion": "La cesta está siempre visible desde cualquier página y permite la modificación de cantidades de cada barco.",
+      "prioridad": "Baja"
+    },
+    {
+      "id": "RF-13",
+      "descripcion": "El administrador al entrar en modo administrador ve una cesta vacía y no puede añadir al carro.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-14",
+      "descripcion": "El cliente puede finalizar la compra del proceso de reserva, pasándolo a tres pasos sin exigir registro previo.",
+      "prioridad": "Baja"
+    },
+    {
+      "id": "RF-15",
+      "descripcion": "La aplicación acepta dos métodos de pago: PayPal Sandbox y contra-reembolso.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-16",
+      "descripcion": "El cliente recibe un correo electrónico con los datos del barco reservado, el rango de fechas, el importe total y un código de seguimiento del alquiler.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-17",
+      "descripcion": "Se aplica una tasa de combustible de 50 € por día, excepto para los barcos de categoría 'velero'.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-18",
+      "descripcion": "Una reserva puede cancelarse solo si está en estado PENDIENTE DE PAGO.",
+      "prioridad": "Baja"
+    },
+    {
+      "id": "RF-19",
+      "descripcion": "Si falta un día para el inicio de la reserva y sigue en estado PENDIENTE DE PAGO, el sistema envía un correo de recordatorio al usuario.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-20",
+      "descripcion": "El cliente puede consultar el estado de su reserva usando el código de seguimiento recibido por email.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-21",
+      "descripcion": "El usuario registrado puede consultar el estado de sus reservas desde su cuenta.",
+      "prioridad": "Baja"
+    },
+    {
+      "id": "RF-22",
+      "descripcion": "El administrador puede cambiar el estado de una reserva desde el panel de reservas.",
+      "prioridad": "Baja"
+    },
+    {
+      "id": "RF-23",
+      "descripcion": "El cliente puede gestionar sus reserva mediante la consulta y cambio del estado.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-24",
+      "descripcion": "La interfaz de usuario está íntegramente en español.",
+      "prioridad": "Baja"
+    },
+    {
+      "id": "RF-25",
+      "descripcion": "El código del sistema está escrito en inglés con comentarios y docstrings en español.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-26",
+      "descripcion": "La aplicación funciona en la zona horaria Europe/Madrid y locale español.",
+      "prioridad": "Baja"
+    },
+    {
+      "id": "RF-27",
+      "descripcion": "Las contraseñas son almacenadas de manera segura con el mecanismo estándar de Django.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-28",
+      "descripcion": "La aplicación aplica un CSRF activo y realiza validación de formularios.",
+      "prioridad": "Baja"
+    },
+    {
+      "id": "RF-29",
+      "descripcion": "El sistema arranca con datos precargados que incluyen 5 barcos, 2 puertos, 2 fabricantes, 2 categorías (una de ellas 'velero'), y 1 usuario administrador y 1 cliente.",
+      "prioridad": "Alta"
+    }
+  ],
+  "requisitos_no_funcionales": [
+    {
+      "id": "RNF-01",
+      "categoria": "Framework",
+      "condicion_metrica": "La aplicación se construye con Django 3.2.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-02",
+      "categoria": "Base de datos",
+      "condicion_metrica": "Se utiliza SQLite como base de datos.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-03",
+      "categoria": "Pasarela de pago",
+      "condicion_metrica": "Utiliza PayPal Sandbox como pasarela de pago para pruebas.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-04",
+      "categoria": "Empaquetado",
+      "condicion_metrica": "La aplicación se entrega en un contenedor Docker con instrucciones incluidas en README.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-05",
+      "categoria": "Zona horaria y locale",
+      "condicion_metrica": "Se ejecuta con la zona horaria Europe/Madrid y locale español.",
+      "prioridad": "Alta"
+    }
+  ]
+}

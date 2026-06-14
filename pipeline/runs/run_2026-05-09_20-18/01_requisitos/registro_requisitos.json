@@ -1,0 +1,217 @@
+{
+  "id_ejecucion": "run_2026-05-09_20-18",
+  "requisitos_funcionales": [
+    {
+      "id": "RF-01",
+      "descripcion": "El cliente puede registrarse mediante correo electrónico y contraseña.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-02",
+      "descripcion": "El cliente puede iniciar sesión con correo y contraseña.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-03",
+      "descripcion": "El cliente puede cerrar sesión explícitamente.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-04",
+      "descripcion": "El cliente puede reservar un barco sin registro previo.",
+      "prioridad": "Media"
+    },
+    {
+      "id": "RF-05",
+      "descripcion": "El cliente debe poder iniciar sesión durante el proceso de reserva con recuperación de cesta.",
+      "prioridad": "Media"
+    },
+    {
+      "id": "RF-06",
+      "descripcion": "El administrador puede eliminar un usuario cliente únicamente si ese usuario no tiene reservas pendientes.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-07",
+      "descripcion": "La aplicación debe mostrar un catálogo de barcos organizado por categorías.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-08",
+      "descripcion": "Los barcos en el catálogo deben presentar campos: nombre, imagen, categoría, fabricante, puerto, capacidad y precio por día.",
+      "prioridad": "Media"
+    },
+    {
+      "id": "RF-09",
+      "descripcion": "El sistema debe permitir la búsqueda por nombre o título del barco.",
+      "prioridad": "Media"
+    },
+    {
+      "id": "RF-10",
+      "descripcion": "El sistema debe ofrecer filtros combinables por puertos, fabricantes, precio, categoría, capacidad y rango de fechas.",
+      "prioridad": "Baja"
+    },
+    {
+      "id": "RF-11",
+      "descripcion": "Los filtros presentan valores desplegables y no como campos de texto libre.",
+      "prioridad": "Media"
+    },
+    {
+      "id": "RF-12",
+      "descripcion": "El sistema debe identificar los barcos no disponibles en el rango solicitado con una etiqueta 'No disponible'.",
+      "prioridad": "Media"
+    },
+    {
+      "id": "RF-13",
+      "descripcion": "El sistema debe mostrar los barcos agotados o no disponibles claramente marcados.",
+      "prioridad": "Media"
+    },
+    {
+      "id": "RF-14",
+      "descripcion": "El cliente puede acceder a la ficha del barco desde el catálogo, con los datos del barco y la imagen.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-15",
+      "descripcion": "Desde la ficha del barco, el cliente puede seleccionar la cantidad de unidades del barco y añadirlo a la cesta.",
+      "prioridad": "Media"
+    },
+    {
+      "id": "RF-16",
+      "descripcion": "Se proporciona un panel de administración con acciones de gestión para barcos, clientes y reservas.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-17",
+      "descripcion": "El cliente puede finalizar la compra desde la cesta, siguiendo un proceso en tres pasos.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-18",
+      "descripcion": "Se ofrecen dos métodos de pago: PayPal Sandbox y contra-reembolso.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-19",
+      "descripcion": "Al finalizar la compra, el cliente recibe un correo electrónico con los datos del alquiler, el rango de fechas, el importe total y un código de seguimiento.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-20",
+      "descripcion": "Se aplica una tasa de combustible de 50 € por día, salvo que el barco sea de categoría 'velero', en cuyo caso la tasa es 0 €.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-21",
+      "descripcion": "Las reservas tienen los estados: 'PENDIENTE DE PAGO', 'PAGADO', 'EN USO', 'DEVUELTO'.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-22",
+      "descripcion": "Una reserva puede cancelarse únicamente si está en estado 'PENDIENTE DE PAGO'.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-23",
+      "descripcion": "Si falta un día para el inicio de la reserva y sigue en estado 'PENDIENTE DE PAGO', el sistema envía un correo de recordatorio al usuario.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-24",
+      "descripcion": "El administrador puede cambiar el estado de una reserva desde el panel de reservas.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-25",
+      "descripcion": "El cliente puede consultar el estado de su reserva usando el código de seguimiento.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-26",
+      "descripcion": "El usuario registrado puede consultar el estado de sus reservas desde su cuenta.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-27",
+      "descripcion": "El cliente puede agregar unidades a la cesta desde la ficha del barco.",
+      "prioridad": "Media"
+    },
+    {
+      "id": "RF-28",
+      "descripcion": "El cliente puede ajustar la cantidad de unidades en la cesta.",
+      "prioridad": "Media"
+    },
+    {
+      "id": "RF-29",
+      "descripcion": "Si el usuario entra en modo administrador, la cesta se vacía y no puede añadir al carro.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-30",
+      "descripcion": "Se permite la gestión de barcos (alta, edición, baja) desde el panel administrativo.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-31",
+      "descripcion": "Se permite la gestión de clientes desde el panel administrativo (consulta, eliminación)",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-32",
+      "descripcion": "El usuario puede eliminar reservas pendientes desde el panel administrativo.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-33",
+      "descripcion": "El usuario puede cambiar su contraseña desde su cuenta personal.",
+      "prioridad": "Media"
+    },
+    {
+      "id": "RF-34",
+      "descripcion": "El usuario puede cambiar su nombre de contacto desde su cuenta personal.",
+      "prioridad": "Media"
+    },
+    {
+      "id": "RF-35",
+      "descripcion": "La aplicación debe estar accesible desde el navegador en la URL documentada.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-36",
+      "descripcion": "La aplicación es accesible desde el navegador en la URL documentada.",
+      "prioridad": "Alta"
+    }
+  ],
+  "requisitos_no_funcionales": [
+    {
+      "id": "RNF-01",
+      "categoria": "Idioma",
+      "condicion_metrica": "La interfaz de usuario está íntegramente en español.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-02",
+      "categoria": "Tiempo de respuesta",
+      "condicion_metrica": "La página principal carga en menos de 5 segundos.",
+      "prioridad": "Baja"
+    },
+    {
+      "id": "RNF-03",
+      "categoria": "Seguridad",
+      "condicion_metrica": "Los datos del usuario están cifrados en reposo y en tránsito.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-04",
+      "categoria": "Usabilidad",
+      "condicion_metrica": "Los elementos críticos están colocados fácilmente para el usuario.",
+      "prioridad": "Baja"
+    },
+    {
+      "id": "RNF-05",
+      "categoria": "Escalabilidad",
+      "condicion_metrica": "La aplicación debe soportar un aumento en el número de usuarios sin afectar la performance.",
+      "prioridad": "Baja"
+    }
+  ]
+}

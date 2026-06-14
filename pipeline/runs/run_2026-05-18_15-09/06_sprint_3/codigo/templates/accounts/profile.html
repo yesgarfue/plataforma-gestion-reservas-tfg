@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Perfil - Hundidos{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 600px; margin: 40px auto;">
+    <h2>Mi Perfil</h2>
+    <div style="background-color: #f9f9f9; padding: 20px; border-radius: 4px; margin-bottom: 20px;">
+        <p><strong>Nombre de usuario:</strong> {{ user.username }}</p>
+        <p><strong>Correo electrónico:</strong> {{ user.email }}</p>
+        <p><strong>Nombre completo:</strong> {{ user.get_full_name|default:"No especificado" }}</p>
+        {% if profile %}
+            <p><strong>Teléfono:</strong> {{ profile.telefono|default:"No especificado" }}</p>
+        {% endif %}
+    </div>
+    <a href="{% url 'tracking:my_reservations' %}" style="background-color: #003d82; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; display: inline-block;">Ver mis reservas</a>
+</div>
+{% endblock %}

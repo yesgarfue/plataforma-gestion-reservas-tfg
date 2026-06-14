@@ -1,0 +1,75 @@
+{
+  "id_ejecucion": "run_2026-05-15_09-52",
+  "riesgos": [
+    {
+      "id": "R-01",
+      "descripcion": "PayPal Sandbox puede no estar disponible durante una demo o durante el desarrollo, bloqueando la prueba del flujo de pago integrado.",
+      "probabilidad": "media",
+      "impacto": "alto",
+      "mitigacion": "Implementar y dejar completamente funcional el flujo de contra-reembolso antes de abordar la integración con PayPal, para que la aplicación sea demoable aunque la pasarela falle."
+    },
+    {
+      "id": "R-02",
+      "descripcion": "La tasa de combustible tiene una excepción para barcos de categoría 'velero' (0 € en lugar de 50 €/día) que es fácil de olvidar al implementar el cálculo del importe total de la reserva.",
+      "probabilidad": "alta",
+      "impacto": "medio",
+      "mitigacion": "Cubrir explícitamente el caso de 'velero' con un test unitario en el cálculo de la tasa de combustible antes de cerrar la historia HU-11, y añadir un comentario en el código señalando la excepción."
+    },
+    {
+      "id": "R-03",
+      "descripcion": "SQLite tiene concurrencia limitada y puede generar bloqueos si múltiples clientes intentan reservar simultáneamente, causando errores de transacción.",
+      "probabilidad": "media",
+      "impacto": "alto",
+      "mitigacion": "Implementar reintentos automáticos con backoff exponencial en las operaciones de reserva, y documentar en el README que SQLite es adecuado solo para desarrollo y pruebas, no para producción con alto volumen."
+    },
+    {
+      "id": "R-04",
+      "descripcion": "El envío de correos de confirmación y recordatorio depende de un servidor SMTP configurado, que puede no estar disponible en el entorno de desarrollo o demo.",
+      "probabilidad": "alta",
+      "impacto": "medio",
+      "mitigacion": "Configurar un backend de correo en memoria (console backend) por defecto en desarrollo, y crear un fixture de prueba que simule el envío sin depender de SMTP externo. Documentar la configuración de SMTP en el README."
+    },
+    {
+      "id": "R-05",
+      "descripcion": "Los datos seed deben cargarse de forma fiable en cada arranque del contenedor Docker, pero si el script de carga falla silenciosamente, la aplicación arrancará sin datos de ejemplo.",
+      "probabilidad": "media",
+      "impacto": "medio",
+      "mitigacion": "Crear un comando Django personalizado (manage.py load_seed_data) que verifique la existencia de datos y lance una excepción si la carga falla. Ejecutar este comando en el entrypoint del Dockerfile y bloquear el arranque si falla."
+    },
+    {
+      "id": "R-06",
+      "descripcion": "El proceso de reserva en tres pasos sin registro previo tiene múltiples casos borde: cliente que inicia sesión a mitad del proceso, cesta que se vacía al cambiar de rol, datos heredados incompletos.",
+      "probabilidad": "alta",
+      "impacto": "medio",
+      "mitigacion": "Crear un conjunto exhaustivo de tests de integración que cubra los flujos: reserva sin sesión, login durante reserva, cambio de rol, recuperación de cesta. Ejecutar estos tests en cada commit del sprint 2."
+    },
+    {
+      "id": "R-07",
+      "descripcion": "Los filtros combinables (puerto, fabricante, precio, categoría, capacidad, fechas) son complejos de implementar correctamente y pueden generar queries SQL ineficientes o resultados incorrectos.",
+      "probabilidad": "media",
+      "impacto": "medio",
+      "mitigacion": "Implementar los filtros de forma incremental en la historia HU-04, comenzando con filtros simples (puerto, fabricante) y añadiendo complejidad (rango de fechas, disponibilidad). Incluir tests de filtrado para cada combinación crítica."
+    },
+    {
+      "id": "R-08",
+      "descripcion": "Django 3.2 es una versión antigua con soporte limitado y puede tener vulnerabilidades de seguridad no parcheadas o incompatibilidades con dependencias modernas.",
+      "probabilidad": "baja",
+      "impacto": "alto",
+      "mitigacion": "Documentar explícitamente en el README que Django 3.2 es una versión heredada y que la aplicación es solo para propósitos educativos. Ejecutar un análisis de dependencias con 'pip-audit' antes de cada release y documentar cualquier vulnerabilidad conocida."
+    },
+    {
+      "id": "R-09",
+      "descripcion": "La construcción del contenedor Docker depende de imágenes base externas (python:3.x, etc.) que pueden no estar disponibles o cambiar de forma incompatible.",
+      "probabilidad": "baja",
+      "impacto": "medio",
+      "mitigacion": "Fijar versiones específicas de imágenes base en el Dockerfile (p.ej. python:3.9-slim-bullseye) en lugar de usar tags flotantes. Documentar las versiones esperadas en el README."
+    },
+    {
+      "id": "R-10",
+      "descripcion": "El reparto de funcionalidades entre sprints puede dejar dependencias cruzadas: el sprint 2 (reserva y pago) depende del modelo de barco y cesta del sprint 1, y el sprint 3 (cancelación y seguimiento) depende del modelo de reserva del sprint 2.",
+      "probabilidad": "alta",
+      "impacto": "medio",
+      "mitigacion": "Asegurar que al cierre del sprint 1 el modelo de barco, cesta y autenticación están completamente funcionales y testeados. Realizar una revisión de dependencias entre sprints al inicio del proyecto y ajustar el plan si es necesario."
+    }
+  ]
+}

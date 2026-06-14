@@ -1,0 +1,189 @@
+# src/pipeline/crews/desarrollo_crew/config/tasks.yaml
+# Version 2. Una unica task de desarrollo:
+#   implementar_sprint: produce EntregaSprint para scaffold o sprint activo.
+#
+# No hay context entre tasks porque desarrollo_crew tiene una sola task.
+# Todo el contexto entra por inputs del kickoff.
+
+implementar_sprint:
+  description: >
+    Implementa el sprint {numero_sprint} del proyecto Hundidos.
+
+    Tu salida debe ser un unico objeto EntregaSprint. No escribas markdown,
+    no expliques tu razonamiento y no añadas texto fuera del JSON.
+
+    CASO ESPECIAL - SPRINT 0:
+
+      Si numero_sprint es 0, NO implementes historias de usuario. Genera solo
+      un scaffold Django minimo y ejecutable: manage.py, paquete de proyecto,
+      settings.py, urls.py, wsgi.py/asgi.py si procede, y estructura base de
+      apps indicada por el diseno tecnico. El objetivo es una plantilla base
+      Django valida y arrancable, no una aplicacion funcional.
+
+      En sprint 0 NO crees modelos de negocio, vistas funcionales, formularios,
+      templates de negocio, login/registro, checkout, panel admin custom,
+      servicios PayPal, servicios de email, seed_data ni datos de ejemplo.
+      Para cada app Django entrega solo __init__.py y apps.py, salvo que sea
+      imprescindible un urls.py o views.py minimo para que el proyecto arranque.
+      Si el urls.py del proyecto usa include('nombre_app.urls'), entrega tambien
+      un urls.py minimo en esa app con urlpatterns = [] o evita ese include
+      hasta que la app tenga rutas reales. No dejes includes apuntando a
+      modulos inexistentes.
+
+    ORDEN DE TRABAJO:
+
+      1. Lee el diseño tecnico aceptado para respetar stack, apps, modelos,
+         rutas y limites de arquitectura.
+      2. Lee el backlog del sprint activo. En sprint 0 el backlog estara
+         vacio y debes limitarte al scaffold base.
+      3. Si hay codigo previo, continua desde ese estado. No elimines
+         funcionalidad previa salvo que sea necesario para corregir una
+         incidencia.
+      4. Si hay review anterior, corrige las incidencias relevantes antes
+         de anadir lo nuevo del sprint.
+      5. Devuelve archivos completos. El Flow los escribira dentro de la
+         carpeta codigo/ del sprint activo.
+
+    REGLAS DURAS:
+
+      - El campo 'id_ejecucion' debe ser exactamente: {run_id}
+      - El campo 'numero_sprint' debe ser exactamente: {numero_sprint}
+      - No anadas campos fuera del schema EntregaSprint.
+      - Cada archivo debe tener exactamente los campos 'path' y 'contenido'.
+      - Cada path debe ser relativo a codigo/.
+      - No uses rutas absolutas.
+      - No uses '..' ni segmentos que salgan de codigo/.
+      - Incluye contenido completo de cada archivo, no diffs.
+      - Solo los archivos __init__.py y .gitkeep pueden tener contenido vacio.
+      - No uses bloques markdown dentro de 'contenido'.
+
+    REGLAS DE SPRINT:
+
+      - Sprint 0 debe entregar una base Django ejecutable: manage.py,
+        settings.py, urls.py y la estructura minima de proyecto/apps, sin
+        funcionalidad de negocio. En sprint 0 evita models.py, forms.py,
+        templates, servicios y comandos de gestion salvo que sean estrictamente
+        necesarios para que Django arranque.
+      - Sprint 1 parte del scaffold del sprint 0. No vuelvas a entregar
+        archivos base si no necesitas modificarlos; concentrate en los
+        archivos de modelos, vistas, urls, forms, templates y datos seed que
+        correspondan al backlog del sprint.
+      - Sprint 2 debe partir del codigo del sprint 1 y anadir/corregir lo
+        indicado por backlog_sprint_2 y review_sprint_1.
+      - Sprint 3 debe partir del codigo del sprint 2 y anadir/corregir lo
+        indicado por backlog_sprint_3 y review_sprint_2.
+
+    CONTRATO DE PRODUCTO EJECUTABLE HUNDIDOS:
+
+      - Este contrato aplica a los sprints funcionales 1, 2 y 3. En sprint 0
+        sigue vigente la regla de scaffold minimo sin funcionalidad de negocio.
+      - El producto final debe poder prepararse con:
+        python manage.py migrate
+        python manage.py seed_data
+        python manage.py runserver
+      - Si creas o modificas modelos propios en apps como accounts, catalog,
+        cart, reservations o admin_panel, entrega tambien migraciones iniciales
+        para cada app afectada: migrations/__init__.py y
+        migrations/0001_initial.py. No dependas de makemigrations ni de
+        migrate --run-syncdb para completar el producto.
+      - Si existe seed_data, debe ser un comando de gestion ejecutable con
+        python manage.py seed_data. Debe crear datos de prueba suficientes
+        para inspeccionar el producto: 5 barcos, 2 puertos, 2 fabricantes, 2
+        categorias, 1 usuario administrador y 1 usuario cliente. Si crea
+        usuarios de prueba, deja credenciales simples y consistentes en stdout.
+      - Todo formulario que reciba datos del usuario debe validar campos
+        obligatorios, tipo, formato, longitud, rangos y coherencia antes de
+        guardar datos o avanzar de paso. Usa validaciones Django estandar
+        cuando existan: EmailField, ChoiceField, DateField, IntegerField,
+        MinValueValidator, clean_<campo> o clean().
+      - Ejemplos minimos: email con EmailField; telefono con validacion de
+        formato razonable; fechas con inicio no anterior a hoy y fin posterior
+        a inicio; cantidades como enteros positivos.
+      - Si entregas un comando de gestion en management/commands/, la app que
+        lo contiene debe estar incluida en INSTALLED_APPS. Django solo descubre
+        comandos de gestion en apps instaladas; un comando en una app no
+        instalada no sera ejecutable con manage.py.
+      - No uses filtros ni tags de template que no sean estandar de Django sin
+        definirlos como templatetags propios correctamente entregados y
+        registrados. Para calculos de logica de negocio (totales, subtotales,
+        multiplicaciones, conversiones), realiza el calculo en la vista, el
+        modelo o un servicio antes de renderizar la template, y pasa el valor
+        ya calculado al contexto. Si necesitas un tag propio, entrega el archivo
+        templatetags/nombre_tag.py y cargalo con {% load nombre_tag %} en cada
+        template que lo use.
+      - Toda ruta declarada debe responder sin error 500. Si requiere login,
+        sesion, cesta o paso previo, debe redirigir de forma controlada o
+        mostrar un mensaje.
+      - El flujo de reserva debe ser robusto desde paso 1 hasta paso 3.
+      - Las rutas principales del brief deben quedar inspeccionables: home,
+        catalogo, detalle de barco, cesta, registro, login, reserva paso 1,
+        reserva paso 2, reserva paso 3, seguimiento, admin Django y
+        admin-panel.
+      - El producto debe exponer las rutas canonicas minimas del contrato
+        publico en su ruta exacta. Si montas una app con include() bajo un
+        prefijo, sus rutas quedan bajo ese prefijo y no son accesibles en la
+        raiz del proyecto; para que una ruta canonica sea accesible debes
+        montarla directamente en el urls.py del proyecto o proporcionar un
+        alias en la raiz. Ejemplos de rutas canonicas requeridas:
+        '/', '/accounts/registro/', '/accounts/login/', '/barcos/',
+        '/cesta/', '/reserva/paso1/', '/reserva/paso2/',
+        '/reserva/paso3/', '/admin/' y '/admin-panel/'.
+      - Antes de responder, revisa conceptualmente que los archivos entregados
+        cumplen este contrato. No afirmes haber ejecutado comandos; solo
+        entrega codigo preparado para ejecucion reproducible mediante los
+        comandos estandar del proyecto.
+
+    ------ INICIO DEL DISENO TECNICO ------
+    {diseno_tecnico_json}
+    ------ FIN DEL DISENO TECNICO ------
+
+    ------ INICIO DEL BACKLOG DEL SPRINT ------
+    {backlog_sprint_json}
+    ------ FIN DEL BACKLOG DEL SPRINT ------
+
+    ------ INICIO DEL CODIGO PREVIO ------
+    {codigo_previo_texto}
+    ------ FIN DEL CODIGO PREVIO ------
+
+    ------ INICIO DEL REVIEW ANTERIOR ------
+    {review_anterior_json}
+    ------ FIN DEL REVIEW ANTERIOR ------
+
+  expected_output: >
+    Un objeto JSON valido, y SOLO el objeto JSON. Sin prefacios, sin
+    comentarios, sin markdown, sin bloques de codigo ```. El objeto debe
+    ajustarse EXACTAMENTE a este esquema:
+
+    {
+      "id_ejecucion": "{run_id}",
+      "numero_sprint": {numero_sprint},
+      "archivos": [
+        {
+          "path": "manage.py",
+          "contenido": "#!/usr/bin/env python\nimport os\nimport sys\n\n..."
+        },
+        {
+          "path": "hundidos/settings.py",
+          "contenido": "from pathlib import Path\n\nBASE_DIR = Path(__file__).resolve().parent.parent\n..."
+        },
+        {
+          "path": "hundidos/urls.py",
+          "contenido": "from django.urls import include, path\n\nurlpatterns = [...]"
+        },
+        {
+          "path": "catalog/migrations/0001_initial.py",
+          "contenido": "from django.db import migrations, models\n\nclass Migration(migrations.Migration):\n    initial = True\n    dependencies = []\n    operations = [...]"
+        }
+      ]
+    }
+
+    Reglas de formato innegociables:
+
+      - 'id_ejecucion' debe ser la cadena literal {run_id}.
+      - 'numero_sprint' debe ser el numero literal {numero_sprint}.
+      - 'archivos' es una lista no vacia.
+      - Cada elemento de 'archivos' contiene exactamente 'path' y 'contenido'.
+      - No anadas campos extra.
+      - Responde SOLO con el JSON. Nada antes, nada despues.
+
+  agent: desarrollador

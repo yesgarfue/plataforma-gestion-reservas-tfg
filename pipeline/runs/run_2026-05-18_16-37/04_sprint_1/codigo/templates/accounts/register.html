@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block title %}Registro - Hundidos{% endblock %}
+
+{% block content %}
+<div style="max-width: 500px; margin: 40px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: white;">
+    <h2>Registro de Cliente</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div style="margin-bottom: 15px;">
+            <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+            {{ form.email }}
+            {% if form.email.errors %}
+                <div style="color: red; font-size: 12px;">
+                    {% for error in form.email.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label for="{{ form.nombre.id_for_label }}">{{ form.nombre.label }}</label>
+            {{ form.nombre }}
+            {% if form.nombre.errors %}
+                <div style="color: red; font-size: 12px;">
+                    {% for error in form.nombre.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label for="{{ form.telefono.id_for_label }}">{{ form.telefono.label }}</label>
+            {{ form.telefono }}
+            {% if form.telefono.errors %}
+                <div style="color: red; font-size: 12px;">
+                    {% for error in form.telefono.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
+            {{ form.password }}
+            {% if form.password.errors %}
+                <div style="color: red; font-size: 12px;">
+                    {% for error in form.password.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label for="{{ form.password_confirm.id_for_label }}">{{ form.password_confirm.label }}</label>
+            {{ form.password_confirm }}
+            {% if form.password_confirm.errors %}
+                <div style="color: red; font-size: 12px;">
+                    {% for error in form.password_confirm.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        {% if form.non_field_errors %}
+            <div style="color: red; margin-bottom: 15px;">
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <button type="submit" class="btn" style="width: 100%; padding: 12px;">Registrarse</button>
+    </form>
+    <p style="text-align: center; margin-top: 20px;">
+        ¿Ya tienes cuenta? <a href="{% url 'accounts:login' %}">Inicia sesión aquí</a>
+    </p>
+</div>
+
+<style>
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    textarea,
+    select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    textarea:focus,
+    select:focus {
+        outline: none;
+        border-color: #003d82;
+        box-shadow: 0 0 5px rgba(0, 61, 130, 0.3);
+    }
+</style>
+{% endblock %}

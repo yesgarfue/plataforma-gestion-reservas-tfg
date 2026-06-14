@@ -1,0 +1,138 @@
+{
+  "id_ejecucion": "run_2026-05-11_13-31",
+  "requisitos_funcionales": [
+    {
+      "id": "RF-01",
+      "descripcion": "El cliente puede registrarse mediante correo electrónico y contraseña.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-02",
+      "descripcion": "El cliente puede iniciar sesión con correo y contraseña.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-03",
+      "descripcion": "El cliente puede cerrar sesión explícitamente.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-04",
+      "descripcion": "El cliente puede reservar un barco sin registro previo.",
+      "prioridad": "Media"
+    },
+    {
+      "id": "RF-05",
+      "descripcion": "El cliente debe poder iniciar sesión durante el proceso de reserva con recuperación de cesta.",
+      "prioridad": "Media"
+    },
+    {
+      "id": "RF-06",
+      "descripcion": "El administrador puede eliminar un usuario cliente únicamente si ese usuario no tiene reservas pendientes.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-07",
+      "descripcion": "La aplicación debe mostrar un catálogo de barcos organizado por categorías.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-08",
+      "descripcion": "Los barcos en el catálogo deben marcarse como 'No disponibles' si están fuera del rango de fechas seleccionado.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-09",
+      "descripcion": "El cliente debe poder seleccionar la cantidad de unidades del barco y añadirla a la cesta.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-10",
+      "descripcion": "La cesta debe estar siempre visible desde cualquier página de la aplicación.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-11",
+      "descripcion": "El usuario puede ampliar o reducir la cantidad de unidades de cada barco en la cesta.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-12",
+      "descripcion": "El usuario puede finalizar la compra desde la cesta.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-13",
+      "descripcion": "La compra se realiza en no más de tres pasos, sin exigir registro previo.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-14",
+      "descripcion": "Dos métodos de pago disponibles: PayPal Sandbox y contra-reembolso.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-15",
+      "descripcion": "Al finalizar, el cliente recibe un correo electrónico con los datos del barco reservado, el rango de fechas, el importe total y un código de seguimiento.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-16",
+      "descripcion": "La reserva debe tener uno de los estados: PENDIENTE DE PAGO, PAGADO, EN USO, DEVUELTO.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-17",
+      "descripcion": "Una reserva puede cancelarse únicamente si está en estado PENDIENTE DE PAGO.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-18",
+      "descripcion": "El cliente puede consultar el estado de su reserva usando el código de seguimiento recibido por email.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-19",
+      "descripcion": "El administrador puede gestionar barcos, clientes y reservas desde panel propio.",
+      "prioridad": "Alta"
+    }
+  ],
+  "requisitos_no_funcionales": [
+    {
+      "id": "RNF-01",
+      "categoria": "Framework",
+      "condicion_metrica": "Se debe utilizar el framework Django 3.2.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-02",
+      "categoria": "Base de Datos",
+      "condicion_metrica": "Se debe utilizar la base de datos SQLite.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-03",
+      "categoria": "Pasarela de Pago",
+      "condicion_metrica": "La pasarela de pago debe ser PayPal Sandbox.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-04",
+      "categoria": "Empaquetado",
+      "condicion_metrica": "La aplicación debe entregarse como contenedor Docker, con instrucciones de construcción y arranque en un README.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-05",
+      "categoria": "Zona Horaria y Locale",
+      "condicion_metrica": "La aplicación debe tener europe/Madrid como zona horaria y el locale en español.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-06",
+      "categoria": "Seguridad",
+      "condicion_metrica": "Las contraseñas no deben almacenarse en texto plano.",
+      "prioridad": "Alta"
+    }
+  ]
+}

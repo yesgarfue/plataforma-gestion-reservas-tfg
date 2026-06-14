@@ -1,0 +1,160 @@
+{
+  "id_ejecucion": "run_2026-05-07_23-50",
+  "requisitos_funcionales": [
+    {
+      "id": "RF-01",
+      "descripcion": "El cliente puede registrarse mediante correo electrónico y contraseña.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-02",
+      "descripcion": "El cliente puede iniciar sesión con correo y contraseña.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-03",
+      "descripcion": "El cliente puede cerrar sesión explícitamente.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-04",
+      "descripcion": "El cliente puede reservar un barco sin registro previo.",
+      "prioridad": "Media"
+    },
+    {
+      "id": "RF-05",
+      "descripcion": "El cliente debe poder iniciar sesión durante el proceso de reserva con recuperación de cesta.",
+      "prioridad": "Media"
+    },
+    {
+      "id": "RF-06",
+      "descripcion": "El administrador puede eliminar un usuario cliente únicamente si ese usuario no tiene reservas pendientes.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-07",
+      "descripcion": "La aplicación debe mostrar un catálogo de barcos organizado por categorías.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-08",
+      "descripcion": "Los barcos en el catálogo deben permitir la búsqueda por nombre o título.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-09",
+      "descripcion": "Los filtros de puerto, fabricante, precio, categoría y capacidad deben permitirse aplicarse simultáneamente y de forma independiente en los resultados de búsqueda.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-10",
+      "descripcion": "El cliente debe poder seleccionar la cantidad de unidades del barco.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-11",
+      "descripcion": "El cliente debe poder añadir el barco a la cesta.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-12",
+      "descripcion": "La cesta debe estar siempre visible desde cualquier página de la aplicación.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-13",
+      "descripcion": "El usuario debe poder ampliar o reducir la cantidad de unidades en la cesta.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-14",
+      "descripcion": "El usuario puede finalizar la compra desde la cesta, realizando el proceso de reserva en no más de tres pasos.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-15",
+      "descripcion": "Se debe aplicar una tasa de combustible de 50 € por día para los barcos no de categoría 'velero'.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-16",
+      "descripcion": "Los alquileres deben tener uno de los estados: PENDIENTE DE PAGO, PAGADO, EN USO, DEVUELTO.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-17",
+      "descripcion": "Una reserva puede cancelarse únicamente si está en estado PENDIENTE DE PAGO.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-18",
+      "descripcion": "El cliente puede consultar el estado de su reserva usando el código de seguimiento recibido por email.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-19",
+      "descripcion": "El administrador puede cambiar el estado de una reserva desde el panel de reservas.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-20",
+      "descripcion": "El cliente registrado puede consultar el estado de sus reservas desde su cuenta.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-21",
+      "descripcion": "El panel de administración debe permitir la gestión de barcos, clientes y reservas.",
+      "prioridad": "Alta"
+    }
+  ],
+  "requisitos_no_funcionales": [
+    {
+      "id": "RNF-01",
+      "categoria": "Lenguaje",
+      "condicion_metrica": "La aplicación se desarrolla en Python.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-02",
+      "categoria": "Framework web",
+      "condicion_metrica": "Se utiliza Django 3.2.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-03",
+      "categoria": "Base de datos",
+      "condicion_metrica": "Se utiliza SQLite.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-04",
+      "categoria": "Pasarela de pago",
+      "condicion_metrica": "Se utiliza PayPal Sandbox.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-05",
+      "categoria": "Empaquetado",
+      "condicion_metrica": "La aplicación debe entregarse como contenedor Docker.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-06",
+      "categoria": "Zona horaria y locale",
+      "condicion_metrica": "La aplicación debe ejecutarse con la zona horaria Europe/Madrid y el locale español.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-07",
+      "categoria": "Seguridad",
+      "condicion_metrica": "Las contraseñas están almacenadas en texto plano.",
+      "prioridad": "Baja"
+    },
+    {
+      "id": "RNF-08",
+      "categoria": "Datos seed",
+      "condicion_metrica": "El sistema debe arrancar con datos precargados que permitan probar todas las funcionalidades.",
+      "prioridad": "Alta"
+    }
+  ]
+}

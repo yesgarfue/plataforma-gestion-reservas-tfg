@@ -1,0 +1,143 @@
+{
+  "id_ejecucion": "run_2026-05-14_02-35",
+  "numero_sprint": 1,
+  "historias": [
+    {
+      "id": "HU-01",
+      "titulo": "Registro de cliente",
+      "descripcion": "Como visitante, quiero registrarme con correo electrónico y contraseña, para poder acceder a mi cuenta y consultar mis reservas.",
+      "criterios_aceptacion": [
+        "El formulario de registro acepta correo electrónico y contraseña.",
+        "Las contraseñas se almacenan usando el mecanismo estándar de Django, no en texto plano.",
+        "Tras registrarse, el cliente queda autenticado en la sesión.",
+        "El formulario incluye validación CSRF."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-02",
+      "titulo": "Inicio de sesión",
+      "descripcion": "Como cliente registrado, quiero iniciar sesión con correo y contraseña, para acceder a las funcionalidades reservadas a usuarios autenticados.",
+      "criterios_aceptacion": [
+        "El formulario de login acepta correo y contraseña.",
+        "Tras un login correcto, el cliente accede a su cuenta.",
+        "Tras un login incorrecto, se muestra un mensaje de error.",
+        "El formulario incluye validación CSRF."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "S"
+    },
+    {
+      "id": "HU-03",
+      "titulo": "Cierre de sesión",
+      "descripcion": "Como cliente autenticado, quiero cerrar sesión explícitamente, para salir de mi cuenta de forma segura.",
+      "criterios_aceptacion": [
+        "El cliente puede pulsar un botón de cierre de sesión desde cualquier página.",
+        "Tras cerrar sesión, el cliente es redirigido a la página principal.",
+        "La sesión se elimina del servidor."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "S"
+    },
+    {
+      "id": "HU-04",
+      "titulo": "Catálogo de barcos con filtros combinables",
+      "descripcion": "Como cliente, quiero ver un catálogo de barcos organizado por categorías y aplicar filtros combinables de puertos, fabricantes, precio, categoría, capacidad y rango de fechas, para encontrar el barco que necesito.",
+      "criterios_aceptacion": [
+        "La página principal muestra un catálogo de barcos con campos de nombre, imagen, categoría, fabricante, puerto, capacidad y precio por día.",
+        "El cliente puede buscar barcos por nombre o título desde la página de inicio.",
+        "Los filtros de puerto y fabricante se presentan como desplegables con valores válidos.",
+        "El cliente puede aplicar filtros de puertos, fabricantes, precio, categoría, capacidad y rango de fechas de forma simultánea e independiente.",
+        "El filtro de fechas muestra todos los barcos del catálogo, marcando con una etiqueta 'No disponible' aquellos no disponibles en ese rango sin ocultarlos.",
+        "Los barcos agotados o no disponibles aparecen claramente marcados en el catálogo."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "L"
+    },
+    {
+      "id": "HU-05",
+      "titulo": "Ficha de barco y selección de cantidad",
+      "descripcion": "Como cliente, quiero acceder a la ficha de un barco desde el catálogo y seleccionar la cantidad de unidades disponibles para añadir a la cesta.",
+      "criterios_aceptacion": [
+        "El cliente puede acceder a la ficha del barco desde el catálogo.",
+        "La ficha visualiza los datos del barco y su imagen.",
+        "Desde la ficha de barco, el cliente puede seleccionar la cantidad de unidades disponibles.",
+        "El cliente puede añadir el barco seleccionado a la cesta.",
+        "Se valida que la cantidad seleccionada no exceda la disponibilidad."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-06",
+      "titulo": "Gestión de cesta",
+      "descripcion": "Como cliente, quiero ver la cesta siempre visible, modificar las cantidades de barcos y revisar el estado de la cesta desde el catálogo.",
+      "criterios_aceptacion": [
+        "La cesta está siempre visible desde cualquier página de la aplicación.",
+        "El usuario puede ampliar o reducir la cantidad de unidades de cada barco en la cesta.",
+        "El usuario puede revisar el estado de la cesta desde el catálogo.",
+        "El usuario puede vaciar la cesta completamente.",
+        "Al entrar en modo administrador, la cesta se vacía y el administrador no puede añadir barcos al carro."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-20",
+      "titulo": "Configuración de zona horaria y locale",
+      "descripcion": "Como sistema, quiero configurar la zona horaria a Europe/Madrid y el locale a español para que la aplicación funcione en el contexto correcto.",
+      "criterios_aceptacion": [
+        "La zona horaria configurada es Europe/Madrid.",
+        "El locale está configurado como español.",
+        "Todas las fechas y horas se muestran en la zona horaria Europe/Madrid.",
+        "Los formatos de fecha y número siguen la convención española."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "S"
+    },
+    {
+      "id": "HU-21",
+      "titulo": "Interfaz de usuario en español",
+      "descripcion": "Como usuario, quiero que la interfaz de usuario esté íntegramente en español, para una mejor comprensión y usabilidad.",
+      "criterios_aceptacion": [
+        "Todos los textos de la interfaz están en español.",
+        "Los mensajes de error están en español.",
+        "Los botones, etiquetas y campos están en español.",
+        "Los correos electrónicos están en español."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-22",
+      "titulo": "Datos precargados en arranque",
+      "descripcion": "Como desarrollador, quiero que la aplicación arranque con datos de ejemplo precargados para facilitar las pruebas y demostraciones.",
+      "criterios_aceptacion": [
+        "La aplicación arranca con mínimo 5 barcos precargados.",
+        "Hay 2 puertos precargados.",
+        "Hay 2 fabricantes precargados.",
+        "Hay 2 categorías precargadas, incluyendo velero.",
+        "Hay 1 usuario administrador de prueba precargado.",
+        "Hay 1 usuario cliente de prueba precargado.",
+        "Los datos se cargan automáticamente en cada arranque del contenedor."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-23",
+      "titulo": "Empaquetado en Docker",
+      "descripcion": "Como operador, quiero que la aplicación se entregue como contenedor Docker con instrucciones claras de construcción y arranque.",
+      "criterios_aceptacion": [
+        "La aplicación incluye un Dockerfile.",
+        "El Dockerfile contiene instrucciones para construir la imagen.",
+        "Se incluye un README con instrucciones de construcción del contenedor.",
+        "Se incluye un README con instrucciones de arranque del contenedor.",
+        "El contenedor arranca correctamente con los datos precargados."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    }
+  ]
+}

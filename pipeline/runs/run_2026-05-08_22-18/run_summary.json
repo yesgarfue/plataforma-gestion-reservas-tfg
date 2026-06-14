@@ -1,0 +1,13 @@
+{
+  "run_id": "run_2026-05-08_22-18",
+  "resultado_final": "completo",
+  "mensaje": "Run finalizado con resultado_final = completo",
+  "timestamp_cierre": "2026-05-08T22:38:16+02:00",
+  "fase_01": {
+    "reintentos_automaticos": 0,
+    "regeneraciones_humanas": 1,
+    "gate_decision": "aceptado",
+    "duracion_s_ejec": 840.9070000000065,
+    "duracion_s_gate_humano": 327.67200000000594
+  }
+}

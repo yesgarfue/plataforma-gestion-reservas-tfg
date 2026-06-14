@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalle de Reserva - Hundidos{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title mb-4">Detalle de Reserva</h2>
+
+                    <div class="alert alert-info">
+                        <strong>Código de Seguimiento:</strong> {{ reserva.codigo_seguimiento }}
+                    </div>
+
+                    <h5>Datos de la Reserva</h5>
+                    <table class="table table-sm">
+                        <tr>
+                            <td><strong>Cliente:</strong></td>
+                            <td>{{ reserva.nombre_cliente }} {{ reserva.apellido_cliente }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Email:</strong></td>
+                            <td>{{ reserva.email_contacto }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Teléfono:</strong></td>
+                            <td>{{ reserva.telefono_cliente|default:"No especificado" }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fechas:</strong></td>
+                            <td>{{ reserva.fecha_inicio|date:"d/m/Y" }} - {{ reserva.fecha_fin|date:"d/m/Y" }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Estado Actual:</strong></td>
+                            <td>
+                                {% if reserva.estado == 'PENDIENTE_DE_PAGO' %}
+                                    <span class="badge bg-warning">Pendiente de Pago</span>
+                                {% elif reserva.estado == 'PAGADO' %}
+                                    <span class="badge bg-success">Pagado</span>
+                                {% elif reserva.estado == 'EN_USO' %}
+                                    <span class="badge bg-info">En Uso</span>
+                                {% elif reserva.estado == 'DEVUELTO' %}
+                                    <span class="badge bg-secondary">Devuelto</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Método de Pago:</strong></td>
+                            <td>{{ reserva.get_metodo_pago_display }}</td>
+                        </tr>
+                    </table>
+
+                    <h5 class="mt-4">Barcos Alquilados</h5>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Barco</th>
+                                <th>Cantidad</th>
+                                <th>Precio/Día</th>
+                                <th>Tasa Combustible</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for linea in lineas %}
+                                <tr>
+                                    <td>{{ linea.barco.nombre }}</td>
+                                    <td>{{ linea.cantidad }}</td>
+                                    <td>{{ linea.precio_unitario_dia }}€</td>
+                                    <td>{{ linea.tasa_combustible_dia }}€</td>
+                                    <td>{{ linea.subtotal }}€</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <div class="alert alert-info mt-4">
+                        <strong>Importe Total:</strong> {{ reserva.importe_total }}€
+                    </div>
+
+                    <h5 class="mt-4">Cambiar Estado</h5>
+                    <form method="post" action="{% url 'admin:reservation_change_state' reserva.id %}" class="row g-3">
+                        {% csrf_token %}
+                        <div class="col-md-6">
+                            <select name="nuevo_estado" class="form-select" required>
+                                <option value="">Selecciona un nuevo estado</option>
+                                {% for value, label in estados %}
+                                    <option value="{{ value }}">{{ label }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary">Cambiar Estado</button>
+                        </div>
+                    </form>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="{% url 'admin:reservations_list' %}" class="btn btn-secondary">Volver a Reservas</a>
+                        <a href="{% url 'admin:dashboard' %}" class="btn btn-secondary">Volver al Panel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,127 @@
+{
+  "id_ejecucion": "run_2026-05-13_15-33",
+  "numero_sprint": 1,
+  "historias": [
+    {
+      "id": "HU-01",
+      "titulo": "Registro de cliente",
+      "descripcion": "Como visitante, quiero registrarme con correo electrónico y contraseña, para poder acceder a mi cuenta y consultar mis reservas.",
+      "criterios_aceptacion": [
+        "El formulario de registro acepta correo electrónico y contraseña.",
+        "Las contraseñas se almacenan de forma segura, no en texto plano.",
+        "Tras registrarse, el cliente queda autenticado en la sesión.",
+        "Se valida que el correo no esté ya registrado."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-02",
+      "titulo": "Inicio de sesión",
+      "descripcion": "Como cliente registrado, quiero iniciar sesión con correo y contraseña, para acceder a las funcionalidades reservadas a usuarios autenticados.",
+      "criterios_aceptacion": [
+        "El formulario de login acepta correo y contraseña.",
+        "Tras un login correcto, el cliente accede a su cuenta.",
+        "Tras un login incorrecto, se muestra un mensaje de error genérico.",
+        "La sesión se mantiene activa durante la navegación."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "S"
+    },
+    {
+      "id": "HU-03",
+      "titulo": "Cierre de sesión",
+      "descripcion": "Como cliente autenticado, quiero cerrar sesión explícitamente, para asegurar que mi cuenta no queda accesible desde el dispositivo.",
+      "criterios_aceptacion": [
+        "El cliente puede hacer clic en un botón 'Cerrar sesión'.",
+        "Tras cerrar sesión, el cliente es redirigido a la página principal.",
+        "La sesión se invalida y el cliente no puede acceder a funcionalidades autenticadas sin volver a iniciar sesión."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "S"
+    },
+    {
+      "id": "HU-05",
+      "titulo": "Catálogo de barcos por categorías",
+      "descripcion": "Como cliente, quiero ver el catálogo de barcos organizado por categorías en la página principal, para explorar las opciones disponibles.",
+      "criterios_aceptacion": [
+        "La página principal muestra un catálogo de barcos.",
+        "Los barcos están organizados por categorías.",
+        "Cada barco muestra: nombre, imagen, categoría, fabricante, puerto, capacidad y precio por día.",
+        "El catálogo es accesible sin necesidad de autenticación."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-06",
+      "titulo": "Búsqueda y filtros combinables de barcos",
+      "descripcion": "Como cliente, quiero buscar y filtrar barcos por nombre, puertos, fabricantes, precio, categoría, capacidad y fechas, para encontrar la embarcación que se ajuste a mis necesidades.",
+      "criterios_aceptacion": [
+        "La búsqueda funciona por nombre o título del barco.",
+        "Los filtros de puertos, fabricante y precio se presentan como desplegables.",
+        "Los filtros de categoría y capacidad están disponibles.",
+        "El filtro de fechas muestra todos los barcos del catálogo; los no disponibles en ese rango aparecen marcados con una etiqueta 'No disponible'.",
+        "Los filtros son combinables entre sí.",
+        "Los resultados se actualizan al aplicar o modificar filtros."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "L"
+    },
+    {
+      "id": "HU-22",
+      "titulo": "Configuración de zona horaria y locale",
+      "descripcion": "Como sistema, quiero operar con zona horaria Europe/Madrid y locale español, para que todas las fechas, horas y textos se muestren correctamente.",
+      "criterios_aceptacion": [
+        "La aplicación está configurada con zona horaria Europe/Madrid.",
+        "La aplicación utiliza locale español.",
+        "Las fechas y horas se muestran en formato español.",
+        "Los textos de la interfaz están en español."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "S"
+    },
+    {
+      "id": "HU-23",
+      "titulo": "Datos seed precargados",
+      "descripcion": "Como desarrollador, quiero que la aplicación arranque con datos precargados que permitan probar todas las funcionalidades sin trabajo previo, para facilitar las pruebas y demostraciones.",
+      "criterios_aceptacion": [
+        "La aplicación incluye un conjunto de barcos de ejemplo en diferentes categorías.",
+        "La aplicación incluye clientes de ejemplo.",
+        "La aplicación incluye reservas de ejemplo en diferentes estados.",
+        "Los datos seed se cargan automáticamente al iniciar la aplicación.",
+        "Los datos seed permiten probar todos los filtros y funcionalidades."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-24",
+      "titulo": "Seguridad: contraseñas, CSRF y validación",
+      "descripcion": "Como sistema, quiero implementar medidas de seguridad mínima para proteger los datos de los usuarios.",
+      "criterios_aceptacion": [
+        "Las contraseñas no se almacenan en texto plano.",
+        "La protección CSRF está activa en todos los formularios.",
+        "Se validan todos los formularios en el servidor.",
+        "Se validan los datos de entrada para prevenir inyecciones.",
+        "Los errores de validación se muestran al usuario sin revelar información sensible."
+      ],
+      "prioridad": "Media",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-25",
+      "titulo": "Empaquetado en Docker",
+      "descripcion": "Como operador, quiero que la aplicación esté empaquetada como contenedor Docker con instrucciones claras de construcción y arranque, para facilitar el despliegue.",
+      "criterios_aceptacion": [
+        "Existe un Dockerfile que define la construcción de la imagen.",
+        "Existe un README con instrucciones de construcción del contenedor.",
+        "Existe un README con instrucciones de arranque del contenedor.",
+        "El contenedor incluye todas las dependencias necesarias.",
+        "La aplicación funciona correctamente al ejecutarse desde el contenedor."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    }
+  ]
+}

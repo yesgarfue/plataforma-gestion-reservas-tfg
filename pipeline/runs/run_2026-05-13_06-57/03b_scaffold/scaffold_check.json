@@ -1,0 +1,8 @@
+{
+  "ok": true,
+  "returncode": 0,
+  "stdout_resumen": "",
+  "stderr_resumen": "System check identified some issues:\n\nWARNINGS:\n?: (urls.W005) URL namespace 'admin' isn't unique. You may not be able to reverse all URLs in this namespace\n\nSystem check identified 1 issue (0 silenced).",
+  "timeout_s": 60,
+  "timeout": false
+}

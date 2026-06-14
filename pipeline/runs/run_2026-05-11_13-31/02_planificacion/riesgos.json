@@ -1,0 +1,75 @@
+{
+  "id_ejecucion": "run_2026-05-11_13-31",
+  "riesgos": [
+    {
+      "id": "R-01",
+      "descripcion": "PayPal Sandbox puede no estar disponible durante una demo o durante el desarrollo, bloqueando la prueba del flujo de pago integrado.",
+      "probabilidad": "media",
+      "impacto": "alto",
+      "mitigacion": "Implementar y dejar completamente funcional el flujo de contra-reembolso antes de abordar la integración con PayPal, para que la aplicación sea demoable aunque la pasarela falle."
+    },
+    {
+      "id": "R-02",
+      "descripcion": "El servidor SMTP para envío de correos de confirmación puede no estar configurado o disponible en el entorno de desarrollo o producción, impidiendo que los clientes reciban el código de seguimiento.",
+      "probabilidad": "media",
+      "impacto": "alto",
+      "mitigacion": "Configurar un servicio SMTP de prueba (p.ej. MailHog o SendGrid sandbox) en el Dockerfile y documentar en el README los pasos para configurar SMTP en producción. Implementar logs de correos fallidos para detectar problemas rápidamente."
+    },
+    {
+      "id": "R-03",
+      "descripcion": "SQLite tiene limitaciones de concurrencia que pueden causar bloqueos o pérdida de datos si múltiples clientes intentan reservar el mismo barco simultáneamente.",
+      "probabilidad": "alta",
+      "impacto": "alto",
+      "mitigacion": "Implementar transacciones explícitas con nivel de aislamiento SERIALIZABLE en el modelo de reserva. Añadir tests de carga con al menos 10 reservas simultáneas del mismo barco antes de cerrar el sprint 2. Documentar en el README que SQLite es solo para desarrollo y que se debe migrar a PostgreSQL para producción."
+    },
+    {
+      "id": "R-04",
+      "descripcion": "El proceso de reserva en tres pasos sin registro previo tiene casos borde complejos: recuperación de cesta al iniciar sesión durante la reserva, conflictos entre cesta anterior y actual, y validación de datos de contacto incompletos.",
+      "probabilidad": "alta",
+      "impacto": "medio",
+      "mitigacion": "Crear un documento de casos de prueba exhaustivos para el flujo de reserva sin registro (incluyendo sesión iniciada a mitad del proceso, datos inválidos, cambios de cantidad). Ejecutar pruebas manuales de estos casos antes de cerrar el sprint 2. Implementar validación de datos de contacto con mensajes de error específicos."
+    },
+    {
+      "id": "R-05",
+      "descripcion": "Django 3.2 es una versión antigua con soporte limitado (fin de soporte en abril 2024), lo que puede causar vulnerabilidades de seguridad no parcheadas y incompatibilidades con librerías modernas.",
+      "probabilidad": "media",
+      "impacto": "medio",
+      "mitigacion": "Ejecutar 'pip check' y 'safety check' antes de cada commit para detectar dependencias vulnerables. Documentar en el README que la aplicación está construida con Django 3.2 y que se recomienda migrar a una versión LTS más reciente (Django 4.2 o superior) antes de desplegar a producción."
+    },
+    {
+      "id": "R-06",
+      "descripcion": "Los datos seed (barcos, categorías) deben cargarse de forma fiable en cada arranque del contenedor Docker, pero si el script de carga falla silenciosamente, la aplicación arrancará sin datos y parecerá funcional pero vacía.",
+      "probabilidad": "media",
+      "impacto": "medio",
+      "mitigacion": "Crear un script manage.py seed que verifique la existencia de datos y los cargue si no existen. Añadir un health check en el Dockerfile que valide que existen al menos 5 barcos en la base de datos. Documentar en el README cómo cargar datos manualmente si es necesario."
+    },
+    {
+      "id": "R-07",
+      "descripcion": "El filtrado combinable de barcos por puerto, fabricante, precio, categoría, capacidad y fechas es más complejo de lo que aparenta, con riesgo de queries ineficientes o resultados incorrectos cuando se combinan múltiples filtros.",
+      "probabilidad": "media",
+      "impacto": "medio",
+      "mitigacion": "Implementar tests unitarios para cada combinación de filtros (al menos 8 combinaciones) antes de cerrar el sprint 1. Usar Django ORM con select_related y prefetch_related para optimizar queries. Medir tiempo de respuesta con 1000+ barcos en la base de datos."
+    },
+    {
+      "id": "R-08",
+      "descripcion": "El reparto de funcionalidades entre sprints crea dependencias cruzadas: el sprint 2 (pago) depende del modelo de reserva del sprint 1, y el sprint 3 (cancelación) depende de ambos.",
+      "probabilidad": "alta",
+      "impacto": "medio",
+      "mitigacion": "Definir el modelo de Reserva con todos sus campos (incluyendo estado, código de seguimiento, fechas) en el sprint 1, aunque no se use completamente hasta el sprint 2. Realizar integración continua entre sprints: al final del sprint 1, verificar que el sprint 2 puede construir sobre el código entregado sin cambios de modelo."
+    },
+    {
+      "id": "R-09",
+      "descripcion": "La construcción del contenedor Docker depende de imágenes base externas (python:3.x, etc.) que pueden no estar disponibles o tener vulnerabilidades de seguridad.",
+      "probabilidad": "baja",
+      "impacto": "medio",
+      "mitigacion": "Especificar versiones exactas de imágenes base en el Dockerfile (p.ej. python:3.9-slim-bullseye en lugar de python:3.9). Ejecutar 'docker scan' antes de cada release para detectar vulnerabilidades. Documentar en el README cómo construir la imagen con un registro privado si es necesario."
+    },
+    {
+      "id": "R-10",
+      "descripcion": "El código de seguimiento debe ser único y no predecible, pero si se genera de forma insegura (p.ej. secuencial o con baja entropía), un cliente podría adivinar códigos de otros clientes.",
+      "probabilidad": "baja",
+      "impacto": "alto",
+      "mitigacion": "Generar códigos de seguimiento usando uuid.uuid4() o secrets.token_urlsafe(16). Añadir un test unitario que verifique que 1000 códigos generados son todos únicos. Documentar en el código que los códigos deben ser criptográficamente seguros."
+    }
+  ]
+}

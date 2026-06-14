@@ -1,0 +1,193 @@
+{
+  "id_ejecucion": "run_2026-05-09_18-54",
+  "requisitos_funcionales": [
+    {
+      "id": "RF-01",
+      "descripcion": "El cliente puede registrarse mediante correo electrónico y contraseña.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-02",
+      "descripcion": "El cliente puede iniciar sesión con correo y contraseña.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-03",
+      "descripcion": "El cliente puede cerrar sesión explícitamente.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-04",
+      "descripcion": "El cliente puede reservar un barco sin registro previo.",
+      "prioridad": "Media"
+    },
+    {
+      "id": "RF-05",
+      "descripcion": "El cliente debe poder iniciar sesión durante el proceso de reserva con recuperación de cesta.",
+      "prioridad": "Media"
+    },
+    {
+      "id": "RF-06",
+      "descripcion": "El administrador puede eliminar un usuario cliente únicamente si ese usuario no tiene reservas pendientes.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-07",
+      "descripcion": "La aplicación debe mostrar un catálogo de barcos organizado por categorías.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-08",
+      "descripcion": "Los barcos en el catálogo deben presentar campos: nombre, imagen, categoría, fabricante, puerto, capacidad y precio por día.",
+      "prioridad": "Media"
+    },
+    {
+      "id": "RF-09",
+      "descripcion": "El sistema debe permitir la búsqueda por nombre o título del barco.",
+      "prioridad": "Media"
+    },
+    {
+      "id": "RF-10",
+      "descripcion": "El sistema debe permitir la búsqueda por puertos, fabricantes, precio, categoría, capacidad y rango de fechas simultáneamente y de forma independiente en el catálogo de barcos.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-11",
+      "descripcion": "El cliente puede navegar por el catálogo de barcos mediante filtros.",
+      "prioridad": "Media"
+    },
+    {
+      "id": "RF-12",
+      "descripcion": "Debería estar disponible una ficha de barco accesible desde el catálogo, con los datos del barco y la imagen.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-13",
+      "descripcion": "De la ficha de barco, el cliente puede seleccionar la cantidad de unidades del barco y añadir a la cesta.",
+      "prioridad": "Media"
+    },
+    {
+      "id": "RF-14",
+      "descripcion": "El cesta debe estar visible desde cualquier página de la aplicación, y permite modificar la cantidad de unidades de cada barco.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-15",
+      "descripcion": "La cesta debe vaciarse al entrar en modo administrador.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-16",
+      "descripcion": "El cliente puede finalizar la compra (proceso de reserva) desde la cesta.",
+      "prioridad": "Media"
+    },
+    {
+      "id": "RF-17",
+      "descripcion": "El proceso de reserva debe completarse en no más de tres pasos.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-18",
+      "descripcion": "Se deben proporcionar dos métodos de pago: PayPal Sandbox y contra-reembolso.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-19",
+      "descripcion": "Al finalizar, el cliente debe recibir un correo electrónico con el código de seguimiento del alquiler y los datos del barco reservado.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-20",
+      "descripcion": "El sistema debe aplicar una tasa de combustible de 50 € por día, salvo que el barco sea de categoría 'velero', en cuyo caso la tasa es 0 €.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-21",
+      "descripcion": "Cada reserva debe tener uno de los estados: PENDIENTE DE PAGO, PAGADO, EN USO, DEVUELTO.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-22",
+      "descripcion": "Una reserva puede cancelarse únicamente si está en estado PENDIENTE DE PAGO.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-23",
+      "descripcion": "El sistema debe enviar un correo de recordatorio al usuario 24 horas antes de la reserva si sigue en estado PENDIENTE DE PAGO.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-24",
+      "descripcion": "El administrador puede cambiar el estado de una reserva desde el panel de reservas.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-25",
+      "descripcion": "El cliente puede consultar el estado de su reserva usando el código de seguimiento recibido por email.",
+      "prioridad": "Media"
+    },
+    {
+      "id": "RF-26",
+      "descripcion": "El usuario registrado puede consultar el estado de sus reservas desde su cuenta.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-27",
+      "descripcion": "El administrador puede consultar el estado de cualquier reserva.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-28",
+      "descripcion": "El panel de administración debe permitir la gestión de barcos (alta, edición, baja).",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-29",
+      "descripcion": "El panel de administración debe permitir la gestión de clientes (consulta, eliminación con la restricción del 3.1).",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RF-30",
+      "descripcion": "El panel de administración debe permitir la gestión de reservas (consulta, cambio de estado).",
+      "prioridad": "Alta"
+    }
+  ],
+  "requisitos_no_funcionales": [
+    {
+      "id": "RNF-01",
+      "categoria": "Lenguaje",
+      "condicion_metrica": "Se utiliza Python como lenguaje de programación.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-02",
+      "categoria": "Framework",
+      "condicion_metrica": "Se utiliza Django 3.2 como framework web.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-03",
+      "categoria": "Base de datos",
+      "condicion_metrica": "Se utiliza SQLite como base de datos.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-04",
+      "categoria": "Pasarela de pago",
+      "condicion_metrica": "Se utiliza PayPal Sandbox como pasarela de pago.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-05",
+      "categoria": "Empaquetado",
+      "condicion_metrica": "Existe un Dockerfile en el repositorio del producto.",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "RNF-06",
+      "categoria": "Idioma",
+      "condicion_metrica": "La interfaz de usuario está íntegramente en español.",
+      "prioridad": "Alta"
+    }
+  ]
+}

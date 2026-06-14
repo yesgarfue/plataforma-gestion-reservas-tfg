@@ -1,0 +1,113 @@
+{
+  "id_ejecucion": "run_2026-05-14_19-50",
+  "numero_sprint": 1,
+  "historias": [
+    {
+      "id": "HU-01",
+      "titulo": "Registro de cliente",
+      "descripcion": "Como visitante, quiero registrarme con correo electrónico y contraseña, para poder acceder a mi cuenta y consultar mis reservas.",
+      "criterios_aceptacion": [
+        "El formulario de registro acepta correo electrónico y contraseña.",
+        "Tras registrarse, el cliente queda autenticado en la sesión.",
+        "Las contraseñas se almacenan usando el mecanismo estándar de Django, no en texto plano."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-02",
+      "titulo": "Inicio de sesión",
+      "descripcion": "Como cliente registrado, quiero iniciar sesión con correo y contraseña, para acceder a las funcionalidades reservadas a usuarios autenticados.",
+      "criterios_aceptacion": [
+        "El formulario de login acepta correo y contraseña.",
+        "Tras un login correcto, el cliente accede a su cuenta.",
+        "Tras un login incorrecto, se muestra un mensaje de error.",
+        "La sesión se mantiene activa durante la navegación."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "S"
+    },
+    {
+      "id": "HU-03",
+      "titulo": "Cierre de sesión",
+      "descripcion": "Como cliente autenticado, quiero cerrar sesión explícitamente, para terminar mi sesión de forma segura.",
+      "criterios_aceptacion": [
+        "El cliente puede pulsar un botón de cierre de sesión desde cualquier página.",
+        "Tras cerrar sesión, el cliente es redirigido a la página principal.",
+        "La sesión se elimina del servidor."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "S"
+    },
+    {
+      "id": "HU-04",
+      "titulo": "Catálogo de barcos con búsqueda y filtros",
+      "descripcion": "Como cliente, quiero visualizar un catálogo de barcos organizado por categorías y buscar o filtrar por nombre, puerto, fabricante, precio, capacidad y rango de fechas, para encontrar el barco que necesito.",
+      "criterios_aceptacion": [
+        "La página principal muestra un catálogo de barcos con nombre, imagen, categoría, fabricante, puerto, capacidad y precio por día.",
+        "El sistema permite búsqueda por nombre o título desde la página de inicio.",
+        "Los filtros de puerto y fabricante se presentan como desplegables con valores válidos.",
+        "El sistema permite filtrar por puertos, fabricantes, precio, categoría, capacidad y rango de fechas de forma combinable e independiente.",
+        "El filtro de fechas muestra todos los barcos del catálogo, marcando con etiqueta 'No disponible' aquellos no disponibles en ese rango sin ocultarlos.",
+        "Los barcos agotados o no disponibles aparecen claramente marcados en el catálogo."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "L"
+    },
+    {
+      "id": "HU-05",
+      "titulo": "Ficha de barco y selección de cantidad",
+      "descripcion": "Como cliente, quiero acceder a la ficha de un barco desde el catálogo y seleccionar la cantidad de unidades disponibles para añadir a la cesta.",
+      "criterios_aceptacion": [
+        "El cliente puede acceder a la ficha del barco desde el catálogo.",
+        "La ficha visualiza los datos del barco e imagen.",
+        "El cliente puede seleccionar la cantidad de unidades disponibles.",
+        "El cliente puede añadir el barco a la cesta desde la ficha."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "M"
+    },
+    {
+      "id": "HU-19",
+      "titulo": "Configuración de zona horaria y locale",
+      "descripcion": "Como sistema, quiero configurar la zona horaria a Europe/Madrid y el locale a español para que todas las fechas, horas y textos se muestren correctamente.",
+      "criterios_aceptacion": [
+        "La zona horaria del sistema está configurada a Europe/Madrid.",
+        "El locale está configurado a español.",
+        "Todas las fechas y horas se muestran en zona horaria Europe/Madrid.",
+        "La interfaz de usuario está íntegramente en español."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "S"
+    },
+    {
+      "id": "HU-20",
+      "titulo": "Datos precargados de ejemplo",
+      "descripcion": "Como sistema, quiero que la aplicación arranque con datos precargados para facilitar las pruebas y demostraciones.",
+      "criterios_aceptacion": [
+        "La aplicación arranca con mínimo 5 barcos precargados.",
+        "Hay 2 puertos precargados.",
+        "Hay 2 fabricantes precargados.",
+        "Hay 2 categorías precargadas, incluyendo velero.",
+        "Hay 1 usuario administrador de prueba precargado.",
+        "Hay 1 usuario cliente de prueba precargado.",
+        "Los datos se cargan de forma fiable en cada arranque."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "S"
+    },
+    {
+      "id": "HU-21",
+      "titulo": "Seguridad y validación de formularios",
+      "descripcion": "Como sistema, quiero garantizar la seguridad mediante almacenamiento seguro de contraseñas, protección CSRF y validación de todos los formularios.",
+      "criterios_aceptacion": [
+        "Las contraseñas se almacenan usando el mecanismo estándar de Django, no en texto plano.",
+        "CSRF está activo en todos los formularios.",
+        "Se validan todos los formularios antes de procesar datos.",
+        "Los datos sensibles no se exponen en URLs o logs."
+      ],
+      "prioridad": "Alta",
+      "estimacion": "S"
+    }
+  ]
+}

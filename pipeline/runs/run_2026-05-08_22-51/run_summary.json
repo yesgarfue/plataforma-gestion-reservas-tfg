@@ -1,0 +1,13 @@
+{
+  "run_id": "run_2026-05-08_22-51",
+  "resultado_final": "abortado_en_gate",
+  "mensaje": "Run finalizado con resultado_final = abortado_en_gate",
+  "timestamp_cierre": "2026-05-08T22:59:31+02:00",
+  "fase_01": {
+    "reintentos_automaticos": 0,
+    "regeneraciones_humanas": 0,
+    "gate_decision": "abortado",
+    "duracion_s_ejec": 428.10899999999674,
+    "duracion_s_gate_humano": 33.89100000000326
+  }
+}

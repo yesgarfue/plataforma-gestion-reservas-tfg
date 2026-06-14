@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recordatorio de Pago - Hundidos</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background-color: #ff9800; color: white; padding: 20px; text-align: center; border-radius: 5px 5px 0 0; }
+        .content { background-color: #f9f9f9; padding: 20px; border: 1px solid #ddd; }
+        .footer { background-color: #f0f0f0; padding: 10px; text-align: center; font-size: 12px; border-radius: 0 0 5px 5px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #ff9800; color: white; }
+        .total { font-size: 18px; font-weight: bold; color: #ff9800; }
+        .alert { background-color: #fff3cd; border: 1px solid #ffc107; padding: 10px; border-radius: 5px; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Recordatorio: Pago Pendiente</h1>
+        </div>
+        <div class="content">
+            <p>Hola,</p>
+            <p>Tu reserva comienza mañana y aún tienes un pago pendiente.</p>
+
+            <div class="alert">
+                <strong>Código de Seguimiento:</strong> {{ reserva.codigo_seguimiento }}
+            </div>
+
+            <h3>Detalles de la Reserva</h3>
+            <table>
+                <tr>
+                    <td><strong>Fecha de Inicio:</strong></td>
+                    <td>{{ fecha_inicio|date:"d/m/Y" }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Importe Pendiente:</strong></td>
+                    <td class="total">{{ importe_total }}€</td>
+                </tr>
+            </table>
+
+            <p>Por favor, completa el pago lo antes posible para confirmar tu reserva.</p>
+            <p>Gracias por tu atención.</p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2026 Hundidos - Alquiler de Barcos. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</body>
+</html>

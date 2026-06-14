@@ -1,0 +1,15 @@
+---
+gate: 1
+fase: 01_requisitos
+timestamp_inicio: 2026-05-12T19:39:02+02:00
+timestamp_fin: 2026-05-12T19:45:03+02:00
+decision: aceptado
+---
+
+## Observaciones
+
+Aceptado para prueba normal completa del Flow.
+
+## Acción
+
+Aceptado. Continuar.

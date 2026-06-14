@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio - Hundidos{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <div class="container">
+        <h1>Bienvenido a Hundidos</h1>
+        <p>Alquila los mejores barcos para tus aventuras en el mar</p>
+        <a href="{% url 'catalog:barco_list' %}" class="btn btn-light btn-lg">Explorar Catálogo</a>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <h2>Buscar y Filtrar Barcos</h2>
+            <form method="get" class="row g-3">
+                <div class="col-md-3">
+                    <input type="text" name="search" class="form-control" placeholder="Buscar por nombre" value="{{ search_query }}">
+                </div>
+                <div class="col-md-3">
+                    <select name="categoria" class="form-select">
+                        <option value="">Todas las categorías</option>
+                        {% for cat in categorias %}
+                            <option value="{{ cat.id }}" {% if categoria_id == cat.id|stringformat:'s' %}selected{% endif %}>{{ cat.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select name="puerto" class="form-select">
+                        <option value="">Todos los puertos</option>
+                        {% for puerto in puertos %}
+                            <option value="{{ puerto.id }}" {% if puerto_id == puerto.id|stringformat:'s' %}selected{% endif %}>{{ puerto.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select name="fabricante" class="form-select">
+                        <option value="">Todos los fabricantes</option>
+                        {% for fab in fabricantes %}
+                            <option value="{{ fab.id }}" {% if fabricante_id == fab.id|stringformat:'s' %}selected{% endif %}>{{ fab.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <input type="number" name="precio_min" class="form-control" placeholder="Precio mín." value="{{ precio_min }}">
+                </div>
+                <div class="col-md-2">
+                    <input type="number" name="precio_max" class="form-control" placeholder="Precio máx." value="{{ precio_max }}">
+                </div>
+                <div class="col-md-2">
+                    <input type="number" name="capacidad_min" class="form-control" placeholder="Capacidad mín." value="{{ capacidad_min }}">
+                </div>
+                <div class="col-md-2">
+                    <input type="date" name="fecha_inicio" class="form-control" value="{{ fecha_inicio }}">
+                </div>
+                <div class="col-md-2">
+                    <input type="date" name="fecha_fin" class="form-control" value="{{ fecha_fin }}">
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {% for categoria, barcos_cat in barcos_por_categoria.items %}
+        <div class="mb-5">
+            <h3 class="mb-4">{{ categoria }}</h3>
+            <div class="row">
+                {% for barco in barcos_cat %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card {% if barco.disponibilidad == 0 %}barco-no-disponible{% endif %}">
+                            {% if barco.imagen %}
+                                <img src="{{ barco.imagen.url }}" class="card-img-top" alt="{{ barco.nombre }}" style="height: 200px; object-fit: cover;">
+                            {% else %}
+                                <div class="card-img-top" style="height: 200px; background-color: #e9ecef; display: flex; align-items: center; justify-content: center;">
+                                    <span class="text-muted">Sin imagen</span>
+                                </div>
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{ barco.nombre }}</h5>
+                                <p class="card-text">
+                                    <small class="text-muted">
+                                        <strong>Fabricante:</strong> {{ barco.fabricante.nombre }}<br>
+                                        <strong>Puerto:</strong> {{ barco.puerto.nombre }}<br>
+                                        <strong>Capacidad:</strong> {{ barco.capacidad }} personas<br>
+                                        <strong>Precio:</strong> {{ barco.precio_dia }}€/día
+                                    </small>
+                                </p>
+                                {% if barco.disponibilidad > 0 %}
+                                    <a href="{% url 'catalog:barco_detail' barco.id %}" class="btn btn-primary btn-sm">Ver Detalles</a>
+                                {% else %}
+                                    <button class="btn btn-secondary btn-sm" disabled>No Disponible</button>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% empty %}
+        <div class="alert alert-info">
+            No se encontraron barcos con los filtros seleccionados.
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

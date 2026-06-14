@@ -1,0 +1,395 @@
+{
+  "id_ejecucion": "run_2026-05-18_16-37",
+  "stack": [
+    "Python con Django 3.2 como framework web monolítico.",
+    "SQLite como base de datos del PMV.",
+    "PayPal Sandbox para integración de pagos online.",
+    "Contra-reembolso como método de pago alternativo.",
+    "Templates Django server-side para interfaz en español.",
+    "Zona horaria Europe/Madrid y locale español.",
+    "Backend de correo configurable (console en desarrollo, SMTP en producción).",
+    "Datos seed idempotentes con mínimo 5 barcos, 2 puertos, 2 fabricantes, 2 categorías (incluyendo velero), 1 admin y 1 cliente de prueba.",
+    "Docker para empaquetado y despliegue.",
+    "Seguridad: CSRF activo, contraseñas hasheadas con mecanismo estándar de Django, validación de formularios en servidor."
+  ],
+  "apps_django": [
+    {
+      "nombre": "accounts",
+      "proposito": "Gestionar autenticación de clientes: registro, login, logout, perfil de usuario y consulta de reservas del cliente autenticado.",
+      "archivos_principales": [
+        "accounts/models.py",
+        "accounts/forms.py",
+        "accounts/views.py",
+        "accounts/urls.py",
+        "templates/accounts/register.html",
+        "templates/accounts/login.html",
+        "templates/accounts/profile.html"
+      ]
+    },
+    {
+      "nombre": "catalog",
+      "proposito": "Gestionar catálogo de barcos, categorías, puertos, fabricantes, búsqueda, filtros combinables y ficha de barco con selección de cantidad.",
+      "archivos_principales": [
+        "catalog/models.py",
+        "catalog/views.py",
+        "catalog/urls.py",
+        "catalog/filters.py",
+        "templates/catalog/list.html",
+        "templates/catalog/detail.html"
+      ]
+    },
+    {
+      "nombre": "cart",
+      "proposito": "Gestionar cesta de compra: almacenamiento en sesión, modificación de cantidades, visualización y vaciado al entrar en modo administrador.",
+      "archivos_principales": [
+        "cart/views.py",
+        "cart/urls.py",
+        "cart/services.py",
+        "templates/cart/view.html"
+      ]
+    },
+    {
+      "nombre": "reservations",
+      "proposito": "Gestionar reservas en tres pasos, métodos de pago (PayPal Sandbox y contra-reembolso), cálculo de tasa de combustible, estados de reserva, cancelación, seguimiento por código y recordatorios de pago.",
+      "archivos_principales": [
+        "reservations/models.py",
+        "reservations/forms.py",
+        "reservations/views.py",
+        "reservations/urls.py",
+        "reservations/services/paypal.py",
+        "reservations/services/email.py",
+        "reservations/management/commands/send_payment_reminders.py",
+        "templates/reservations/step1.html",
+        "templates/reservations/step2.html",
+        "templates/reservations/step3.html",
+        "templates/reservations/confirmation.html",
+        "templates/reservations/track.html"
+      ]
+    },
+    {
+      "nombre": "admin_panel",
+      "proposito": "Panel administrativo para gestión de barcos (alta, edición, baja), clientes (consulta, eliminación con restricción) y reservas (consulta, cambio de estado con transiciones aplicables).",
+      "archivos_principales": [
+        "admin_panel/views.py",
+        "admin_panel/urls.py",
+        "admin_panel/forms.py",
+        "templates/admin_panel/dashboard.html",
+        "templates/admin_panel/boats_list.html",
+        "templates/admin_panel/boats_form.html",
+        "templates/admin_panel/clients_list.html",
+        "templates/admin_panel/reservations_list.html",
+        "templates/admin_panel/reservations_detail.html"
+      ]
+    },
+    {
+      "nombre": "core",
+      "proposito": "Configuración central, datos seed, utilidades comunes y gestión de zona horaria y locale.",
+      "archivos_principales": [
+        "core/settings.py",
+        "core/urls.py",
+        "core/management/commands/seed_data.py",
+        "core/utils.py",
+        "templates/base.html",
+        "templates/home.html"
+      ]
+    }
+  ],
+  "modelos": [
+    {
+      "nombre": "Categoria",
+      "app": "catalog",
+      "campos": [
+        "nombre: CharField(max_length=120, unique=True)",
+        "descripcion: TextField(blank=True)"
+      ]
+    },
+    {
+      "nombre": "Puerto",
+      "app": "catalog",
+      "campos": [
+        "nombre: CharField(max_length=120, unique=True)",
+        "ubicacion: CharField(max_length=255, blank=True)"
+      ]
+    },
+    {
+      "nombre": "Fabricante",
+      "app": "catalog",
+      "campos": [
+        "nombre: CharField(max_length=120, unique=True)",
+        "pais: CharField(max_length=120, blank=True)"
+      ]
+    },
+    {
+      "nombre": "Barco",
+      "app": "catalog",
+      "campos": [
+        "nombre: CharField(max_length=120)",
+        "categoria: ForeignKey(Categoria, on_delete=PROTECT)",
+        "puerto: ForeignKey(Puerto, on_delete=PROTECT)",
+        "fabricante: ForeignKey(Fabricante, on_delete=PROTECT)",
+        "precio_dia: DecimalField(max_digits=8, decimal_places=2)",
+        "capacidad: PositiveIntegerField",
+        "imagen: ImageField(upload_to=barcos/, blank=True, null=True)",
+        "descripcion: TextField(blank=True)",
+        "disponible: BooleanField(default=True)",
+        "cantidad_disponible: PositiveIntegerField(default=1)",
+        "created_at: DateTimeField(auto_now_add=True)",
+        "updated_at: DateTimeField(auto_now=True)"
+      ]
+    },
+    {
+      "nombre": "Reserva",
+      "app": "reservations",
+      "campos": [
+        "codigo_seguimiento: CharField(max_length=32, unique=True)",
+        "estado: CharField(choices=PENDIENTE_DE_PAGO/PAGADO/EN_USO/DEVUELTO, default=PENDIENTE_DE_PAGO)",
+        "cliente: ForeignKey(User, null=True, blank=True, on_delete=SET_NULL)",
+        "nombre_cliente: CharField(max_length=120)",
+        "email_cliente: EmailField",
+        "telefono_cliente: CharField(max_length=20, blank=True)",
+        "fecha_inicio: DateField",
+        "fecha_fin: DateField",
+        "metodo_pago: CharField(choices=PAYPAL/CONTRA_REEMBOLSO)",
+        "importe_total: DecimalField(max_digits=10, decimal_places=2)",
+        "tasa_combustible: DecimalField(max_digits=10, decimal_places=2)",
+        "created_at: DateTimeField(auto_now_add=True)",
+        "updated_at: DateTimeField(auto_now=True)"
+      ]
+    },
+    {
+      "nombre": "LineaReserva",
+      "app": "reservations",
+      "campos": [
+        "reserva: ForeignKey(Reserva, on_delete=CASCADE, related_name=lineas)",
+        "barco: ForeignKey(Barco, on_delete=PROTECT)",
+        "cantidad: PositiveIntegerField",
+        "precio_unitario_dia: DecimalField(max_digits=8, decimal_places=2)"
+      ]
+    },
+    {
+      "nombre": "User",
+      "app": "accounts",
+      "campos": [
+        "email: EmailField(unique=True)",
+        "nombre: CharField(max_length=120, blank=True)",
+        "telefono: CharField(max_length=20, blank=True)",
+        "es_administrador: BooleanField(default=False)",
+        "password: CharField(max_length=255)",
+        "created_at: DateTimeField(auto_now_add=True)",
+        "updated_at: DateTimeField(auto_now=True)"
+      ]
+    }
+  ],
+  "rutas": [
+    {
+      "path": "/",
+      "name": "core:home",
+      "metodo": "GET",
+      "auth": "public",
+      "vista": "HomeView"
+    },
+    {
+      "path": "/barcos/",
+      "name": "catalog:barco_list",
+      "metodo": "GET",
+      "auth": "public",
+      "vista": "BarcoListView"
+    },
+    {
+      "path": "/barcos/<int:id>/",
+      "name": "catalog:barco_detail",
+      "metodo": "GET",
+      "auth": "public",
+      "vista": "BarcoDetailView"
+    },
+    {
+      "path": "/cesta/",
+      "name": "cart:view",
+      "metodo": "GET",
+      "auth": "public",
+      "vista": "CartView"
+    },
+    {
+      "path": "/cesta/agregar/",
+      "name": "cart:add",
+      "metodo": "POST",
+      "auth": "public",
+      "vista": "AddToCartView"
+    },
+    {
+      "path": "/cesta/actualizar/",
+      "name": "cart:update",
+      "metodo": "POST",
+      "auth": "public",
+      "vista": "UpdateCartView"
+    },
+    {
+      "path": "/cesta/vaciar/",
+      "name": "cart:clear",
+      "metodo": "POST",
+      "auth": "public",
+      "vista": "ClearCartView"
+    },
+    {
+      "path": "/accounts/registro/",
+      "name": "accounts:register",
+      "metodo": "GET|POST",
+      "auth": "public",
+      "vista": "RegisterView"
+    },
+    {
+      "path": "/accounts/login/",
+      "name": "accounts:login",
+      "metodo": "GET|POST",
+      "auth": "public",
+      "vista": "LoginView"
+    },
+    {
+      "path": "/accounts/logout/",
+      "name": "accounts:logout",
+      "metodo": "POST",
+      "auth": "login_required",
+      "vista": "LogoutView"
+    },
+    {
+      "path": "/accounts/perfil/",
+      "name": "accounts:profile",
+      "metodo": "GET",
+      "auth": "login_required",
+      "vista": "ProfileView"
+    },
+    {
+      "path": "/reserva/paso1/",
+      "name": "reservations:step1",
+      "metodo": "GET|POST",
+      "auth": "public",
+      "vista": "ReservationStep1View"
+    },
+    {
+      "path": "/reserva/paso2/",
+      "name": "reservations:step2",
+      "metodo": "GET|POST",
+      "auth": "public",
+      "vista": "ReservationStep2View"
+    },
+    {
+      "path": "/reserva/paso3/",
+      "name": "reservations:step3",
+      "metodo": "GET|POST",
+      "auth": "public",
+      "vista": "ReservationStep3View"
+    },
+    {
+      "path": "/reserva/confirmacion/",
+      "name": "reservations:confirmation",
+      "metodo": "GET",
+      "auth": "public",
+      "vista": "ReservationConfirmationView"
+    },
+    {
+      "path": "/reserva/seguimiento/",
+      "name": "reservations:track",
+      "metodo": "GET|POST",
+      "auth": "public",
+      "vista": "TrackReservationView"
+    },
+    {
+      "path": "/reserva/mis-reservas/",
+      "name": "reservations:my_reservations",
+      "metodo": "GET",
+      "auth": "login_required",
+      "vista": "MyReservationsView"
+    },
+    {
+      "path": "/reserva/<int:id>/cancelar/",
+      "name": "reservations:cancel",
+      "metodo": "POST",
+      "auth": "public",
+      "vista": "CancelReservationView"
+    },
+    {
+      "path": "/paypal/return/",
+      "name": "reservations:paypal_return",
+      "metodo": "GET",
+      "auth": "public",
+      "vista": "PayPalReturnView"
+    },
+    {
+      "path": "/paypal/cancel/",
+      "name": "reservations:paypal_cancel",
+      "metodo": "GET",
+      "auth": "public",
+      "vista": "PayPalCancelView"
+    },
+    {
+      "path": "/admin-panel/",
+      "name": "admin_panel:dashboard",
+      "metodo": "GET",
+      "auth": "admin_required",
+      "vista": "AdminDashboardView"
+    },
+    {
+      "path": "/admin-panel/barcos/",
+      "name": "admin_panel:boats_list",
+      "metodo": "GET",
+      "auth": "admin_required",
+      "vista": "AdminBoatsListView"
+    },
+    {
+      "path": "/admin-panel/barcos/crear/",
+      "name": "admin_panel:boats_create",
+      "metodo": "GET|POST",
+      "auth": "admin_required",
+      "vista": "AdminBoatsCreateView"
+    },
+    {
+      "path": "/admin-panel/barcos/<int:id>/editar/",
+      "name": "admin_panel:boats_edit",
+      "metodo": "GET|POST",
+      "auth": "admin_required",
+      "vista": "AdminBoatsEditView"
+    },
+    {
+      "path": "/admin-panel/barcos/<int:id>/eliminar/",
+      "name": "admin_panel:boats_delete",
+      "metodo": "POST",
+      "auth": "admin_required",
+      "vista": "AdminBoatsDeleteView"
+    },
+    {
+      "path": "/admin-panel/clientes/",
+      "name": "admin_panel:clients_list",
+      "metodo": "GET",
+      "auth": "admin_required",
+      "vista": "AdminClientsListView"
+    },
+    {
+      "path": "/admin-panel/clientes/<int:id>/eliminar/",
+      "name": "admin_panel:clients_delete",
+      "metodo": "POST",
+      "auth": "admin_required",
+      "vista": "AdminClientsDeleteView"
+    },
+    {
+      "path": "/admin-panel/reservas/",
+      "name": "admin_panel:reservations_list",
+      "metodo": "GET",
+      "auth": "admin_required",
+      "vista": "AdminReservationsListView"
+    },
+    {
+      "path": "/admin-panel/reservas/<int:id>/",
+      "name": "admin_panel:reservations_detail",
+      "metodo": "GET",
+      "auth": "admin_required",
+      "vista": "AdminReservationsDetailView"
+    },
+    {
+      "path": "/admin-panel/reservas/<int:id>/cambiar-estado/",
+      "name": "admin_panel:reservations_change_state",
+      "metodo": "POST",
+      "auth": "admin_required",
+      "vista": "AdminReservationsChangeStateView"
+    }
+  ]
+}
