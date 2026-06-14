@@ -1,0 +1,563 @@
+{
+  "target": "run03",
+  "counts": {
+    "total": 27,
+    "executed": 21,
+    "passed": 9,
+    "failed": 12,
+    "blocked": 6,
+    "skipped": 0
+  },
+  "metrics": {
+    "M6_implementation_rate": 22.22,
+    "M7_pass_rate": 42.86,
+    "M_operatividad": 2
+  },
+  "requirements": [
+    {
+      "requirement": "B1",
+      "title": "Usuarios, registro y sesion",
+      "status": "partial_or_failed",
+      "tests": [
+        "T-AUTH-01",
+        "T-AUTH-02",
+        "T-AUTH-03",
+        "T-RES-02"
+      ]
+    },
+    {
+      "requirement": "B2",
+      "title": "Catalogo, busqueda y filtros",
+      "status": "partial_or_failed",
+      "tests": [
+        "T-CAT-01",
+        "T-CAT-03",
+        "T-CAT-04",
+        "T-CAT-05",
+        "T-CAT-06",
+        "T-CAT-07"
+      ]
+    },
+    {
+      "requirement": "B3",
+      "title": "Ficha de barco con cantidad",
+      "status": "implemented",
+      "tests": [
+        "T-CAT-02",
+        "T-CART-01"
+      ]
+    },
+    {
+      "requirement": "B4",
+      "title": "Cesta visible y modificable",
+      "status": "implemented",
+      "tests": [
+        "T-CART-01",
+        "T-CART-02",
+        "T-CART-03"
+      ]
+    },
+    {
+      "requirement": "B5",
+      "title": "Proceso de reserva sin registro y en maximo tres pasos",
+      "status": "partial_or_failed",
+      "tests": [
+        "T-RES-01",
+        "T-RES-03"
+      ]
+    },
+    {
+      "requirement": "B6",
+      "title": "Metodos de pago PayPal Sandbox y contra-reembolso",
+      "status": "partial_or_failed",
+      "tests": [
+        "T-PAY-01",
+        "T-PAY-02"
+      ]
+    },
+    {
+      "requirement": "B7",
+      "title": "Confirmacion con codigo de seguimiento",
+      "status": "partial_or_failed",
+      "tests": [
+        "T-TRACK-01"
+      ]
+    },
+    {
+      "requirement": "B8",
+      "title": "Tasa de combustible",
+      "status": "blocked",
+      "tests": [
+        "T-RES-04"
+      ]
+    },
+    {
+      "requirement": "B9",
+      "title": "Estados y cancelacion de reserva",
+      "status": "partial_or_failed",
+      "tests": [
+        "T-ADMIN-04",
+        "T-TRACK-03"
+      ]
+    },
+    {
+      "requirement": "B10",
+      "title": "Seguimiento de reservas por codigo",
+      "status": "blocked",
+      "tests": [
+        "T-TRACK-02"
+      ]
+    },
+    {
+      "requirement": "B11",
+      "title": "Gestion administrativa propia",
+      "status": "partial_or_failed",
+      "tests": [
+        "T-ADMIN-01",
+        "T-ADMIN-02",
+        "T-ADMIN-03",
+        "T-ADMIN-04",
+        "T-ADMIN-05"
+      ]
+    }
+  ],
+  "results": [
+    {
+      "nodeid": "hundidos_tests/tests/test_admin.py::test_admin_panel_accessible_for_admin[chromium]",
+      "test_id": "T-ADMIN-01",
+      "requirement_refs": [
+        "B11",
+        "3.8"
+      ],
+      "metric_refs": [
+        "M6",
+        "M7"
+      ],
+      "status": "failed",
+      "message": "page = <Page url='http://127.0.0.1:8003/accounts/login/'>\nadapter = PipelineAdapter(config={'name': 'pipeline', 'base_url': 'http://127.0.0.1:8003', 'paths': {'home': '/', 'register': '/...e': 'Velero', 'puerto': '', 'fabricante': '', 'category': '', 'min_price': '0', 'max_price': '9999', 'capacity': '2'}})\n\n    @pytest.mark.test_id(\"T-ADMIN-01\")\n    @pytest.mark.requirement(\"B11\", \"3.8\")\n    @pytest.mark.metric(\"M6\", \"M7\")\n    def test_admin_panel_accessible_for_admin(page, adapter):\n>       adapter.login(page, \"admin\")\n\nhundidos_tests\\tests\\test_admin.py:10: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = PipelineAdapter(config={'name': 'pipeline', 'base_url': 'http://127.0.0.1:8003', 'paths': {'home': '/', 'register': '/...e': 'Velero', 'puerto': '', 'fabricante': '', 'category': '', 'min_price': '0', 'max_price': '9999', 'capacity': '2'}})\npage = <Page url='http://127.0.0.1:8003/accounts/login/'>, role = 'admin'\n\n    def login(self, page: Page, role: str = \"customer\") -> None:\n        candidates = self.credential_candidates(role)\n        if not candidates:\n            raise BlockedTest(f\"Credenciales no configuradas: {role}\")\n    \n        for credentials in candidates:\n            self.goto(page, \"login\")\n            self.assert_ok_page(page)\n            self.fill_by_name(page, self.field(\"login\", \"email\"), credentials[\"email\"])\n            self.fill_by_name(page, self.field(\"login\", \"password\"), credentials[\"password\"])\n            self.submit_form_with_fields(page, [self.field(\"login\", \"email\"), self.field(\"login\", \"password\")])\n            page.wait_for_load_state(\"domcontentloaded\")\n            if self.has_any_text(page, [\"cerrar\", \"salir\", \"logout\", \"mi cuenta\", \"dashboard\", \"panel\"]):\n                return\n        if role == \"customer\":\n            email = f\"ft-login-{int(time.time() * 1000)}@example.com\"\n            password = \"Test1234!\"\n            self.register_unique_customer(page, email, password)\n            self.goto(page, \"logout\")\n            page.wait_for_load_state(\"domcontentloaded\")\n            self.goto(page, \"login\")\n            self.fill_by_name(page, self.field(\"login\", \"email\"), email)\n            self.fill_by_name(page, self.field(\"login\", \"password\"), password)\n            self.submit_form_with_fields(page, [self.field(\"login\", \"email\"), self.field(\"login\", \"password\")])\n            page.wait_for_load_state(\"domcontentloaded\")\n            if self.has_any_text(page, [\"cerrar\", \"salir\", \"logout\", \"mi cuenta\", \"dashboard\", \"panel\"]):\n                return\n>       raise BlockedTest(f\"No se pudo iniciar sesion como {role} con credenciales seed\")\nE       hundidos_tests.adapters.base.BlockedTest: No se pudo iniciar sesion como admin con credenciales seed\n\nhundidos_tests\\adapters\\base.py:189: BlockedTest",
+      "duration_s": 3.957098099999712,
+      "timestamp": "2026-06-04T18:35:51.478088+00:00"
+    },
+    {
+      "nodeid": "hundidos_tests/tests/test_admin.py::test_admin_boat_management_visible[chromium]",
+      "test_id": "T-ADMIN-02",
+      "requirement_refs": [
+        "B11",
+        "3.8"
+      ],
+      "metric_refs": [
+        "M6",
+        "M7"
+      ],
+      "status": "failed",
+      "message": "page = <Page url='http://127.0.0.1:8003/accounts/login/'>\nadapter = PipelineAdapter(config={'name': 'pipeline', 'base_url': 'http://127.0.0.1:8003', 'paths': {'home': '/', 'register': '/...e': 'Velero', 'puerto': '', 'fabricante': '', 'category': '', 'min_price': '0', 'max_price': '9999', 'capacity': '2'}})\n\n    @pytest.mark.test_id(\"T-ADMIN-02\")\n    @pytest.mark.requirement(\"B11\", \"3.8\")\n    @pytest.mark.metric(\"M6\", \"M7\")\n    def test_admin_boat_management_visible(page, adapter):\n>       adapter.login(page, \"admin\")\n\nhundidos_tests\\tests\\test_admin.py:20: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = PipelineAdapter(config={'name': 'pipeline', 'base_url': 'http://127.0.0.1:8003', 'paths': {'home': '/', 'register': '/...e': 'Velero', 'puerto': '', 'fabricante': '', 'category': '', 'min_price': '0', 'max_price': '9999', 'capacity': '2'}})\npage = <Page url='http://127.0.0.1:8003/accounts/login/'>, role = 'admin'\n\n    def login(self, page: Page, role: str = \"customer\") -> None:\n        candidates = self.credential_candidates(role)\n        if not candidates:\n            raise BlockedTest(f\"Credenciales no configuradas: {role}\")\n    \n        for credentials in candidates:\n            self.goto(page, \"login\")\n            self.assert_ok_page(page)\n            self.fill_by_name(page, self.field(\"login\", \"email\"), credentials[\"email\"])\n            self.fill_by_name(page, self.field(\"login\", \"password\"), credentials[\"password\"])\n            self.submit_form_with_fields(page, [self.field(\"login\", \"email\"), self.field(\"login\", \"password\")])\n            page.wait_for_load_state(\"domcontentloaded\")\n            if self.has_any_text(page, [\"cerrar\", \"salir\", \"logout\", \"mi cuenta\", \"dashboard\", \"panel\"]):\n                return\n        if role == \"customer\":\n            email = f\"ft-login-{int(time.time() * 1000)}@example.com\"\n            password = \"Test1234!\"\n            self.register_unique_customer(page, email, password)\n            self.goto(page, \"logout\")\n            page.wait_for_load_state(\"domcontentloaded\")\n            self.goto(page, \"login\")\n            self.fill_by_name(page, self.field(\"login\", \"email\"), email)\n            self.fill_by_name(page, self.field(\"login\", \"password\"), password)\n            self.submit_form_with_fields(page, [self.field(\"login\", \"email\"), self.field(\"login\", \"password\")])\n            page.wait_for_load_state(\"domcontentloaded\")\n            if self.has_any_text(page, [\"cerrar\", \"salir\", \"logout\", \"mi cuenta\", \"dashboard\", \"panel\"]):\n                return\n>       raise BlockedTest(f\"No se pudo iniciar sesion como {role} con credenciales seed\")\nE       hundidos_tests.adapters.base.BlockedTest: No se pudo iniciar sesion como admin con credenciales seed\n\nhundidos_tests\\adapters\\base.py:189: BlockedTest",
+      "duration_s": 1.297461199999816,
+      "timestamp": "2026-06-04T18:35:52.859541+00:00"
+    },
+    {
+      "nodeid": "hundidos_tests/tests/test_admin.py::test_admin_client_management_visible[chromium]",
+      "test_id": "T-ADMIN-03",
+      "requirement_refs": [
+        "B11",
+        "3.8"
+      ],
+      "metric_refs": [
+        "M6",
+        "M7"
+      ],
+      "status": "failed",
+      "message": "page = <Page url='http://127.0.0.1:8003/accounts/login/'>\nadapter = PipelineAdapter(config={'name': 'pipeline', 'base_url': 'http://127.0.0.1:8003', 'paths': {'home': '/', 'register': '/...e': 'Velero', 'puerto': '', 'fabricante': '', 'category': '', 'min_price': '0', 'max_price': '9999', 'capacity': '2'}})\n\n    @pytest.mark.test_id(\"T-ADMIN-03\")\n    @pytest.mark.requirement(\"B11\", \"3.8\")\n    @pytest.mark.metric(\"M6\", \"M7\")\n    def test_admin_client_management_visible(page, adapter):\n>       adapter.login(page, \"admin\")\n\nhundidos_tests\\tests\\test_admin.py:30: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = PipelineAdapter(config={'name': 'pipeline', 'base_url': 'http://127.0.0.1:8003', 'paths': {'home': '/', 'register': '/...e': 'Velero', 'puerto': '', 'fabricante': '', 'category': '', 'min_price': '0', 'max_price': '9999', 'capacity': '2'}})\npage = <Page url='http://127.0.0.1:8003/accounts/login/'>, role = 'admin'\n\n    def login(self, page: Page, role: str = \"customer\") -> None:\n        candidates = self.credential_candidates(role)\n        if not candidates:\n            raise BlockedTest(f\"Credenciales no configuradas: {role}\")\n    \n        for credentials in candidates:\n            self.goto(page, \"login\")\n            self.assert_ok_page(page)\n            self.fill_by_name(page, self.field(\"login\", \"email\"), credentials[\"email\"])\n            self.fill_by_name(page, self.field(\"login\", \"password\"), credentials[\"password\"])\n            self.submit_form_with_fields(page, [self.field(\"login\", \"email\"), self.field(\"login\", \"password\")])\n            page.wait_for_load_state(\"domcontentloaded\")\n            if self.has_any_text(page, [\"cerrar\", \"salir\", \"logout\", \"mi cuenta\", \"dashboard\", \"panel\"]):\n                return\n        if role == \"customer\":\n            email = f\"ft-login-{int(time.time() * 1000)}@example.com\"\n            password = \"Test1234!\"\n            self.register_unique_customer(page, email, password)\n            self.goto(page, \"logout\")\n            page.wait_for_load_state(\"domcontentloaded\")\n            self.goto(page, \"login\")\n            self.fill_by_name(page, self.field(\"login\", \"email\"), email)\n            self.fill_by_name(page, self.field(\"login\", \"password\"), password)\n            self.submit_form_with_fields(page, [self.field(\"login\", \"email\"), self.field(\"login\", \"password\")])\n            page.wait_for_load_state(\"domcontentloaded\")\n            if self.has_any_text(page, [\"cerrar\", \"salir\", \"logout\", \"mi cuenta\", \"dashboard\", \"panel\"]):\n                return\n>       raise BlockedTest(f\"No se pudo iniciar sesion como {role} con credenciales seed\")\nE       hundidos_tests.adapters.base.BlockedTest: No se pudo iniciar sesion como admin con credenciales seed\n\nhundidos_tests\\adapters\\base.py:189: BlockedTest",
+      "duration_s": 1.2694706999991467,
+      "timestamp": "2026-06-04T18:35:54.208522+00:00"
+    },
+    {
+      "nodeid": "hundidos_tests/tests/test_admin.py::test_admin_reservation_management_visible[chromium]",
+      "test_id": "T-ADMIN-04",
+      "requirement_refs": [
+        "B9",
+        "B11",
+        "3.6",
+        "3.8"
+      ],
+      "metric_refs": [
+        "M6",
+        "M7"
+      ],
+      "status": "failed",
+      "message": "page = <Page url='http://127.0.0.1:8003/accounts/login/'>\nadapter = PipelineAdapter(config={'name': 'pipeline', 'base_url': 'http://127.0.0.1:8003', 'paths': {'home': '/', 'register': '/...e': 'Velero', 'puerto': '', 'fabricante': '', 'category': '', 'min_price': '0', 'max_price': '9999', 'capacity': '2'}})\n\n    @pytest.mark.test_id(\"T-ADMIN-04\")\n    @pytest.mark.requirement(\"B9\", \"B11\", \"3.6\", \"3.8\")\n    @pytest.mark.metric(\"M6\", \"M7\")\n    def test_admin_reservation_management_visible(page, adapter):\n>       adapter.login(page, \"admin\")\n\nhundidos_tests\\tests\\test_admin.py:40: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = PipelineAdapter(config={'name': 'pipeline', 'base_url': 'http://127.0.0.1:8003', 'paths': {'home': '/', 'register': '/...e': 'Velero', 'puerto': '', 'fabricante': '', 'category': '', 'min_price': '0', 'max_price': '9999', 'capacity': '2'}})\npage = <Page url='http://127.0.0.1:8003/accounts/login/'>, role = 'admin'\n\n    def login(self, page: Page, role: str = \"customer\") -> None:\n        candidates = self.credential_candidates(role)\n        if not candidates:\n            raise BlockedTest(f\"Credenciales no configuradas: {role}\")\n    \n        for credentials in candidates:\n            self.goto(page, \"login\")\n            self.assert_ok_page(page)\n            self.fill_by_name(page, self.field(\"login\", \"email\"), credentials[\"email\"])\n            self.fill_by_name(page, self.field(\"login\", \"password\"), credentials[\"password\"])\n            self.submit_form_with_fields(page, [self.field(\"login\", \"email\"), self.field(\"login\", \"password\")])\n            page.wait_for_load_state(\"domcontentloaded\")\n            if self.has_any_text(page, [\"cerrar\", \"salir\", \"logout\", \"mi cuenta\", \"dashboard\", \"panel\"]):\n                return\n        if role == \"customer\":\n            email = f\"ft-login-{int(time.time() * 1000)}@example.com\"\n            password = \"Test1234!\"\n            self.register_unique_customer(page, email, password)\n            self.goto(page, \"logout\")\n            page.wait_for_load_state(\"domcontentloaded\")\n            self.goto(page, \"login\")\n            self.fill_by_name(page, self.field(\"login\", \"email\"), email)\n            self.fill_by_name(page, self.field(\"login\", \"password\"), password)\n            self.submit_form_with_fields(page, [self.field(\"login\", \"email\"), self.field(\"login\", \"password\")])\n            page.wait_for_load_state(\"domcontentloaded\")\n            if self.has_any_text(page, [\"cerrar\", \"salir\", \"logout\", \"mi cuenta\", \"dashboard\", \"panel\"]):\n                return\n>       raise BlockedTest(f\"No se pudo iniciar sesion como {role} con credenciales seed\")\nE       hundidos_tests.adapters.base.BlockedTest: No se pudo iniciar sesion como admin con credenciales seed\n\nhundidos_tests\\adapters\\base.py:189: BlockedTest",
+      "duration_s": 1.2853651999994327,
+      "timestamp": "2026-06-04T18:35:55.593422+00:00"
+    },
+    {
+      "nodeid": "hundidos_tests/tests/test_admin.py::test_admin_client_delete_restriction_is_observable[chromium]",
+      "test_id": "T-ADMIN-05",
+      "requirement_refs": [
+        "B11",
+        "3.1",
+        "3.8"
+      ],
+      "metric_refs": [
+        "M6",
+        "M7"
+      ],
+      "status": "failed",
+      "message": "page = <Page url='http://127.0.0.1:8003/accounts/login/'>\nadapter = PipelineAdapter(config={'name': 'pipeline', 'base_url': 'http://127.0.0.1:8003', 'paths': {'home': '/', 'register': '/...e': 'Velero', 'puerto': '', 'fabricante': '', 'category': '', 'min_price': '0', 'max_price': '9999', 'capacity': '2'}})\n\n    @pytest.mark.test_id(\"T-ADMIN-05\")\n    @pytest.mark.requirement(\"B11\", \"3.1\", \"3.8\")\n    @pytest.mark.metric(\"M6\", \"M7\")\n    def test_admin_client_delete_restriction_is_observable(page, adapter):\n>       adapter.login(page, \"admin\")\n\nhundidos_tests\\tests\\test_admin.py:50: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = PipelineAdapter(config={'name': 'pipeline', 'base_url': 'http://127.0.0.1:8003', 'paths': {'home': '/', 'register': '/...e': 'Velero', 'puerto': '', 'fabricante': '', 'category': '', 'min_price': '0', 'max_price': '9999', 'capacity': '2'}})\npage = <Page url='http://127.0.0.1:8003/accounts/login/'>, role = 'admin'\n\n    def login(self, page: Page, role: str = \"customer\") -> None:\n        candidates = self.credential_candidates(role)\n        if not candidates:\n            raise BlockedTest(f\"Credenciales no configuradas: {role}\")\n    \n        for credentials in candidates:\n            self.goto(page, \"login\")\n            self.assert_ok_page(page)\n            self.fill_by_name(page, self.field(\"login\", \"email\"), credentials[\"email\"])\n            self.fill_by_name(page, self.field(\"login\", \"password\"), credentials[\"password\"])\n            self.submit_form_with_fields(page, [self.field(\"login\", \"email\"), self.field(\"login\", \"password\")])\n            page.wait_for_load_state(\"domcontentloaded\")\n            if self.has_any_text(page, [\"cerrar\", \"salir\", \"logout\", \"mi cuenta\", \"dashboard\", \"panel\"]):\n                return\n        if role == \"customer\":\n            email = f\"ft-login-{int(time.time() * 1000)}@example.com\"\n            password = \"Test1234!\"\n            self.register_unique_customer(page, email, password)\n            self.goto(page, \"logout\")\n            page.wait_for_load_state(\"domcontentloaded\")\n            self.goto(page, \"login\")\n            self.fill_by_name(page, self.field(\"login\", \"email\"), email)\n            self.fill_by_name(page, self.field(\"login\", \"password\"), password)\n            self.submit_form_with_fields(page, [self.field(\"login\", \"email\"), self.field(\"login\", \"password\")])\n            page.wait_for_load_state(\"domcontentloaded\")\n            if self.has_any_text(page, [\"cerrar\", \"salir\", \"logout\", \"mi cuenta\", \"dashboard\", \"panel\"]):\n                return\n>       raise BlockedTest(f\"No se pudo iniciar sesion como {role} con credenciales seed\")\nE       hundidos_tests.adapters.base.BlockedTest: No se pudo iniciar sesion como admin con credenciales seed\n\nhundidos_tests\\adapters\\base.py:189: BlockedTest",
+      "duration_s": 1.2848668000006,
+      "timestamp": "2026-06-04T18:35:56.971339+00:00"
+    },
+    {
+      "nodeid": "hundidos_tests/tests/test_auth.py::test_customer_registration[chromium]",
+      "test_id": "T-AUTH-01",
+      "requirement_refs": [
+        "B1",
+        "3.1"
+      ],
+      "metric_refs": [
+        "M6",
+        "M7"
+      ],
+      "status": "passed",
+      "message": "",
+      "duration_s": 0.46660610000071756,
+      "timestamp": "2026-06-04T18:35:57.505605+00:00"
+    },
+    {
+      "nodeid": "hundidos_tests/tests/test_auth.py::test_customer_login[chromium]",
+      "test_id": "T-AUTH-02",
+      "requirement_refs": [
+        "B1",
+        "3.1"
+      ],
+      "metric_refs": [
+        "M6",
+        "M7"
+      ],
+      "status": "failed",
+      "message": "page = <Page url='http://127.0.0.1:8003/'>\nadapter = PipelineAdapter(config={'name': 'pipeline', 'base_url': 'http://127.0.0.1:8003', 'paths': {'home': '/', 'register': '/...e': 'Velero', 'puerto': '', 'fabricante': '', 'category': '', 'min_price': '0', 'max_price': '9999', 'capacity': '2'}})\n\n    @pytest.mark.test_id(\"T-AUTH-02\")\n    @pytest.mark.requirement(\"B1\", \"3.1\")\n    @pytest.mark.metric(\"M6\", \"M7\")\n    def test_customer_login(page, adapter):\n>       adapter.login(page, \"customer\")\n\nhundidos_tests\\tests\\test_auth.py:21: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = PipelineAdapter(config={'name': 'pipeline', 'base_url': 'http://127.0.0.1:8003', 'paths': {'home': '/', 'register': '/...e': 'Velero', 'puerto': '', 'fabricante': '', 'category': '', 'min_price': '0', 'max_price': '9999', 'capacity': '2'}})\npage = <Page url='http://127.0.0.1:8003/'>, role = 'customer'\n\n    def login(self, page: Page, role: str = \"customer\") -> None:\n        candidates = self.credential_candidates(role)\n        if not candidates:\n            raise BlockedTest(f\"Credenciales no configuradas: {role}\")\n    \n        for credentials in candidates:\n            self.goto(page, \"login\")\n            self.assert_ok_page(page)\n            self.fill_by_name(page, self.field(\"login\", \"email\"), credentials[\"email\"])\n            self.fill_by_name(page, self.field(\"login\", \"password\"), credentials[\"password\"])\n            self.submit_form_with_fields(page, [self.field(\"login\", \"email\"), self.field(\"login\", \"password\")])\n            page.wait_for_load_state(\"domcontentloaded\")\n            if self.has_any_text(page, [\"cerrar\", \"salir\", \"logout\", \"mi cuenta\", \"dashboard\", \"panel\"]):\n                return\n        if role == \"customer\":\n            email = f\"ft-login-{int(time.time() * 1000)}@example.com\"\n            password = \"Test1234!\"\n            self.register_unique_customer(page, email, password)\n            self.goto(page, \"logout\")\n            page.wait_for_load_state(\"domcontentloaded\")\n            self.goto(page, \"login\")\n            self.fill_by_name(page, self.field(\"login\", \"email\"), email)\n            self.fill_by_name(page, self.field(\"login\", \"password\"), password)\n            self.submit_form_with_fields(page, [self.field(\"login\", \"email\"), self.field(\"login\", \"password\")])\n            page.wait_for_load_state(\"domcontentloaded\")\n            if self.has_any_text(page, [\"cerrar\", \"salir\", \"logout\", \"mi cuenta\", \"dashboard\", \"panel\"]):\n                return\n>       raise BlockedTest(f\"No se pudo iniciar sesion como {role} con credenciales seed\")\nE       hundidos_tests.adapters.base.BlockedTest: No se pudo iniciar sesion como customer con credenciales seed\n\nhundidos_tests\\adapters\\base.py:189: BlockedTest",
+      "duration_s": 1.906104100000448,
+      "timestamp": "2026-06-04T18:35:59.499520+00:00"
+    },
+    {
+      "nodeid": "hundidos_tests/tests/test_auth.py::test_explicit_logout[chromium]",
+      "test_id": "T-AUTH-03",
+      "requirement_refs": [
+        "B1",
+        "3.1"
+      ],
+      "metric_refs": [
+        "M6",
+        "M7"
+      ],
+      "status": "failed",
+      "message": "page = <Page url='http://127.0.0.1:8003/'>\nadapter = PipelineAdapter(config={'name': 'pipeline', 'base_url': 'http://127.0.0.1:8003', 'paths': {'home': '/', 'register': '/...e': 'Velero', 'puerto': '', 'fabricante': '', 'category': '', 'min_price': '0', 'max_price': '9999', 'capacity': '2'}})\n\n    @pytest.mark.test_id(\"T-AUTH-03\")\n    @pytest.mark.requirement(\"B1\", \"3.1\")\n    @pytest.mark.metric(\"M6\", \"M7\")\n    def test_explicit_logout(page, adapter):\n>       adapter.login(page, \"customer\")\n\nhundidos_tests\\tests\\test_auth.py:29: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = PipelineAdapter(config={'name': 'pipeline', 'base_url': 'http://127.0.0.1:8003', 'paths': {'home': '/', 'register': '/...e': 'Velero', 'puerto': '', 'fabricante': '', 'category': '', 'min_price': '0', 'max_price': '9999', 'capacity': '2'}})\npage = <Page url='http://127.0.0.1:8003/'>, role = 'customer'\n\n    def login(self, page: Page, role: str = \"customer\") -> None:\n        candidates = self.credential_candidates(role)\n        if not candidates:\n            raise BlockedTest(f\"Credenciales no configuradas: {role}\")\n    \n        for credentials in candidates:\n            self.goto(page, \"login\")\n            self.assert_ok_page(page)\n            self.fill_by_name(page, self.field(\"login\", \"email\"), credentials[\"email\"])\n            self.fill_by_name(page, self.field(\"login\", \"password\"), credentials[\"password\"])\n            self.submit_form_with_fields(page, [self.field(\"login\", \"email\"), self.field(\"login\", \"password\")])\n            page.wait_for_load_state(\"domcontentloaded\")\n            if self.has_any_text(page, [\"cerrar\", \"salir\", \"logout\", \"mi cuenta\", \"dashboard\", \"panel\"]):\n                return\n        if role == \"customer\":\n            email = f\"ft-login-{int(time.time() * 1000)}@example.com\"\n            password = \"Test1234!\"\n            self.register_unique_customer(page, email, password)\n            self.goto(page, \"logout\")\n            page.wait_for_load_state(\"domcontentloaded\")\n            self.goto(page, \"login\")\n            self.fill_by_name(page, self.field(\"login\", \"email\"), email)\n            self.fill_by_name(page, self.field(\"login\", \"password\"), password)\n            self.submit_form_with_fields(page, [self.field(\"login\", \"email\"), self.field(\"login\", \"password\")])\n            page.wait_for_load_state(\"domcontentloaded\")\n            if self.has_any_text(page, [\"cerrar\", \"salir\", \"logout\", \"mi cuenta\", \"dashboard\", \"panel\"]):\n                return\n>       raise BlockedTest(f\"No se pudo iniciar sesion como {role} con credenciales seed\")\nE       hundidos_tests.adapters.base.BlockedTest: No se pudo iniciar sesion como customer con credenciales seed\n\nhundidos_tests\\adapters\\base.py:189: BlockedTest",
+      "duration_s": 2.026416099999551,
+      "timestamp": "2026-06-04T18:36:01.598761+00:00"
+    },
+    {
+      "nodeid": "hundidos_tests/tests/test_cart.py::test_add_boat_to_cart[chromium]",
+      "test_id": "T-CART-01",
+      "requirement_refs": [
+        "B4",
+        "3.4"
+      ],
+      "metric_refs": [
+        "M6",
+        "M7"
+      ],
+      "status": "passed",
+      "message": "",
+      "duration_s": 0.4015452000003279,
+      "timestamp": "2026-06-04T18:36:02.073087+00:00"
+    },
+    {
+      "nodeid": "hundidos_tests/tests/test_cart.py::test_update_cart_quantity[chromium]",
+      "test_id": "T-CART-02",
+      "requirement_refs": [
+        "B4",
+        "3.4"
+      ],
+      "metric_refs": [
+        "M6",
+        "M7"
+      ],
+      "status": "passed",
+      "message": "",
+      "duration_s": 0.47936289999961446,
+      "timestamp": "2026-06-04T18:36:02.650931+00:00"
+    },
+    {
+      "nodeid": "hundidos_tests/tests/test_cart.py::test_cart_accessible_from_navigation[chromium]",
+      "test_id": "T-CART-03",
+      "requirement_refs": [
+        "B4",
+        "3.4"
+      ],
+      "metric_refs": [
+        "M6",
+        "M7"
+      ],
+      "status": "passed",
+      "message": "",
+      "duration_s": 0.20848519999890414,
+      "timestamp": "2026-06-04T18:36:02.919206+00:00"
+    },
+    {
+      "nodeid": "hundidos_tests/tests/test_catalog.py::test_catalog_lists_boats[chromium]",
+      "test_id": "T-CAT-01",
+      "requirement_refs": [
+        "B2",
+        "3.2"
+      ],
+      "metric_refs": [
+        "M6",
+        "M7",
+        "M-operatividad"
+      ],
+      "status": "passed",
+      "message": "",
+      "duration_s": 0.16324560000066413,
+      "timestamp": "2026-06-04T18:36:03.150353+00:00"
+    },
+    {
+      "nodeid": "hundidos_tests/tests/test_catalog.py::test_boat_detail_is_accessible[chromium]",
+      "test_id": "T-CAT-02",
+      "requirement_refs": [
+        "B3",
+        "3.3"
+      ],
+      "metric_refs": [
+        "M6",
+        "M7"
+      ],
+      "status": "passed",
+      "message": "",
+      "duration_s": 0.21273629999996047,
+      "timestamp": "2026-06-04T18:36:03.436974+00:00"
+    },
+    {
+      "nodeid": "hundidos_tests/tests/test_catalog.py::test_search_by_boat_name[chromium]",
+      "test_id": "T-CAT-03",
+      "requirement_refs": [
+        "B2",
+        "3.2"
+      ],
+      "metric_refs": [
+        "M6",
+        "M7"
+      ],
+      "status": "passed",
+      "message": "",
+      "duration_s": 0.15716559999964375,
+      "timestamp": "2026-06-04T18:36:03.664055+00:00"
+    },
+    {
+      "nodeid": "hundidos_tests/tests/test_catalog.py::test_filter_by_port[chromium]",
+      "test_id": "T-CAT-04",
+      "requirement_refs": [
+        "B2",
+        "3.2"
+      ],
+      "metric_refs": [
+        "M6",
+        "M7"
+      ],
+      "status": "blocked",
+      "message": "('hundidos_tests\\\\tests\\\\test_catalog.py', 43, 'Skipped: blocked: puerto seed no configurado en adaptador')",
+      "duration_s": 0.00022460000036517158,
+      "timestamp": "2026-06-04T18:36:03.724679+00:00"
+    },
+    {
+      "nodeid": "hundidos_tests/tests/test_catalog.py::test_filter_by_manufacturer[chromium]",
+      "test_id": "T-CAT-05",
+      "requirement_refs": [
+        "B2",
+        "3.2"
+      ],
+      "metric_refs": [
+        "M6",
+        "M7"
+      ],
+      "status": "blocked",
+      "message": "('hundidos_tests\\\\tests\\\\test_catalog.py', 55, 'Skipped: blocked: fabricante seed no configurado en adaptador')",
+      "duration_s": 0.00019159999828843866,
+      "timestamp": "2026-06-04T18:36:03.795411+00:00"
+    },
+    {
+      "nodeid": "hundidos_tests/tests/test_catalog.py::test_combined_port_manufacturer_price_filters[chromium]",
+      "test_id": "T-CAT-06",
+      "requirement_refs": [
+        "B2",
+        "3.2"
+      ],
+      "metric_refs": [
+        "M6",
+        "M7"
+      ],
+      "status": "blocked",
+      "message": "('hundidos_tests\\\\tests\\\\test_catalog.py', 68, 'Skipped: blocked: puerto/fabricante seed no configurados en adaptador')",
+      "duration_s": 0.00022189999981492292,
+      "timestamp": "2026-06-04T18:36:03.860008+00:00"
+    },
+    {
+      "nodeid": "hundidos_tests/tests/test_catalog.py::test_date_availability_filter_keeps_catalog_visible[chromium]",
+      "test_id": "T-CAT-07",
+      "requirement_refs": [
+        "B2",
+        "3.2"
+      ],
+      "metric_refs": [
+        "M6",
+        "M7"
+      ],
+      "status": "passed",
+      "message": "",
+      "duration_s": 0.16084390000105486,
+      "timestamp": "2026-06-04T18:36:04.092037+00:00"
+    },
+    {
+      "nodeid": "hundidos_tests/tests/test_payment_tracking.py::test_cash_on_delivery_payment_method_available[chromium]",
+      "test_id": "T-PAY-01",
+      "requirement_refs": [
+        "B6",
+        "3.5"
+      ],
+      "metric_refs": [
+        "M6",
+        "M7"
+      ],
+      "status": "failed",
+      "message": "page = <Page url='http://127.0.0.1:8003/reserva/paso1/'>\nadapter = PipelineAdapter(config={'name': 'pipeline', 'base_url': 'http://127.0.0.1:8003', 'paths': {'home': '/', 'register': '/...e': 'Velero', 'puerto': '', 'fabricante': '', 'category': '', 'min_price': '0', 'max_price': '9999', 'capacity': '2'}})\n\n    @pytest.mark.test_id(\"T-PAY-01\")\n    @pytest.mark.requirement(\"B6\", \"3.5\")\n    @pytest.mark.metric(\"M6\", \"M7\")\n    def test_cash_on_delivery_payment_method_available(page, adapter):\n        adapter.add_first_boat_to_cart(page)\n        adapter.goto(page, \"checkout\")\n        for key, value in {\n            \"first_name\": \"Test\",\n            \"last_name\": \"Funcional\",\n            \"email\": \"cliente.test@example.com\",\n            \"phone\": \"600000000\",\n            \"address_line_1\": \"Puerto de prueba\",\n            \"address_line_2\": \"S/N\",\n            \"country\": \"Espana\",\n            \"city\": \"Sevilla\",\n            \"state\": \"28001\",\n        }.items():\n            adapter.fill_by_name(page, key, value)\n        adapter.submit_form_with_fields(page, [\"first_name\", \"last_name\", \"email\", \"phone\"])\n        page.wait_for_load_state(\"domcontentloaded\")\n>       assert adapter.has_any_text(page, [\"contra\", \"reembolso\", \"pendiente\", \"entrega\", \"pagar al momento\"])\nE       AssertionError: assert False\nE        +  where False = has_any_text(<Page url='http://127.0.0.1:8003/reserva/paso1/'>, ['contra', 'reembolso', 'pendiente', 'entrega', 'pagar al momento'])\nE        +    where has_any_text = PipelineAdapter(config={'name': 'pipeline', 'base_url': 'http://127.0.0.1:8003', 'paths': {'home': '/', 'register': '/...e': 'Velero', 'puerto': '', 'fabricante': '', 'category': '', 'min_price': '0', 'max_price': '9999', 'capacity': '2'}}).has_any_text\n\nhundidos_tests\\tests\\test_payment_tracking.py:26: AssertionError",
+      "duration_s": 0.6592165000001842,
+      "timestamp": "2026-06-04T18:36:04.821177+00:00"
+    },
+    {
+      "nodeid": "hundidos_tests/tests/test_payment_tracking.py::test_paypal_sandbox_payment_method_available[chromium]",
+      "test_id": "T-PAY-02",
+      "requirement_refs": [
+        "B6",
+        "3.5"
+      ],
+      "metric_refs": [
+        "M6",
+        "M7"
+      ],
+      "status": "failed",
+      "message": "page = <Page url='http://127.0.0.1:8003/reserva/paso1/'>\nadapter = PipelineAdapter(config={'name': 'pipeline', 'base_url': 'http://127.0.0.1:8003', 'paths': {'home': '/', 'register': '/...e': 'Velero', 'puerto': '', 'fabricante': '', 'category': '', 'min_price': '0', 'max_price': '9999', 'capacity': '2'}})\n\n    @pytest.mark.test_id(\"T-PAY-02\")\n    @pytest.mark.requirement(\"B6\", \"3.5\")\n    @pytest.mark.metric(\"M6\", \"M7\")\n    def test_paypal_sandbox_payment_method_available(page, adapter):\n        adapter.add_first_boat_to_cart(page)\n        adapter.goto(page, \"checkout\")\n>       assert adapter.has_any_text(page, [\"paypal\", \"sandbox\"]) or page.locator('[src*=\"paypal\"], script[src*=\"paypal\"]').count() > 0\nE       assert (False or 0 > 0)\nE        +  where False = has_any_text(<Page url='http://127.0.0.1:8003/reserva/paso1/'>, ['paypal', 'sandbox'])\nE        +    where has_any_text = PipelineAdapter(config={'name': 'pipeline', 'base_url': 'http://127.0.0.1:8003', 'paths': {'home': '/', 'register': '/...e': 'Velero', 'puerto': '', 'fabricante': '', 'category': '', 'min_price': '0', 'max_price': '9999', 'capacity': '2'}}).has_any_text\nE        +  and   0 = count()\nE        +    where count = <Locator frame=<Frame name= url='http://127.0.0.1:8003/reserva/paso1/'> selector='[src*=\"paypal\"], script[src*=\"paypal\"]'>.count\nE        +      where <Locator frame=<Frame name= url='http://127.0.0.1:8003/reserva/paso1/'> selector='[src*=\"paypal\"], script[src*=\"paypal\"]'> = locator('[src*=\"paypal\"], script[src*=\"paypal\"]')\nE        +        where locator = <Page url='http://127.0.0.1:8003/reserva/paso1/'>.locator\n\nhundidos_tests\\tests\\test_payment_tracking.py:35: AssertionError",
+      "duration_s": 0.43934300000000803,
+      "timestamp": "2026-06-04T18:36:05.341065+00:00"
+    },
+    {
+      "nodeid": "hundidos_tests/tests/test_payment_tracking.py::test_tracking_code_generated_after_checkout[chromium]",
+      "test_id": "T-TRACK-01",
+      "requirement_refs": [
+        "B7",
+        "3.5"
+      ],
+      "metric_refs": [
+        "M6",
+        "M7"
+      ],
+      "status": "failed",
+      "message": "page = <Page url='http://127.0.0.1:8003/reserva/paso2/'>\nadapter = PipelineAdapter(config={'name': 'pipeline', 'base_url': 'http://127.0.0.1:8003', 'paths': {'home': '/', 'register': '/...e': 'Velero', 'puerto': '', 'fabricante': '', 'category': '', 'min_price': '0', 'max_price': '9999', 'capacity': '2'}})\n\n    @pytest.mark.test_id(\"T-TRACK-01\")\n    @pytest.mark.requirement(\"B7\", \"3.5\")\n    @pytest.mark.metric(\"M6\", \"M7\")\n    def test_tracking_code_generated_after_checkout(page, adapter):\n        code = adapter.run_basic_checkout(page, \"contra_reembolso\")\n>       assert code\nE       assert None\n\nhundidos_tests\\tests\\test_payment_tracking.py:43: AssertionError",
+      "duration_s": 1.1218814000003476,
+      "timestamp": "2026-06-04T18:36:06.541011+00:00"
+    },
+    {
+      "nodeid": "hundidos_tests/tests/test_payment_tracking.py::test_tracking_code_query_without_login[chromium]",
+      "test_id": "T-TRACK-02",
+      "requirement_refs": [
+        "B10",
+        "3.7"
+      ],
+      "metric_refs": [
+        "M6",
+        "M7"
+      ],
+      "status": "blocked",
+      "message": "('hundidos_tests\\\\tests\\\\test_payment_tracking.py', 52, 'Skipped: blocked: no se pudo obtener codigo de seguimiento previo')",
+      "duration_s": 1.3221218999988196,
+      "timestamp": "2026-06-04T18:36:07.931835+00:00"
+    },
+    {
+      "nodeid": "hundidos_tests/tests/test_payment_tracking.py::test_cancel_pending_reservation_rule_observable[chromium]",
+      "test_id": "T-TRACK-03",
+      "requirement_refs": [
+        "B9",
+        "3.6"
+      ],
+      "metric_refs": [
+        "M6",
+        "M7"
+      ],
+      "status": "blocked",
+      "message": "('hundidos_tests\\\\tests\\\\test_payment_tracking.py', 71, 'Skipped: blocked: no se pudo crear reserva pendiente observable')",
+      "duration_s": 1.039803400000892,
+      "timestamp": "2026-06-04T18:36:09.036913+00:00"
+    },
+    {
+      "nodeid": "hundidos_tests/tests/test_reservation.py::test_guest_can_reach_checkout_flow[chromium]",
+      "test_id": "T-RES-01",
+      "requirement_refs": [
+        "B5",
+        "3.5"
+      ],
+      "metric_refs": [
+        "M6",
+        "M7",
+        "M-operatividad"
+      ],
+      "status": "passed",
+      "message": "",
+      "duration_s": 0.3972842999992281,
+      "timestamp": "2026-06-04T18:36:09.503356+00:00"
+    },
+    {
+      "nodeid": "hundidos_tests/tests/test_reservation.py::test_login_during_reservation_keeps_cart[chromium]",
+      "test_id": "T-RES-02",
+      "requirement_refs": [
+        "B1",
+        "3.1"
+      ],
+      "metric_refs": [
+        "M6",
+        "M7"
+      ],
+      "status": "failed",
+      "message": "page = <Page url='http://127.0.0.1:8003/'>\nadapter = PipelineAdapter(config={'name': 'pipeline', 'base_url': 'http://127.0.0.1:8003', 'paths': {'home': '/', 'register': '/...e': 'Velero', 'puerto': '', 'fabricante': '', 'category': '', 'min_price': '0', 'max_price': '9999', 'capacity': '2'}})\n\n    @pytest.mark.test_id(\"T-RES-02\")\n    @pytest.mark.requirement(\"B1\", \"3.1\")\n    @pytest.mark.metric(\"M6\", \"M7\")\n    def test_login_during_reservation_keeps_cart(page, adapter):\n        adapter.add_first_boat_to_cart(page)\n>       adapter.login(page, \"customer\")\n\nhundidos_tests\\tests\\test_reservation.py:21: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = PipelineAdapter(config={'name': 'pipeline', 'base_url': 'http://127.0.0.1:8003', 'paths': {'home': '/', 'register': '/...e': 'Velero', 'puerto': '', 'fabricante': '', 'category': '', 'min_price': '0', 'max_price': '9999', 'capacity': '2'}})\npage = <Page url='http://127.0.0.1:8003/'>, role = 'customer'\n\n    def login(self, page: Page, role: str = \"customer\") -> None:\n        candidates = self.credential_candidates(role)\n        if not candidates:\n            raise BlockedTest(f\"Credenciales no configuradas: {role}\")\n    \n        for credentials in candidates:\n            self.goto(page, \"login\")\n            self.assert_ok_page(page)\n            self.fill_by_name(page, self.field(\"login\", \"email\"), credentials[\"email\"])\n            self.fill_by_name(page, self.field(\"login\", \"password\"), credentials[\"password\"])\n            self.submit_form_with_fields(page, [self.field(\"login\", \"email\"), self.field(\"login\", \"password\")])\n            page.wait_for_load_state(\"domcontentloaded\")\n            if self.has_any_text(page, [\"cerrar\", \"salir\", \"logout\", \"mi cuenta\", \"dashboard\", \"panel\"]):\n                return\n        if role == \"customer\":\n            email = f\"ft-login-{int(time.time() * 1000)}@example.com\"\n            password = \"Test1234!\"\n            self.register_unique_customer(page, email, password)\n            self.goto(page, \"logout\")\n            page.wait_for_load_state(\"domcontentloaded\")\n            self.goto(page, \"login\")\n            self.fill_by_name(page, self.field(\"login\", \"email\"), email)\n            self.fill_by_name(page, self.field(\"login\", \"password\"), password)\n            self.submit_form_with_fields(page, [self.field(\"login\", \"email\"), self.field(\"login\", \"password\")])\n            page.wait_for_load_state(\"domcontentloaded\")\n            if self.has_any_text(page, [\"cerrar\", \"salir\", \"logout\", \"mi cuenta\", \"dashboard\", \"panel\"]):\n                return\n>       raise BlockedTest(f\"No se pudo iniciar sesion como {role} con credenciales seed\")\nE       hundidos_tests.adapters.base.BlockedTest: No se pudo iniciar sesion como customer con credenciales seed\n\nhundidos_tests\\adapters\\base.py:189: BlockedTest",
+      "duration_s": 2.235431699999026,
+      "timestamp": "2026-06-04T18:36:11.818902+00:00"
+    },
+    {
+      "nodeid": "hundidos_tests/tests/test_reservation.py::test_checkout_completes_in_at_most_three_observable_steps[chromium]",
+      "test_id": "T-RES-03",
+      "requirement_refs": [
+        "B5",
+        "3.5"
+      ],
+      "metric_refs": [
+        "M6",
+        "M7"
+      ],
+      "status": "failed",
+      "message": "page = <Page url='http://127.0.0.1:8003/reserva/paso2/'>\nadapter = PipelineAdapter(config={'name': 'pipeline', 'base_url': 'http://127.0.0.1:8003', 'paths': {'home': '/', 'register': '/...e': 'Velero', 'puerto': '', 'fabricante': '', 'category': '', 'min_price': '0', 'max_price': '9999', 'capacity': '2'}})\n\n    @pytest.mark.test_id(\"T-RES-03\")\n    @pytest.mark.requirement(\"B5\", \"3.5\")\n    @pytest.mark.metric(\"M6\", \"M7\")\n    def test_checkout_completes_in_at_most_three_observable_steps(page, adapter):\n        code = adapter.run_basic_checkout(page, \"contra_reembolso\")\n>       assert code or adapter.has_any_text(page, [\"confirm\", \"pendiente\", \"pagado\", \"seguimiento\"])\nE       AssertionError: assert (None or False)\nE        +  where False = has_any_text(<Page url='http://127.0.0.1:8003/reserva/paso2/'>, ['confirm', 'pendiente', 'pagado', 'seguimiento'])\nE        +    where has_any_text = PipelineAdapter(config={'name': 'pipeline', 'base_url': 'http://127.0.0.1:8003', 'paths': {'home': '/', 'register': '/...e': 'Velero', 'puerto': '', 'fabricante': '', 'category': '', 'min_price': '0', 'max_price': '9999', 'capacity': '2'}}).has_any_text\n\nhundidos_tests\\tests\\test_reservation.py:31: AssertionError",
+      "duration_s": 1.2381606999988435,
+      "timestamp": "2026-06-04T18:36:13.129610+00:00"
+    },
+    {
+      "nodeid": "hundidos_tests/tests/test_reservation.py::test_fuel_fee_is_observable_in_checkout[chromium]",
+      "test_id": "T-RES-04",
+      "requirement_refs": [
+        "B8",
+        "3.5"
+      ],
+      "metric_refs": [
+        "M6",
+        "M7"
+      ],
+      "status": "blocked",
+      "message": "('hundidos_tests\\\\tests\\\\test_reservation.py', 42, 'Skipped: blocked: tasa de combustible no observable en pantalla de checkout')",
+      "duration_s": 0.41381409999848984,
+      "timestamp": "2026-06-04T18:36:13.611617+00:00"
+    }
+  ]
+}

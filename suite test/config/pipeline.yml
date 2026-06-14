@@ -1,0 +1,74 @@
+name: pipeline
+base_url: http://127.0.0.1:8001
+paths:
+  home: /
+  register: /accounts/registro/
+  login: /accounts/login/
+  logout: /accounts/logout/
+  catalog: /barcos/
+  cart: /cesta/
+  checkout: /reserva/paso1/
+  reservation_step1: /reserva/paso1/
+  reservation_step2: /reserva/paso2/
+  reservation_step3: /reserva/paso3/
+  tracking: /reserva/seguimiento/
+  admin_panel: /admin-panel/
+  admin_boats: /admin-panel/barcos/
+  admin_clients: /admin-panel/clientes/
+  admin_reservations: /admin-panel/reservas/
+credentials:
+  customer:
+    email: cliente@hundidos.com
+    password: cliente123
+  admin:
+    email: admin@hundidos.com
+    password: admin123
+credential_candidates:
+  customer:
+    - email: cliente@hundidos.com
+      password: cliente123
+    - email: cliente@hundidos.local
+      password: cliente123
+  admin:
+    - email: admin@hundidos.com
+      password: admin123
+    - email: admin@hundidos.local
+      password: admin123
+fields:
+  register:
+    username: username
+    email: email
+    password1: password1
+    password2: password2
+  login:
+    email: email
+    password: password
+  search: search
+  tracking_code: codigo_seguimiento
+  quantity: cantidad
+  payment_method: metodo_pago
+query:
+  search: search
+  puerto: puerto
+  fabricante: fabricante
+  min_price: precio_min
+  max_price: precio_max
+  category: categoria
+  capacity: capacidad_min
+  start_date: fecha_inicio
+  end_date: fecha_fin
+selectors:
+  boat_card: .barco-card, .boat-card, .card, article
+  boat_link: 'a[href*="/barcos/"][href]:not([href="/barcos/"]), .barco-card a[href], .boat-card a[href], .card a[href*="/barcos/"]'
+  add_to_cart: 'button:has-text("Anadir"), button:has-text("Agregar"), button:has-text("Reservar"), button[type="submit"], input[type="submit"]'
+  cart_link: 'a[href*="/cesta"]'
+  checkout_link: 'a[href*="/reserva/paso1"], a:has-text("Finalizar"), a:has-text("Continuar"), button:has-text("Finalizar"), button:has-text("Continuar")'
+  submit: 'button[type="submit"], input[type="submit"]'
+test_data:
+  known_boat_name: "Velero"
+  puerto: ""
+  fabricante: ""
+  category: ""
+  min_price: "0"
+  max_price: "9999"
+  capacity: "2"

@@ -1,0 +1,82 @@
+name: baseline
+base_url: http://127.0.0.1:8000
+paths:
+  home: /
+  register: /accounts/register/
+  login: /accounts/login/
+  logout: /accounts/logout/
+  catalog: /store/
+  cart: /cart/
+  checkout: /cart/checkout/
+  tracking: /store/search/
+  admin_panel: /orders/reservas/
+  admin_boats: /store/ships
+  admin_clients: /accounts/users/
+  admin_reservations: /orders/reservas/
+credentials:
+  customer:
+    email: pedro@pedro.com
+    password: Pedro1234!
+  admin:
+    email: admin@admin.com
+    password: admin
+credential_candidates:
+  customer:
+    - email: pedro@pedro.com
+      password: Pedro1234!
+    - email: franco@franco.com
+      password: Franco1234!
+    - email: cliente@hundidos.com
+      password: Cliente123!
+  admin:
+    - email: admin@admin.com
+      password: admin
+    - email: pepe@pepe.com
+      password: pepe
+    - email: yesica@yesica.com
+      password: Yesica1234!
+    - email: admin@hundidos.com
+      password: Admin123!
+fields:
+  register:
+    first_name: first_name
+    last_name: last_name
+    phone_number: phone_number
+    email: email
+    password: password
+    confirm_password: confirm_password
+  login:
+    email: email
+    password: password
+  search: keyword
+  tracking_code: reservation
+  quantity: quantity
+  start_date_prefix: start_date
+  end_date_prefix: end_date
+  payment_method: null
+query:
+  search: keyword
+  puerto: puerto
+  fabricante: fabricante
+  min_price: min_price
+  max_price: max_price
+  category: categoria
+  capacity: capacidad
+  start_date: start_date
+  end_date: end_date
+selectors:
+  boat_card: figure.card-product-grid, .card-product-grid, .product-card, article
+  boat_link: 'figure.card-product-grid a.title[href], .card-product-grid a.title[href], a[href*="/store/category/"][href*="/"]'
+  add_to_cart: 'button:has-text("Reservar"), button:has-text("Agregar"), button:has-text("Carrito"), input[type="submit"]'
+  cart_link: 'a[href*="/cart"]'
+  checkout_link: 'a[href*="/checkout"], a:has-text("Continuar"), button:has-text("Finalizar"), button:has-text("Checkout")'
+  submit: 'button[type="submit"], input[type="submit"]'
+test_data:
+  known_boat_name: "Velero"
+  known_boat_path: "/store/category/veleros/velero-esperanza/"
+  puerto: "Santa Maria"
+  fabricante: "Rodman"
+  category: "veleros"
+  min_price: "0"
+  max_price: "9999"
+  capacity: "2"

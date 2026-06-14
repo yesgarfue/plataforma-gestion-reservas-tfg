@@ -1,0 +1,62 @@
+requirements:
+  B1:
+    title: Usuarios, registro y sesion
+    tests: [T-AUTH-01, T-AUTH-02, T-AUTH-03, T-RES-02]
+  B2:
+    title: Catalogo, busqueda y filtros
+    tests: [T-CAT-01, T-CAT-03, T-CAT-04, T-CAT-05, T-CAT-06, T-CAT-07]
+  B3:
+    title: Ficha de barco con cantidad
+    tests: [T-CAT-02, T-CART-01]
+  B4:
+    title: Cesta visible y modificable
+    tests: [T-CART-01, T-CART-02, T-CART-03]
+  B5:
+    title: Proceso de reserva sin registro y en maximo tres pasos
+    tests: [T-RES-01, T-RES-03]
+  B6:
+    title: Metodos de pago PayPal Sandbox y contra-reembolso
+    tests: [T-PAY-01, T-PAY-02]
+  B7:
+    title: Confirmacion con codigo de seguimiento
+    tests: [T-TRACK-01]
+  B8:
+    title: Tasa de combustible
+    tests: [T-RES-04]
+  B9:
+    title: Estados y cancelacion de reserva
+    tests: [T-ADMIN-04, T-TRACK-03]
+  B10:
+    title: Seguimiento de reservas por codigo
+    tests: [T-TRACK-02]
+  B11:
+    title: Gestion administrativa propia
+    tests: [T-ADMIN-01, T-ADMIN-02, T-ADMIN-03, T-ADMIN-04, T-ADMIN-05]
+tests:
+  T-AUTH-01: {title: Registro de cliente, requirement: B1}
+  T-AUTH-02: {title: Login cliente, requirement: B1}
+  T-AUTH-03: {title: Logout explicito, requirement: B1}
+  T-CAT-01: {title: Catalogo accesible con barcos, requirement: B2}
+  T-CAT-02: {title: Ficha de barco visible, requirement: B3}
+  T-CAT-03: {title: Busqueda por nombre, requirement: B2}
+  T-CAT-04: {title: Filtro por puerto, requirement: B2}
+  T-CAT-05: {title: Filtro por fabricante, requirement: B2}
+  T-CAT-06: {title: Filtros combinados, requirement: B2}
+  T-CAT-07: {title: Disponibilidad por fechas, requirement: B2}
+  T-CART-01: {title: Anadir barco a cesta, requirement: B4}
+  T-CART-02: {title: Modificar cantidad en cesta, requirement: B4}
+  T-CART-03: {title: Cesta accesible desde navegacion, requirement: B4}
+  T-RES-01: {title: Reserva sin registro, requirement: B5}
+  T-RES-02: {title: Login conserva cesta, requirement: B1}
+  T-RES-03: {title: Checkout maximo tres pasos, requirement: B5}
+  T-RES-04: {title: Tasa combustible observable, requirement: B8}
+  T-PAY-01: {title: Contra-reembolso disponible, requirement: B6}
+  T-PAY-02: {title: PayPal Sandbox disponible, requirement: B6}
+  T-TRACK-01: {title: Codigo seguimiento generado, requirement: B7}
+  T-TRACK-02: {title: Consulta por codigo sin login, requirement: B10}
+  T-TRACK-03: {title: Cancelacion solo pendiente de pago, requirement: B9}
+  T-ADMIN-01: {title: Panel administracion propio, requirement: B11}
+  T-ADMIN-02: {title: Gestion barcos, requirement: B11}
+  T-ADMIN-03: {title: Gestion clientes, requirement: B11}
+  T-ADMIN-04: {title: Gestion reservas y estados, requirement: B11}
+  T-ADMIN-05: {title: Restriccion eliminar cliente con reservas, requirement: B11}
