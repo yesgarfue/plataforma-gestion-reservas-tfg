@@ -118,17 +118,30 @@ Los resultados oficiales incluidos en el repositorio son:
 - `results_run03.jsonl` y `summary_run03.json`.
 
 El archivo `resultados_suite_funcional.xlsx` **tambien se incluye en el
-repositorio**. Contiene la consolidacion final utilizada en el analisis del
-TFG:
+repositorio**, pero no representa el resultado final del estudio. Es una
+planilla puente construida a partir de la ejecucion automatica de la suite:
 
 - `00_lectura`: instrucciones y criterios de lectura.
-- `01_reporte_puente`: resultados comparativos de baseline y pipeline.
+- `01_reporte_puente`: resultados automaticos comparativos de baseline y
+  pipeline.
 - `02_requisitos_M6`: evaluacion de requisitos para la metrica M6.
-- `03_resumen`: resumen de las metricas y resultados finales.
+- `03_resumen`: resumen generado a partir de los resultados automaticos.
 
-Los JSON/JSONL son la evidencia bruta y reproducible. El Excel es la
-presentacion consolidada de esos datos para el analisis del TFG; por tanto, se
-conservan ambos.
+Los JSON/JSONL son la evidencia bruta y reproducible de las ejecuciones
+automaticas. El Excel de esta carpeta facilita la lectura y el traslado de esa
+evidencia, por lo que se conservan ambos.
+
+Posteriormente, los resultados automaticos fueron revisados y corroborados
+manualmente. El resultado consolidado y definitivo utilizado para las
+conclusiones del TFG se encuentra en:
+
+```text
+analisis_resultados/Planilla_Maestra_Evaluacion_TFG.xlsx
+```
+
+Por tanto, la planilla maestra es la fuente final del estudio, mientras que
+`results/` y `resultados_suite_funcional.xlsx` documentan la ejecucion
+automatica previa y permiten mantener la trazabilidad del proceso.
 
 Estados:
 
