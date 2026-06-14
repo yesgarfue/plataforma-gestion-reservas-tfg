@@ -1,0 +1,241 @@
+## 1. Resumen ejecutivo
+
+Revisado 18 documentos del proyecto de Hundidos, un sistema para alquiler de barcos de entretenimiento. 
+
+
+| Nº | Documento linea base antes de la ejecucion         | Descripción breve / de qué va                                                                             |
+| -: | -------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+|  1 | **LISTA DE HITOS.pdf**                             | Tabla de hitos del proyecto: inicio, planificación, prototipos, cierre e informe final.                   |
+|  2 | **Acta Reunión semana 1.pdf**                      | Acta textual de reunión inicial; recoge tareas hechas, problemas y acuerdos del equipo.                   |
+|  3 | **04 - Planificación de clases.pdf**               | Calendario de la asignatura; muestra prácticas, entregables, sprints, cierre y presentación.              |
+|  4 | **project_LINEA BASE.pdf**                         | Imagen/tabla de Microsoft Project con Gantt inicial, tareas, fechas, costes y ruta crítica.               |
+|  5 | **Acta Patrocinador 2.pdf**                        | Acta con el patrocinador; revisión y aprobación/rechazo de requisitos.                                    |
+|  6 | **CURVA S DE COSTES.pdf**                          | Gráfico de curva S; compara presupuesto, coste acumulado y coste real del proyecto.                       |
+|  7 | **CRONOGRAMA Y PRESUPUESTO.pdf**                   | Gantt/tabla principal con horas planificadas: 244 h totales, fases, sprints y presupuesto.                |
+|  8 | **Acta Reunión semana 3.pdf**                      | Acta de seguimiento del equipo; trata EDT, diccionario EDT, lista de actividades e hitos.                 |
+|  9 | **PLAN DE GESTION DEL CRONOGRAMA.pdf**             | Documento metodológico; explica cómo se estima tiempo, uso de MS Project e iteraciones.                   |
+| 10 | **Acta Patrocinador 4.pdf**                        | Acta con cambios funcionales antes/durante la ejecución del proyecto.                                     |
+| 11 | **Acta Patrocinador 1.pdf**                        | Primera revisión formal de requisitos con el patrocinador.                                                |
+| 12 | **Acta Patrocinador 3.pdf**                        | Acta de incidencias y cambios: pago, filtros, estados de reserva y errores.                               |
+| 13 | **DICCIONARIO DE LA EDT.pdf**                      | Documento detallado de paquetes de trabajo, horas, costes, hitos y responsables.                          |
+| 14 | **ATRIBUTOS DE ACTIVIDAD.pdf**                     | Fichas de actividades; muestra descripción, predecesoras, sucesoras, recursos e hitos.                    |
+| 15 | **Acta Reunión estimación de tareas y costes.pdf** | Acta donde se explica la estimación póker, tarifas, presupuesto y cálculo de costes.                      |
+
+
+| Nº | Documento creados para el cierre del proyecto      | Descripción breve / de qué va                                                                             |
+| -: | -------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| 16 | **project CIERRE.pdf**                             | Imagen/tabla de Project de cierre; muestra calendario final, tareas, holguras y fechas reales de cierre.  |
+| 17 | **Informe de Seguimiento - Cierre.pdf**            | Imagen de Project con estado de tareas al cierre; muchas aparecen al 100 %.                               |
+| 18 | **Valor Ganado Cierre.pdf**                        | Tabla de valor ganado; muestra BAC, PV, EV, AC, CPI, SPI y porcentaje completado.                         |
+
+**Resultado principal:**
+
+| Concepto                                                         |                                      Estimación |
+| ---------------------------------------------------------------- | ----------------------------------------------: |
+| Esfuerzo planificado en baseline, sin reuniones                  |                                       **244 h** |
+| Reuniones detectadas en actas                                    |                                     **11,83 h** |
+| Total central estimado incluyendo reuniones                      |                                    **255,83 h** |
+| Rango mínimo razonado                                            |                                    **194,83 h** |
+| Rango máximo/crítico razonado                                    |                                    **316,83 h** |
+| Duración calendario desde inicio práctico hasta cierre operativo | **02/10/2024 – 04/12/2024 ≈ 63 días naturales** |
+| Duración hasta entrega/presentación final                        | **02/10/2024 – 11/12/2024 ≈ 70 días naturales** |
+
+La fuente más sólida para horas es **Cronograma y Presupuesto**, porque da una suma explícita de **244 h** de trabajo y desglosa inicio, planificación, ejecución, seguimiento y cierre. Esa cifra coincide bastante bien con el Diccionario de la EDT y con la lógica de costes humanos de 9.720 € indicada en el acta de estimación. 
+
+**Resultado principal extendido**
+
+| Concepto                              |                                             Valor corregido | Confianza  |
+| ------------------------------------- | ----------------------------------------------------------: | ---------- |
+| Esfuerzo planificado oficial baseline |                                                   **244 h** | Alta       |
+| Reuniones evidenciadas                |                                                 **11,83 h** | Alta       |
+| Total incluyendo reuniones            |                                                **255,83 h** | Alta       |
+| Planificación                         |                                                   **128 h** | Alta       |
+| Ejecución técnica / sprints           |                                                    **84 h** | Alta       |
+| Sprint 1                              |                                                    **32 h** | Alta       |
+| Sprint 2                              |                                                    **28 h** | Alta       |
+| Sprint 3                              |                                                    **24 h** | Alta       |
+| Pruebas finales                       |                             **18 h**, incluidas en Sprint 3 | Alta       |
+| Manual/despliegue                     |                               **6 h**, incluido en Sprint 3 | Alta       |
+| Seguimiento                           |                                                    **16 h** | Alta       |
+| Cierre                                |                                                     **8 h** | Alta       |
+| Seguimiento + cierre                  |                                                    **24 h** | Alta       |
+| Seguimiento + cierre + manual técnico |                                                    **30 h** | Media-alta |
+| Documentación memoria TFG             |                                          **No evidenciada** | Alta       |
+| Rango mínimo-máximo oficial           |                                          **No evidenciado** | Alta       |
+| Duración calendario 02/10–04/12       | **63 días transcurridos / 64 días contando ambos extremos** | Alta       |
+| Duración hasta entrega final 11/12    |      **70 días transcurridos / 71 contando ambos extremos** | Alta       |
+
+---
+
+## 2. Documentos revisados y utilidad de cada uno
+
+| Documento                                      | Utilidad para el cálculo                                                                                                                                          |
+| ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **LISTA DE HITOS (LINEA BASE)**                | Fechas oficiales de inicio, planificación, requisitos, prototipos, cierre e informe final.                                                                        |
+| **Acta Reunión semana 1**                      | Reunión del 06/10/2024, 11:00–12:30. Evidencia trabajo inicial: acta de constitución, supuestos, requisitos resumidos.                                            |
+| **04 - Planificación de clases**               | Contexto académico: inicio práctico el 02/10, cronograma MS Project el 30/10, sprints/reviews el 13/11, 20/11 y 27/11, cierre el 04/12 y presentación el 11/12.   |
+| **project_LINEA BASE**                         | Imagen/tabla inicial de MS Project. Útil, pero presenta una planificación temprana comprimida hasta el 31/10, contradictoria con los hitos posteriores.           |
+| **Acta Patrocinador 1**                        | Reunión de requisitos del 16/10/2024, 15:30–17:20. Define alcance funcional y restricciones.                                                                      |
+| **Acta Patrocinador 2**                        | Reunión del 23/10/2024, 15:30–17:20. Ajustes/rechazos de requisitos.                                                                                              |
+| **Acta Patrocinador 3**                        | Reunión sobre incidencias/cambios. Tiene contradicción de fecha: indica 27/10/2024, pero también aparece 23/10/2024.                                              |
+| **Acta Patrocinador 4**                        | Reunión del 04/11/2024, 15:30–17:20. Ajustes funcionales antes/durante ejecución.                                                                                 |
+| **project CIERRE**                             | Evidencia de cierre en Project: proyecto del 02/10 al 04/12, planificación del 09/10 al 23/10, ejecución del 11/11 al 26/11.                                      |
+| **CURVA S DE COSTES**                          | Coste acumulado final 14.125 €, presupuesto 9.720 €, coste real mostrado 2.339,77 €. Sirve para contraste económico, no para horas exactas.                       |
+| **CRONOGRAMA Y PRESUPUESTO (LINEA BASE)**      | Fuente principal de horas: 244 h totales, 128 h planificación, 84 h ejecución, 16 h seguimiento, 8 h cierre.                                                      |
+| **Acta Reunión semana 3**                      | Reunión del 19/10/2024, 11:00–12:30. Evidencia EDT, diccionario EDT, lista de actividades e hitos.                                                                |
+| **PLAN DE GESTION DEL CRONOGRAMA**             | Regla metodológica: estimaciones en horas, 1 día = 8 h ± 1 h, 2 h adicionales para actividades críticas, MS Project como herramienta, 3 iteraciones de 1 semana.  |
+| **DICCIONARIO DE LA EDT**                      | Desglose de paquetes: acta 8 h, plan 128 h, prototipo 1, prototipo 2, prototipo 3, seguimiento y cierre.                                                          |
+| **ATRIBUTOS DE ACTIVIDAD**                     | Dependencias, hitos relacionados y trazabilidad de actividades con requisitos. Útil para fechas y secuencia.                                                      |
+| **Acta Reunión estimación de tareas y costes** | Explica método de coste: horas estimadas por tarea, estimación póker, tarifas 45 €/h dirección y 30 €/h desarrollo, presupuesto humano 9.720 € y total 14.125 €.  |
+| **Informe de Seguimiento - Cierre**            | Evidencia visual de tareas al cierre, con muchas tareas al 100 %. Útil como evidencia de avance, no como fuente exacta de horas.                                  |
+| **Valor Ganado Cierre**                        | Evidencia de estado: proyecto 97 %, ejecución 100 %, cierre 81 %, BAC 14.125 €, PV 14.125 €, EV 8.926,63 €, AC 7.694,74 €.                                        |
+
+---
+
+## 3. Fechas clave detectadas
+
+| Fecha      | Evento                                                                   | Fuente                                                  | Confianza                        |
+| ---------- | ------------------------------------------------------------------------ | ------------------------------------------------------- | -------------------------------- |
+| 30/09/2024 | Fecha de inicio en Cronograma y Presupuesto v6                           | MS Project v6                                           | Media                            |
+| 02/10/2024 | Inicio práctico / Acta de Constitución / inicio real de proyecto         | Planificación de clases, Lista de hitos, Project cierre | Alta                             |
+| 06/10/2024 | Reunión semana 1, 11:00–12:30                                            | Acta semana 1                                           | Alta                             |
+| 09/10/2024 | Inicio de planificación / entrega acta constitución                      | Lista de hitos / EDT                                    | Alta                             |
+| 16/10/2024 | Reunión patrocinador 1, requisitos                                       | Acta patrocinador 1                                     | Alta                             |
+| 19/10/2024 | Reunión semana 3, EDT y diccionario EDT                                  | Acta semana 3                                           | Alta                             |
+| 23/10/2024 | Reunión patrocinador 2, revisión/rechazo de requisitos                   | Acta patrocinador 2                                     | Alta                             |
+| 27/10/2024 | Reunión patrocinador 3, cambios funcionales                              | Acta patrocinador 3                                     | Media, por contradicción interna |
+| 02/11/2024 | Reunión estimación de tareas y costes                                    | Acta estimación                                         | Alta                             |
+| 04/11/2024 | Reunión patrocinador 4, ajustes funcionales                              | Acta patrocinador 4                                     | Alta                             |
+| 06/11/2024 | Fin planificación / definición requisitos / inicio ejecución según hitos | Lista de hitos                                          | Alta                             |
+| 11/11/2024 | Inicio de ejecución según Project v6/cierre                              | Cronograma y Project cierre                             | Alta                             |
+| 13/11/2024 | Entrega prototipo 1 según hitos                                          | Lista de hitos                                          | Alta                             |
+| 18/11/2024 | Inicio prototipo 2 según Project v6                                      | Cronograma y Presupuesto                                | Alta                             |
+| 20/11/2024 | Entrega prototipo 2 según hitos                                          | Lista de hitos                                          | Alta                             |
+| 25/11/2024 | Inicio prototipo 3 según Project v6                                      | Cronograma y Presupuesto                                | Alta                             |
+| 27/11/2024 | Entrega prototipo 3 / pruebas                                            | Lista de hitos                                          | Alta                             |
+| 02/12/2024 | Cierre planificado en Cronograma y Presupuesto v6                        | MS Project v6                                           | Alta                             |
+| 04/12/2024 | Cierre operativo del proyecto                                            | Lista de hitos / Project cierre                         | Alta                             |
+| 11/12/2024 | Entrega informe cierre / presentación proyecto                           | Lista de hitos / planificación de clases                | Alta                             |
+
+---
+
+## 4. Tabla principal de estimación por fase
+
+Regla usada para el rango: cuando el documento da horas centrales pero no da rango por tarea, aplico la regla solicitada equivalente a **8 h → 6 h mínimo y 10 h máximo**, es decir, **mínimo = 75 %** y **máximo/crítico = 125 %** sobre las horas de trabajo. Las reuniones se mantienen como horas exactas de duración, no como rango.
+
+| Fase/Bloque                        | Fuente principal                       |   Fecha inicio |                   Fecha fin | Duración calendario                                | Horas reuniones | Horas trabajo estimadas |                    Rango mínimo-máximo |              Total estimado fase | Evidencia                                               | Confianza                                      | Observaciones                                                        |
+| ---------------------------------- | -------------------------------------- | -------------: | --------------------------: | -------------------------------------------------- | --------------: | ----------------------: | -------------------------------------: | -------------------------------: | ------------------------------------------------------- | ---------------------------------------------- | -------------------------------------------------------------------- |
+| Inicio / Acta inicial              | Cronograma, EDT, hitos                 |       02/10/24 |                    09/10/24 | 7 días naturales                                   |            1,50 |                       8 |                                   6–10 |                             9,50 | Acta constitución, inicio práctico                      | Alta                                           | La reunión del 06/10 evidencia trabajo inicial.                      |
+| Planificación general              | Cronograma y Presupuesto, EDT          |       09/10/24 |                    06/11/24 | 28 días naturales por hitos; 10,5 días en Project  |            1,50 |                     128 |                                 96–160 |                           129,50 | Plan de Dirección, planes subsidiarios, EDT, cronograma | Alta                                           | Es el bloque con más horas.                                          |
+| Análisis de requisitos             | Actas patrocinador, hitos              |       16/10/24 |                    23/10/24 | 7 días naturales                                   |            3,67 |             No separado |                            No separado | 3,67 + incluido en planificación | Revisión de requisitos con patrocinador                 | Media                                          | No hay partida de horas exclusiva; queda absorbida en planificación. |
+| Diseño / arquitectura              | No evidenciado como fase independiente | No evidenciado |              No evidenciado | No evidenciado                                     |               0 |          No evidenciado |                         No evidenciado |                   No evidenciado | No aparece documento específico de arquitectura         | Baja                                           | En baseline PGPI no aparece arquitectura técnica separada.           |
+| Sprint 1 / Prototipo 1             | Cronograma, EDT, hitos                 |       11/11/24 |                 13–14/11/24 | 1 semana metodológica; 3,18 días en Project cierre |               0 |                      32 |                                  24–40 |                               32 | Catálogo, login, roles                                  | Alta                                           | En hitos vence 13/11; Project cierre muestra hasta 14/11.            |
+| Sprint 2 / Prototipo 2             | Cronograma, EDT, hitos                 |       18/11/24 |                    20/11/24 | 1 semana metodológica; 3 días en Project           |               0 |                      28 |                                  21–35 |                               28 | Pagos, gestión admin, seguimiento pedidos               | Alta                                           | Bloque completo de ejecución.                                        |
+| Sprint 3 / Prototipo 3             | Cronograma, EDT, hitos                 |       25/11/24 |                    27/11/24 | 1 semana metodológica; 2 días en Project cierre    |               0 |                      24 |                                  18–30 |                               24 | Pruebas + manual/despliegue                             | Alta                                           | Incluye 18 h de pruebas y 6 h de documentación técnica.              |
+| Validación / pruebas               | Cronograma, EDT                        |       25/11/24 |                    27/11/24 | Integrado en Sprint 3                              |               0 |                      18 |                              13,5–22,5 |                               18 | Pruebas funcionalidad/rendimiento                       | Alta                                           | Subconjunto del Sprint 3; no sumar doble.                            |
+| Documentación técnica / despliegue | Cronograma, EDT                        |       25/11/24 |                    27/11/24 | Integrado en Sprint 3                              |               0 |                       6 |                                4,5–7,5 |                                6 | Manual usuario e instrucciones despliegue               | Alta                                           | Subconjunto del Sprint 3; no sumar doble.                            |
+| Seguimiento / revisión             | Cronograma y Presupuesto               |       11/11/24 |             18/11/24 aprox. | 1–1,5 días en Project                              |               0 |                      16 |                                  12–20 |                               16 | Informes de seguimiento, informe general y costes       | Alta                                           | Bloque documental de control.                                        |
+| Cierre                             | Cronograma, hitos, Project cierre      |       02/12/24 | 04/12/24 / 11/12/24 informe | 2–9 días naturales según criterio                  |               0 |                       8 |                                   6–10 |                                8 | Informe de cierre                                       | Alta                                           | Cierre operativo 04/12; entrega informe 11/12.                       |
+| Documentación de memoria TFG       | No evidenciada                         | No evidenciado |              No evidenciado | No evidenciado                                     |               0 |          No evidenciado |                         No evidenciado |                   No evidenciado | No hay memoria TFG en los PDF                           | Baja                                           | Solo aparece documentación PGPI: manual, informes y cierre.          |
+| Reuniones totales                  | 7 actas                                |       06/10/24 |                    04/11/24 | 29 días naturales                                  |           11,83 |                       0 |                                  11,83 |                            11,83 | Actas de equipo y patrocinador                          | Alta                                           | No se multiplican por asistentes.                                    |
+| **Total baseline Hundidos**        | Cronograma + EDT + actas               |       02/10/24 |         04/12/24 / 11/12/24 | 63–70 días naturales                               |       **11,83** |                 **244** | **194,83–316,83 incluyendo reuniones** |                     **255,83 h** | MS Project, EDT, actas                                  | Alta para horas planificadas; media para rango | Total central = 244 h + 11,83 h.                                     |
+
+---
+
+## 5. Cálculo de totales
+
+### A. Total de horas de reuniones
+
+Reuniones detectadas:
+
+| Reunión                    |    Fecha |        Hora |    Duración |
+| -------------------------- | -------: | ----------: | ----------: |
+| Semana 1                   | 06/10/24 | 11:00–12:30 |      1,50 h |
+| Patrocinador 1             | 16/10/24 | 15:30–17:20 |      1,83 h |
+| Semana 3                   | 19/10/24 | 11:00–12:30 |      1,50 h |
+| Patrocinador 2             | 23/10/24 | 15:30–17:20 |      1,83 h |
+| Patrocinador 3             | 27/10/24 | 15:30–17:20 |      1,83 h |
+| Estimación tareas y costes | 02/11/24 | 11:00–12:30 |      1,50 h |
+| Patrocinador 4             | 04/11/24 | 15:30–17:20 |      1,83 h |
+| **Total**                  |          |             | **11,83 h** |
+
+
+### B. Total de horas de planificación
+
+**128 h**.
+
+Fuente: Cronograma y Presupuesto / EDT. Incluye Plan de Dirección y documentos de planificación. 
+
+### C. Total de horas de ejecución técnica
+
+**84 h**, si se toma el bloque completo de ejecución de MS Project.
+
+Desglose:
+
+| Bloque              |    Horas |
+| ------------------- | -------: |
+| Prototipo 1         |     32 h |
+| Prototipo 2         |     28 h |
+| Prototipo 3         |     24 h |
+| **Total ejecución** | **84 h** |
+
+### D. Total de horas de sprints
+
+**84 h**.
+
+En este baseline, los sprints/prototipos son la ejecución técnica completa.
+
+### E. Total de horas de cierre/documentación
+
+Depende del criterio:
+
+| Criterio                                              |                 Horas |
+| ----------------------------------------------------- | --------------------: |
+| Seguimiento + cierre, sin contar manual del Sprint 3  |     16 + 8 = **24 h** |
+| Seguimiento + cierre + manual/despliegue del Sprint 3 | 16 + 8 + 6 = **30 h** |
+
+Para no duplicar, en el total general uso **24 h fuera de sprints**, porque las 6 h del manual ya están dentro del Sprint 3.
+
+### F. Total estimado central del baseline
+
+| Concepto                               |        Horas |
+| -------------------------------------- | -----------: |
+| Trabajo planificado MS Project         |        244 h |
+| Reuniones                              |      11,83 h |
+| **Total central incluyendo reuniones** | **255,83 h** |
+
+
+### I. Duración calendario total
+
+| Criterio                                                           |                   Duración |
+| ------------------------------------------------------------------ | -------------------------: |
+| Desde inicio práctico 02/10/24 hasta cierre operativo 04/12/24     |    ≈ **63 días naturales** |
+| Desde inicio práctico 02/10/24 hasta entrega/presentación 11/12/24 |    ≈ **70 días naturales** |
+| Duración Project cierre                                            | **45,25 días de proyecto** |
+| Duración Valor Ganado cierre                                       | **47,25 días de proyecto** |
+
+---
+
+## 6. Incertidumbres y contradicciones
+
+| Tema                           | Contradicción / incertidumbre                                                                                                      | Interpretación razonable                                                                |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Inicio del proyecto            | Cronograma y Presupuesto v6 muestra inicio 30/09/24, pero hitos, EDT, Project cierre y planificación práctica apuntan al 02/10/24. | Usar **02/10/24** como inicio práctico real.                                            |
+| Project_LINEA BASE             | Indica proyecto del 02/10 al 31/10, 21,875 días, pero hitos y cierre llegan hasta diciembre.                                       | Tratarlo como una versión temprana o parcial, no como baseline final.                   |
+| Fecha Acta Patrocinador 3      | El documento indica “Fecha: 27 de Octubre 2024”, pero también aparece “23 de Octubre de 2024”.                                     | Usar 27/10 con confianza media y señalar la inconsistencia.                             |
+| Cierre                         | Cronograma v6 marca cierre 02/12; hitos marcan cierre 04/12 e informe 11/12; Project cierre termina 04/12.                         | Usar **04/12** como cierre operativo y **11/12** como entrega/informe final.            |
+| Arquitectura                   | No aparece fase separada de arquitectura.                                                                                          | No inventar horas; dejar “no evidenciado”.                                              |
+| Memoria TFG                    | No aparece documentación de memoria TFG.                                                                                           | Solo se puede contabilizar documentación PGPI: manual, seguimiento e informe de cierre. |
+| Estado actual del pipeline TFG | No hay bitácora actual del pipeline entre los PDF.                                                                                 | No calcular diferencia real del TFG sin ese archivo.                                    |
+
+---
+
+## 7. Conclusión
+
+A partir de los documentos de línea base, cronograma, EDT, actas de reunión y documentos de cierre, el baseline del proyecto puede estimarse en torno a **244 horas de trabajo planificado**, a las que se añaden **11,83 horas de reuniones formalmente evidenciadas**. Por tanto, el esfuerzo central total estimado asciende aproximadamente a **255,83 horas**.
+
+La mayor carga de trabajo se concentra en la **planificación general**, con **128 horas**, lo que representa más de la mitad del esfuerzo planificado. Esto es coherente con el contexto de la asignatura, ya que el proyecto no solo requería construir un prototipo, sino también producir documentación de dirección de proyectos: EDT, cronograma, presupuesto, matriz de seguimiento, informes y cierre.
+
+La segunda parte más relevante es la **ejecución técnica**, organizada en tres prototipos o sprints, con **84 horas** planificadas. Dentro de esta ejecución, el tercer prototipo incluye la validación final y la documentación técnica de despliegue, por lo que no debe contarse dos veces.
+
+En términos generales, el avance evidenciado en los documentos de cierre parece **alineado con la planificación en cuanto a finalización de tareas**, aunque con incertidumbres en costes, cierre y trazabilidad de horas reales.

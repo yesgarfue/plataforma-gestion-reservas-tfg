@@ -1,0 +1,49 @@
+{
+  "id_ejecucion": "run_2026-05-19_02-15",
+  "sprints": [
+    {
+      "numero": 1,
+      "objetivo": "Establecer la base técnica y el camino crítico mínimo del producto. Sprint 1 implementa autenticación, configuración del entorno, datos precargados, catálogo navegable y ficha de barco. Estas historias preparan la infraestructura necesaria para que los sprints posteriores construyan el flujo de reserva y pago sobre cimientos sólidos.",
+      "historias_ids": [
+        "HU-01",
+        "HU-02",
+        "HU-03",
+        "HU-04",
+        "HU-05",
+        "HU-06",
+        "HU-21",
+        "HU-22",
+        "HU-23"
+      ],
+      "entregable_verificable": "**Funcionalidad operativa:** El cliente puede registrarse, iniciar sesión, cerrar sesión, navegar el catálogo de barcos organizado por categorías, buscar y filtrar barcos por múltiples criterios (puerto, fabricante, precio, categoría, capacidad, fechas), acceder a la ficha de un barco y visualizar sus datos e imagen. La cesta es visible en todas las páginas. **Dependencias desbloqueadas:** Modelo de datos de barcos, clientes y sesiones completamente funcional; autenticación y autorización operativas; catálogo y búsqueda listos para el flujo de reserva; datos precargados garantizan demostrabilidad inmediata. **Checks mínimos:** Ejecutar manage.py check sin errores; acceder a la página principal y ver catálogo con barcos precargados; registrarse con nuevo cliente y verificar sesión activa; buscar barco por nombre y aplicar filtros simultáneamente; acceder a ficha de barco y ver todos los campos; contenedor Docker arranca correctamente con datos precargados; zona horaria y locale en español verificables. **Riesgo principal:** Si los filtros combinables no se implementan correctamente, el cliente no puede encontrar barcos disponibles en fechas específicas, bloqueando el flujo de reserva del sprint 2."
+    },
+    {
+      "numero": 2,
+      "objetivo": "Implementar el flujo completo de reserva y pago, desde la cesta hasta la confirmación. Sprint 2 añade gestión de cesta, proceso de reserva en tres pasos, cálculo de precios con tasa de combustible, métodos de pago (PayPal Sandbox y contra-reembolso), confirmación por correo con código de seguimiento, y estados de reserva. Estas historias cierran el ciclo de compra del cliente y desbloquean la gestión administrativa del sprint 3.",
+      "historias_ids": [
+        "HU-07",
+        "HU-08",
+        "HU-09",
+        "HU-10",
+        "HU-11",
+        "HU-12",
+        "HU-14"
+      ],
+      "entregable_verificable": "**Funcionalidad operativa:** El cliente puede añadir barcos a la cesta desde la ficha, modificar cantidades, revisar el estado de la cesta, iniciar el proceso de reserva en máximo tres pasos, proporcionar datos de cliente y pago (heredados si hay sesión activa), elegir entre PayPal Sandbox y contra-reembolso, completar el pago y recibir correo de confirmación con código de seguimiento único. El sistema calcula correctamente el precio total incluyendo tasa de combustible (50 euros/día, 0 para veleros). Las reservas tienen estados PENDIENTE DE PAGO o PAGADO según el método. **Dependencias desbloqueadas:** Modelo de reservas completamente funcional; integración de PayPal Sandbox operativa; sistema de correos configurado; códigos de seguimiento generados y únicos; estados de reserva listos para gestión administrativa. **Checks mínimos:** Añadir barco a cesta y verificar visibilidad permanente; completar proceso de reserva en tres pasos sin registro previo; verificar cálculo de precio con tasa de combustible correcta (incluyendo excepción para veleros); recibir correo de confirmación con código de seguimiento; iniciar sesión durante reserva y recuperar cesta; cambiar método de pago y verificar flujo correcto; comando manage.py check sin errores. **Riesgo principal:** Integración con PayPal Sandbox puede fallar durante desarrollo o demo; mitigación: implementar flujo de contra-reembolso completamente funcional primero para que la aplicación sea demoable aunque PayPal falle."
+    },
+    {
+      "numero": 3,
+      "objetivo": "Cerrar funcionalidades de seguimiento, cancelación y gestión administrativa. Sprint 3 implementa consulta de reservas por código de seguimiento, consulta de reservas del cliente autenticado, panel de administración, gestión de barcos, clientes y reservas, cancelación de reservas, y recordatorio automático de pagos pendientes. Estas historias completan el producto y permiten operación y mantenimiento en producción.",
+      "historias_ids": [
+        "HU-13",
+        "HU-15",
+        "HU-16",
+        "HU-17",
+        "HU-18",
+        "HU-19",
+        "HU-20"
+      ],
+      "entregable_verificable": "**Funcionalidad operativa:** El cliente puede consultar el estado de su reserva usando el código de seguimiento sin estar registrado; el cliente autenticado puede ver todas sus reservas con filtrado por estado; el administrador accede a un panel propio de administración con gestión completa de barcos (alta, edición, baja), clientes (consulta, eliminación respetando restricción de reservas pendientes) y reservas (consulta, cambio de estado con transiciones validadas, historial de cambios). El cliente puede cancelar reservas en estado PENDIENTE DE PAGO. El sistema envía recordatorio de pago 24 horas antes del inicio si la reserva sigue pendiente. **Dependencias desbloqueadas:** Operación completa del producto; gestión administrativa operativa; seguimiento de reservas sin dependencia de autenticación; automatización de recordatorios lista. **Checks mínimos:** Consultar reserva por código de seguimiento sin autenticación y verificar datos correctos; acceder a panel de administración solo como administrador; crear, editar y eliminar barco desde panel; intentar eliminar cliente con reservas pendientes y verificar error; cambiar estado de reserva y verificar historial; cancelar reserva en estado PENDIENTE DE PAGO y verificar eliminación; verificar que recordatorio se envía 24 horas antes; comando manage.py check sin errores; panel administrativo completamente en español. **Riesgo principal:** Restricción de no eliminar clientes con reservas pendientes puede no validarse correctamente, permitiendo inconsistencias en datos; mitigación: implementar validación en modelo y vista, con tests unitarios específicos antes de cerrar el sprint."
+    }
+  ]
+}

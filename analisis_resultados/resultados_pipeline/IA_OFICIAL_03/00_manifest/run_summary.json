@@ -1,0 +1,77 @@
+{
+  "run_id": "run_2026-05-19_02-15",
+  "resultado_final": "completo",
+  "mensaje": "Run finalizado con resultado_final = completo",
+  "timestamp_cierre": "2026-05-19T03:03:47+02:00",
+  "fases": {
+    "01_requisitos": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "aceptado",
+      "duracion_s_ejec": 19.969000000011874,
+      "duracion_s_gate_humano": 973.5310000000172
+    },
+    "02_planificacion": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "aceptado",
+      "duracion_s_ejec": 67.60899999999674,
+      "duracion_s_gate_humano": 608.3910000000033
+    },
+    "03_arquitectura": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "aceptado",
+      "duracion_s_ejec": 19.203000000008615,
+      "duracion_s_gate_humano": 719.2340000000258
+    },
+    "03b_scaffold": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 16.953000000008615,
+      "duracion_s_gate_humano": 0.0
+    },
+    "04_sprint_1": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 199.0,
+      "duracion_s_gate_humano": 0.0
+    },
+    "05_sprint_2": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 100.29699999999139,
+      "duracion_s_gate_humano": 0.0
+    },
+    "06_sprint_3": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 53.375,
+      "duracion_s_gate_humano": 0.0
+    },
+    "99_cierre": {
+      "reintentos_automaticos": 0,
+      "regeneraciones_humanas": 0,
+      "gate_decision": "N/A",
+      "duracion_s_ejec": 6.4689999999827705,
+      "duracion_s_gate_humano": 0.0
+    }
+  },
+  "duracion_s_ejec_total": 482.875,
+  "duracion_s_gate_humano_total": 2301.1560000000463,
+  "duracion_s_total_contabilizada": 2784.0310000000463,
+  "validacion_final": {
+    "ejecutada": true,
+    "ok_global": true,
+    "clasificacion": "apto_para_revision_funcional",
+    "checks_planificados_total": 16,
+    "checks_ejecutados_total": 16,
+    "checks_no_ejecutados_total": 0,
+    "incidencias_total": 0,
+    "factores_bloqueantes_total": 0
+  }
+}
