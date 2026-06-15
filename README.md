@@ -75,6 +75,20 @@ analisis_resultados/Planilla_Maestra_Evaluacion_TFG.xlsx
 Las subcarpetas de resultados conservan evidencias y documentos auxiliares
 empleados durante la consolidacion.
 
+### `documentacion_complementaria/`
+
+Indice de correspondencia entre los anexos formales de la memoria y el material
+digital del repositorio.
+
+Incluye:
+
+- el Excel de planificacion general del TFG;
+- un README por anexo con las rutas canonicas de consulta;
+- referencias a evidencias, configuracion, instrumentos y procedimientos sin
+  duplicar planillas, YAML, runs ni codigo.
+
+El punto de entrada es `documentacion_complementaria/README.md`.
+
 ## Trazabilidad de los resultados
 
 El flujo seguido para obtener los resultados fue:
@@ -108,3 +122,5 @@ Por tanto:
 3. `suite test/README.md`: metodologia y ejecucion de las pruebas.
 4. `analisis_resultados/Planilla_Maestra_Evaluacion_TFG.xlsx`: resultados
    definitivos del estudio.
+5. `documentacion_complementaria/README.md`: correspondencia con los anexos de
+   la memoria.
