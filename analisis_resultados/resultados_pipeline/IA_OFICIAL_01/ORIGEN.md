@@ -1,9 +1,12 @@
 # Origen
 
-Run bruto: `D:\University\TFG\PRUEBAS\multiagentes\pipeline\runs\run_2026-05-18_15-09`
+Run bruto conservado en el repositorio: `pipeline/runs/run_2026-05-18_15-09`
 
 Codigo final ejecutable:
-`...\06_sprint_3\codigo`
+`pipeline/runs/run_2026-05-18_15-09/06_sprint_3/codigo`
 
 Validacion final:
-`...\99_cierre\validacion_final.json`
+`pipeline/runs/run_2026-05-18_15-09/99_cierre/validacion_final.json`
+
+Paquete documental consolidado:
+`analisis_resultados/resultados_pipeline/IA_OFICIAL_01`

@@ -81,16 +81,19 @@ Desde la carpeta `pipeline`, instala las dependencias exactas del pipeline:
 
 ```powershell
 py -3.11 -m pip install uv
-uv sync --locked
+uv sync --frozen
 ```
 
-Este comando crea `.venv/`. El entorno no se incluye en Git.
+Este comando crea `.venv/` e instala CrewAI y las dependencias del pipeline
+declaradas en `pyproject.toml` y fijadas en `uv.lock`. Este entorno se usa para
+ejecutar el Flow del pipeline; no se usa para arrancar los productos Django
+generados.
 
 En Linux o macOS:
 
 ```bash
 python3.11 -m pip install uv
-uv sync --locked
+uv sync --frozen
 ```
 
 Para activar el entorno manualmente en Windows:
@@ -168,6 +171,10 @@ abortado
 
 El entorno `.venv_Test/` esta separado de `.venv/` para que las dependencias
 de los productos Django generados no alteren CrewAI.
+
+Este segundo entorno instala Django y las librerias necesarias para comprobar y
+probar los productos generados por el pipeline mediante `manage.py check`,
+`manage.py migrate` y `manage.py runserver`.
 
 Para recrearlo en Windows:
 

@@ -56,15 +56,16 @@ Los runs oficiales se lanzan tras la congelacion del instrumento. No deben
 mezclarse con los runs de maduracion anteriores. Para que un run pueda usarse
 como evidencia oficial debe tener `run_summary.json`, `manifest.json`,
 `validacion_final.json` y cierre completo. Las carpetas
-`../../resultados_pipeline/IA_OFICIAL_*/` existen como ubicacion de consolidacion,
-pero actualmente contienen solo `.gitkeep`; la evidencia primaria permanece en
-`pipeline/runs/`.
+`analisis_resultados/resultados_pipeline/IA_OFICIAL_*/` contienen paquetes
+documentales consolidados de los tres runs oficiales: manifests, gates,
+artefactos, reviews de sprint, validacion final y cierre. La evidencia completa,
+incluido el codigo incremental y final de cada run, permanece en `pipeline/runs/`.
 
 | Codigo oficial | Carpeta de run origen | Carpeta de resultados | Estado |
 |---|---|---|---|
-| IA_OFICIAL_01 | `run_2026-05-18_15-09` | `../../resultados_pipeline/IA_OFICIAL_01/` | Valido. `resultado_final=completo`, `ok_global=true`, `apto_para_revision_funcional`, 16/16 checks ejecutados, 0 incidencias. |
-| IA_OFICIAL_02 | `run_2026-05-18_16-37` | `../../resultados_pipeline/IA_OFICIAL_02/` | Valido. `resultado_final=completo`, `ok_global=true`, `apto_para_revision_funcional`, 16/16 checks ejecutados, 0 incidencias. |
-| IA_OFICIAL_03 | `run_2026-05-19_02-15` | `../../resultados_pipeline/IA_OFICIAL_03/` | Valido. `resultado_final=completo`, `ok_global=true`, `apto_para_revision_funcional`, 16/16 checks ejecutados, 0 incidencias. |
+| IA_OFICIAL_01 | `run_2026-05-18_15-09` | `analisis_resultados/resultados_pipeline/IA_OFICIAL_01/` | Valido. `resultado_final=completo`, `ok_global=true`, `apto_para_revision_funcional`, 16/16 checks ejecutados, 0 incidencias. |
+| IA_OFICIAL_02 | `run_2026-05-18_16-37` | `analisis_resultados/resultados_pipeline/IA_OFICIAL_02/` | Valido. `resultado_final=completo`, `ok_global=true`, `apto_para_revision_funcional`, 16/16 checks ejecutados, 0 incidencias. |
+| IA_OFICIAL_03 | `run_2026-05-19_02-15` | `analisis_resultados/resultados_pipeline/IA_OFICIAL_03/` | Valido. `resultado_final=completo`, `ok_global=true`, `apto_para_revision_funcional`, 16/16 checks ejecutados, 0 incidencias. |
 
 ## Conjunto congelado de trabajo
 

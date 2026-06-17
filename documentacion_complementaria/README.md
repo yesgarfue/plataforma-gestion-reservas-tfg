@@ -28,11 +28,11 @@ documentacion_complementaria/
 | Bloque | Capitulos | Material digital principal |
 |---|---|---|
 | General | Capitulo 3 | [`general/Planificacion_TFG.xlsx`](general/Planificacion_TFG.xlsx) |
-| Anexo A. Evidencias del caso base | Capitulos 4, 6, 8 y 9 | [`analisis_resultados/resultados_baseline/`](../analisis_resultados/resultados_baseline/) y [`baseline/docs_auditoria/`](../baseline/docs_auditoria/) |
-| Anexo B. Evidencias del caso IA | Capitulos 7, 8 y 9 | [`analisis_resultados/resultados_pipeline/`](../analisis_resultados/resultados_pipeline/) y [`pipeline/runs/`](../pipeline/runs/) |
-| Anexo C. Instrumento de evaluacion | Capitulos 4, 5, 8 y 9 | [`analisis_resultados/Planilla_Maestra_Evaluacion_TFG.xlsx`](../analisis_resultados/Planilla_Maestra_Evaluacion_TFG.xlsx) |
-| Anexo D. Configuracion del pipeline | Capitulo 7 | [`pipeline/src/pipeline/crews/`](../pipeline/src/pipeline/crews/) y [`pipeline_config.yaml`](../pipeline/src/pipeline/config/pipeline_config.yaml) |
-| Anexo E. Reproduccion y validacion | Capitulos 4, 5, 8 y 9 | [`suite test/`](../suite%20test/), [`baseline/`](../baseline/) y [`pipeline/`](../pipeline/) |
+| Anexo A. Evidencias del caso base | Capitulos 5, 7, 9 y 10 | [`analisis_resultados/resultados_baseline/`](../analisis_resultados/resultados_baseline/) y [`baseline/docs_auditoria/`](../baseline/docs_auditoria/) |
+| Anexo B. Evidencias del caso IA | Capitulos 8, 9 y 10 | [`analisis_resultados/resultados_pipeline/`](../analisis_resultados/resultados_pipeline/) y [`pipeline/runs/`](../pipeline/runs/) |
+| Anexo C. Instrumento de evaluacion | Capitulos 5, 6, 9 y 10 | [`analisis_resultados/Planilla_Maestra_Evaluacion_TFG.xlsx`](../analisis_resultados/Planilla_Maestra_Evaluacion_TFG.xlsx) |
+| Anexo D. Configuracion del pipeline | Capitulo 8 | [`pipeline/src/pipeline/crews/`](../pipeline/src/pipeline/crews/) y [`pipeline_config.yaml`](../pipeline/src/pipeline/config/pipeline_config.yaml) |
+| Anexo E. Reproduccion y validacion | Capitulos 5, 6, 9 y 10 | [`suite test/`](../suite%20test/), [`baseline/`](../baseline/) y [`pipeline/`](../pipeline/) |
 
 Los README de cada bloque explican el alcance de esos archivos y el orden de
 consulta recomendado.
